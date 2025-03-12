@@ -1,0 +1,66 @@
+server:
+  port: 19090
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/orders/**
+        - id: delivery-service
+          uri: lb://delivery-service
+          predicates:
+            - Path=/deliveries/**
+        - id: hub-service
+          uri: lb://hub-service
+          predicates:
+            - Path=/hubs/**
+        - id: comp-service
+          uri: lb://comp-service
+          predicates:
+            - Path=/companys/**
+        - id: slack-service
+          uri: lb://slack-service
+          predicates:
+            - Path=/slack-messages/**
+        - id: ai-service
+          uri: lb://ai-service
+          predicates:
+            - Path=/ai-interlocks/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/users/**
+      discovery:
+        locator:
+          enabled: true
+
+  bus:
+    enabled: true
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+      virtual-host: /
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:19090/eureka/
+
+service:
+  jwt:
+    secret-key: "64+F7IiY66as7Jik7ZiV7KCcIO2ZlOydtO2MheyeheuLiOuLpC4="
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

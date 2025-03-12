@@ -1,10 +1,10 @@
 package com.spring_cloud.client.gateway;
 
-import com.msa.fiveio.gateway.exception.AccessTokenExpiredException;
-import com.msa.fiveio.gateway.exception.BaseException;
-import com.msa.fiveio.gateway.exception.NotExistsAuthorization;
-import com.msa.fiveio.gateway.jwt.RedisService;
 
+import com.spring_cloud.client.gateway.exception.AccessTokenExpiredException;
+import com.spring_cloud.client.gateway.exception.BaseException;
+import com.spring_cloud.client.gateway.exception.NotExistsAuthorization;
+import com.spring_cloud.client.gateway.jwt.RedisService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

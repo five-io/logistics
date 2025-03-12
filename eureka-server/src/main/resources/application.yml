@@ -14,4 +14,8 @@ eureka:
       defaultZone: http://localhost:18080/eureka/
   instance:
     host-name: localhost
-
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: "*"

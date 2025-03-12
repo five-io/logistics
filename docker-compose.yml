@@ -1,0 +1,128 @@
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: /
+
+  postorder:
+    image: postgres:16
+    container_name: postorder
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: fiveio
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: fiveio
+    volumes:
+      - postorder_data:/var/lib/postgresql/data
+
+  postdeliv:
+    image: postgres:16
+    container_name: postdeliv
+    restart: always
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: fiveio
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: fiveio
+    volumes:
+      - postdeliv_data:/var/lib/postgresql/data
+
+  posthub:
+    image: postgres:16
+    container_name: posthub
+    restart: always
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: fiveio
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: fiveio
+    volumes:
+      - posthub_data:/var/lib/postgresql/data
+
+  postcomp:
+    image: postgres:16
+    container_name: postcomp
+    restart: always
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_USER: fiveio
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: fiveio
+    volumes:
+      - postcomp_data:/var/lib/postgresql/data
+
+  postslack:
+    image: postgres:16
+    container_name: postslack
+    restart: always
+    ports:
+      - "5437:5432"
+    environment:
+      POSTGRES_USER: fiveio
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: fiveio
+    volumes:
+      - postslack_data:/var/lib/postgresql/data
+
+  postai:
+    image: postgres:16
+    container_name: postai
+    restart: always
+    ports:
+      - "5438:5432"
+    environment:
+      POSTGRES_USER: fiveio
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: fiveio
+    volumes:
+      - postai_data:/var/lib/postgresql/data
+
+  postuser:
+    image: postgres:16
+    container_name: postuser
+    restart: always
+    ports:
+      - "5439:5432"
+    environment:
+      POSTGRES_USER: fiveio
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: fiveio
+    volumes:
+      - postuser_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass systempass
+
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    restart: always
+    ports:
+      - "9411:9411"
+
+volumes:
+  postorder_data:
+  postdeliv_data:
+  posthub_data:
+  postcomp_data:
+  postslack_data:
+  postai_data:
+  postuser_data:

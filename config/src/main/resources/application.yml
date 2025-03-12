@@ -9,12 +9,13 @@ spring:
   cloud:
     config:
       server:
-#        native:
-#          search-locations: file:///C:/Users/HP/Desktop/logistics-root/config/src/main/resources/config-repo
-        git:
-          uri: https://github.com/five-io/logistics.git  # Git에 저장된 설정 파일
-          default-label: dev
+        native:
+          search-locations: file:///C:/Users/HP/Desktop/logistics-root/config/src/main/resources/config-repo
+#        git:
+#          uri: https://github.com/five-io/logistics.git  # Git에 저장된 설정 파일
+#          default-label: dev
     bus:
+      enabled: true
       destination: springCloudBus
   rabbitmq:
     host: localhost

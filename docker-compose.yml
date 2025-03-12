@@ -12,96 +12,19 @@ services:
       RABBITMQ_DEFAULT_PASS: guest
       RABBITMQ_DEFAULT_VHOST: /
 
-  postorder:
+  postgresql:
     image: postgres:16
-    container_name: postorder
+    container_name: postgresql
     restart: always
     ports:
-      - "5433:5432"
+      - "5432:5432"
     environment:
       POSTGRES_USER: fiveio
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: fiveio
     volumes:
       - postorder_data:/var/lib/postgresql/data
-
-  postdeliv:
-    image: postgres:16
-    container_name: postdeliv
-    restart: always
-    ports:
-      - "5434:5432"
-    environment:
-      POSTGRES_USER: fiveio
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: fiveio
-    volumes:
-      - postdeliv_data:/var/lib/postgresql/data
-
-  posthub:
-    image: postgres:16
-    container_name: posthub
-    restart: always
-    ports:
-      - "5435:5432"
-    environment:
-      POSTGRES_USER: fiveio
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: fiveio
-    volumes:
-      - posthub_data:/var/lib/postgresql/data
-
-  postcomp:
-    image: postgres:16
-    container_name: postcomp
-    restart: always
-    ports:
-      - "5436:5432"
-    environment:
-      POSTGRES_USER: fiveio
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: fiveio
-    volumes:
-      - postcomp_data:/var/lib/postgresql/data
-
-  postslack:
-    image: postgres:16
-    container_name: postslack
-    restart: always
-    ports:
-      - "5437:5432"
-    environment:
-      POSTGRES_USER: fiveio
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: fiveio
-    volumes:
-      - postslack_data:/var/lib/postgresql/data
-
-  postai:
-    image: postgres:16
-    container_name: postai
-    restart: always
-    ports:
-      - "5438:5432"
-    environment:
-      POSTGRES_USER: fiveio
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: fiveio
-    volumes:
-      - postai_data:/var/lib/postgresql/data
-
-  postuser:
-    image: postgres:16
-    container_name: postuser
-    restart: always
-    ports:
-      - "5439:5432"
-    environment:
-      POSTGRES_USER: fiveio
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: fiveio
-    volumes:
-      - postuser_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql 
 
   redis:
     image: redis:latest

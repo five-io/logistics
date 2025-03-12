@@ -1,2 +1,3 @@
 rootProject.name = 'logistics-root'
 include 'gateway'
+include 'eureka-server'

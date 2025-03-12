@@ -1,0 +1,35 @@
+server:
+  port: 18088
+
+spring:
+  profiles:
+    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+#        native:
+#          search-locations: file:///C:/Users/HP/Desktop/logistics-root/config/src/main/resources/config-repo
+        git:
+          uri: https://github.com/five-io/logistics.git  # Git에 저장된 설정 파일
+          default-label: dev
+    bus:
+      destination: springCloudBus
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:18080/eureka/
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: busrefresh

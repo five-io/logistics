@@ -6,6 +6,9 @@ spring:
   config:
     import: "configserver:"
   cloud:
+    bus:
+      enable: false
+      destination: springCloudBus
     config:
       discovery:
         enabled: true

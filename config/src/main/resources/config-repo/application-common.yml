@@ -1,18 +1,17 @@
 
-
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: fiveio
     password: 1234
   jpa:
-    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+    open-in-view: false
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        spring.jpa.open-in-view: false
         format_sql: true
         default_batch_fetch_size: 10
   rabbitmq:
@@ -45,10 +44,7 @@ resilience4j:
         waitDurationInOpenState: 20s  # OPEN 상태가 된 후 HALF-OPEN으로 변경되기까지의 대기 시간 (20초)
 
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:19090/eureka/
+
 
 management:
   endpoints:

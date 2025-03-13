@@ -1,0 +1,60 @@
+server:
+  port: 19090
+
+spring:
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/orders/**
+        - id: delivery-service
+          uri: lb://delivery-service
+          predicates:
+            - Path=/api/deliveries/**
+        - id: hub-service
+          uri: lb://hub-service
+          predicates:
+            - Path=/api/hubs/**
+        - id: comp-service
+          uri: lb://comp-service
+          predicates:
+            - Path=/api/companys/**
+        - id: slack-service
+          uri: lb://slack-service
+          predicates:
+            - Path=/api/slack-messages/**
+        - id: ai-service
+          uri: lb://ai-service
+          predicates:
+            - Path=/api/ai-interlocks/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+      discovery:
+        locator:
+          enabled: true
+
+  bus:
+    enabled: true
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+      virtual-host: /
+
+
+service:
+  jwt:
+    secret-key: "64+F7IiY66as7Jik7ZiV7KCcIO2ZlOydtO2MheyeheuLiOuLpC4="
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,busrefresh

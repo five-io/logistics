@@ -1,0 +1,10 @@
+server:
+  port: 19094
+
+spring:
+  application:
+    name: comp-service
+  config:
+    import: application-common.yml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/company

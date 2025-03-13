@@ -1,0 +1,10 @@
+server:
+  port: 19093
+
+spring:
+  application:
+    name: hub-service
+  config:
+    import: application-common.yml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hub

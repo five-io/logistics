@@ -1,6 +1,6 @@
 spring:
   application:
-    name: gateway-service
+    name: hub-service
   profiles:
     active: local
   config:
@@ -13,7 +13,7 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
-      uri: http://localhost:18088  # Config Server의 주소
+      uri: http://localhost:18088  # Config Server? ??
       fail-fast: true
 
 eureka:

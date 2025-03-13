@@ -1,0 +1,11 @@
+server:
+  port: 19091
+
+spring:
+  application:
+    name: order-service
+
+  config:
+    import: application-common.yml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/orders

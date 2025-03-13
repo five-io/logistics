@@ -1,0 +1,10 @@
+server:
+  port: 19096
+
+spring:
+  application:
+    name: ai-service
+  config:
+    import: application-common.yml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/aiinterlock

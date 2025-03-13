@@ -1,4 +1,3 @@
-
 services:
   rabbitmq:
     image: rabbitmq:3-management
@@ -12,7 +11,7 @@ services:
       RABBITMQ_DEFAULT_PASS: guest
       RABBITMQ_DEFAULT_VHOST: /
 
-  postgresql:
+  postgres:
     image: postgres:16
     container_name: postgresql
     restart: always
@@ -21,10 +20,9 @@ services:
     environment:
       POSTGRES_USER: fiveio
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: fiveio
     volumes:
-      - postorder_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql 
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   redis:
     image: redis:latest
@@ -42,10 +40,4 @@ services:
       - "9411:9411"
 
 volumes:
-  postorder_data:
-  postdeliv_data:
-  posthub_data:
-  postcomp_data:
-  postslack_data:
-  postai_data:
-  postuser_data:
+  postgres_data:

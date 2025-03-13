@@ -1,0 +1,10 @@
+server:
+  port: 19092
+
+spring:
+  application:
+    name: delivery-service
+  config:
+    import: application-common.yml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/delivery

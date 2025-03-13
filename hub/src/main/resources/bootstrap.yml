@@ -1,10 +1,10 @@
 spring:
   application:
-    name: gateway-service
+    name: hub-service
   profiles:
     active: local
   config:
-    import: "configserver:"
+    import: "optional:configserver:"
   cloud:
     bus:
       enable: false

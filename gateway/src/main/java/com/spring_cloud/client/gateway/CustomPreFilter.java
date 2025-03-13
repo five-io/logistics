@@ -48,9 +48,9 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
     private SecretKey getSecretKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
-    };
+    }
 
-    @Override
+	@Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         String path = exchange.getRequest().getURI().getPath();

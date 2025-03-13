@@ -8,3 +8,4 @@ spring:
     import: application-common.yml
   datasource:
     url: jdbc:postgresql://localhost:5432/hub
+

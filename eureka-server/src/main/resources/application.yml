@@ -15,7 +15,7 @@ eureka:
   instance:
     host-name: localhost
     management:
-      endpoints:
+     endpoints:
         web:
           exposure:
             include: "*"

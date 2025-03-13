@@ -20,3 +20,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:18080/eureka/
+
+kakao:
+  rest:
+    api:
+      key: "f440cb817456adbf517c4149d8718ac7"

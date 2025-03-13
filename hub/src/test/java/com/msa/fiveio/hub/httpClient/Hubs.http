@@ -1,0 +1,12 @@
+###Create
+POST http://localhost:19093/api/hubs/create
+Content-Type: application/json
+
+{
+"hub_name": "서울특별시 센터",
+"address": "서울특별시 송파구 송파대로 55",
+"latitude": 0,
+"longitude": 0
+}
+
+

@@ -30,7 +30,9 @@ services:
     restart: always
     ports:
       - "6379:6379"
-    command: redis-server --requirepass systempass
+    environment:
+      REDIS_PASSWORD: systempass  # Redis 비밀번호 설정
+      command: redis-server --requirepass systempass
 
   zipkin:
     image: openzipkin/zipkin

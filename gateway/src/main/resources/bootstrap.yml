@@ -16,6 +16,10 @@ spring:
       uri: http://localhost:18088  # Config Server의 주소
       fail-fast: true
 
+service:
+  jwt:
+    secret-key: "64+F7IiY66as7Jik7ZiV7KCcIO2ZlOydtO2MheyeheuLiOuLpC4="
+
 eureka:
   client:
     service-url:

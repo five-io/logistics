@@ -49,10 +49,6 @@ spring:
       virtual-host: /
 
 
-service:
-  jwt:
-    secret-key: "64+F7IiY66as7Jik7ZiV7KCcIO2ZlOydtO2MheyeheuLiOuLpC4="
-
 management:
   endpoints:
     web:

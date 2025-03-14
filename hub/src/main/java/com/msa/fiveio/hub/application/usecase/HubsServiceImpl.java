@@ -11,6 +11,7 @@ import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
 import com.msa.fiveio.hub.presentation.dto.KakaoResponseDto;
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
@@ -36,14 +37,42 @@ public class HubsServiceImpl implements HubsService {
     public HubsResponseDto createHubs(HubsRequestDto hubsRequestDto) {
         String[] response = searchAddress(hubsRequestDto.address());
         Hubs hubs = Hubs.builder()
-            .hubName(hubsRequestDto.hub_name())
+            .hubName(hubsRequestDto.hubName())
             .address(hubsRequestDto.address())
             .longitude(Double.parseDouble(response[0]))
-            .latitude(Double.parseDouble(response[0])).build();
+            .latitude(Double.parseDouble(response[1])).build();
 
         hubsRepository.save(hubs);
 
        return HubsResponseDto.of(hubs);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public HubsResponseDto readHubs(UUID id) {
+        Hubs hub = hubsRepository.findById(id).orElseThrow(
+            () -> new RuntimeException("Hub not found")
+        );
+        return HubsResponseDto.of(hub);
+    }
+
+    @Override
+    @Transactional
+    public HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsDto) {
+        Hubs hub = hubsRepository.findById(id).orElseThrow(
+            () -> new RuntimeException("Hub not found")
+        );
+        if(hubsDto.hubName() != null) {
+            hub.setHubName(hubsDto.hubName());
+        }
+        if(hubsDto.address() != null) {
+            String[] response = searchAddress(hubsDto.address());
+            hub.setAddress(hubsDto.address());
+            hub.setLongitude(Double.parseDouble(response[0]));
+            hub.setLatitude(Double.parseDouble(response[1]));
+        }
+
+        return HubsResponseDto.of(hub);
     }
 
     public String[] searchAddress(String address) {

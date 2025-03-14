@@ -9,4 +9,17 @@ Content-Type: application/json
 "longitude": 0
 }
 
+###
+GET http://localhost:19093/api/hubs/read?
+    id=84e09714-2b66-4b44-9b43-80299520e84f
+Content-Type: application/json
 
+###
+PATCH http://localhost:19093/api/hubs/update/84e09714-2b66-4b44-9b43-80299520e84f
+Content-Type: application/json
+
+{
+  "address": "서울특별시 송파구 송파대로 55",
+  "latitude": 0,
+  "longitude": 0
+}

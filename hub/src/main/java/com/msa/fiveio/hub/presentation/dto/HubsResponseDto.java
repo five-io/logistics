@@ -15,4 +15,6 @@ public record HubsResponseDto (UUID id,
     public static HubsResponseDto of(Hubs hubs) {
         return new HubsResponseDto(hubs.getId(), hubs.getHubName(), hubs.getAddress(), hubs.getLatitude(), hubs.getLongitude());
     }
+
+
 }

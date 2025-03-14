@@ -1,6 +1,7 @@
 package com.msa.fiveio.slack.presentation.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,13 +10,13 @@ import lombok.Getter;
 public class SlackMessagesCreateRequestDto {
 
 	@JsonProperty("user-id")
-	private String userId;
+	private Long userId;
 
 	@JsonProperty("receive-id")
-	private String receiveId;
+	private UUID receiveId;
 
 	@JsonProperty("order-id")
-	private String orderId;
+	private UUID orderId;
 
 	private String message;
 

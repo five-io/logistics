@@ -19,16 +19,16 @@ public class SlackMessages {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "slack_id")
-	private String id;
+	private UUID id;
 
 	@Column(nullable = false)
-	private String userId;
+	private Long userId;
 
 	@Column(nullable = false)
-	private String receiveId;
+	private UUID receiveId;
 
 	@Column(nullable = false)
-	private String orderId;
+	private UUID orderId;
 
 	@Column(columnDefinition = "TEXT")
 	private String message;

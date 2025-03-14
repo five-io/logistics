@@ -1,0 +1,13 @@
+
+dependencies {
+    //개별
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'org.postgresql:postgresql'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	//config client
+	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+}
+

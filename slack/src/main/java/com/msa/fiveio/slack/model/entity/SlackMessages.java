@@ -19,7 +19,7 @@ public class SlackMessages {
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "slack_id")
-	private UUID id;
+	private String id;
 
 	@Column(nullable = false)
 	private String userId;

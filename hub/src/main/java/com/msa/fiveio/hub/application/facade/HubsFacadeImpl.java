@@ -19,12 +19,13 @@ public class HubsFacadeImpl implements HubsFacade {
     }
 
     @Override
-    public HubsResponseDto reaadHubs(UUID id) {
-        return hubsService.reaadHubs(id);
+    public HubsResponseDto readHubs(UUID id) {
+        return hubsService.readHubs(id);
     }
 
     @Override
     public HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsDto) {
+        hubsService.readHubs(id);
         return hubsService.updateHubs(id,hubsDto);
     }
 

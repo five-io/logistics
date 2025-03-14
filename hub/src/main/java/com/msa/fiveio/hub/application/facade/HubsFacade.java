@@ -8,7 +8,7 @@ public interface HubsFacade {
 
     HubsResponseDto createHubs(HubsRequestDto hubsRequestDto);
 
-    HubsResponseDto reaadHubs(UUID id);
+    HubsResponseDto readHubs(UUID id);
 
     HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsDto);
 }

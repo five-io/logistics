@@ -49,7 +49,7 @@ public class HubsServiceImpl implements HubsService {
 
     @Override
     @Transactional(readOnly = true)
-    public HubsResponseDto reaadHubs(UUID id) {
+    public HubsResponseDto readHubs(UUID id) {
         Hubs hub = hubsRepository.findById(id).orElseThrow(
             () -> new RuntimeException("Hub not found")
         );

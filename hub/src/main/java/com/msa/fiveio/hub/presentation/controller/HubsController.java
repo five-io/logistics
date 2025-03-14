@@ -31,7 +31,7 @@ public class HubsController {
 
     @GetMapping("/read")
     public ResponseEntity<HubsResponseDto> readHubs(@RequestParam UUID id) {
-        return ResponseEntity.ok(hubsFacade.reaadHubs(id));
+        return ResponseEntity.ok(hubsFacade.readHubs(id));
     }
 
     @PatchMapping("/update/{id}")

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SlackMessagesSaveResponseDto {
+public class SlackMessagesCreateResponseDto {
 
 	@JsonProperty("slack-id")
 	private String slackId;

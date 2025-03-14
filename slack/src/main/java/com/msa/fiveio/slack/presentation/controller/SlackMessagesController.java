@@ -1,8 +1,8 @@
 package com.msa.fiveio.slack.presentation.controller;
 
 import com.msa.fiveio.slack.application.service.SlackMessagesService;
-import com.msa.fiveio.slack.presentation.dto.SlackMessagesSaveRequestDto;
-import com.msa.fiveio.slack.presentation.dto.SlackMessagesSaveResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlackMessagesCreateRequestDto;
+import com.msa.fiveio.slack.presentation.dto.SlackMessagesCreateResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +17,8 @@ public class SlackMessagesController {
 	private final SlackMessagesService slackMessageService;
 
 	@PostMapping
-	public ResponseEntity<SlackMessagesSaveResponseDto> createMessage(@RequestBody SlackMessagesSaveRequestDto slackMessagesRequestDto) {
-		SlackMessagesSaveResponseDto slackMessagesResponseDto = slackMessageService.createMessages(slackMessagesRequestDto);
+	public ResponseEntity<SlackMessagesCreateResponseDto> createMessage(@RequestBody SlackMessagesCreateRequestDto slackMessagesRequestDto) {
+		SlackMessagesCreateResponseDto slackMessagesResponseDto = slackMessageService.createMessages(slackMessagesRequestDto);
 
 		return ResponseEntity.ok(slackMessagesResponseDto);
 	}

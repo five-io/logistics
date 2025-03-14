@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class SlackMessagesSaveRequestDto {
+public class SlackMessagesCreateRequestDto {
 
 	@JsonProperty("user-id")
 	private String userId;

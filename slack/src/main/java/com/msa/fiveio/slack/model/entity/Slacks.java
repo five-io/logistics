@@ -1,6 +1,11 @@
 package com.msa.fiveio.slack.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -12,9 +17,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="p_slack_messages")
+@Table(name="p_slack")
 @Entity
-public class SlackMessages {
+public class Slacks {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -33,8 +38,13 @@ public class SlackMessages {
 	@Column(columnDefinition = "TEXT")
 	private String message;
 
+	@Column
 	private LocalDateTime deliveryTime;
 
+	public void update(String message, LocalDateTime deliveryTime) {
+		this.message = message;
+		this.deliveryTime = deliveryTime;
+	}
 }
 
 

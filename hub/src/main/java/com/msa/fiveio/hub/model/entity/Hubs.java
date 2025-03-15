@@ -1,5 +1,7 @@
 package com.msa.fiveio.hub.model.entity;
 
+
+import com.msa.fiveio.common.auditing.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,13 +15,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLRestriction;
 
+
+@SQLRestriction("deleted_at IS NULL")
 @Entity
 @Table(name="p_hubs")
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Hubs {
+public class Hubs extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -47,4 +51,13 @@ public class Hubs {
     }
 
 
+    public void updateHubName(String hubName) {
+        this.hubName = hubName;
+    }
+
+    public void updateAddress(String address, double latitude, double longitude) {
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 }

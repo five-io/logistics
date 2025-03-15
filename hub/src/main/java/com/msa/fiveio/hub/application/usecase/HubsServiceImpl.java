@@ -1,11 +1,10 @@
 package com.msa.fiveio.hub.application.usecase;
 
 
-
-
 import com.msa.fiveio.hub.infrastructure.client.KakaoClient;
 import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.model.repository.HubsRepository;
+import com.msa.fiveio.hub.presentation.Mapper.HubsMapper;
 import com.msa.fiveio.hub.presentation.dto.DocumentDto;
 import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
@@ -13,11 +12,8 @@ import com.msa.fiveio.hub.presentation.dto.KakaoResponseDto;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
-
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,15 +32,15 @@ public class HubsServiceImpl implements HubsService {
     @Override
     public HubsResponseDto createHubs(HubsRequestDto hubsRequestDto) {
         String[] response = searchAddress(hubsRequestDto.address());
-        Hubs hubs = Hubs.builder()
+        Hubs hub = Hubs.builder()
             .hubName(hubsRequestDto.hubName())
             .address(hubsRequestDto.address())
             .longitude(Double.parseDouble(response[0]))
             .latitude(Double.parseDouble(response[1])).build();
 
-        hubsRepository.save(hubs);
+        hubsRepository.save(hub);
 
-       return HubsResponseDto.of(hubs);
+       return HubsMapper.entityToHubsResponseDto(hub);
     }
 
     @Override
@@ -53,26 +49,23 @@ public class HubsServiceImpl implements HubsService {
         Hubs hub = hubsRepository.findById(id).orElseThrow(
             () -> new RuntimeException("Hub not found")
         );
-        return HubsResponseDto.of(hub);
+        return HubsMapper.entityToHubsResponseDto(hub);
     }
 
     @Override
     @Transactional
-    public HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsDto) {
-        Hubs hub = hubsRepository.findById(id).orElseThrow(
-            () -> new RuntimeException("Hub not found")
-        );
+    public HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsDto, Hubs hub) {
         if(hubsDto.hubName() != null) {
-            hub.setHubName(hubsDto.hubName());
+            hub.updateHubName(hubsDto.hubName());
+            hubsRepository.save(hub);
         }
         if(hubsDto.address() != null) {
             String[] response = searchAddress(hubsDto.address());
-            hub.setAddress(hubsDto.address());
-            hub.setLongitude(Double.parseDouble(response[0]));
-            hub.setLatitude(Double.parseDouble(response[1]));
+            hub.updateAddress(hubsDto.address(),Double.parseDouble(response[0]),Double.parseDouble(response[1]));
+            hubsRepository.save(hub);
         }
 
-        return HubsResponseDto.of(hub);
+        return HubsMapper.entityToHubsResponseDto(hub);
     }
 
     public String[] searchAddress(String address) {

@@ -43,7 +43,8 @@ public class Hubs extends BaseEntity {
     private Double longitude;
 
     @Builder
-    public Hubs(String hubName, String address, Double latitude, Double longitude) {
+    public Hubs(UUID id, String hubName, String address, Double latitude, Double longitude) {
+        this.id = id;
         this.hubName = hubName;
         this.address = address;
         this.latitude = latitude;

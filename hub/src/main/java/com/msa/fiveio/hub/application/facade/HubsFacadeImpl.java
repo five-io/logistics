@@ -2,7 +2,7 @@ package com.msa.fiveio.hub.application.facade;
 
 import com.msa.fiveio.hub.application.usecase.HubsService;
 import com.msa.fiveio.hub.model.entity.Hubs;
-import com.msa.fiveio.hub.presentation.Mapper.HubsMapper;
+import com.msa.fiveio.hub.presentation.mapper.HubsMapper;
 import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
 import com.msa.fiveio.hub.presentation.dto.SearchResponseDto;

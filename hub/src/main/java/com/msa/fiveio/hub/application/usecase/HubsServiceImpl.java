@@ -5,15 +5,19 @@ import com.msa.fiveio.hub.infrastructure.client.KakaoClient;
 import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.model.repository.HubsRepository;
 import com.msa.fiveio.hub.presentation.Mapper.HubsMapper;
+import com.msa.fiveio.hub.presentation.Mapper.SearchResponseDtos;
 import com.msa.fiveio.hub.presentation.dto.DocumentDto;
 import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
 import com.msa.fiveio.hub.presentation.dto.KakaoResponseDto;
+import com.msa.fiveio.hub.presentation.dto.SearchResponseDto;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,6 +70,12 @@ public class HubsServiceImpl implements HubsService {
         }
 
         return HubsMapper.entityToHubsResponseDto(hub);
+    }
+
+    @Override
+    public Page<SearchResponseDto> searchHubs(HubsRequestDto hubsDto, Pageable pageable) {
+        Page<Hubs> hubsPage = hubsRepository.searchHubs(hubsDto,pageable);
+        return SearchResponseDtos.fromPage(hubsPage).toPage(hubsPage);
     }
 
     public String[] searchAddress(String address) {

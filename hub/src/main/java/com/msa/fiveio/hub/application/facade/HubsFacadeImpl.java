@@ -5,6 +5,7 @@ import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.presentation.Mapper.HubsMapper;
 import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
+import com.msa.fiveio.hub.presentation.dto.SearchResponseDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,6 +33,11 @@ public class HubsFacadeImpl implements HubsFacade {
         HubsResponseDto dto = hubsService.readHubs(id);
         Hubs hub = HubsMapper.hubsResponseDtoToEntity(dto);
         return hubsService.updateHubs(id,hubsDto,hub);
+    }
+
+    @Override
+    public Page<SearchResponseDto> searchHubs(HubsRequestDto hubsDto, Pageable pageable) {
+        return hubsService.searchHubs(hubsDto,pageable);
     }
 
 

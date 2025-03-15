@@ -5,8 +5,11 @@ import brave.Response;
 import com.msa.fiveio.hub.application.facade.HubsFacade;
 import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
+import com.msa.fiveio.hub.presentation.dto.SearchResponseDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -37,6 +40,12 @@ public class HubsController {
     @PatchMapping("/update/{id}")
     public ResponseEntity<HubsResponseDto> updateHubs(@PathVariable UUID id, @RequestBody HubsRequestDto hubsDto) {
         return ResponseEntity.ok(hubsFacade.updateHubs(id,hubsDto));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<SearchResponseDto>> searchAddress(
+        HubsRequestDto hubsDto, Pageable pageable) {
+        return ResponseEntity.ok(hubsFacade.searchHubs(hubsDto,pageable));
     }
 
 }

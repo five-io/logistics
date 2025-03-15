@@ -1,4 +1,4 @@
-package com.msa.fiveio.hub.presentation.Mapper;
+package com.msa.fiveio.hub.presentation.mapper;
 
 import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;

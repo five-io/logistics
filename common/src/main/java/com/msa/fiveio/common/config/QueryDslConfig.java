@@ -1,5 +1,4 @@
-package com.msa.fiveio.hub.infrastructure.configuration;
-
+package com.msa.fiveio.common.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

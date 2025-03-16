@@ -1,18 +1,21 @@
 package com.msa.fiveio.company.model.entity;
 
+import com.msa.fiveio.common.auditing.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.util.UUID;
 
+@SQLRestriction("deleted_at IS NULL")
 @Entity
 @Table(name = "p_companys")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Companys {
+public class Companys extends BaseEntity {
 
     //todo. Enum 타입이 아닌 String으로 저장
 

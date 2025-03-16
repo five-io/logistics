@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: comp-service
+  profiles:
+    active: local
+  config:
+    import: "configserver:"
+  cloud:
+    bus:
+      enable: false
+      destination: springCloudBus
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      uri: http://localhost:18088  # Config Server? ??
+      fail-fast: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:18080/eureka/

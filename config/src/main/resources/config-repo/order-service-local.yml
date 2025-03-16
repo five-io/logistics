@@ -9,3 +9,12 @@ spring:
     import: application-common.yml
   datasource:
     url: jdbc:postgresql://localhost:5432/orders
+
+springdoc:
+  api-docs:
+    version: openapi_3_1
+    enabled: true
+    path: /order-service/v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html

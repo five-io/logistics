@@ -44,8 +44,6 @@ resilience4j:
         waitDurationInOpenState: 20s  # OPEN 상태가 된 후 HALF-OPEN으로 변경되기까지의 대기 시간 (20초)
 
 
-
-
 management:
   endpoints:
     web:

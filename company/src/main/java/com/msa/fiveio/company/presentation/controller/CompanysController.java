@@ -20,7 +20,6 @@ public class CompanysController {
     // todo. 주문 쪽으로 메세지
     @PostMapping
     public ResponseEntity<CompanyResponseDto> createCompany(@RequestBody CompanyRequestDto requestdto){
-        System.out.println("테스트");
         CompanyResponseDto companyResponseDto = companysFacade.createCompany(requestdto);
         return ResponseEntity.ok(companyResponseDto);
     }

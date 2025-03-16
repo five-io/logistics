@@ -20,17 +20,14 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public CompanyResponseDto createCompanys(CompanyRequestDto requestDto) {
         //requestdto -> 엔티티 변환
-        System.out.println('1');
         Companys company = Companys.builder()
                 .companyName(requestDto.getCompanyName())
                 .address(requestDto.getCompanyAddress())
                 .companyTypes((CompanysType) requestDto.getCompanyType())
                 .hubID(requestDto.getHubId())
                 .build();
-        System.out.println('2');
         //엔티티 저장
         companysRepository.save(company);
-        System.out.println('3');
         //dto 반환
         return CompanyResponseDto.of(company);
     }

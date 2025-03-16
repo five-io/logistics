@@ -5,6 +5,7 @@ import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.model.repository.SlacksRepository;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import com.msa.fiveio.slack.presentation.mapper.SlacksMapper;
@@ -47,4 +48,10 @@ public class SlacksService {
 		return SlacksMapper.entityToUpdateResponseDto(slacks);
 	}
 
+	public SlacksDeleteResponseDto deleteMessages(UUID id) {
+		Slacks slacks = slacksRepository.findById(id).orElseThrow(()->
+			new BusinessLogicException(messageSource.getMessage("api.call.client-error", null, Locale.KOREA)));
+
+		return SlacksMapper.entityToDeleteResponseDto(slacks);
+	}
 }

@@ -3,6 +3,7 @@ package com.msa.fiveio.slack.presentation.mapper;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 
 public class SlacksMapper {
@@ -31,6 +32,12 @@ public class SlacksMapper {
 			.orderId(slacks.getOrderId())
 			.message(slacks.getMessage())
 			.deliveryTime(slacks.getDeliveryTime())
+			.build();
+	}
+
+	public static SlacksDeleteResponseDto entityToDeleteResponseDto(Slacks slacks) {
+		return SlacksDeleteResponseDto.builder()
+			.slackId(slacks.getId())
 			.build();
 	}
 }

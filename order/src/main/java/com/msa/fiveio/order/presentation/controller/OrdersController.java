@@ -17,7 +17,7 @@ public class OrdersController {
 
     private final OrdersFacade ordersFacade;
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<OrderCreateResponseDto> createOrder(
         @RequestBody OrderCreateRequestDto orderRequestDto) {
         return ResponseEntity.ok(ordersFacade.createOrder(orderRequestDto));

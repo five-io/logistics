@@ -29,7 +29,7 @@ spring:
         - id: delivery-docs
           uri: lb://delivery-service
           predicates:
-            -Path=/delivery-service/**
+            - Path=/delivery-service/**
 
 
         - id: hub-service

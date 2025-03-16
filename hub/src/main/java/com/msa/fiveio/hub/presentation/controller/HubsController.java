@@ -59,7 +59,7 @@ public class HubsController {
     @Operation(summary = "Hub 삭제", description = "Hub 삭제 api 입니다.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteHubs(@PathVariable UUID id) {
-        hubsFacade.deleteHubs(id);
+      //  hubsFacade.deleteHubs(id);
         return ResponseEntity.noContent().build();
     }
 

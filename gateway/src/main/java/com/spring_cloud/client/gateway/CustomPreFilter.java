@@ -55,11 +55,13 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
 
         String path = exchange.getRequest().getURI().getPath();
 
-
-        if(path.equals("/users/signIn")||path.equals("/users/signUp")){
-
+        if(path != null) {
             return chain.filter(exchange);
         }
+       /* if(path.equals("/users/signIn")||path.equals("/users/signUp")){
+
+            return chain.filter(exchange);
+        }*/
 
         try {
             //토큰가져오기

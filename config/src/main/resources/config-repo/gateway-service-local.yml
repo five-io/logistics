@@ -1,68 +1,75 @@
-server:
-  port: 19090
-
-spring:
-  main:
-    web-application-type: reactive
-  cloud:
-    gateway:
-      routes:
-        - id: order-service
-          uri: lb://order-service
-          predicates:
-            - Path=/api/orders/**
-        - id: delivery-service
-          uri: lb://delivery-service
-          predicates:
-            - Path=/api/deliveries/**
-        - id: hub-service
-          uri: lb://hub-service
-          predicates:
-            - Path=/api/hubs/**
-            - Path=/hub-service/**
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/hub-service/(?<segment>.*), /$\{segment}
-            - RewritePath=/api/hubs/(?<segment>.*), /$\{segment}
-        - id: swagger-static
-          uri: https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/
-          predicates:
-           - Path=/webjars/swagger-ui/**
-        - id: comp-service
-          uri: lb://comp-service
-          predicates:
-            - Path=/api/companys/**
-        - id: slack-service
-          uri: lb://slack-service
-          predicates:
-            - Path=/api/slack-messages/**
-        - id: ai-service
-          uri: lb://ai-service
-          predicates:
-            - Path=/api/ai-interlocks/**
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/api/users/**
-      discovery:
-        locator:
-          enabled: true
-      loadbalancer:
-        enabled: true
-
-  bus:
-    enabled: true
-    rabbitmq:
-      host: localhost
-      port: 5672
-      username: guest
-      password: guest
-      virtual-host: /
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh,busrefresh
-
+#server:
+#  port: 19090
+#
+#spring:
+#  main:
+#    web-application-type: reactive
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: order-service
+#          uri: lb://order-service
+#          predicates:
+#            - Path=/api/orders/**
+#        - id: delivery-service
+#          uri: lb://delivery-service
+#          predicates:
+#            - Path=/api/deliveries/**
+#
+#        - id: hub-service
+#          uri: lb://hub-service
+#          predicates:
+#            - Path=/api/hubs/**
+#            - Path=/hub-service/**
+#          filters:
+#            - RemoveRequestHeader=Cookie
+#            - RewritePath=/hub-service/(?<segment>.*), /$\{segment}
+#            - RewritePath=/api/hubs/(?<segment>.*), /$\{segment}
+#
+#        - id: hub-docs
+#          uri: lb://hub-service
+#          predicates:
+#            - Path=/hub-service/**
+#
+##        - id: swagger-static
+##          uri: https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/
+##          predicates:
+##           - Path=/webjars/swagger-ui/**
+#        - id: comp-service
+#          uri: lb://comp-service
+#          predicates:
+#            - Path=/api/companys/**
+#        - id: slack-service
+#          uri: lb://slack-service
+#          predicates:
+#            - Path=/api/slack-messages/**
+#        - id: ai-service
+#          uri: lb://ai-service
+#          predicates:
+#            - Path=/api/ai-interlocks/**
+#        - id: user-service
+#          uri: lb://user-service
+#          predicates:
+#            - Path=/api/users/**
+#      discovery:
+#        locator:
+#          enabled: true
+#      loadbalancer:
+#        enabled: true
+#
+#  bus:
+#    enabled: true
+#    rabbitmq:
+#      host: localhost
+#      port: 5672
+#      username: guest
+#      password: guest
+#      virtual-host: /
+#
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: refresh,busrefresh
+#

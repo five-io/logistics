@@ -13,6 +13,8 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
+      loadbalancer:
+        enabled: true
       uri: http://localhost:18088  # Config Server? ??
       fail-fast: true
 

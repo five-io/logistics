@@ -19,6 +19,15 @@ spring:
           uri: lb://hub-service
           predicates:
             - Path=/api/hubs/**
+            - Path=/hub-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/hub-service/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/hubs/(?<segment>.*), /$\{segment}
+        - id: swagger-static
+          uri: https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/
+          predicates:
+           - Path=/webjars/swagger-ui/**
         - id: comp-service
           uri: lb://comp-service
           predicates:
@@ -38,6 +47,8 @@ spring:
       discovery:
         locator:
           enabled: true
+      loadbalancer:
+        enabled: true
 
   bus:
     enabled: true
@@ -54,3 +65,4 @@ management:
     web:
       exposure:
         include: refresh,busrefresh
+

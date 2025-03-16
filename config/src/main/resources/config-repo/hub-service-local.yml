@@ -9,3 +9,15 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/hub
 
+springdoc:
+  api-docs:
+    version: openapi_3_1
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+
+  enable-spring-security: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json

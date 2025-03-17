@@ -1,9 +1,13 @@
 package com.msa.fiveio.company.application.facade;
 
-import com.msa.fiveio.company.presentation.dto.CompanyRequestDto;
-import com.msa.fiveio.company.presentation.dto.CompanyResponseDto;
+import com.msa.fiveio.company.presentation.dto.CompanyCreateRequestDto;
+import com.msa.fiveio.company.presentation.dto.CompanyCreateResponseDto;
+import com.msa.fiveio.company.presentation.dto.CompanyGetResponseDto;
+
+import java.util.UUID;
 
 public interface CompanysFacade {
-    CompanyResponseDto createCompany(CompanyRequestDto companyRequestDto);
+    CompanyCreateResponseDto createCompany(CompanyCreateRequestDto companyRequestDto);
+    CompanyGetResponseDto getCompany(UUID companyId);
 
 }

@@ -1,13 +1,18 @@
 package com.msa.fiveio.company.application.usecase;
 
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.CompanysErrorCode;
 import com.msa.fiveio.company.model.entity.Companys;
 import com.msa.fiveio.company.model.entity.CompanysType;
 import com.msa.fiveio.company.model.repository.CompanysRepository;
-import com.msa.fiveio.company.presentation.dto.CompanyRequestDto;
-import com.msa.fiveio.company.presentation.dto.CompanyResponseDto;
+import com.msa.fiveio.company.presentation.dto.CompanyCreateRequestDto;
+import com.msa.fiveio.company.presentation.dto.CompanyCreateResponseDto;
+import com.msa.fiveio.company.presentation.dto.CompanyGetResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +23,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     //업체생성
     @Override
-    public CompanyResponseDto createCompanys(CompanyRequestDto requestDto) {
+    public CompanyCreateResponseDto createCompanys(CompanyCreateRequestDto requestDto) {
         //requestdto -> 엔티티 변환
         Companys company = Companys.builder()
                 .companyName(requestDto.getCompanyName())
@@ -29,6 +34,14 @@ public class CompanyServiceImpl implements CompanyService {
         //엔티티 저장
         companysRepository.save(company);
         //dto 반환
-        return CompanyResponseDto.of(company);
+        return CompanyCreateResponseDto.of(company);
+    }
+
+    public CompanyGetResponseDto getCompanys(UUID companyId) {
+        //id로 리포지토리에서 찾아서 엔티티 만들기
+        Companys company = companysRepository.findById(companyId).orElseThrow(
+                () -> new CustomException(CompanysErrorCode.COMPANYS_NOT_FOUND));
+
+        return CompanyGetResponseDto.of(company);
     }
 }

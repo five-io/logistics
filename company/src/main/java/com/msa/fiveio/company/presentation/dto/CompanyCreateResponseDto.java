@@ -2,16 +2,14 @@ package com.msa.fiveio.company.presentation.dto;
 
 import com.msa.fiveio.company.model.entity.Companys;
 import com.msa.fiveio.company.model.entity.CompanysType;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Getter
 @Builder
-public class CompanyResponseDto {
+public class CompanyCreateResponseDto {
 
     private UUID companyId;
     private CompanysType companyType;
@@ -19,8 +17,8 @@ public class CompanyResponseDto {
     private String companyAddress;
     private UUID hubId;
 
-    public static CompanyResponseDto of(Companys company){
-        return CompanyResponseDto.builder()
+    public static CompanyCreateResponseDto of(Companys company){
+        return CompanyCreateResponseDto.builder()
                 .companyId(company.getId())
                 .companyName(company.getCompanyName())
                 .companyType(company.getCompanyTypes())

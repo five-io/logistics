@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
-public class CompanyRequestDto {
+public class CompanyCreateRequestDto {
 
     private CompanysType companyType;
     private String companyAddress;

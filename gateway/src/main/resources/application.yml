@@ -20,6 +20,9 @@ spring:
           uri: lb://order-service
           predicates:
             - Path=/order-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/order-service/api/orders/(?<segment>.*), /api/orders/$\{segment}
 
 
         - id: delivery-service
@@ -30,6 +33,9 @@ spring:
           uri: lb://delivery-service
           predicates:
             - Path=/delivery-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/delivery-service/api/deliveries/(?<segment>.*), /api/deliveries/$\{segment}
 
 
         - id: hub-service
@@ -40,6 +46,9 @@ spring:
           uri: lb://hub-service
           predicates:
             - Path=/hub-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/hub-service/api/hubs/(?<segment>.*), /api/hubs/$\{segment}
 
 
         - id: comp-service
@@ -50,6 +59,9 @@ spring:
           uri: lb://comp-service
           predicates:
             - Path=/comp-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/comp-service/api/companys/(?<segment>.*), /api/companys/$\{segment}
 
 
         - id: slack-service
@@ -60,6 +72,10 @@ spring:
           uri: lb://slack-service
           predicates:
             - Path=/slack-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/slack-service/api/slack/(?<segment>.*), /api/slack/$\{segment}
+
 
         - id: ai-service
           uri: lb://ai-service
@@ -69,6 +85,9 @@ spring:
           uri: lb://ai-service
           predicates:
             - Path=/ai-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/ai-service/api/ai-interlocks/(?<segment>.*), /api/ai-interlocks/$\{segment}
 
 
         - id: user-service
@@ -79,6 +98,9 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/user-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/api/users/(?<segment>.*), /api/users/$\{segment}
 
       discovery:
         locator:

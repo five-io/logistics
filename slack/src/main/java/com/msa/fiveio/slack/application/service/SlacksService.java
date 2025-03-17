@@ -9,6 +9,7 @@ import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import com.msa.fiveio.slack.presentation.mapper.SlacksMapper;
@@ -35,9 +36,7 @@ public class SlacksService {
 	public SlacksCreateResponseDto createMessage(
 		SlacksCreateRequestDto slacksCreateRequestDto) {
 
-		Slacks newSlacks = SlacksMapper.slacksCreateRequestDtoToEntity(
-			slacksCreateRequestDto);
-
+		Slacks newSlacks = SlacksMapper.slacksCreateRequestDtoToEntity(slacksCreateRequestDto);
 		Slacks createSlacks = slacksRepository.save(newSlacks);
 		return SlacksMapper.entityToCreateResponseDto(createSlacks);
 	}
@@ -50,6 +49,16 @@ public class SlacksService {
 		Page<Slacks> slacksPage = slacksQueryRepository.findSlacksList(pageable);
 
 		return SlacksMapper.pageToReadResponseDto(slacksPage);
+	}
+
+	@SQLRestriction("deleted_at IS NULL")
+	@Transactional
+	public SlacksSearchResponseDto searchMessages(UUID id, Integer page, Integer size, String orderby, String sort) {
+
+		PageRequest pageable = JpaAuditingConfig.getNormalPageable(page, size, orderby, sort);
+		Page<Slacks> slacksSearchPage = slacksQueryRepository.findSlacksSearchList(pageable, id);
+
+		return SlacksMapper.pageToSearchResponseDto(slacksSearchPage);
 	}
 
 	@Transactional

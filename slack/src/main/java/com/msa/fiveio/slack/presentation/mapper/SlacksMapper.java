@@ -5,6 +5,7 @@ import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,14 +37,40 @@ public class SlacksMapper {
 			.size(page.getSize())
 			.currentPage(page.getNumber() + 1);
 		List<SlacksReadResponseDto.SlacksDto> slacksDtoList = page.getContent().stream()
-			.map(SlacksMapper::entityToSlacksDtoElement)
+			.map(SlacksMapper::entityToSlacksReadDto)
 			.collect(Collectors.toList());
 		builder = builder.slackList(slacksDtoList);
 		return builder.build();
 	}
 
-	public static SlacksReadResponseDto.SlacksDto entityToSlacksDtoElement(Slacks slacks) {
+	public static SlacksReadResponseDto.SlacksDto entityToSlacksReadDto(Slacks slacks) {
 		return SlacksReadResponseDto.SlacksDto.builder()
+			.slackId(slacks.getId())
+			.userId(slacks.getUserId())
+			.receiveId(slacks.getReceiveId())
+			.orderId(slacks.getOrderId())
+			.message(slacks.getMessage())
+			.deliveryTime(slacks.getDeliveryTime())
+			.build();
+	}
+
+	public static SlacksSearchResponseDto pageToSearchResponseDto(Page<Slacks> page) {
+		SlacksSearchResponseDto.SlacksSearchResponseDtoBuilder builder = SlacksSearchResponseDto.builder();
+		builder = builder
+			.totalContents(page.getTotalElements())
+			.size(page.getSize())
+			.currentPage(page.getNumber() + 1);
+		List<SlacksSearchResponseDto.SlacksDto> slacksDtoList = page.getContent().stream()
+			.map(SlacksMapper::entityToSlacksSearchDto)
+			.collect(Collectors.toList());
+
+		return builder
+				.slackList(slacksDtoList)
+				.build();
+	}
+
+	public static SlacksSearchResponseDto.SlacksDto entityToSlacksSearchDto(Slacks slacks) {
+		return SlacksSearchResponseDto.SlacksDto.builder()
 			.slackId(slacks.getId())
 			.userId(slacks.getUserId())
 			.receiveId(slacks.getReceiveId())

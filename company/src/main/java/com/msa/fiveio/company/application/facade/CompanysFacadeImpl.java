@@ -1,11 +1,9 @@
 package com.msa.fiveio.company.application.facade;
 
 import com.msa.fiveio.company.application.usecase.CompanyService;
-import com.msa.fiveio.company.presentation.dto.request.CompanyCreateRequestDto;
-import com.msa.fiveio.company.presentation.dto.request.CompanyUpdateRequestDto;
-import com.msa.fiveio.company.presentation.dto.response.CompanyCreateResponseDto;
-import com.msa.fiveio.company.presentation.dto.response.CompanyGetResponseDto;
-import com.msa.fiveio.company.presentation.dto.response.CompanyUpdateResponseDto;
+import com.msa.fiveio.company.presentation.dto.CompanyCreateRequestDto;
+import com.msa.fiveio.company.presentation.dto.CompanyCreateResponseDto;
+import com.msa.fiveio.company.presentation.dto.CompanyGetResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,16 +22,6 @@ public class CompanysFacadeImpl implements CompanysFacade {
     @Override
     public CompanyGetResponseDto getCompany(UUID companyId) {
         return companyService.getCompanys(companyId);
-    }
-
-    @Override
-    public void deleteCompany(UUID companyId) {
-        companyService.deleteCompany(companyId);
-    }
-
-    @Override
-    public CompanyUpdateResponseDto updateCompany(UUID companyId, CompanyUpdateRequestDto companyRequestDto) {
-        return companyService.updateCompany(companyId, companyRequestDto);
     }
 
 

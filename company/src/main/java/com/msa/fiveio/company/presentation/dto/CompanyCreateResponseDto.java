@@ -10,7 +10,6 @@ import java.util.UUID;
 @Getter
 @Builder
 public class CompanyCreateResponseDto {
-
     private UUID companyId;
     private CompanysType companyType;
     private String companyName;

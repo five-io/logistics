@@ -1,6 +1,8 @@
 package com.msa.fiveio.hub.application.usecase;
 
 
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.HubErrorCode;
 import com.msa.fiveio.hub.infrastructure.client.KakaoClient;
 import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.model.repository.HubsRepository;
@@ -51,7 +53,7 @@ public class HubsServiceImpl implements HubsService {
     @Transactional(readOnly = true)
     public HubsResponseDto readHubs(UUID id) {
         Hubs hub = hubsRepository.findById(id).orElseThrow(
-            () -> new RuntimeException("Hub not found")
+            () -> new CustomException(HubErrorCode.HUBS_NOT_FOUND)
         );
         return HubsMapper.entityToHubsResponseDto(hub);
     }

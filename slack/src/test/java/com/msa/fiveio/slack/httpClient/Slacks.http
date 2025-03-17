@@ -1,0 +1,30 @@
+### Slack Create
+POST http://localhost:19095/api/slacks
+Content-Type: application/json
+
+{
+  "user-id": "1",
+  "receive-id": "123e4567-e89b-12d3-a456-556642440001",
+  "order-id": "123e4567-e89b-12d3-a456-556642440002",
+  "message": "test1",
+  "delivery-time": "2025-06-03T01:06:45"
+}
+
+### Slack Read
+GET http://localhost:19095/api/slacks?page=1&size=10&orderby=CREATED&sort=DESC
+Content-Type: application/json
+
+### Slack Search
+GET http://localhost:19095/api/slacks/search/b4a8a81e-5c60-42c3-b2f6-74792449b196?page=1&size=10&orderby=CREATED&sort=DESC
+
+### Slack Update
+PATCH http://localhost:19095/api/slacks/update/b4a8a81e-5c60-42c3-b2f6-74792449b196
+Content-Type: application/json
+
+{
+  "message":"updateTest",
+  "delivery-time":"2025-06-22T01:06:44"
+}
+
+### Slack Delete
+DELETE http://localhost:19095/api/slacks/delete/b4a8a81e-5c60-42c3-b2f6-74792449b196

@@ -1,6 +1,6 @@
 package com.msa.fiveio.slack.presentation.controller;
 
-import com.msa.fiveio.slack.application.service.SlacksService;
+import com.msa.fiveio.slack.application.facade.SlacksFacade;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
@@ -29,12 +29,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Tag(name = "Slack Service", description = "슬랙 서비스 API")
 public class SlacksController {
-	private final SlacksService slacksService;
+	private final SlacksFacade slacksFacade;
 
 	@Operation(summary = "Slack 등록", description = "Slack 등록 api 입니다.")
 	@PostMapping
-	public ResponseEntity<SlacksCreateResponseDto> createMessage(@RequestBody SlacksCreateRequestDto slacksCreateRequestDto) {
-		SlacksCreateResponseDto slacksCreateResponseDto = slacksService.createMessage(
+	public ResponseEntity<SlacksCreateResponseDto> createSlack(@RequestBody SlacksCreateRequestDto slacksCreateRequestDto) {
+		SlacksCreateResponseDto slacksCreateResponseDto = slacksFacade.createSlack(
 			slacksCreateRequestDto);
 
 		return ResponseEntity.ok(slacksCreateResponseDto);
@@ -42,8 +42,8 @@ public class SlacksController {
 
 	@Operation(summary = "Slack 목록 조회", description = "Slack 목록 조회 api 입니다.")
 	@GetMapping
-	public ResponseEntity<SlacksReadResponseDto> readMessages(SlacksReadRequestDto slacksReadRequestDto) {
-		SlacksReadResponseDto slacksReadResponseDto = slacksService.readMessages(
+	public ResponseEntity<SlacksReadResponseDto> readSlack(SlacksReadRequestDto slacksReadRequestDto) {
+		SlacksReadResponseDto slacksReadResponseDto = slacksFacade.readSlack(
 			slacksReadRequestDto.getPage(),
 			slacksReadRequestDto.getSize(),
 			slacksReadRequestDto.getOrderby(),
@@ -55,8 +55,8 @@ public class SlacksController {
 
 	@Operation(summary = "Slack 검색", description = "Slack 검색 api 입니다.")
 	@GetMapping("/search/{id}")
-	public ResponseEntity<SlacksSearchResponseDto> searchMessages(@PathVariable UUID id, SlacksSearchRequestDto slacksSearchRequestDto) {
-		SlacksSearchResponseDto slacksSearchResponseDto = slacksService.searchMessages(
+	public ResponseEntity<SlacksSearchResponseDto> searchSlack(@PathVariable UUID id, SlacksSearchRequestDto slacksSearchRequestDto) {
+		SlacksSearchResponseDto slacksSearchResponseDto = slacksFacade.searchSlack(
 			id,
 			slacksSearchRequestDto.getPage(),
 			slacksSearchRequestDto.getSize(),
@@ -69,8 +69,8 @@ public class SlacksController {
 
 	@Operation(summary = "Slack 수정", description = "Slack 수정 api 입니다.")
 	@PatchMapping("/update/{id}")
-	public ResponseEntity<SlacksUpdateResponseDto> updateMessage(@PathVariable UUID id, @RequestBody SlacksUpdateRequestDto slacksUpdateRequestDto) {
-		SlacksUpdateResponseDto slacksUpdateResponseDto = slacksService.updateMessage(id,
+	public ResponseEntity<SlacksUpdateResponseDto> updateSlack(@PathVariable UUID id, @RequestBody SlacksUpdateRequestDto slacksUpdateRequestDto) {
+		SlacksUpdateResponseDto slacksUpdateResponseDto = slacksFacade.updateSlack(id,
 			slacksUpdateRequestDto);
 
 		return ResponseEntity.ok(slacksUpdateResponseDto);
@@ -78,8 +78,8 @@ public class SlacksController {
 
 	@Operation(summary = "Slack 삭제", description = "Slack 삭제 api 입니다.")
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<SlacksDeleteResponseDto> deleteMessage(@PathVariable UUID id) {
-		SlacksDeleteResponseDto slacksDeleteResponseDto = slacksService.deleteMessage(id);
+	public ResponseEntity<SlacksDeleteResponseDto> deleteSlack(@PathVariable UUID id) {
+		SlacksDeleteResponseDto slacksDeleteResponseDto = slacksFacade.deleteSlack(id);
 
 		return ResponseEntity.ok(slacksDeleteResponseDto);
 	}

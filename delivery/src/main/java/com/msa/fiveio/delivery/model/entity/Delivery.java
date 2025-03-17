@@ -55,7 +55,7 @@ public class Delivery {
     private String deliveryAddress;
 
     // 업체 배송 담당자 ID
-    @Column(name = "company_delivery_manager", nullable = false)
+    @Column(name = "company_delivery_manager_id", nullable = false)
     private Long companyDeliveryManagerId;
 
     @Embedded

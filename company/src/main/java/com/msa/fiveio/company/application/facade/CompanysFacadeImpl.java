@@ -24,5 +24,10 @@ public class CompanysFacadeImpl implements CompanysFacade {
         return companyService.getCompanys(companyId);
     }
 
+    @Override
+    public void deleteCompany(UUID companyId) {
+        companyService.deleteCompany(companyId);
+    }
+
 
 }

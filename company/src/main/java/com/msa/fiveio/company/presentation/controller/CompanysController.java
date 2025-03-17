@@ -39,10 +39,7 @@ public class CompanysController {
     //업체삭제
     @DeleteMapping("/{companyId}")
     public ResponseEntity<Void> deleteCompany(@PathVariable UUID companyId){
-
-        return null;
+        companysFacade.deleteCompany(companyId);
+        return ResponseEntity.noContent().build();
     }
-
-
-
 }

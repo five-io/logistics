@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: local
+  config:
+    import: "configserver:"
+  cloud:
+    bus:
+      enable: false
+      destination: springCloudBus
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      uri: http://localhost:18088
+      fail-fast: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:18080/eureka/
+
+message:
+  orderToDelivery:
+    exchange: order.delivery   # 배송 관련 Exchange
+    queue:
+      delivery: delivery.queue   # 배송 생성 Queue
+  delivery:
+    queue:
+      created:
+        completed: delivery.created.completed  # 배송 생성 완료 Queue
+#    err:
+#      exchange: order.delivery.err   # 배송 에러 관련 Exchange
+#      queue:
+#        order: delivery.create.err   # 배송 생성 에러 관련 Queue

@@ -39,4 +39,13 @@ public class CompanyServiceImpl implements CompanyService {
 
         return CompanysMapper.entityToGetCompanyResponseDto(company);
     }
+
+    @Override
+    public void deleteCompany(UUID companyId) {
+        //id로 리포지토리에서 찾기
+        Companys company = companysRepository.findById(companyId).orElseThrow(
+                () -> new CustomException(CompanysErrorCode.COMPANYS_NOT_FOUND));
+        //삭제처리
+        //todo. softdelete 구현
+    }
 }

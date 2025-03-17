@@ -1,5 +1,7 @@
 package com.msa.fiveio.company;
 
+import com.msa.fiveio.common.config.JpaAuditingConfig;
+import com.msa.fiveio.common.config.QueryDslConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;

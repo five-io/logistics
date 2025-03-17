@@ -37,6 +37,9 @@ public class Companys extends BaseEntity {
     @Column(name = "hub_id")
     private UUID hubId;
 
+    @Column(name = "Company_is_deleted")
+    private boolean isDeleted = Boolean.FALSE;
+
     @Builder
     public Companys(String companyName, String companyAddress, CompanysType companyTypes, UUID hubId) {
         this.companyName = companyName;

@@ -1,5 +1,6 @@
 package com.msa.fiveio.slack.model.entity;
 
+import com.msa.fiveio.common.auditing.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="p_slack")
 @Entity
-public class Slacks {
+public class Slacks extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)

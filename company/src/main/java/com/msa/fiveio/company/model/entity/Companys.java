@@ -38,11 +38,11 @@ public class Companys extends BaseEntity {
     private UUID hubId;
 
     @Builder
-    public Companys(String companyName, String address, CompanysType companyTypes, UUID hubID) {
+    public Companys(String companyName, String companyAddress, CompanysType companyTypes, UUID hubId) {
         this.companyName = companyName;
-        this.companyAddress = address;
+        this.companyAddress = companyAddress;
         this.companyTypes = companyTypes;
-        this.hubId = hubID;
+        this.hubId = hubId;
     }
 
 

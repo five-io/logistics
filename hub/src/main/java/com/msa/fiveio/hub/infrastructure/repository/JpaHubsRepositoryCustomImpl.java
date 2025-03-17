@@ -4,6 +4,7 @@ package com.msa.fiveio.hub.infrastructure.repository;
 
 import static com.msa.fiveio.hub.model.entity.QHubs.hubs;
 
+import com.msa.fiveio.common.config.QueryDslConfig;
 import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
 import com.querydsl.core.BooleanBuilder;
@@ -31,18 +32,16 @@ public class JpaHubsRepositoryCustomImpl implements JpaHubsRepositoryCustom {
     @Override
     public Page<Hubs> searchHubs(HubsRequestDto hubsRequestDto, Pageable pageable) {
 
-        int pageSize = validatePageSize(pageable.getPageSize());
-
-        List<OrderSpecifier<?>> orderSpecifierList = dynamicOrder(pageable);
+        OrderSpecifier<?>[] orderSpecifiers =  QueryDslConfig.getAllOrderSpecifierArr(pageable, hubs);
 
         BooleanBuilder builder = createBooleanBuilder(hubsRequestDto);
 
         JPAQuery<Hubs> baseQuery = query(hubs).where(builder);
 
         List<Hubs> fetch = baseQuery
-            .orderBy(orderSpecifierList.toArray(new OrderSpecifier[0]))
+            .orderBy(orderSpecifiers)
             .offset(pageable.getOffset())
-            .limit(pageSize)
+            .limit(pageable.getPageSize())
             .fetch();
 
         Long totalCount =query(hubs)
@@ -76,43 +75,12 @@ public class JpaHubsRepositoryCustomImpl implements JpaHubsRepositoryCustom {
         return builder;
     }
 
-    private int validatePageSize(int pageSize) {
-        return Set.of(10, 30, 50).contains(pageSize) ? pageSize : 10;
-    }
-
-
     private <T> JPAQuery<T> query(Expression<T> expr) {
         return queryFactory
             .select(expr)
             .from(hubs);
-
     }
 
-
- private List<OrderSpecifier<?>> dynamicOrder(Pageable pageable) {
-        List<OrderSpecifier<?>> orderSpecifierList = new ArrayList<>();
-
-        if (pageable.getSort() != null) {
-            for (Sort.Order sortOrder : pageable.getSort()) {
-                Order direction = sortOrder.isAscending() ? Order.ASC : Order.DESC;
-
-                switch (sortOrder.getProperty()) {
-                    case "createdAt":
-                        orderSpecifierList.add(new OrderSpecifier<>(direction, hubs.createdAt));
-                        break;
-                    case "updatedAt":
-                        orderSpecifierList.add(new OrderSpecifier<>(direction, hubs.updatedAt));
-                        break;
-                    default:
-                        orderSpecifierList.add(new OrderSpecifier<>(Order.ASC, hubs.createdAt));
-                }
-            }
-        } else {
-            orderSpecifierList.add(new OrderSpecifier<>(Order.ASC, hubs.createdAt));
-        }
-        return orderSpecifierList;
-
-    }
 
 
 

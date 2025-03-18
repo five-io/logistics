@@ -13,13 +13,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.util.UUID;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Builder(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "p_delivery_routes")
 public class DeliveryRoute {
@@ -48,4 +45,16 @@ public class DeliveryRoute {
     // 배송 담당자 ID
     @Column(name = "delivery_manager", nullable = false)
     private Long deliveryManager;
+
+    @Builder(access = AccessLevel.PROTECTED)
+    public DeliveryRoute(Delivery delivery, DeliveryRouteDetails deliveryRouteDetails,
+        Double actualDistanceKm, Long actualDurationMin,
+        DeliveryRouteStatus deliveryRouteStatus, Long deliveryManager) {
+        this.delivery = delivery;
+        this.deliveryRouteDetails = deliveryRouteDetails;
+        this.actualDistanceKm = actualDistanceKm;
+        this.actualDurationMin = actualDurationMin;
+        this.deliveryRouteStatus = deliveryRouteStatus;
+        this.deliveryManager = deliveryManager;
+    }
 }

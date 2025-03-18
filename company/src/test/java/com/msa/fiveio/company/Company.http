@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### 단건조회
-GET http://localhost:19094/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79
+GET http://localhost:19090/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79
 
 ### 수정
 PATCH http://localhost:19094/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79

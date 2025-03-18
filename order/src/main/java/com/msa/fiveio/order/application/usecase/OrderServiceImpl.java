@@ -3,6 +3,8 @@ package com.msa.fiveio.order.application.usecase;
 import com.msa.fiveio.order.infrastructure.client.CompanyClient;
 import com.msa.fiveio.order.infrastructure.client.dto.CompanyResponseDto;
 import com.msa.fiveio.order.infrastructure.messaging.dto.DeliveryCreateRequest;
+import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
+import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import com.msa.fiveio.order.presentation.mapper.OrderMapper;
 import com.msa.fiveio.order.infrastructure.repository.JpaOrderRepository;
 import com.msa.fiveio.order.model.entity.Order;
@@ -14,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -35,7 +39,6 @@ public class OrderServiceImpl implements OrderService {
 
         Order order = createOrder(companyInfo.getRequesterCompanyId(), orderCreateRequestDto);
 
-
         Order savedOrder = jpaOrderRepository.save(order);
         sendDeliveryRequest(savedOrder.getOrderId(), companyInfo, orderCreateRequestDto);
 
@@ -52,10 +55,15 @@ public class OrderServiceImpl implements OrderService {
         jpaOrderRepository.save(order);
     }
 
-    private Order createOrder(UUID orderId, UUID requesterCompanyId,
+    @Override
+    public Page<OrderResponseDto> readOrders(OrderSearchRequestDto requestDto, Pageable pageable) {
+        Page<Order> orderPage = jpaOrderRepository.readOrders(requestDto, pageable);
+        return OrderMapper.toDtoPage(orderPage);
+    }
+
+    private Order createOrder(UUID requesterCompanyId,
         OrderCreateRequestDto orderInfo) {
         return OrderFactory.createOrder(
-            orderId,
             requesterCompanyId,
             orderInfo.getReceiverCompanyId(),
             orderInfo.getProductId(),
@@ -78,8 +86,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private CompanyResponseDto sendCompanyRequest(OrderCreateRequestDto orderInfo) {
-        return companyClient.getCompanyInfo(orderInfo.getProductId(),
-            orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
+        return CompanyResponseDto.builder()
+            .deliveryAddress("Test Delivery Address")
+            .requesterCompanyId(UUID.randomUUID())
+            .departHubId(UUID.randomUUID())
+            .arriveHubId(UUID.randomUUID())
+            .build();
+//        return companyClient.getCompanyInfo(orderInfo.getProductId(),
+//            orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
     }
 
 }

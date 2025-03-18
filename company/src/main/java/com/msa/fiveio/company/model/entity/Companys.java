@@ -1,11 +1,13 @@
 package com.msa.fiveio.company.model.entity;
 
 import com.msa.fiveio.common.auditing.BaseEntity;
+import com.msa.fiveio.company.presentation.dto.request.CompanyUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
 import java.util.UUID;
@@ -15,9 +17,8 @@ import java.util.UUID;
 @Table(name = "p_companys")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@SQLDelete(sql = "UPDATE p_company SET deleted_at = now() WHERE id = ?")
 public class Companys extends BaseEntity {
-
-    //todo. Enum 타입이 아닌 String으로 저장
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -37,9 +38,6 @@ public class Companys extends BaseEntity {
     @Column(name = "hub_id")
     private UUID hubId;
 
-    @Column(name = "Company_is_deleted")
-    private boolean isDeleted = Boolean.FALSE;
-
     @Builder
     public Companys(String companyName, String companyAddress, CompanysType companyTypes, UUID hubId) {
         this.companyName = companyName;
@@ -48,10 +46,12 @@ public class Companys extends BaseEntity {
         this.hubId = hubId;
     }
 
+    public void update(CompanyUpdateRequestDto companyUpdateRequestDto) {
+        this.companyName = companyUpdateRequestDto.getCompanyName();
+        this.companyAddress = companyUpdateRequestDto.getCompanyAddress();
+        this.companyTypes = companyUpdateRequestDto.getCompanyType();
+        this.hubId = companyUpdateRequestDto.getHubId();
 
-
-
-
-
+    }
 
 }

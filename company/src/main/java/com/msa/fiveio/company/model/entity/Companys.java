@@ -1,6 +1,7 @@
 package com.msa.fiveio.company.model.entity;
 
 import com.msa.fiveio.common.auditing.BaseEntity;
+import com.msa.fiveio.company.presentation.dto.request.CompanyUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -44,4 +45,13 @@ public class Companys extends BaseEntity {
         this.companyTypes = companyTypes;
         this.hubId = hubId;
     }
+
+    public void update(CompanyUpdateRequestDto companyUpdateRequestDto) {
+        this.companyName = companyUpdateRequestDto.getCompanyName();
+        this.companyAddress = companyUpdateRequestDto.getCompanyAddress();
+        this.companyTypes = companyUpdateRequestDto.getCompanyType();
+        this.hubId = companyUpdateRequestDto.getHubId();
+
+    }
+
 }

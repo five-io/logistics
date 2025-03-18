@@ -1,9 +1,11 @@
 package com.msa.fiveio.company.presentation.controller;
 
 import com.msa.fiveio.company.application.facade.CompanysFacade;
-import com.msa.fiveio.company.presentation.dto.CompanyCreateRequestDto;
-import com.msa.fiveio.company.presentation.dto.CompanyCreateResponseDto;
-import com.msa.fiveio.company.presentation.dto.CompanyGetResponseDto;
+import com.msa.fiveio.company.presentation.dto.request.CompanyCreateRequestDto;
+import com.msa.fiveio.company.presentation.dto.request.CompanyUpdateRequestDto;
+import com.msa.fiveio.company.presentation.dto.response.CompanyCreateResponseDto;
+import com.msa.fiveio.company.presentation.dto.response.CompanyGetResponseDto;
+import com.msa.fiveio.company.presentation.dto.response.CompanyUpdateResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +37,12 @@ public class CompanysController {
     }
 
     //업체수정
+    @PatchMapping("/{companyId}")
+    public ResponseEntity<CompanyUpdateResponseDto> updateCompany(
+            @PathVariable UUID companyId, @RequestBody CompanyUpdateRequestDto requestdto){
+        CompanyUpdateResponseDto companyUpdateResponseDto= companysFacade.updateCompany(companyId, requestdto);
+        return ResponseEntity.ok(companyUpdateResponseDto);
+    }
 
     //업체삭제
     @DeleteMapping("/{companyId}")

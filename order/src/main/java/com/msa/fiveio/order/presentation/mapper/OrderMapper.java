@@ -14,7 +14,14 @@ public class OrderMapper {
             .build();
     }
 
-    public static Page<OrderResponseDto> toDtoPage(Page<Order> orders) {
-        return orders.map(Order::toDto);
+    public static OrderResponseDto OrderToOrderResponseDto(Order order) {
+        return OrderResponseDto.builder()
+            .requesterCompanyId(order.getRequesterCompanyId())
+            .receiverCompanyId(order.getReceiverCompanyId())
+            .productId(order.getProductId())
+            .deliveryId(order.getDeliveryId())
+            .quantity(order.getQuantity())
+            .requestNotes(order.getRequestNotes())
+            .build();
     }
 }

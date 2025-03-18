@@ -1,6 +1,5 @@
 package com.msa.fiveio.order.model.entity;
 
-import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -9,12 +8,12 @@ import lombok.Getter;
 import java.util.UUID;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor
 @Table(name = "p_orders")
 @Entity
 public class Order {
 
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "order_id", nullable = false)
@@ -42,17 +41,6 @@ public class Order {
         this.deliveryId = deliveryId;
     }
 
-    public OrderResponseDto toDto() {
-        return OrderResponseDto.builder()
-            .requesterCompanyId(requesterCompanyId)
-            .receiverCompanyId(receiverCompanyId)
-            .productId(productId)
-            .deliveryId(deliveryId)
-            .quantity(quantity)
-            .requestNotes(requestNotes)
-            .build();
-    }
-
     @Builder(access = AccessLevel.PROTECTED)
     public Order(UUID requesterCompanyId, UUID receiverCompanyId, UUID productId,
         UUID deliveryId, Long quantity, String requestNotes) {
@@ -63,6 +51,5 @@ public class Order {
         this.quantity = quantity;
         this.requestNotes = requestNotes;
     }
-
 
 }

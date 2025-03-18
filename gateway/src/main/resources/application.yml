@@ -9,6 +9,10 @@ spring:
   main:
     allow-bean-definition-overriding: true
     web-application-type: reactive
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
   cloud:
     gateway:
       routes:
@@ -94,7 +98,7 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/users/**
-        - id: hub-docs
+        - id: user-docs
           uri: lb://user-service
           predicates:
             - Path=/user-service/**
@@ -184,7 +188,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh,prometheus
+        include: prometheus
 
 service:
   jwt:

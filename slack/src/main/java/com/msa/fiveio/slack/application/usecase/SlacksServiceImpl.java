@@ -2,7 +2,6 @@ package com.msa.fiveio.slack.application.usecase;
 
 import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.SlackErrorCode;
-import com.msa.fiveio.slack.infrastructure.exception.BusinessLogicException;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.model.repository.SlacksQueryRepository;
 import com.msa.fiveio.slack.model.repository.SlacksRepository;
@@ -15,12 +14,10 @@ import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import com.msa.fiveio.slack.presentation.mapper.SlacksMapper;
 import java.time.LocalDateTime;
-import java.util.Locale;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.SQLRestriction;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -34,7 +31,6 @@ public class SlacksServiceImpl implements SlacksService {
 
 	private final SlacksRepository slacksRepository;
 	private final SlacksQueryRepository slacksQueryRepository;
-	private final MessageSource messageSource;
 
 	@Override
 	public SlacksCreateResponseDto createSlack(SlacksCreateRequestDto slacksCreateRequestDto) {

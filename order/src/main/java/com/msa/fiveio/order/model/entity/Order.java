@@ -1,15 +1,14 @@
 package com.msa.fiveio.order.model.entity;
 
+import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.util.UUID;
 import lombok.NoArgsConstructor;
 
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "p_orders")
 @Entity
@@ -17,6 +16,7 @@ public class Order {
 
     @Getter
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "order_id", nullable = false)
     private UUID orderId;
 
@@ -41,5 +41,28 @@ public class Order {
     public void updateDeliveryId(UUID deliveryId) {
         this.deliveryId = deliveryId;
     }
+
+    public OrderResponseDto toDto() {
+        return OrderResponseDto.builder()
+            .requesterCompanyId(requesterCompanyId)
+            .receiverCompanyId(receiverCompanyId)
+            .productId(productId)
+            .deliveryId(deliveryId)
+            .quantity(quantity)
+            .requestNotes(requestNotes)
+            .build();
+    }
+
+    @Builder(access = AccessLevel.PROTECTED)
+    public Order(UUID requesterCompanyId, UUID receiverCompanyId, UUID productId,
+        UUID deliveryId, Long quantity, String requestNotes) {
+        this.requesterCompanyId = requesterCompanyId;
+        this.receiverCompanyId = receiverCompanyId;
+        this.productId = productId;
+        this.deliveryId = deliveryId;
+        this.quantity = quantity;
+        this.requestNotes = requestNotes;
+    }
+
 
 }

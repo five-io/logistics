@@ -1,7 +1,6 @@
 package com.msa.fiveio.order.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -41,8 +40,8 @@ public class Order {
         this.deliveryId = deliveryId;
     }
 
-    @Builder(access = AccessLevel.PROTECTED)
-    public Order(UUID requesterCompanyId, UUID receiverCompanyId, UUID productId,
+    @Builder
+    private Order(UUID requesterCompanyId, UUID receiverCompanyId, UUID productId,
         UUID deliveryId, Long quantity, String requestNotes) {
         this.requesterCompanyId = requesterCompanyId;
         this.receiverCompanyId = receiverCompanyId;
@@ -52,4 +51,19 @@ public class Order {
         this.requestNotes = requestNotes;
     }
 
+    public static Order createOrder(
+        UUID requesterCompanyId,
+        UUID receiverCompanyId,
+        UUID productId,
+        Long quantity,
+        String requestNotes
+    ) {
+        return Order.builder()
+            .requesterCompanyId(requesterCompanyId)
+            .receiverCompanyId(receiverCompanyId)
+            .productId(productId)
+            .quantity(quantity)
+            .requestNotes(requestNotes)
+            .build();
+    }
 }

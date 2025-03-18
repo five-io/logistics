@@ -8,7 +8,7 @@ import com.msa.fiveio.company.presentation.dto.response.CompanyUpdateResponseDto
 
 public class CompanysMapper {
 
-    public static CompanyCreateResponseDto entityToCreateCompanysResponseDto(Companys companys){
+    public static CompanyCreateResponseDto entityToCreateCompanysResponseDto(Companys companys) {
         return CompanyCreateResponseDto.builder()
                 .companyId(companys.getId())
                 .companyType(companys.getCompanyTypes())
@@ -18,7 +18,7 @@ public class CompanysMapper {
                 .build();
     }
 
-    public static Companys CreateRequestDtoToEntity(CompanyCreateRequestDto createRequestDto){
+    public static Companys CreateRequestDtoToEntity(CompanyCreateRequestDto createRequestDto) {
         return Companys.builder()
                 .companyName(createRequestDto.getCompanyName())
                 .companyAddress(createRequestDto.getCompanyAddress())
@@ -27,7 +27,7 @@ public class CompanysMapper {
                 .build();
     }
 
-    public static CompanyGetResponseDto entityToGetCompanyResponseDto(Companys companys){
+    public static CompanyGetResponseDto entityToGetCompanyResponseDto(Companys companys) {
         return CompanyGetResponseDto.builder()
                 .companyId(companys.getId())
                 .companyType(companys.getCompanyTypes())
@@ -37,7 +37,7 @@ public class CompanysMapper {
                 .build();
     }
 
-    public static Companys UpdateRequestDtoToEntity(CompanyCreateRequestDto createRequestDto){
+    public static Companys UpdateRequestDtoToEntity(CompanyCreateRequestDto createRequestDto) {
         return Companys.builder()
                 .companyName(createRequestDto.getCompanyName())
                 .companyAddress(createRequestDto.getCompanyAddress())
@@ -46,7 +46,7 @@ public class CompanysMapper {
                 .build();
     }
 
-        public static CompanyUpdateResponseDto entityToUpdateCompanyResponseDto(Companys companys){
+    public static CompanyUpdateResponseDto entityToUpdateCompanyResponseDto(Companys companys) {
         return CompanyUpdateResponseDto.builder()
                 .companyId(companys.getId())
                 .companyType(companys.getCompanyTypes())
@@ -55,7 +55,6 @@ public class CompanysMapper {
                 .companyName(companys.getCompanyName())
                 .build();
     }
-
 
 
 }

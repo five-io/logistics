@@ -10,11 +10,10 @@ import com.msa.fiveio.company.presentation.dto.response.CompanyCreateResponseDto
 import com.msa.fiveio.company.presentation.dto.response.CompanyGetResponseDto;
 import com.msa.fiveio.company.presentation.dto.response.CompanyUpdateResponseDto;
 import com.msa.fiveio.company.presentation.mapper.CompanysMapper;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -52,9 +51,10 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public CompanyUpdateResponseDto updateCompany(UUID companyId, CompanyUpdateRequestDto requestDto) {
+    public CompanyUpdateResponseDto updateCompany(UUID companyId,
+            CompanyUpdateRequestDto requestDto) {
         //id로 데이터에 저장되어 있는지 확인
-        Companys company =companysRepository.findById(companyId).orElseThrow(
+        Companys company = companysRepository.findById(companyId).orElseThrow(
                 () -> new CustomException(CompanysErrorCode.COMPANYS_NOT_FOUND));
         //DTO 받아온걸로 업데이트
         company.update(requestDto);

@@ -2,10 +2,9 @@ package com.msa.fiveio.company.application.usecase;
 
 import com.msa.fiveio.company.presentation.dto.request.CompanyCreateRequestDto;
 import com.msa.fiveio.company.presentation.dto.request.CompanyUpdateRequestDto;
-import com.msa.fiveio.company.presentation.dto.response.CompanyGetResponseDto;
 import com.msa.fiveio.company.presentation.dto.response.CompanyCreateResponseDto;
+import com.msa.fiveio.company.presentation.dto.response.CompanyGetResponseDto;
 import com.msa.fiveio.company.presentation.dto.response.CompanyUpdateResponseDto;
-
 import java.util.UUID;
 
 public interface CompanyService {
@@ -21,7 +20,6 @@ public interface CompanyService {
 
     //업체수정
     CompanyUpdateResponseDto updateCompany(UUID companyId, CompanyUpdateRequestDto requestDto);
-
 
 
 }

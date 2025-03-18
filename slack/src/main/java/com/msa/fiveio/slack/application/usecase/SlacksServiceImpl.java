@@ -1,6 +1,5 @@
 package com.msa.fiveio.slack.application.usecase;
 
-import com.msa.fiveio.common.config.JpaAuditingConfig;
 import com.msa.fiveio.slack.infrastructure.exception.BusinessLogicException;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.model.repository.SlacksQueryRepository;
@@ -21,7 +20,7 @@ import org.hibernate.annotations.SQLRestriction;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,9 +45,8 @@ public class SlacksServiceImpl implements SlacksService {
 	@Override
 	@SQLRestriction("deleted_at IS NULL")
 	@Transactional(readOnly = true)
-	public SlacksReadResponseDto readSlack(Integer page, Integer size, String orderby, String sort) {
+	public SlacksReadResponseDto readSlack(Pageable pageable) {
 
-		PageRequest pageable = JpaAuditingConfig.getNormalPageable(page, size, orderby, sort);
 		Page<Slacks> slacksPage = slacksQueryRepository.findSlacksList(pageable);
 
 		return SlacksMapper.pageToReadResponseDto(slacksPage);
@@ -57,9 +55,8 @@ public class SlacksServiceImpl implements SlacksService {
 	@SQLRestriction("deleted_at IS NULL")
 	@Transactional
 	@Override
-	public SlacksSearchResponseDto searchSlack(UUID id, Integer page, Integer size, String orderby, String sort) {
+	public SlacksSearchResponseDto searchSlack(UUID id, Pageable pageable) {
 
-		PageRequest pageable = JpaAuditingConfig.getNormalPageable(page, size, orderby, sort);
 		Page<Slacks> slacksSearchPage = slacksQueryRepository.findSlacksSearchList(pageable, id);
 
 		return SlacksMapper.pageToSearchResponseDto(slacksSearchPage);

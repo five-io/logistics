@@ -10,6 +10,7 @@ import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -24,13 +25,13 @@ public class SlacksFacadeImpl implements SlacksFacade {
 	}
 
 	@Override
-	public SlacksReadResponseDto readSlack(Integer page, Integer size, String orderby, String sort) {
-		return slacksService.readSlack(page, size, orderby, sort);
+	public SlacksReadResponseDto readSlack(Pageable pageable) {
+		return slacksService.readSlack(pageable);
 	}
 
 	@Override
-	public SlacksSearchResponseDto searchSlack(UUID id, Integer page, Integer size, String orderby, String sort) {
-		return slacksService.searchSlack(id, page, size, orderby, sort);
+	public SlacksSearchResponseDto searchSlack(UUID id, Pageable pageable) {
+		return slacksService.searchSlack(id, pageable);
 	}
 
 	@Override

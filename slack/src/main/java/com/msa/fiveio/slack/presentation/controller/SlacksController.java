@@ -4,9 +4,7 @@ import com.msa.fiveio.slack.application.facade.SlacksFacade;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
-import com.msa.fiveio.slack.presentation.dto.SlacksReadRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
-import com.msa.fiveio.slack.presentation.dto.SlacksSearchRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
@@ -14,6 +12,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,27 +41,16 @@ public class SlacksController {
 
 	@Operation(summary = "Slack 목록 조회", description = "Slack 목록 조회 api 입니다.")
 	@GetMapping
-	public ResponseEntity<SlacksReadResponseDto> readSlack(SlacksReadRequestDto slacksReadRequestDto) {
-		SlacksReadResponseDto slacksReadResponseDto = slacksFacade.readSlack(
-			slacksReadRequestDto.getPage(),
-			slacksReadRequestDto.getSize(),
-			slacksReadRequestDto.getOrderby(),
-			slacksReadRequestDto.getSort()
-		);
+	public ResponseEntity<SlacksReadResponseDto> readSlack(Pageable pageable) {
+		SlacksReadResponseDto slacksReadResponseDto = slacksFacade.readSlack(pageable);
 
 		return ResponseEntity.ok(slacksReadResponseDto);
 	}
 
 	@Operation(summary = "Slack 검색", description = "Slack 검색 api 입니다.")
 	@GetMapping("/search/{id}")
-	public ResponseEntity<SlacksSearchResponseDto> searchSlack(@PathVariable UUID id, SlacksSearchRequestDto slacksSearchRequestDto) {
-		SlacksSearchResponseDto slacksSearchResponseDto = slacksFacade.searchSlack(
-			id,
-			slacksSearchRequestDto.getPage(),
-			slacksSearchRequestDto.getSize(),
-			slacksSearchRequestDto.getOrderby(),
-			slacksSearchRequestDto.getSort()
-		);
+	public ResponseEntity<SlacksSearchResponseDto> searchSlack(@PathVariable UUID id, Pageable pageable) {
+		SlacksSearchResponseDto slacksSearchResponseDto = slacksFacade.searchSlack(id,pageable);
 
 		return ResponseEntity.ok(slacksSearchResponseDto);
 	}

@@ -8,12 +8,13 @@ import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import java.util.UUID;
+import org.springframework.data.domain.Pageable;
 
 public interface SlacksFacade {
 	SlacksCreateResponseDto createSlack(SlacksCreateRequestDto slacksCreateRequestDto);
 
-	SlacksReadResponseDto readSlack(Integer page, Integer size, String orderby, String sort);
-	SlacksSearchResponseDto searchSlack(UUID id, Integer page, Integer size, String orderby, String sort);
+	SlacksReadResponseDto readSlack(Pageable pageable);
+	SlacksSearchResponseDto searchSlack(UUID id, Pageable pageable);
 
 	SlacksUpdateResponseDto updateSlack(UUID id, SlacksUpdateRequestDto slacksUpdateRequestDto);
 	SlacksDeleteResponseDto deleteSlack(UUID id);

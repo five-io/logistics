@@ -3,10 +3,10 @@ package com.msa.fiveio.order.application.usecase;
 import com.msa.fiveio.order.infrastructure.client.CompanyClient;
 import com.msa.fiveio.order.infrastructure.client.dto.CompanyResponseDto;
 import com.msa.fiveio.order.infrastructure.messaging.dto.DeliveryCreateRequest;
+import com.msa.fiveio.order.model.repository.OrderRepository;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import com.msa.fiveio.order.presentation.mapper.OrderMapper;
-import com.msa.fiveio.order.infrastructure.repository.JpaOrderRepository;
 import com.msa.fiveio.order.model.entity.Order;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
@@ -29,7 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderServiceImpl implements OrderService {
 
     private final RabbitTemplate rabbitTemplate;
-    private final JpaOrderRepository jpaOrderRepository;
+    private final OrderRepository orderRepository;
     private final CompanyClient companyClient;
 
     @Value("${message.orderToDelivery.queue.delivery}")
@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
 
         Order order = orderCreateRequestDto.createOrder();
 
-        Order savedOrder = jpaOrderRepository.save(order);
+        Order savedOrder = orderRepository.save(order);
         sendDeliveryRequest(savedOrder.getOrderId(), companyInfo, orderCreateRequestDto);
 
         log.info("Order created: {}", savedOrder.getOrderId());
@@ -53,14 +53,14 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     @Override
     public void updateDeliveryIdInOrder(UUID orderId, UUID deliveryId) {
-        Order order = jpaOrderRepository.findById(orderId)
+        Order order = orderRepository.findById(orderId)
             .orElseThrow(() -> new RuntimeException("Order not found"));
         order.updateDeliveryId(deliveryId);
     }
 
     @Override
     public Page<OrderResponseDto> readOrders(OrderSearchRequestDto requestDto, Pageable pageable) {
-        Page<Order> orderPage = jpaOrderRepository.readOrders(requestDto, pageable);
+        Page<Order> orderPage = orderRepository.readOrders(requestDto, pageable);
         return orderPage.map(OrderMapper::OrderToOrderResponseDto);
     }
 

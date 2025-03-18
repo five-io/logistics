@@ -63,4 +63,19 @@ public class QueryDslConfig {
 
         return new OrderSpecifier(order, fieldPath);
     }
+
+
+    public static int getUsableSize(int size) {
+        switch (size) {
+            case 30 -> {
+                return 30;
+            }
+            case 50 -> {
+                return 50;
+            }
+            default -> {
+                return 10;
+            }
+        }
+    }
 }

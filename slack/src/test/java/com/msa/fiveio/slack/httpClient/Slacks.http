@@ -11,11 +11,11 @@ Content-Type: application/json
 }
 
 ### Slack Read
-GET http://localhost:19095/api/slacks
+GET http://localhost:19095/api/slacks?page=0&size=10&sort=DESC&orderby=CREATED
 Content-Type: application/json
 
 ### Slack Search
-GET http://localhost:19095/api/slacks/search/c7cfe866-1319-4187-af65-3635f3de3d29
+GET http://localhost:19095/api/slacks/search/c7cfe866-1319-4187-af65-3635f3de3d29?page=0&size=10&sort=DESC&orderby=CREATED
 
 ### Slack Update
 PATCH http://localhost:19095/api/slacks/update/c7cfe866-1319-4187-af65-3635f3de3d29

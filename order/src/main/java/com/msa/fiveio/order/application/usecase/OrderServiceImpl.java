@@ -64,6 +64,13 @@ public class OrderServiceImpl implements OrderService {
         return orderPage.map(OrderMapper::OrderToOrderResponseDto);
     }
 
+    @Override
+    public OrderResponseDto readOrder(UUID orderId) {
+        Order order = orderRepository.readOrderByOrderId(orderId)
+            .orElseThrow(() -> new RuntimeException("Order not found"));
+        return OrderMapper.OrderToOrderResponseDto(order);
+    }
+
     private void sendDeliveryRequest(UUID orderId, CompanyResponseDto companyInfo,
         OrderCreateRequestDto orderInfo) {
         DeliveryCreateRequest request = new DeliveryCreateRequest(orderId, companyInfo, orderInfo);

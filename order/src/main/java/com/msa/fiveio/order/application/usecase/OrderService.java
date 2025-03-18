@@ -15,4 +15,6 @@ public interface OrderService {
     void updateDeliveryIdInOrder(UUID orderId, UUID deliveryId);
 
     Page<OrderResponseDto> readOrders(OrderSearchRequestDto requestDto, Pageable pageable);
+
+    OrderResponseDto readOrder(UUID orderId);
 }

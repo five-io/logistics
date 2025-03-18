@@ -3,7 +3,7 @@ package com.spring_cloud.client.gateway;
 
 import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.AuthErrorCode;
-import com.spring_cloud.client.gateway.jwt.RedisService;
+import com.msa.fiveio.common.redis.RedisService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -17,29 +17,29 @@ import java.util.List;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
 
 @Component
 @RequiredArgsConstructor
 @Slf4j(topic = "JWT 인가 필터")
-public class CustomPreFilter  implements GlobalFilter, Ordered {
+public class CustomPreFilter implements GlobalFilter, Ordered {
 
     @Value("${service.jwt.secret-key}")
     private String secretKey;
-    private static final String AUTH_TYPE = "Bearer ";
+    private static final String BEARER_PREFIX = "Bearer ";
 
     private final RedisService redisService;
 
@@ -47,17 +47,19 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
     private SecretKey getSecretKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
-    };
+    }
+
+    ;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         String path = exchange.getRequest().getURI().getPath();
 
-        if(path != null) {
+        if (path != null) {
             return chain.filter(exchange);
         }
-       /* if(path.equals("/users/signIn")||path.equals("/users/signUp")){
+       /* if(path.equals("/api/users/signIn")||path.equals("/api/users/signUp")){
 
             return chain.filter(exchange);
         }*/
@@ -69,7 +71,7 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
 
             //검증
             if (!StringUtils.hasText(jwtToken) || !validateToken(jwtToken)) {
-                throw  new CustomException(AuthErrorCode.AUTH_NOT_FOUND);
+                throw new CustomException(AuthErrorCode.AUTH_NOT_FOUND);
             }
 
             //유효기간확인
@@ -82,8 +84,6 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
                 throw new CustomException(AuthErrorCode.AUTH_UNAUTHORIZED);
             }
 
-
-
             //  JWT 검증 성공 후 요청 헤더에 사용자 정보 추가
             ServerWebExchange modifiedExchange = exchange.mutate()
                 .request(exchange.getRequest().mutate()
@@ -92,13 +92,9 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
                     .build())
                 .build();
 
-            log.info("********** info " +modifiedExchange);
-
+            log.info("********** info " + modifiedExchange);
 
             return chain.filter(exchange);
-
-
-
 
 
         } catch (Exception e) {
@@ -134,13 +130,14 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
-        DataBuffer buffer = response.bufferFactory().wrap(errorBody.getBytes(StandardCharsets.UTF_8));
+        DataBuffer buffer = response.bufferFactory()
+            .wrap(errorBody.getBytes(StandardCharsets.UTF_8));
         return response.writeWith(Flux.just(buffer));
     }
 
 
     private String parseAuthorizationToken(String authorization) {
-        return authorization.replace(AUTH_TYPE, "").trim();
+        return authorization.replace(BEARER_PREFIX, "").trim();
     }
 
     public boolean validateToken(String token) {
@@ -161,12 +158,14 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
     }
 
     public Claims parseClaims(String token) {
-        return Jwts.parserBuilder().setSigningKey(getSecretKey()).build().parseClaimsJws(token).getBody();
+        return Jwts.parserBuilder().setSigningKey(getSecretKey()).build().parseClaimsJws(token)
+            .getBody();
     }
 
 
     public String getJwtFromHeader(ServerWebExchange exchange) {
-        List<String> authorizations = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION);
+        List<String> authorizations = exchange.getRequest().getHeaders()
+            .get(HttpHeaders.AUTHORIZATION);
         if (authorizations == null || authorizations.isEmpty()) {
             throw new CustomException(AuthErrorCode.AUTH_UNAUTHORIZED);
         }
@@ -177,7 +176,7 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
     }
 
     private boolean isBearerType(String authorization) {
-        return authorization.startsWith(AUTH_TYPE);
+        return authorization.startsWith(BEARER_PREFIX);
     }
 
 

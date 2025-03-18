@@ -1,4 +1,4 @@
-package com.spring_cloud.client.gateway.jwt;
+package com.msa.fiveio.common.redis;
 
 import java.util.concurrent.TimeUnit;
 import lombok.RequiredArgsConstructor;

@@ -11,14 +11,14 @@ Content-Type: application/json
 }
 
 ### Slack Read
-GET http://localhost:19095/api/slacks?page=1&size=10&orderby=CREATED&sort=DESC
+GET http://localhost:19095/api/slacks
 Content-Type: application/json
 
 ### Slack Search
-GET http://localhost:19095/api/slacks/search/b4a8a81e-5c60-42c3-b2f6-74792449b196?page=1&size=10&orderby=CREATED&sort=DESC
+GET http://localhost:19095/api/slacks/search/c7cfe866-1319-4187-af65-3635f3de3d29
 
 ### Slack Update
-PATCH http://localhost:19095/api/slacks/update/b4a8a81e-5c60-42c3-b2f6-74792449b196
+PATCH http://localhost:19095/api/slacks/update/c7cfe866-1319-4187-af65-3635f3de3d29
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ### Slack Delete
-DELETE http://localhost:19095/api/slacks/delete/b4a8a81e-5c60-42c3-b2f6-74792449b196
+DELETE http://localhost:19095/api/slacks/delete/c7cfe866-1319-4187-af65-3635f3de3d29

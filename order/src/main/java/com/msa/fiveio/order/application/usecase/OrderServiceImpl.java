@@ -58,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Page<OrderResponseDto> readOrders(OrderSearchRequestDto requestDto, Pageable pageable) {
         Page<Order> orderPage = jpaOrderRepository.readOrders(requestDto, pageable);
-        return OrderMapper.toDtoPage(orderPage);
+        return orderPage.map(OrderMapper::OrderToOrderResponseDto);
     }
 
     private Order createOrder(UUID requesterCompanyId,

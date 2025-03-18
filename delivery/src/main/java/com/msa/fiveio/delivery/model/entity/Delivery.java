@@ -18,13 +18,10 @@ import jakarta.persistence.Table;
 import java.util.List;
 import java.util.UUID;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Builder(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "p_deliveries")
 @Entity
@@ -66,5 +63,20 @@ public class Delivery {
         cascade = CascadeType.ALL,
         fetch = FetchType.LAZY)
     private List<DeliveryRoute> deliveryRoutes;
+
+    @Builder(access = AccessLevel.PROTECTED)
+    private Delivery(UUID orderId, DeliveryStatus deliveryStatus, UUID departHubId,
+        UUID arriveHubId, String deliveryAddress, Long companyDeliveryManagerId,
+        Recipient recipient,
+        List<DeliveryRoute> deliveryRoutes) {
+        this.orderId = orderId;
+        this.deliveryStatus = deliveryStatus;
+        this.departHubId = departHubId;
+        this.arriveHubId = arriveHubId;
+        this.deliveryAddress = deliveryAddress;
+        this.companyDeliveryManagerId = companyDeliveryManagerId;
+        this.recipient = recipient;
+        this.deliveryRoutes = deliveryRoutes;
+    }
 
 }

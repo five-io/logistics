@@ -7,9 +7,9 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Builder(access = AccessLevel.PROTECTED)
-@Embeddable
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Embeddable
 public class Recipient {
 
     private String recipientName;

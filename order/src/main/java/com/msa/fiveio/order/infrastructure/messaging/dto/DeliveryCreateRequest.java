@@ -1,12 +1,12 @@
 package com.msa.fiveio.order.infrastructure.messaging.dto;
 
+import com.msa.fiveio.order.infrastructure.client.dto.CompanyResponseDto;
+import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 @AllArgsConstructor
 public class DeliveryCreateRequest {
 
@@ -17,4 +17,16 @@ public class DeliveryCreateRequest {
     private final String recipientName;
     private final String recipientSlackId;
 
+    public DeliveryCreateRequest(
+        UUID orderId,
+        CompanyResponseDto companyInfo,
+        OrderCreateRequestDto orderInfo
+    ) {
+        this.orderId = orderId;
+        this.departHubId = companyInfo.getDepartHubId();
+        this.arriveHubId = companyInfo.getArriveHubId();
+        this.deliveryAddress = companyInfo.getDeliveryAddress();
+        this.recipientName = orderInfo.getRecipientName();
+        this.recipientSlackId = orderInfo.getRecipientSlackId();
+    }
 }

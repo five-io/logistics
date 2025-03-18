@@ -1,5 +1,7 @@
 package com.msa.fiveio.slack.application.usecase;
 
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.SlackErrorCode;
 import com.msa.fiveio.slack.infrastructure.exception.BusinessLogicException;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.model.repository.SlacksQueryRepository;
@@ -69,7 +71,7 @@ public class SlacksServiceImpl implements SlacksService {
 		LocalDateTime deliveryTime = slacksUpdateRequestDto.getDeliveryTime();
 
 		Slacks slacks = slacksRepository.findById(id).orElseThrow(()->
-			new BusinessLogicException(messageSource.getMessage("api.call.client-error", null, Locale.KOREA)));
+			new CustomException(SlackErrorCode.SLACKS_NOT_FOUND));
 
 		slacks.update(message, deliveryTime);
 
@@ -79,7 +81,7 @@ public class SlacksServiceImpl implements SlacksService {
 	@Override
 	public SlacksDeleteResponseDto deleteSlack(UUID id) {
 		Slacks slacks = slacksRepository.findById(id).orElseThrow(()->
-			new BusinessLogicException(messageSource.getMessage("api.call.client-error", null, Locale.KOREA)));
+			new CustomException(SlackErrorCode.SLACKS_NOT_FOUND));
 
 		return SlacksMapper.entityToDeleteResponseDto(slacks);
 	}

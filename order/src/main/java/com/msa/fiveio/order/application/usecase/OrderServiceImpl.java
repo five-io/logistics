@@ -33,13 +33,13 @@ public class OrderServiceImpl implements OrderService {
         // 업체에게 주문 가능 여부 확인
         CompanyResponseDto companyInfo = sendCompanyRequest(orderCreateRequestDto);
 
-        UUID orderId = UUID.randomUUID();
-        Order order = createOrder(orderId, companyInfo.getRequesterCompanyId(),
-            orderCreateRequestDto);
+        Order order = createOrder(companyInfo.getRequesterCompanyId(), orderCreateRequestDto);
 
-        sendDeliveryRequest(orderId, companyInfo, orderCreateRequestDto);
 
         Order savedOrder = jpaOrderRepository.save(order);
+        sendDeliveryRequest(savedOrder.getOrderId(), companyInfo, orderCreateRequestDto);
+
+        log.info("Order created: {}", savedOrder.getOrderId());
         return OrderMapper.orderIdToOrderCreateResponseDto(savedOrder.getOrderId());
     }
 

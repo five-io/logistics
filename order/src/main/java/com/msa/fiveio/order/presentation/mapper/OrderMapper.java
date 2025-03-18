@@ -1,7 +1,10 @@
 package com.msa.fiveio.order.presentation.mapper;
 
+import com.msa.fiveio.order.model.entity.Order;
 import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
+import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import java.util.UUID;
+import org.springframework.data.domain.Page;
 
 public class OrderMapper {
 
@@ -11,4 +14,7 @@ public class OrderMapper {
             .build();
     }
 
+    public static Page<OrderResponseDto> toDtoPage(Page<Order> orders) {
+        return orders.map(Order::toDto);
+    }
 }

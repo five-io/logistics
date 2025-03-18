@@ -1,7 +1,7 @@
-package com.msa.fiveio.slack.application.service;
+package com.msa.fiveio.slack.application.usecase;
 
-import com.msa.fiveio.common.config.JpaAuditingConfig;
-import com.msa.fiveio.slack.infrastructure.exception.BusinessLogicException;
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.SlackErrorCode;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.model.repository.SlacksQueryRepository;
 import com.msa.fiveio.slack.model.repository.SlacksRepository;
@@ -14,38 +14,35 @@ import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import com.msa.fiveio.slack.presentation.mapper.SlacksMapper;
 import java.time.LocalDateTime;
-import java.util.Locale;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.SQLRestriction;
-import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class SlacksService {
+@Transactional
+public class SlacksServiceImpl implements SlacksService {
 
 	private final SlacksRepository slacksRepository;
 	private final SlacksQueryRepository slacksQueryRepository;
-	private final MessageSource messageSource;
 
-	@Transactional
-	public SlacksCreateResponseDto createMessage(
-		SlacksCreateRequestDto slacksCreateRequestDto) {
+	@Override
+	public SlacksCreateResponseDto createSlack(SlacksCreateRequestDto slacksCreateRequestDto) {
 
-		Slacks newSlacks = SlacksMapper.slacksCreateRequestDtoToEntity(slacksCreateRequestDto);
-		Slacks createSlacks = slacksRepository.save(newSlacks);
-		return SlacksMapper.entityToCreateResponseDto(createSlacks);
+			Slacks newSlacks = SlacksMapper.slacksCreateRequestDtoToEntity(slacksCreateRequestDto);
+			Slacks createSlacks = slacksRepository.save(newSlacks);
+			return SlacksMapper.entityToCreateResponseDto(createSlacks);
 	}
 
+	@Override
 	@SQLRestriction("deleted_at IS NULL")
-	@Transactional
-	public SlacksReadResponseDto readMessages(Integer page, Integer size, String orderby, String sort) {
+	@Transactional(readOnly = true)
+	public SlacksReadResponseDto readSlack(Pageable pageable) {
 
-		PageRequest pageable = JpaAuditingConfig.getNormalPageable(page, size, orderby, sort);
 		Page<Slacks> slacksPage = slacksQueryRepository.findSlacksList(pageable);
 
 		return SlacksMapper.pageToReadResponseDto(slacksPage);
@@ -53,31 +50,32 @@ public class SlacksService {
 
 	@SQLRestriction("deleted_at IS NULL")
 	@Transactional
-	public SlacksSearchResponseDto searchMessages(UUID id, Integer page, Integer size, String orderby, String sort) {
+	@Override
+	public SlacksSearchResponseDto searchSlack(UUID id, Pageable pageable) {
 
-		PageRequest pageable = JpaAuditingConfig.getNormalPageable(page, size, orderby, sort);
 		Page<Slacks> slacksSearchPage = slacksQueryRepository.findSlacksSearchList(pageable, id);
 
 		return SlacksMapper.pageToSearchResponseDto(slacksSearchPage);
 	}
 
+	@Override
 	@Transactional
-	public SlacksUpdateResponseDto updateMessage(UUID id, SlacksUpdateRequestDto slacksUpdateRequestDto) {
+	public SlacksUpdateResponseDto updateSlack(UUID id, SlacksUpdateRequestDto slacksUpdateRequestDto) {
 		String message = slacksUpdateRequestDto.getMessage();
 		LocalDateTime deliveryTime = slacksUpdateRequestDto.getDeliveryTime();
 
 		Slacks slacks = slacksRepository.findById(id).orElseThrow(()->
-			new BusinessLogicException(messageSource.getMessage("api.call.client-error", null, Locale.KOREA)));
+			new CustomException(SlackErrorCode.SLACKS_NOT_FOUND));
 
 		slacks.update(message, deliveryTime);
 
 		return SlacksMapper.entityToUpdateResponseDto(slacks);
 	}
 
-	@Transactional
-	public SlacksDeleteResponseDto deleteMessage(UUID id) {
+	@Override
+	public SlacksDeleteResponseDto deleteSlack(UUID id) {
 		Slacks slacks = slacksRepository.findById(id).orElseThrow(()->
-			new BusinessLogicException(messageSource.getMessage("api.call.client-error", null, Locale.KOREA)));
+			new CustomException(SlackErrorCode.SLACKS_NOT_FOUND));
 
 		return SlacksMapper.entityToDeleteResponseDto(slacks);
 	}

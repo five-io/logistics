@@ -9,17 +9,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name="p_slack")
 @Entity
+@Getter
 public class Slacks extends BaseEntity {
 
 	@Id
@@ -41,6 +38,15 @@ public class Slacks extends BaseEntity {
 
 	@Column
 	private LocalDateTime deliveryTime;
+
+	@Builder
+	public Slacks(Long userId, UUID receiveId, UUID orderId, String message, LocalDateTime deliveryTime) {
+		this.userId = userId;
+		this.receiveId = receiveId;
+		this.orderId = orderId;
+		this.message = message;
+		this.deliveryTime = deliveryTime;
+	}
 
 	public void update(String message, LocalDateTime deliveryTime) {
 		this.message = message;

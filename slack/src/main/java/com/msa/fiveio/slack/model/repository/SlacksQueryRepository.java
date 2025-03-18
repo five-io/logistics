@@ -1,5 +1,8 @@
 package com.msa.fiveio.slack.model.repository;
 
+import static com.msa.fiveio.common.config.QueryDslConfig.getUsableSize;
+import static com.msa.fiveio.slack.model.entity.QSlacks.slacks;
+
 import com.msa.fiveio.common.config.QueryDslConfig;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.querydsl.core.types.OrderSpecifier;
@@ -12,8 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
-
-import static com.msa.fiveio.slack.model.entity.QSlacks.slacks;
 
 @RequiredArgsConstructor
 @Repository
@@ -30,7 +31,7 @@ public class SlacksQueryRepository {
 			.from(slacks)
 			.orderBy(orderSpecifiers)
 			.offset(pageable.getOffset())
-			.limit(pageable.getPageSize())
+			.limit(getUsableSize(pageable.getPageSize()))
 			.fetch();
 
 		JPAQuery<Long> countQuery = jpaQueryFactory
@@ -52,7 +53,7 @@ public class SlacksQueryRepository {
 			)
 			.orderBy(orderSpecifiers)
 			.offset(pageable.getOffset())
-			.limit(pageable.getPageSize())
+			.limit(getUsableSize(pageable.getPageSize()))
 			.fetch();
 
 		JPAQuery<Long> countQuery = jpaQueryFactory

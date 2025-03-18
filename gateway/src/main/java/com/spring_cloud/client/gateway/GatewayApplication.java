@@ -1,5 +1,6 @@
 package com.spring_cloud.client.gateway;
 
+import com.msa.fiveio.common.config.JpaAuditingConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;

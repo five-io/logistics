@@ -1,0 +1,18 @@
+package com.msa.fiveio.delivery;
+
+import com.msa.fiveio.common.config.JpaAuditingConfig;
+import com.msa.fiveio.common.config.QueryDslConfig;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
+
+
+@Import({JpaAuditingConfig.class, QueryDslConfig.class})
+@SpringBootApplication
+public class DeliveryApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DeliveryApplication.class, args);
+    }
+
+}

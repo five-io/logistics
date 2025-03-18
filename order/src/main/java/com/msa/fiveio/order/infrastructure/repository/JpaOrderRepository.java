@@ -5,6 +5,6 @@ import com.msa.fiveio.order.model.repository.OrderRepository;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface JpaOrderRepository extends OrderRepository, JpaRepository<Order, UUID> {
+public interface JpaOrderRepository extends OrderRepository, JpaRepository<Order, UUID>, JpaOrderRepositoryCustom {
 
 }

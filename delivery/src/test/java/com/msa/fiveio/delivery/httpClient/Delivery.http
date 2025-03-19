@@ -14,3 +14,15 @@ Content-Type: application/json
 ### State Update
 PATCH http://localhost:19092/api/deliveries/0a2f1fbe-d1f2-48aa-8ca5-1a8380e779b7/status?
     delivery-status=delivered
+Content-Type: application/json
+
+### Search
+GET http://localhost:19092/api/deliveries
+Content-Type: application/json
+
+{
+  "delivery-status": "HUB_PENDING"
+}
+
+### Read
+GET http://localhost:19092/api/deliveries/0e5f66fc-46b4-4573-b331-bf541acb0529

@@ -79,18 +79,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:18080/eureka/
-
-
-message:
-  orderToDelivery:
-    exchange: order.delivery          # 기본 Exchange
-    queue:
-      delivery: delivery.queue        # 배송 관련 Queue 이름
-  delivery:
-    queue:
-      created:
-        completed: delivery.created.completed # 배송 생성 완료
-#    err:
-#      exchange: order.delivery.err    # 에러 관련 Exchange
-#      queue:
-#        order: delivery.create.err    # 에러 관련 Order Queue 이름

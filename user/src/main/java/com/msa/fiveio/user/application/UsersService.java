@@ -6,10 +6,8 @@ import com.msa.fiveio.user.model.entity.Users;
 import com.msa.fiveio.user.model.entity.UsersFactory;
 import com.msa.fiveio.user.model.entity.enums.UsersRoleEnum;
 import com.msa.fiveio.user.model.repository.UsersRepository;
-import com.msa.fiveio.user.presentation.dto.UsersProfileDto;
 import com.msa.fiveio.user.presentation.dto.UsersSignUpRequestDto;
 import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,15 +38,15 @@ public class UsersService {
     }
 
     // 빌더형태로 저장 , 비밀번호 암호화
-    Users users = UsersFactory.createUser(
+    Users user = UsersFactory.createUser(
         usersSignUpRequestDto.getUsername(),
         passwordEncoder.encode(usersSignUpRequestDto.getPassword()),
         usersSignUpRequestDto.getSlackId(),
-        String.valueOf(usersSignUpRequestDto.getHubId()),
-        String.valueOf(roleEnum)
+        usersSignUpRequestDto.getEmail(),
+        roleEnum
     );
 
-    usersRepository.save(users);
+    usersRepository.save(user);
   }
 
   //로그아웃
@@ -56,10 +54,7 @@ public class UsersService {
   }
 
   //사용자 정보 조회
-  public UsersProfileDto getUserProfile(Long userId) {
-    Users users = usersRepository.findByUserId(userId)
-        .orElseThrow(() -> new CustomException(UserErrorCode.USER_ERROR_CODE));
-
-    return new UsersProfileDto(users);
+  public Optional<Users> getUserInfo(String username) {
+    return usersRepository.findByUsername(username);
   }
 }

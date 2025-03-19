@@ -1,11 +1,17 @@
 package com.msa.fiveio.delivery.presentation.controller;
 
 import com.msa.fiveio.delivery.application.facade.DeliveryFacade;
+import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,6 +25,21 @@ public class DeliveryController {
     public void createDelivery(
         @RequestBody DeliveryCreateRequestDto deliveryRequestDto) {
         deliveryFacade.createDelivery(deliveryRequestDto);
+    }
+
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<String> updateStatus(
+        @PathVariable("id") UUID deliveryId,
+        @RequestParam("delivery-status") String status
+    ) {
+        try {
+            return ResponseEntity.ok(deliveryFacade.updateStatus(deliveryId, status));
+        } catch (IllegalArgumentException e) {
+            String errorMessage = "잘못된 상태 값입니다. \n허용된 값: "
+                + String.join(", ", DeliveryStatus.getAllowedStatuses()) + " 입니다.";
+            return ResponseEntity.badRequest().body(errorMessage);
+        }
     }
 
 }

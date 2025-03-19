@@ -1,7 +1,6 @@
 package com.msa.fiveio.hub.presentation.controller;
 
 
-import brave.Response;
 import com.msa.fiveio.hub.application.facade.HubsFacade;
 import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
@@ -45,21 +44,23 @@ public class HubsController {
 
     @Operation(summary = "Hub 수정", description = "Hub 수정 api 입니다.")
     @PatchMapping("/update/{id}")
-    public ResponseEntity<HubsResponseDto> updateHubs(@PathVariable UUID id, @RequestBody HubsRequestDto hubsDto) {
-        return ResponseEntity.ok(hubsFacade.updateHubs(id,hubsDto));
+    public ResponseEntity<HubsResponseDto> updateHubs(@PathVariable UUID id,
+        @RequestBody HubsRequestDto hubsDto) {
+        return ResponseEntity.ok(hubsFacade.updateHubs(id, hubsDto));
     }
 
     @Operation(summary = "Hub Search", description = "Hub Search api 입니다.")
     @GetMapping("/search")
     public ResponseEntity<Page<SearchResponseDto>> searchAddress(
         HubsRequestDto hubsDto, Pageable pageable) {
-        return ResponseEntity.ok(hubsFacade.searchHubs(hubsDto,pageable));
+
+        return ResponseEntity.ok(hubsFacade.searchHubs(hubsDto, pageable));
     }
 
     @Operation(summary = "Hub 삭제", description = "Hub 삭제 api 입니다.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteHubs(@PathVariable UUID id) {
-      //  hubsFacade.deleteHubs(id);
+        //  hubsFacade.deleteHubs(id);
         return ResponseEntity.noContent().build();
     }
 

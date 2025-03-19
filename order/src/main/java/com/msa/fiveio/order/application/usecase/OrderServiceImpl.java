@@ -35,8 +35,10 @@ public class OrderServiceImpl implements OrderService {
         // 업체에게 주문 가능 여부 확인
         CompanyResponseDto companyInfo = sendCompanyRequest(orderCreateRequestDto);
 
-        Double totalPrice = calculateTotalAmount(orderCreateRequestDto.getQuantity(), companyInfo.getProductPrice());
-        Order order = orderCreateRequestDto.createOrder(companyInfo.getRequesterCompanyId(), totalPrice);
+        Double totalPrice = calculateTotalAmount(orderCreateRequestDto.getQuantity(),
+            companyInfo.getProductPrice());
+        Order order = orderCreateRequestDto.createOrder(companyInfo.getRequesterCompanyId(),
+            totalPrice);
         Order savedOrder = orderRepository.save(order);
 
         sendDeliveryRequest(savedOrder.getOrderId(), companyInfo, orderCreateRequestDto);
@@ -53,7 +55,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderResponseDto readOrder(UUID orderId) {
-        Order order = orderRepository.readOrderByOrderId(orderId)
+        Order order = orderRepository.findById(orderId)
             .orElseThrow(() -> new RuntimeException("Order not found"));
         return OrderMapper.OrderToOrderResponseDto(order);
     }

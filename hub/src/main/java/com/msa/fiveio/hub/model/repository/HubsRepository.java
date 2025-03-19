@@ -1,8 +1,7 @@
 package com.msa.fiveio.hub.model.repository;
 
 import com.msa.fiveio.hub.model.entity.Hubs;
-import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
-import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsRequestDto;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.domain.Page;

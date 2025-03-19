@@ -1,9 +1,9 @@
 package com.msa.fiveio.hub.presentation.mapper;
 
 import com.msa.fiveio.hub.model.entity.Hubs;
-import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
-import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
-import com.msa.fiveio.hub.presentation.dto.SearchResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsRequestDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.SearchResponseDto;
 
 public class HubsMapper {
 

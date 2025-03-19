@@ -6,13 +6,15 @@ import com.msa.fiveio.common.exception.domain.HubErrorCode;
 import com.msa.fiveio.hub.infrastructure.client.KakaoClient;
 import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.model.repository.HubsRepository;
+import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteRequestDto;
+import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.DocumentDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsRequestDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.KakaoResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.SearchResponseDto;
 import com.msa.fiveio.hub.presentation.mapper.HubsMapper;
 import com.msa.fiveio.hub.presentation.mapper.SearchResponseDtos;
-import com.msa.fiveio.hub.presentation.dto.DocumentDto;
-import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
-import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
-import com.msa.fiveio.hub.presentation.dto.KakaoResponseDto;
-import com.msa.fiveio.hub.presentation.dto.SearchResponseDto;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -31,8 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class HubsServiceImpl implements HubsService {
 
     private final HubsRepository hubsRepository;
-    private final KakaoClient   kakaoClient;
-
+    private final KakaoClient kakaoClient;
 
 
     @Override
@@ -46,7 +47,7 @@ public class HubsServiceImpl implements HubsService {
 
         hubsRepository.save(hub);
 
-       return HubsMapper.entityToHubsResponseDto(hub);
+        return HubsMapper.entityToHubsResponseDto(hub);
     }
 
     @Override
@@ -61,13 +62,14 @@ public class HubsServiceImpl implements HubsService {
     @Override
     @Transactional
     public HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsDto, Hubs hub) {
-        if(hubsDto.hubName() != null) {
+        if (hubsDto.hubName() != null) {
             hub.updateHubName(hubsDto.hubName());
             hubsRepository.save(hub);
         }
-        if(hubsDto.address() != null) {
+        if (hubsDto.address() != null) {
             String[] response = searchAddress(hubsDto.address());
-            hub.updateAddress(hubsDto.address(),Double.parseDouble(response[0]),Double.parseDouble(response[1]));
+            hub.updateAddress(hubsDto.address(), Double.parseDouble(response[0]),
+                Double.parseDouble(response[1]));
             hubsRepository.save(hub);
         }
 
@@ -76,14 +78,19 @@ public class HubsServiceImpl implements HubsService {
 
     @Override
     public Page<SearchResponseDto> searchHubs(HubsRequestDto hubsDto, Pageable pageable) {
-        Page<Hubs> hubsPage = hubsRepository.searchHubs(hubsDto,pageable);
+        Page<Hubs> hubsPage = hubsRepository.searchHubs(hubsDto, pageable);
         return SearchResponseDtos.fromPage(hubsPage).toPage(hubsPage);
     }
 
+    @Override
+    public HubRouteResponseDto createHubRoute(HubRouteRequestDto hubsDto) {
+        return null;
+    }
+
+
     public String[] searchAddress(String address) {
-        log.info("[KakaoAddressService searchAddress] address: {}", address);
-        KakaoResponseDto  response = kakaoClient.searchAddress(address);
-        log.info("[KakaoAddressService searchAddress] response: {}", response);
+        KakaoResponseDto response = kakaoClient.searchAddress(address);
+
         List<DocumentDto> documentDtoList = response.getDocumentList();
         return documentDtoList.stream()
             .filter(dto -> dto.getAddressName().equals(address)) // 주소 일치하는 값 찾기

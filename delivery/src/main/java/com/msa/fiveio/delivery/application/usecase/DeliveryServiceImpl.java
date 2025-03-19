@@ -3,12 +3,14 @@ package com.msa.fiveio.delivery.application.usecase;
 import com.msa.fiveio.delivery.infrastructure.client.dto.DeliveryManagers;
 import com.msa.fiveio.delivery.model.entity.Delivery;
 import com.msa.fiveio.delivery.model.entity.DeliveryFactory;
+import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
 import com.msa.fiveio.delivery.model.repository.DeliveryRepository;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -39,6 +41,17 @@ public class DeliveryServiceImpl implements DeliveryService {
             savedDelivery.getDeliveryId());
 
 //        sendSlackMessageToDeliveryManager();
+    }
+
+    @Transactional
+    @Override
+    public String updateStatus(UUID deliveryId, String status) {
+        Delivery delivery = deliveryRepository.findById(deliveryId)
+            .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
+
+        DeliveryStatus deliveryStatus = DeliveryStatus.valueOf(status.toUpperCase());
+        delivery.updateStatus(deliveryStatus);
+        return deliveryStatus.name();
     }
 
     private Delivery createDelivery(DeliveryCreateRequestDto requestDto,

@@ -79,4 +79,7 @@ public class Delivery {
         this.deliveryRoutes = deliveryRoutes;
     }
 
+    public void updateStatus(DeliveryStatus status) {
+        this.deliveryStatus = status;
+    }
 }

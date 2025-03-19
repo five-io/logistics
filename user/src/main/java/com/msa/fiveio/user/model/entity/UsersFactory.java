@@ -10,15 +10,15 @@ public class UsersFactory {
       String username,
       String password,
       String slackId,
-      UUID hub_id,
-      UsersRoleEnum roleEnum
+      String hubId,
+      String roleEnum
   ) {
     return Users.builder()
         .username(username)
         .password(password)
         .slackId(slackId)
-        .hub_id(hub_id)
-        .role(UsersRoleEnum.valueOf(roleEnum.getAuthority()))
+        .hubId(UUID.fromString(hubId))
+        .role(UsersRoleEnum.valueOf(roleEnum))
         .build();
   }
 }

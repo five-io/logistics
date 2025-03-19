@@ -37,7 +37,7 @@ public class Users extends BaseEntity {
     private String slackId;
 
     @Column(nullable = false)
-    private UUID hub_id;
+    private UUID hubId;
 
     @Enumerated(EnumType.STRING) // ENUM 타입 매핑
     @Column(nullable = false)
@@ -46,11 +46,11 @@ public class Users extends BaseEntity {
     public Users() {
     }
 
-    public Users(String username, String password,String slackId ,UUID hub_id, UsersRoleEnum role) {
+    public Users(String username, String password,String slackId ,String hubId, UsersRoleEnum role) {
         this.username = username;
         this.password = password;
         this.slackId = slackId;
-        this.hub_id = hub_id;
+        this.hubId = UUID.fromString(hubId);
         this.role = UsersRoleEnum.valueOf(role.getAuthority());
     }
 }

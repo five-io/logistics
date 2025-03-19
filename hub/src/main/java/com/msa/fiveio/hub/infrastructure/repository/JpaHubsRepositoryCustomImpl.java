@@ -2,6 +2,7 @@
 package com.msa.fiveio.hub.infrastructure.repository;
 
 
+import static com.msa.fiveio.common.config.QueryDslConfig.getUsableSize;
 import static com.msa.fiveio.hub.model.entity.QHubs.hubs;
 
 import com.msa.fiveio.common.config.QueryDslConfig;
@@ -9,19 +10,15 @@ import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Expression;
-import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 @RequiredArgsConstructor
 public class JpaHubsRepositoryCustomImpl implements JpaHubsRepositoryCustom {
@@ -41,7 +38,7 @@ public class JpaHubsRepositoryCustomImpl implements JpaHubsRepositoryCustom {
         List<Hubs> fetch = baseQuery
             .orderBy(orderSpecifiers)
             .offset(pageable.getOffset())
-            .limit(pageable.getPageSize())
+            .limit(getUsableSize(pageable.getPageSize()))
             .fetch();
 
         Long totalCount =query(hubs)

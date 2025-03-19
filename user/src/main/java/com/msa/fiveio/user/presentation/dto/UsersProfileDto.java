@@ -6,12 +6,10 @@ import lombok.Getter;
 @Getter
 public class UsersProfileDto {
 
-  private String username;
+    private String username;
 
-  private String name;
+    private String name;
 
-  private String email;
-
-  private LocalDateTime createDate;
+    private LocalDateTime createDate;
 
 }

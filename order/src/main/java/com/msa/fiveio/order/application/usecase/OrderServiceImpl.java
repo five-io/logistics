@@ -1,8 +1,9 @@
 package com.msa.fiveio.order.application.usecase;
 
 import com.msa.fiveio.order.infrastructure.client.CompanyClient;
-import com.msa.fiveio.order.infrastructure.client.dto.CompanyResponseDto;
-import com.msa.fiveio.order.infrastructure.client.dto.DeliveryCreateRequest;
+import com.msa.fiveio.order.infrastructure.client.DeliveryClient;
+import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
+import com.msa.fiveio.order.infrastructure.client.dto.request.DeliveryCreateRequestDto;
 import com.msa.fiveio.order.model.repository.OrderRepository;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
@@ -28,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private final CompanyClient companyClient;
+    private final DeliveryClient deliveryClient;
 
     @Transactional
     @Override
@@ -35,8 +37,9 @@ public class OrderServiceImpl implements OrderService {
         // 업체에게 주문 가능 여부 확인
         CompanyResponseDto companyInfo = sendCompanyRequest(orderCreateRequestDto);
 
-        Order order = orderCreateRequestDto.createOrder();
-
+        Double totalPrice = companyInfo.getProductPrice() * orderCreateRequestDto.getQuantity();
+        Order order = orderCreateRequestDto.createOrder(companyInfo.getRequesterCompanyId(),
+            totalPrice);
         Order savedOrder = orderRepository.save(order);
         sendDeliveryRequest(savedOrder.getOrderId(), companyInfo, orderCreateRequestDto);
 
@@ -59,9 +62,9 @@ public class OrderServiceImpl implements OrderService {
 
     private void sendDeliveryRequest(UUID orderId, CompanyResponseDto companyInfo,
         OrderCreateRequestDto orderInfo) {
-        DeliveryCreateRequest request = new DeliveryCreateRequest(orderId, companyInfo, orderInfo);
-
-        // 배송 생성 요청
+        DeliveryCreateRequestDto request = new DeliveryCreateRequestDto(orderId, companyInfo,
+            orderInfo);
+        deliveryClient.createDelivery(request);
     }
 
     private CompanyResponseDto sendCompanyRequest(OrderCreateRequestDto orderInfo) {
@@ -70,6 +73,7 @@ public class OrderServiceImpl implements OrderService {
             .requesterCompanyId(UUID.randomUUID())
             .departHubId(UUID.randomUUID())
             .arriveHubId(UUID.randomUUID())
+            .productPrice(1000.0)
             .build();
 //        return companyClient.getCompanyInfo(orderInfo.getProductId(),
 //            orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());

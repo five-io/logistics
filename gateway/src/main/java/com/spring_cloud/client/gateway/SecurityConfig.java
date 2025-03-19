@@ -15,6 +15,7 @@ public class SecurityConfig {
         return http
             .cors(cors -> cors.disable()) // CORS 설정 (필요 시 설정 변경 가능)
             .csrf(csrf -> csrf.disable()) // CSRF 비활성화
+            .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
             .build();
     }
 

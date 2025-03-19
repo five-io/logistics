@@ -1,7 +1,6 @@
 package com.msa.fiveio.user.model.entity;
 
 import com.msa.fiveio.user.model.entity.enums.UsersRoleEnum;
-import java.util.UUID;
 
 public class UsersFactory {
 
@@ -10,15 +9,15 @@ public class UsersFactory {
       String username,
       String password,
       String slackId,
-      String hubId,
-      String roleEnum
+      String email,
+      UsersRoleEnum roleEnum
   ) {
     return Users.builder()
         .username(username)
         .password(password)
         .slackId(slackId)
-        .hubId(UUID.fromString(hubId))
-        .role(UsersRoleEnum.valueOf(roleEnum))
+        .email(email)
+        .role(roleEnum.getAuthority())
         .build();
   }
 }

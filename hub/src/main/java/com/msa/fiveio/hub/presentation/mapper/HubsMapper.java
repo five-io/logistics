@@ -31,7 +31,6 @@ public class HubsMapper {
 
     public static Hubs hubsResponseDtoToEntity(HubsResponseDto hubs) {
         return Hubs.builder()
-            .id(hubs.id())
             .hubName(hubs.hubName())
             .address(hubs.address())
             .latitude(hubs.latitude())

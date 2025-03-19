@@ -13,14 +13,12 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.SQLRestriction;
 
 
 @SQLRestriction("deleted_at IS NULL")
 @Entity
-@Table(name="p_hubs")
+@Table(name = "p_hubs")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Hubs extends BaseEntity {
@@ -43,8 +41,7 @@ public class Hubs extends BaseEntity {
     private Double longitude;
 
     @Builder
-    public Hubs(UUID id, String hubName, String address, Double latitude, Double longitude) {
-        this.id = id;
+    private Hubs(String hubName, String address, Double latitude, Double longitude) {
         this.hubName = hubName;
         this.address = address;
         this.latitude = latitude;

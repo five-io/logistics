@@ -13,5 +13,8 @@ public interface DeliveryService {
 
     String updateStatus(UUID deliveryId, String status);
 
-    Page<DeliveryResponseDto> readDeliveries(DeliverySearchRequestDto requestDto, Pageable pageable);
+    Page<DeliveryResponseDto> readDeliveries(DeliverySearchRequestDto requestDto,
+        Pageable pageable);
+
+    DeliveryResponseDto readDelivery(UUID deliveryId);
 }

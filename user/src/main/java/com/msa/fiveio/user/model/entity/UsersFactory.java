@@ -17,7 +17,7 @@ public class UsersFactory {
         .password(password)
         .slackId(slackId)
         .email(email)
-        .role(roleEnum.getAuthority())
+        .role(UsersRoleEnum.valueOf(roleEnum.getAuthority()))
         .build();
   }
 }

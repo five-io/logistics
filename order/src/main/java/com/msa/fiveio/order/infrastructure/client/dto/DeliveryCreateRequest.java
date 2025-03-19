@@ -1,6 +1,5 @@
-package com.msa.fiveio.order.infrastructure.messaging.dto;
+package com.msa.fiveio.order.infrastructure.client.dto;
 
-import com.msa.fiveio.order.infrastructure.client.dto.CompanyResponseDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import java.util.UUID;
 import lombok.AllArgsConstructor;

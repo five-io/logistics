@@ -1,4 +1,4 @@
-package com.msa.fiveio.order.infrastructure.messaging.dto;
+package com.msa.fiveio.order.infrastructure.client.dto;
 
 import java.util.UUID;
 import lombok.AllArgsConstructor;

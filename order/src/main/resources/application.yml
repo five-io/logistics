@@ -46,7 +46,7 @@ springdoc:
   api-docs:
     version: openapi_3_1
     enabled: true
-    path: /delivery-service/v3/api-docs
+    path: /order-service/v3/api-docs
   swagger-ui:
     enabled: true
     path: /swagger-ui.html
@@ -79,18 +79,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:18080/eureka/
-
-
-message:
-  orderToDelivery:
-    exchange: order.delivery   # 배송 관련 Exchange
-    queue:
-      delivery: delivery.queue   # 배송 생성 Queue
-  delivery:
-    queue:
-      created:
-        completed: delivery.created.completed  # 배송 생성 완료 Queue
-#    err:
-#      exchange: order.delivery.err   # 배송 에러 관련 Exchange
-#      queue:
-#        order: delivery.create.err   # 배송 생성 에러 관련 Queue

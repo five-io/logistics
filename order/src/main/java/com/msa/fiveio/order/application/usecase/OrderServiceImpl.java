@@ -2,7 +2,7 @@ package com.msa.fiveio.order.application.usecase;
 
 import com.msa.fiveio.order.infrastructure.client.CompanyClient;
 import com.msa.fiveio.order.infrastructure.client.dto.CompanyResponseDto;
-import com.msa.fiveio.order.infrastructure.messaging.dto.DeliveryCreateRequest;
+import com.msa.fiveio.order.infrastructure.client.dto.DeliveryCreateRequest;
 import com.msa.fiveio.order.model.repository.OrderRepository;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
@@ -13,8 +13,6 @@ import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -28,12 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 )
 public class OrderServiceImpl implements OrderService {
 
-    private final RabbitTemplate rabbitTemplate;
     private final OrderRepository orderRepository;
     private final CompanyClient companyClient;
-
-    @Value("${message.orderToDelivery.queue.delivery}")
-    private String queueDelivery;
 
     @Transactional
     @Override
@@ -75,7 +69,7 @@ public class OrderServiceImpl implements OrderService {
         OrderCreateRequestDto orderInfo) {
         DeliveryCreateRequest request = new DeliveryCreateRequest(orderId, companyInfo, orderInfo);
 
-        rabbitTemplate.convertAndSend(queueDelivery, request);
+        // 배송 생성 요청
     }
 
     private CompanyResponseDto sendCompanyRequest(OrderCreateRequestDto orderInfo) {

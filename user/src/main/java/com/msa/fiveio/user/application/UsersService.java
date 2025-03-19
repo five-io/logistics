@@ -8,6 +8,7 @@ import com.msa.fiveio.user.model.entity.enums.UsersRoleEnum;
 import com.msa.fiveio.user.model.repository.UsersRepository;
 import com.msa.fiveio.user.presentation.dto.UsersSignUpRequestDto;
 import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class UsersService {
         usersSignUpRequestDto.getUsername(),
         passwordEncoder.encode(usersSignUpRequestDto.getPassword()),
         usersSignUpRequestDto.getSlackId(),
-        usersSignUpRequestDto.getEmail(),
+        UUID.fromString(usersSignUpRequestDto.getHub_id()),
         roleEnum
     );
 

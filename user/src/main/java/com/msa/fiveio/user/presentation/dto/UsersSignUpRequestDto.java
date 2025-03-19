@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import org.hibernate.validator.constraints.UUID;
 
 @Getter
 public class UsersSignUpRequestDto {
@@ -25,9 +26,8 @@ public class UsersSignUpRequestDto {
     @NotBlank
     private String slackId;
 
-    @Email
-    @NotBlank
-    private String email;
+    @UUID
+    private String hub_id;
 
     private String role;
 

@@ -37,10 +37,10 @@ public class OrderServiceImpl implements OrderService {
         // 업체에게 주문 가능 여부 확인
         CompanyResponseDto companyInfo = sendCompanyRequest(orderCreateRequestDto);
 
-        Double totalPrice = companyInfo.getProductPrice() * orderCreateRequestDto.getQuantity();
-        Order order = orderCreateRequestDto.createOrder(companyInfo.getRequesterCompanyId(),
-            totalPrice);
+        Double totalPrice = calculateTotalAmount(orderCreateRequestDto.getQuantity(), companyInfo.getProductPrice());
+        Order order = orderCreateRequestDto.createOrder(companyInfo.getRequesterCompanyId(), totalPrice);
         Order savedOrder = orderRepository.save(order);
+
         sendDeliveryRequest(savedOrder.getOrderId(), companyInfo, orderCreateRequestDto);
 
         log.info("Order created: {}", savedOrder.getOrderId());
@@ -79,4 +79,7 @@ public class OrderServiceImpl implements OrderService {
 //            orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
     }
 
+    private Double calculateTotalAmount(Long quantity, Double productPrice) {
+        return quantity * productPrice;
+    }
 }

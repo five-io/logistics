@@ -1,0 +1,16 @@
+### Create
+POST http://localhost:19092/api/deliveries
+Content-Type: application/json
+
+{
+  "order-id": "6b38d6f7-1ebd-468a-a350-f511a41eff4e",
+  "depart-hub-id": "148de9af-4291-48ae-b69a-faf0460e7e4e",
+  "arrive-hub-id": "45e3bbb6-0350-4736-9e58-7a4ca0543855",
+  "delivery-address": "Test Delivery Address",
+  "recipient-name": "홍길동",
+  "recipient-slack-id": "01011112222"
+}
+
+### State Update
+PATCH http://localhost:19092/api/deliveries/0a2f1fbe-d1f2-48aa-8ca5-1a8380e779b7/status?
+    delivery-status=delivered

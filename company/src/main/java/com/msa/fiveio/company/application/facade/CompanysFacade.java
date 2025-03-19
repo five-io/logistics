@@ -9,5 +9,6 @@ import java.util.UUID;
 public interface CompanysFacade {
     CompanyCreateResponseDto createCompany(CompanyCreateRequestDto companyRequestDto);
     CompanyGetResponseDto getCompany(UUID companyId);
+    void deleteCompany(UUID companyId);
 
 }

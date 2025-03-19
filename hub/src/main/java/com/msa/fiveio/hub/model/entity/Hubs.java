@@ -51,7 +51,6 @@ public class Hubs extends BaseEntity {
         this.longitude = longitude;
     }
 
-
     public void updateHubName(String hubName) {
         this.hubName = hubName;
     }

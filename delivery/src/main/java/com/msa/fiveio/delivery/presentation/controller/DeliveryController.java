@@ -56,4 +56,10 @@ public class DeliveryController {
         return ResponseEntity.ok(deliveryFacade.readDeliveries(requestDto, pageable));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DeliveryResponseDto> readDelivery(
+        @PathVariable("id") UUID deliveryId
+    ) {
+        return ResponseEntity.ok(deliveryFacade.readDelivery(deliveryId));
+    }
 }

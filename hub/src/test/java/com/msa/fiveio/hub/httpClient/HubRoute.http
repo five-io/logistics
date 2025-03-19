@@ -1,0 +1,8 @@
+### 이동경로 생성
+POST http://localhost:19090/api/routes
+Content-Type: application/json
+
+{
+  "arriveHubId": "d0913844-3fe3-4527-bde1-c4d588b946f4",
+  "departHubId": "67c4849b-63ed-485f-ba16-e128de931bee"
+}

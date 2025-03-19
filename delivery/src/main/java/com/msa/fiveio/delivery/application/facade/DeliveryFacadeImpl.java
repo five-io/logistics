@@ -32,4 +32,9 @@ public class DeliveryFacadeImpl implements DeliveryFacade {
         return deliveryService.readDeliveries(requestDto, pageable);
     }
 
+    @Override
+    public DeliveryResponseDto readDelivery(UUID deliveryId) {
+        return deliveryService.readDelivery(deliveryId);
+    }
+
 }

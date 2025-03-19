@@ -15,4 +15,6 @@ public interface DeliveryFacade {
 
     Page<DeliveryResponseDto> readDeliveries(DeliverySearchRequestDto requestDto,
         Pageable pageable);
+
+    DeliveryResponseDto readDelivery(UUID deliveryId);
 }

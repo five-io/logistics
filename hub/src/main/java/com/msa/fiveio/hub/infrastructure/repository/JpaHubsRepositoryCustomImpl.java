@@ -1,4 +1,3 @@
-
 package com.msa.fiveio.hub.infrastructure.repository;
 
 
@@ -7,7 +6,7 @@ import static com.msa.fiveio.hub.model.entity.QHubs.hubs;
 
 import com.msa.fiveio.common.config.QueryDslConfig;
 import com.msa.fiveio.hub.model.entity.Hubs;
-import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsRequestDto;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.OrderSpecifier;
@@ -29,7 +28,8 @@ public class JpaHubsRepositoryCustomImpl implements JpaHubsRepositoryCustom {
     @Override
     public Page<Hubs> searchHubs(HubsRequestDto hubsRequestDto, Pageable pageable) {
 
-        OrderSpecifier<?>[] orderSpecifiers =  QueryDslConfig.getAllOrderSpecifierArr(pageable, hubs);
+        OrderSpecifier<?>[] orderSpecifiers = QueryDslConfig.getAllOrderSpecifierArr(pageable,
+            hubs);
 
         BooleanBuilder builder = createBooleanBuilder(hubsRequestDto);
 
@@ -41,11 +41,10 @@ public class JpaHubsRepositoryCustomImpl implements JpaHubsRepositoryCustom {
             .limit(getUsableSize(pageable.getPageSize()))
             .fetch();
 
-        Long totalCount =query(hubs)
+        Long totalCount = query(hubs)
             .where(builder)
             .select(Wildcard.count)
             .fetchOne();
-
 
         if (totalCount == null) {
             totalCount = 0L;
@@ -77,8 +76,6 @@ public class JpaHubsRepositoryCustomImpl implements JpaHubsRepositoryCustom {
             .select(expr)
             .from(hubs);
     }
-
-
 
 
 }

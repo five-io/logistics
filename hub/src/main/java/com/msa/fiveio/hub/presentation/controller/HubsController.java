@@ -2,9 +2,9 @@ package com.msa.fiveio.hub.presentation.controller;
 
 
 import com.msa.fiveio.hub.application.facade.HubsFacade;
-import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
-import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
-import com.msa.fiveio.hub.presentation.dto.SearchResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsRequestDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.SearchResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
@@ -63,5 +63,6 @@ public class HubsController {
         //  hubsFacade.deleteHubs(id);
         return ResponseEntity.noContent().build();
     }
+
 
 }

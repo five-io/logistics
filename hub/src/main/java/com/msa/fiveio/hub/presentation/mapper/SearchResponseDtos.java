@@ -1,7 +1,7 @@
 package com.msa.fiveio.hub.presentation.mapper;
 
 import com.msa.fiveio.hub.model.entity.Hubs;
-import com.msa.fiveio.hub.presentation.dto.SearchResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.SearchResponseDto;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -27,7 +27,6 @@ public class SearchResponseDtos {
     public Page<SearchResponseDto> toPage(Page<Hubs> hubsPage) {
         return new PageImpl<>(responseDtos, hubsPage.getPageable(), hubsPage.getTotalElements());
     }
-
 
 
 }

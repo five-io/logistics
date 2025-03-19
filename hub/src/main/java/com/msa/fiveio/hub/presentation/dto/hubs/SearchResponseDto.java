@@ -1,4 +1,4 @@
-package com.msa.fiveio.hub.presentation.dto;
+package com.msa.fiveio.hub.presentation.dto.hubs;
 
 
 import lombok.Builder;
@@ -7,10 +7,10 @@ import lombok.Builder;
 public record SearchResponseDto(String hubName,
                                 String address,
                                 Double latitude,
-                                Double longitude)
-{
+                                Double longitude) {
+
     @Builder
-    public SearchResponseDto (String hubName, String address, Double latitude, Double longitude) {
+    public SearchResponseDto(String hubName, String address, Double latitude, Double longitude) {
         this.hubName = hubName;
         this.address = address;
         this.latitude = latitude;

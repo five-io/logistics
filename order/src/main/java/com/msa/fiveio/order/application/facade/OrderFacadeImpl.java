@@ -23,11 +23,6 @@ public class OrderFacadeImpl implements OrdersFacade {
     }
 
     @Override
-    public void updateDeliveryIdInOrder(UUID orderId, UUID deliveryId) {
-        orderService.updateDeliveryIdInOrder(orderId, deliveryId);
-    }
-
-    @Override
     public Page<OrderResponseDto> readOrders(OrderSearchRequestDto requestDto, Pageable pageable) {
         return orderService.readOrders(requestDto, pageable);
     }

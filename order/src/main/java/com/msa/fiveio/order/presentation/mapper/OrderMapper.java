@@ -19,7 +19,6 @@ public class OrderMapper {
             .requesterCompanyId(order.getRequesterCompanyId())
             .receiverCompanyId(order.getReceiverCompanyId())
             .productId(order.getProductId())
-            .deliveryId(order.getDeliveryId())
             .quantity(order.getQuantity())
             .requestNotes(order.getRequestNotes())
             .build();

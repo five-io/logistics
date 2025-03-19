@@ -12,8 +12,6 @@ public interface OrdersFacade {
 
     OrderCreateResponseDto createOrder(OrderCreateRequestDto orderCreateRequestDto);
 
-    void updateDeliveryIdInOrder(UUID orderId, UUID deliveryId);
-
     Page<OrderResponseDto> readOrders(OrderSearchRequestDto requestDto, Pageable pageable);
 
     OrderResponseDto readOrder(UUID orderId);

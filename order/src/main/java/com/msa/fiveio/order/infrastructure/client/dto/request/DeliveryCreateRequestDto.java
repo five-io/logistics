@@ -1,6 +1,6 @@
-package com.msa.fiveio.order.infrastructure.messaging.dto;
+package com.msa.fiveio.order.infrastructure.client.dto.request;
 
-import com.msa.fiveio.order.infrastructure.client.dto.CompanyResponseDto;
+import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class DeliveryCreateRequest {
+public class DeliveryCreateRequestDto {
 
     private final UUID orderId;
     private final UUID departHubId;
@@ -17,7 +17,7 @@ public class DeliveryCreateRequest {
     private final String recipientName;
     private final String recipientSlackId;
 
-    public DeliveryCreateRequest(
+    public DeliveryCreateRequestDto(
         UUID orderId,
         CompanyResponseDto companyInfo,
         OrderCreateRequestDto orderInfo

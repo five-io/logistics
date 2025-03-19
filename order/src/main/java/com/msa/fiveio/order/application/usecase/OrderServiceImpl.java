@@ -1,8 +1,9 @@
 package com.msa.fiveio.order.application.usecase;
 
 import com.msa.fiveio.order.infrastructure.client.CompanyClient;
-import com.msa.fiveio.order.infrastructure.client.dto.CompanyResponseDto;
-import com.msa.fiveio.order.infrastructure.messaging.dto.DeliveryCreateRequest;
+import com.msa.fiveio.order.infrastructure.client.DeliveryClient;
+import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
+import com.msa.fiveio.order.infrastructure.client.dto.request.DeliveryCreateRequestDto;
 import com.msa.fiveio.order.model.repository.OrderRepository;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
@@ -13,8 +14,6 @@ import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -28,12 +27,9 @@ import org.springframework.transaction.annotation.Transactional;
 )
 public class OrderServiceImpl implements OrderService {
 
-    private final RabbitTemplate rabbitTemplate;
     private final OrderRepository orderRepository;
     private final CompanyClient companyClient;
-
-    @Value("${message.orderToDelivery.queue.delivery}")
-    private String queueDelivery;
+    private final DeliveryClient deliveryClient;
 
     @Transactional
     @Override
@@ -41,21 +37,14 @@ public class OrderServiceImpl implements OrderService {
         // 업체에게 주문 가능 여부 확인
         CompanyResponseDto companyInfo = sendCompanyRequest(orderCreateRequestDto);
 
-        Order order = orderCreateRequestDto.createOrder();
-
+        Double totalPrice = calculateTotalAmount(orderCreateRequestDto.getQuantity(), companyInfo.getProductPrice());
+        Order order = orderCreateRequestDto.createOrder(companyInfo.getRequesterCompanyId(), totalPrice);
         Order savedOrder = orderRepository.save(order);
+
         sendDeliveryRequest(savedOrder.getOrderId(), companyInfo, orderCreateRequestDto);
 
         log.info("Order created: {}", savedOrder.getOrderId());
         return OrderMapper.orderIdToOrderCreateResponseDto(savedOrder.getOrderId());
-    }
-
-    @Transactional
-    @Override
-    public void updateDeliveryIdInOrder(UUID orderId, UUID deliveryId) {
-        Order order = orderRepository.findById(orderId)
-            .orElseThrow(() -> new RuntimeException("Order not found"));
-        order.updateDeliveryId(deliveryId);
     }
 
     @Override
@@ -73,9 +62,9 @@ public class OrderServiceImpl implements OrderService {
 
     private void sendDeliveryRequest(UUID orderId, CompanyResponseDto companyInfo,
         OrderCreateRequestDto orderInfo) {
-        DeliveryCreateRequest request = new DeliveryCreateRequest(orderId, companyInfo, orderInfo);
-
-        rabbitTemplate.convertAndSend(queueDelivery, request);
+        DeliveryCreateRequestDto request = new DeliveryCreateRequestDto(orderId, companyInfo,
+            orderInfo);
+        deliveryClient.createDelivery(request);
     }
 
     private CompanyResponseDto sendCompanyRequest(OrderCreateRequestDto orderInfo) {
@@ -84,9 +73,13 @@ public class OrderServiceImpl implements OrderService {
             .requesterCompanyId(UUID.randomUUID())
             .departHubId(UUID.randomUUID())
             .arriveHubId(UUID.randomUUID())
+            .productPrice(1000.0)
             .build();
 //        return companyClient.getCompanyInfo(orderInfo.getProductId(),
 //            orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
     }
 
+    private Double calculateTotalAmount(Long quantity, Double productPrice) {
+        return quantity * productPrice;
+    }
 }

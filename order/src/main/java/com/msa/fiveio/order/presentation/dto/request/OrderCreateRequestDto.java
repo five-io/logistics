@@ -28,12 +28,14 @@ public class OrderCreateRequestDto {
     @JsonProperty("recipient-slack-id")
     private final String recipientSlackId;
 
-    public Order createOrder() {
+    public Order createOrder(UUID requesterCompanyId, Double totalAmount) {
         return Order.builder()
+            .requesterCompanyId(requesterCompanyId)
             .receiverCompanyId(receiverCompanyId)
             .productId(productId)
             .quantity(quantity)
             .requestNotes(requestNotes)
+            .totalAmount(totalAmount)
             .build();
     }
 }

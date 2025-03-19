@@ -27,28 +27,24 @@ public class Order {
     @Column(name = "product_id", nullable = false)
     private UUID productId;
 
-    @Column(name = "delivery_id")
-    private UUID deliveryId;
-
     @Column(nullable = false)
     private Long quantity;
 
     @Column(name = "request_notes", columnDefinition = "TEXT")
     private String requestNotes;
 
-    public void updateDeliveryId(UUID deliveryId) {
-        this.deliveryId = deliveryId;
-    }
+    @Column(name = "total_amount", nullable = false)
+    private Double totalAmount;
 
     @Builder
     private Order(UUID requesterCompanyId, UUID receiverCompanyId, UUID productId,
-        UUID deliveryId, Long quantity, String requestNotes) {
+        Double totalAmount, Long quantity, String requestNotes) {
         this.requesterCompanyId = requesterCompanyId;
         this.receiverCompanyId = receiverCompanyId;
         this.productId = productId;
-        this.deliveryId = deliveryId;
         this.quantity = quantity;
         this.requestNotes = requestNotes;
+        this.totalAmount = totalAmount;
     }
 
     public static Order createOrder(
@@ -56,7 +52,8 @@ public class Order {
         UUID receiverCompanyId,
         UUID productId,
         Long quantity,
-        String requestNotes
+        String requestNotes,
+        Double totalAmount
     ) {
         return Order.builder()
             .requesterCompanyId(requesterCompanyId)
@@ -64,6 +61,7 @@ public class Order {
             .productId(productId)
             .quantity(quantity)
             .requestNotes(requestNotes)
+            .totalAmount(totalAmount)
             .build();
     }
 }

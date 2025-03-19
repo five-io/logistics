@@ -17,7 +17,4 @@ public class OrderSearchRequestDto {
 
     @JsonProperty("product-id")
     private final UUID productId;
-
-    @JsonProperty("delivery-id")
-    private final UUID deliveryId;
 }

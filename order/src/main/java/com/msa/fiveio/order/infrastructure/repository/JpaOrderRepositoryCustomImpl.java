@@ -55,9 +55,6 @@ public class JpaOrderRepositoryCustomImpl implements JpaOrderRepositoryCustom {
         if (requestDto.getProductId() != null) {
             builder.and(QOrder.order.productId.eq(requestDto.getProductId()));
         }
-        if (requestDto.getDeliveryId() != null) {
-            builder.and(QOrder.order.deliveryId.eq(requestDto.getDeliveryId()));
-        }
         return builder;
     }
 

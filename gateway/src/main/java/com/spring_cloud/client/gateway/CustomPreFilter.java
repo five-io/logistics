@@ -3,7 +3,6 @@ package com.spring_cloud.client.gateway;
 
 import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.AuthErrorCode;
-import com.msa.fiveio.common.redis.RedisService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -41,28 +40,25 @@ public class CustomPreFilter implements GlobalFilter, Ordered {
     private String secretKey;
     private static final String BEARER_PREFIX = "Bearer ";
 
-    private final RedisService redisService;
-
 
     private SecretKey getSecretKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    ;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         String path = exchange.getRequest().getURI().getPath();
 
-        if (path != null) {
-            return chain.filter(exchange);
-        }
-       /* if(path.equals("/api/users/signIn")||path.equals("/api/users/signUp")){
+//        if (path != null) {
+//            return chain.filter(exchange);
+//        }
+        if (path.equals("/api/users/signIn") || path.equals("/api/users/signUp")) {
 
             return chain.filter(exchange);
-        }*/
+        }
 
         try {
             //토큰가져오기
@@ -76,11 +72,6 @@ public class CustomPreFilter implements GlobalFilter, Ordered {
 
             //유효기간확인
             if (isValidateExpire(jwtToken)) {
-                throw new CustomException(AuthErrorCode.AUTH_UNAUTHORIZED);
-            }
-
-            // 블랙리스트 확인
-            if (redisService.isBlacklisted(authorization)) {
                 throw new CustomException(AuthErrorCode.AUTH_UNAUTHORIZED);
             }
 

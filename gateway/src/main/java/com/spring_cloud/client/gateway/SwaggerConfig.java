@@ -13,7 +13,7 @@ public class SwaggerConfig {
     public OpenAPI openAPI() {
         return new OpenAPI()
             .servers(List.of(
-                new Server().url("http://localhost:19090") // ✅ API Gateway의 기본 URL로 설정
+                new Server().url("http://localhost:19090")
             ));
     }
 }

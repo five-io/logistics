@@ -22,19 +22,18 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "p_deliveries")
 @Entity
 @Access(AccessType.FIELD)
 public class Delivery {
 
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "delivery_id")
     private UUID deliveryId;
 
-    @Getter
     @Column(name = "order_id", nullable = false)
     private UUID orderId;
 

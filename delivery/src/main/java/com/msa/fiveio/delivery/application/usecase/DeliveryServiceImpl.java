@@ -6,9 +6,14 @@ import com.msa.fiveio.delivery.model.entity.DeliveryFactory;
 import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
 import com.msa.fiveio.delivery.model.repository.DeliveryRepository;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
+import com.msa.fiveio.delivery.presentation.dto.request.DeliverySearchRequestDto;
+import com.msa.fiveio.delivery.presentation.dto.response.DeliveryResponseDto;
+import com.msa.fiveio.delivery.presentation.mapper.DeliveryMapper;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,6 +57,13 @@ public class DeliveryServiceImpl implements DeliveryService {
         DeliveryStatus deliveryStatus = DeliveryStatus.valueOf(status.toUpperCase());
         delivery.updateStatus(deliveryStatus);
         return deliveryStatus.name();
+    }
+
+    @Override
+    public Page<DeliveryResponseDto> readDeliveries(DeliverySearchRequestDto requestDto,
+        Pageable pageable) {
+        Page<Delivery> deliveryPage = deliveryRepository.readDeliveries(requestDto, pageable);
+        return deliveryPage.map(DeliveryMapper::DeliveryToDeliveryResponseDto);
     }
 
     private Delivery createDelivery(DeliveryCreateRequestDto requestDto,

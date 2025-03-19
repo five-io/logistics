@@ -56,16 +56,6 @@ public class AuthSecurityConfig {
             sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         );
 
-        http.authorizeHttpRequests((authorizeHttpRequests) ->
-            authorizeHttpRequests
-                .requestMatchers("/api/users/signIn").permitAll()
-                .requestMatchers("/api/users/signUp").permitAll()
-                .requestMatchers("/v3/api-docs", "/v3/api-docs/**", "/swagger-ui.html",
-                    "/swagger-ui/**")
-                .permitAll()
-                .anyRequest().authenticated()
-        );
-
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

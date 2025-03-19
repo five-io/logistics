@@ -46,17 +46,26 @@ public class CustomPreFilter implements GlobalFilter, Ordered {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
+    private static final List<String> EXCLUDED_PATHS = List.of(
+        "/api/users/signIn",
+        "/api/users/signUp",
+        "/v3/api-docs",
+        "/swagger-ui.html",
+        "/swagger-ui",
+        "/webjars/swagger-ui"
+    );
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         String path = exchange.getRequest().getURI().getPath();
-
+        log.info("***********" + path);
 //        if (path != null) {
 //            return chain.filter(exchange);
 //        }
-        if (path.equals("/api/users/signIn") || path.equals("/api/users/signUp")) {
 
+        if (isExcludedPath(path)) {
+            log.info("***********" + path);
             return chain.filter(exchange);
         }
 
@@ -95,6 +104,12 @@ public class CustomPreFilter implements GlobalFilter, Ordered {
 
 
     }
+
+
+    private boolean isExcludedPath(String path) {
+        return EXCLUDED_PATHS.stream().anyMatch(path::contains);
+    }
+
 
     private String getUserIdFromToken(String jwtToken) {
         return Jwts.parserBuilder()

@@ -1,4 +1,4 @@
-package com.spring_cloud.client.gateway;
+package com.msa.fiveio.hub.infrastructure.configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.servers.Server;
@@ -16,4 +16,5 @@ public class SwaggerConfig {
                 new Server().url("http://localhost:19090")
             ));
     }
+
 }

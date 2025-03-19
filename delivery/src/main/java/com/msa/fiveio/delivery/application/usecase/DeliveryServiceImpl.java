@@ -66,6 +66,13 @@ public class DeliveryServiceImpl implements DeliveryService {
         return deliveryPage.map(DeliveryMapper::DeliveryToDeliveryResponseDto);
     }
 
+    @Override
+    public DeliveryResponseDto readDelivery(UUID deliveryId) {
+        Delivery delivery = deliveryRepository.findById(deliveryId)
+            .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
+        return DeliveryMapper.DeliveryToDeliveryResponseDto(delivery);
+    }
+
     private Delivery createDelivery(DeliveryCreateRequestDto requestDto,
         Long companyDeliveryManager) {
         return DeliveryFactory.createDelivery(

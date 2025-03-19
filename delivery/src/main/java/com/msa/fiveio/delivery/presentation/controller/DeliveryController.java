@@ -3,6 +3,7 @@ package com.msa.fiveio.delivery.presentation.controller;
 import com.msa.fiveio.delivery.application.facade.DeliveryFacade;
 import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Delivery Service", description = "배송 서비스 API")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/deliveries")

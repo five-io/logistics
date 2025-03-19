@@ -1,9 +1,11 @@
 package com.msa.fiveio.hub.application.usecase;
 
 import com.msa.fiveio.hub.model.entity.Hubs;
-import com.msa.fiveio.hub.presentation.dto.HubsRequestDto;
-import com.msa.fiveio.hub.presentation.dto.HubsResponseDto;
-import com.msa.fiveio.hub.presentation.dto.SearchResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteRequestDto;
+import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsRequestDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.HubsResponseDto;
+import com.msa.fiveio.hub.presentation.dto.hubs.SearchResponseDto;
 import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,4 +19,6 @@ public interface HubsService {
     HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsRequestDto, Hubs hub);
 
     Page<SearchResponseDto> searchHubs(HubsRequestDto hubsDto, Pageable pageable);
+
+    HubRouteResponseDto createHubRoute(HubRouteRequestDto hubsDto);
 }

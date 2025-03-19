@@ -16,6 +16,7 @@ public class KakaoConfig {
         // 여기서 헤더에 값 추가
         return requestTemplate -> {
             requestTemplate.header("Authorization", "KakaoAK " + kakaoRestApiKey);
+            requestTemplate.header("Content-Type", "application/json");
         };
     }
 

@@ -1,20 +1,32 @@
-###Create
-POST http://localhost:19093/api/hubs/create
+###Hub Create
+POST http://localhost:19090/api/hubs/create
 Content-Type: application/json
+Authorization:
 
 {
-"hubName": "경기 북부 센터",
-"address": "경기도 고양시 덕양구 권율대로 570",
-"latitude": 0,
-"longitude": 0
+  "hubName": "경기 남부 센터",
+  "address": "경기도 이천시 덕평로 257-21",
+  "latitude": 0,
+  "longitude": 0
 }
 
-###
-GET http://localhost:19093/api/hubs/read?
-    id=84e09714-2b66-4b44-9b43-80299520e84f
+###Hub Create2
+POST http://localhost:19090/api/hubs/create
+Content-Type: application/json
+Authorization:
+
+{
+  "hubName": "경기 북부 센터",
+  "address": "경기도 고양시 덕양구 권율대로 570",
+  "latitude": 0,
+  "longitude": 0
+}
+
+###Hub 단 건 조회
+GET http://localhost:19090/api/hubs/read?id=84e09714-2b66-4b44-9b43-80299520e84f
 Content-Type: application/json
 
-###
+###Hub 수정
 PATCH http://localhost:19093/api/hubs/update/ca1eaf30-77c8-4d27-9532-d3cda0b31bad
 Content-Type: application/json
 
@@ -22,6 +34,6 @@ Content-Type: application/json
   "hubName": "경기 북부 센터"
 }
 
-###
+###Hub 전체조회
 GET http://localhost:19093/api/hubs/search?page=0&size=10&sort=createdAt,asc&hubName=경기
 Content-Type: application/json

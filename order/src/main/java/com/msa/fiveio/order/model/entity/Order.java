@@ -1,22 +1,20 @@
 package com.msa.fiveio.order.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.util.UUID;
 import lombok.NoArgsConstructor;
 
-@Builder
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
 @Table(name = "p_orders")
 @Entity
 public class Order {
 
-    @Getter
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "order_id", nullable = false)
     private UUID orderId;
 
@@ -42,4 +40,30 @@ public class Order {
         this.deliveryId = deliveryId;
     }
 
+    @Builder
+    private Order(UUID requesterCompanyId, UUID receiverCompanyId, UUID productId,
+        UUID deliveryId, Long quantity, String requestNotes) {
+        this.requesterCompanyId = requesterCompanyId;
+        this.receiverCompanyId = receiverCompanyId;
+        this.productId = productId;
+        this.deliveryId = deliveryId;
+        this.quantity = quantity;
+        this.requestNotes = requestNotes;
+    }
+
+    public static Order createOrder(
+        UUID requesterCompanyId,
+        UUID receiverCompanyId,
+        UUID productId,
+        Long quantity,
+        String requestNotes
+    ) {
+        return Order.builder()
+            .requesterCompanyId(requesterCompanyId)
+            .receiverCompanyId(receiverCompanyId)
+            .productId(productId)
+            .quantity(quantity)
+            .requestNotes(requestNotes)
+            .build();
+    }
 }

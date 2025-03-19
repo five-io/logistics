@@ -5,7 +5,6 @@ import java.util.UUID;
 public class OrderFactory {
 
     public static Order createOrder(
-        UUID orderId,
         UUID requesterCompanyId,
         UUID receiverCompanyId,
         UUID productId,
@@ -13,7 +12,6 @@ public class OrderFactory {
         String requestNotes
     ) {
         return Order.builder()
-            .orderId(orderId)
             .requesterCompanyId(requesterCompanyId)
             .receiverCompanyId(receiverCompanyId)
             .productId(productId)

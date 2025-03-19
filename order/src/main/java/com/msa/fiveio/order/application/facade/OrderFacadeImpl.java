@@ -2,9 +2,13 @@ package com.msa.fiveio.order.application.facade;
 
 import com.msa.fiveio.order.application.usecase.OrderService;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
+import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
+import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,6 +25,16 @@ public class OrderFacadeImpl implements OrdersFacade {
     @Override
     public void updateDeliveryIdInOrder(UUID orderId, UUID deliveryId) {
         orderService.updateDeliveryIdInOrder(orderId, deliveryId);
+    }
+
+    @Override
+    public Page<OrderResponseDto> readOrders(OrderSearchRequestDto requestDto, Pageable pageable) {
+        return orderService.readOrders(requestDto, pageable);
+    }
+
+    @Override
+    public OrderResponseDto readOrder(UUID orderId) {
+        return orderService.readOrder(orderId);
     }
 
 }

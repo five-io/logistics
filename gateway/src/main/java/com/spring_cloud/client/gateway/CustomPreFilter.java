@@ -1,10 +1,9 @@
 package com.spring_cloud.client.gateway;
 
 
-import com.spring_cloud.client.gateway.exception.AccessTokenExpiredException;
-import com.spring_cloud.client.gateway.exception.BaseException;
-import com.spring_cloud.client.gateway.exception.NotExistsAuthorization;
-import com.spring_cloud.client.gateway.jwt.RedisService;
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.AuthErrorCode;
+import com.msa.fiveio.common.redis.RedisService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -12,7 +11,6 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import jakarta.ws.rs.core.HttpHeaders;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +22,7 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpResponse;
@@ -36,11 +35,11 @@ import reactor.core.publisher.Mono;
 @Component
 @RequiredArgsConstructor
 @Slf4j(topic = "JWT 인가 필터")
-public class CustomPreFilter  implements GlobalFilter, Ordered {
+public class CustomPreFilter implements GlobalFilter, Ordered {
 
     @Value("${service.jwt.secret-key}")
     private String secretKey;
-    private static final String AUTH_TYPE = "Bearer ";
+    private static final String BEARER_PREFIX = "Bearer ";
 
     private final RedisService redisService;
 
@@ -48,17 +47,19 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
     private SecretKey getSecretKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
-    };
+    }
+
+    ;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         String path = exchange.getRequest().getURI().getPath();
 
-        if(path != null) {
+        if (path != null) {
             return chain.filter(exchange);
         }
-       /* if(path.equals("/users/signIn")||path.equals("/users/signUp")){
+       /* if(path.equals("/api/users/signIn")||path.equals("/api/users/signUp")){
 
             return chain.filter(exchange);
         }*/
@@ -66,36 +67,36 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
         try {
             //토큰가져오기
             String authorization = getJwtFromHeader(exchange);
-
             String jwtToken = parseAuthorizationToken(authorization);
 
             //검증
             if (!StringUtils.hasText(jwtToken) || !validateToken(jwtToken)) {
-                throw new NotExistsAuthorization();
+                throw new CustomException(AuthErrorCode.AUTH_NOT_FOUND);
             }
 
             //유효기간확인
             if (isValidateExpire(jwtToken)) {
-                throw new AccessTokenExpiredException();
+                throw new CustomException(AuthErrorCode.AUTH_UNAUTHORIZED);
             }
 
             // 블랙리스트 확인
             if (redisService.isBlacklisted(authorization)) {
-                throw new AccessTokenExpiredException();
+                throw new CustomException(AuthErrorCode.AUTH_UNAUTHORIZED);
             }
 
+            //  JWT 검증 성공 후 요청 헤더에 사용자 정보 추가
+            ServerWebExchange modifiedExchange = exchange.mutate()
+                .request(exchange.getRequest().mutate()
+                    .header("X-User-Id", getUserIdFromToken(jwtToken))
+                    .header("X-User-Role", getRoleFromToken(jwtToken))
+                    .build())
+                .build();
 
-
-
+            log.info("********** info " + modifiedExchange);
 
             return chain.filter(exchange);
 
 
-
-
-
-        } catch (BaseException e) {
-            return sendErrorResponse(exchange, e.getErrorCode(), e);
         } catch (Exception e) {
             e.printStackTrace();
             return sendErrorResponse(exchange, 999, e);
@@ -104,6 +105,23 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
 
     }
 
+    private String getUserIdFromToken(String jwtToken) {
+        return Jwts.parserBuilder()
+            .setSigningKey(getSecretKey())
+            .build()
+            .parseClaimsJws(jwtToken)
+            .getBody()
+            .getSubject();
+    }
+
+    private String getRoleFromToken(String jwtToken) {
+        return Jwts.parserBuilder()
+            .setSigningKey(getSecretKey())
+            .build()
+            .parseClaimsJws(jwtToken)
+            .getBody()
+            .get("role", String.class);
+    }
 
 
     private Mono<Void> sendErrorResponse(ServerWebExchange exchange, int errorCode, Exception e) {
@@ -112,13 +130,14 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
-        DataBuffer buffer = response.bufferFactory().wrap(errorBody.getBytes(StandardCharsets.UTF_8));
+        DataBuffer buffer = response.bufferFactory()
+            .wrap(errorBody.getBytes(StandardCharsets.UTF_8));
         return response.writeWith(Flux.just(buffer));
     }
 
 
     private String parseAuthorizationToken(String authorization) {
-        return authorization.replace(AUTH_TYPE, "").trim();
+        return authorization.replace(BEARER_PREFIX, "").trim();
     }
 
     public boolean validateToken(String token) {
@@ -139,23 +158,25 @@ public class CustomPreFilter  implements GlobalFilter, Ordered {
     }
 
     public Claims parseClaims(String token) {
-        return Jwts.parserBuilder().setSigningKey(getSecretKey()).build().parseClaimsJws(token).getBody();
+        return Jwts.parserBuilder().setSigningKey(getSecretKey()).build().parseClaimsJws(token)
+            .getBody();
     }
 
 
     public String getJwtFromHeader(ServerWebExchange exchange) {
-        List<String> authorizations = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION);
+        List<String> authorizations = exchange.getRequest().getHeaders()
+            .get(HttpHeaders.AUTHORIZATION);
         if (authorizations == null || authorizations.isEmpty()) {
-            throw new NotExistsAuthorization();
+            throw new CustomException(AuthErrorCode.AUTH_UNAUTHORIZED);
         }
         return authorizations.stream()
             .filter(this::isBearerType)
             .findFirst()
-            .orElseThrow(NotExistsAuthorization::new);
+            .orElseThrow(() -> new CustomException(AuthErrorCode.AUTH_UNAUTHORIZED));
     }
 
     private boolean isBearerType(String authorization) {
-        return authorization.startsWith(AUTH_TYPE);
+        return authorization.startsWith(BEARER_PREFIX);
     }
 
 

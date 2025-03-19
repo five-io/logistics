@@ -1,4 +1,4 @@
-package com.msa.fiveio.order.infrastructure.client.dto;
+package com.msa.fiveio.order.infrastructure.client.dto.response;
 
 import java.util.UUID;
 import lombok.Builder;
@@ -12,5 +12,6 @@ public class CompanyResponseDto {
     private final UUID requesterCompanyId;
     private final UUID departHubId;
     private final UUID arriveHubId;
+    private final Double productPrice;
 
 }

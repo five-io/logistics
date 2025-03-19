@@ -1,15 +1,22 @@
 package com.msa.fiveio.company.model.entity;
 
 import com.msa.fiveio.common.auditing.BaseEntity;
-import jakarta.persistence.*;
+import com.msa.fiveio.company.presentation.dto.request.CompanyUpdateRequestDto;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
-
-import java.util.UUID;
 
 @SQLRestriction("deleted_at IS NULL")
 @Entity
@@ -38,10 +45,20 @@ public class Companys extends BaseEntity {
     private UUID hubId;
 
     @Builder
-    public Companys(String companyName, String companyAddress, CompanysType companyTypes, UUID hubId) {
+    public Companys(String companyName, String companyAddress, CompanysType companyTypes,
+            UUID hubId) {
         this.companyName = companyName;
         this.companyAddress = companyAddress;
         this.companyTypes = companyTypes;
         this.hubId = hubId;
     }
+
+    public void update(CompanyUpdateRequestDto companyUpdateRequestDto) {
+        this.companyName = companyUpdateRequestDto.getCompanyName();
+        this.companyAddress = companyUpdateRequestDto.getCompanyAddress();
+        this.companyTypes = companyUpdateRequestDto.getCompanyType();
+        this.hubId = companyUpdateRequestDto.getHubId();
+
+    }
+
 }

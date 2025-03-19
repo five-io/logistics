@@ -1,0 +1,25 @@
+### Company Create
+POST http://localhost:19094/api/companys
+Content-Type: application/json
+#Authorization:
+
+{
+  "companyType": "RECEIVER",
+  "companyName": "testtest",
+  "companyAddress": "testtest",
+  "hubId": null
+}
+
+### 단건조회
+GET http://localhost:19090/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79
+
+### 수정
+PATCH http://localhost:19094/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79
+Content-Type: application/json
+
+{
+  "companyType": "RECEIVER",
+  "companyName": "testtest",
+  "companyAddress": "testtest동 test구",
+  "hubId": null
+}

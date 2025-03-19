@@ -1,17 +1,16 @@
-package com.msa.fiveio.company.presentation.dto;
+package com.msa.fiveio.company.presentation.dto.request;
 
 import com.msa.fiveio.company.model.entity.CompanysType;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.util.UUID;
 
 @Getter
-@Builder
-public class CompanyCreateResponseDto {
-    private UUID companyId;
+public class CompanyCreateRequestDto {
+
     private CompanysType companyType;
-    private String companyName;
     private String companyAddress;
     private UUID hubId;
+    private String companyName;
+
 }

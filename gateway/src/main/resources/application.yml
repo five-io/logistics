@@ -91,7 +91,7 @@ spring:
             - Path=/ai-service/**
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/ai-service/api/ai-interlocks/(?<segment>.*), /api/ai-interlocks/$\{segment}
+            - RewritePath=/ai-service/api/ai/(?<segment>.*), /api/ai/$\{segment}
 
 
         - id: user-service
@@ -105,6 +105,20 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/api/users/(?<segment>.*), /api/users/$\{segment}
+
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/api/product/**
+        - id: product-docs
+          uri: lb://product-service
+          predicates:
+            - Path=/product-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/product-service/api/products/(?<segment>.*), /api/products/$\{segment}
+
+
 
       discovery:
         locator:
@@ -144,6 +158,9 @@ springdoc:
     urls[6]:
       name: User Service
       url: /user-service/v3/api-docs
+    urls[7]:
+      name: Product Service
+      url: /product-service/v3/api-docs
 
 
 

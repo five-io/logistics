@@ -5,6 +5,7 @@ import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Order Service", description = "주문 서비스 API")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/orders")

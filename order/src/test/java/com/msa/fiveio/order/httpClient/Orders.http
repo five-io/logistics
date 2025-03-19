@@ -1,0 +1,25 @@
+### Create
+POST http://localhost:19091/api/orders
+Content-Type: application/json
+
+{
+  "receiver-company-id": "1350d08b-0c96-41fd-8d7e-2d56f4461f81",
+  "product-id": "45e3bbb6-0350-4736-9e58-7a4ca0543855",
+  "quantity": 100,
+  "request-notes": "4월 12일 3시까지는 보내주세요!",
+  "recipient-name": "홍길동",
+  "recipient-slack-id": "01011112222"
+}
+
+### Read
+GET http://127.0.0.1:19091/api/orders/6b38d6f7-1ebd-468a-a350-f511a41eff4e
+Content-Type: application/json
+
+
+### Search
+GET http://localhost:19091/api/orders
+Content-Type: application/json
+
+{
+  "receiver-company-id": "1350d08b-0c96-41fd-8d7e-2d56f4461f81"
+}

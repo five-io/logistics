@@ -44,14 +44,6 @@ public class OrderServiceImpl implements OrderService {
         return OrderMapper.orderIdToOrderCreateResponseDto(savedOrder.getOrderId());
     }
 
-    @Transactional
-    @Override
-    public void updateDeliveryIdInOrder(UUID orderId, UUID deliveryId) {
-        Order order = orderRepository.findById(orderId)
-            .orElseThrow(() -> new RuntimeException("Order not found"));
-        order.updateDeliveryId(deliveryId);
-    }
-
     @Override
     public Page<OrderResponseDto> readOrders(OrderSearchRequestDto requestDto, Pageable pageable) {
         Page<Order> orderPage = orderRepository.readOrders(requestDto, pageable);

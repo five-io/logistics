@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,7 +37,7 @@ public class Users extends BaseEntity {
     private String slackId;
 
     @Column(nullable = false)
-    private String email;
+    private UUID hub_id;
 
     @Enumerated(EnumType.STRING) // ENUM 타입 매핑
     @Column(nullable = false)
@@ -45,11 +46,11 @@ public class Users extends BaseEntity {
     public Users() {
     }
 
-    public Users(String username, String password,String slackId ,String email, UsersRoleEnum role) {
+    public Users(String username, String password,String slackId ,UUID hub_id, UsersRoleEnum role) {
         this.username = username;
         this.password = password;
         this.slackId = slackId;
-        this.email = email;
+        this.hub_id = hub_id;
         this.role = UsersRoleEnum.valueOf(role.getAuthority());
     }
 }

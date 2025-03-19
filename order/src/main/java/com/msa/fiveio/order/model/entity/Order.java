@@ -33,7 +33,11 @@ public class Order {
     @Column(name = "request_notes", columnDefinition = "TEXT")
     private String requestNotes;
 
-    @Column(name = "total_amount", nullable = false)
+    @Column(
+        name = "total_amount",
+        nullable = false,
+        columnDefinition = "DOUBLE DEFAULT 0.0"
+    )
     private Double totalAmount;
 
     @Builder
@@ -52,8 +56,7 @@ public class Order {
         UUID receiverCompanyId,
         UUID productId,
         Long quantity,
-        String requestNotes,
-        Double totalAmount
+        String requestNotes
     ) {
         return Order.builder()
             .requesterCompanyId(requesterCompanyId)
@@ -61,7 +64,10 @@ public class Order {
             .productId(productId)
             .quantity(quantity)
             .requestNotes(requestNotes)
-            .totalAmount(totalAmount)
             .build();
+    }
+
+    public void calculateTotalAmount(Double productPrice) {
+        this.totalAmount = this.quantity * productPrice;
     }
 }

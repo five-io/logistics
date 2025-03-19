@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderResponseDto {
 
+    @JsonProperty("order-id")
+    private UUID orderId;
     @JsonProperty("requester-company-id")
     private UUID requesterCompanyId;
     @JsonProperty("receiver-company-id")

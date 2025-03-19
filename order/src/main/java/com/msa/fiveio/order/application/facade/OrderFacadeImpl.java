@@ -32,4 +32,9 @@ public class OrderFacadeImpl implements OrdersFacade {
         return orderService.readOrders(requestDto, pageable);
     }
 
+    @Override
+    public OrderResponseDto readOrder(UUID orderId) {
+        return orderService.readOrder(orderId);
+    }
+
 }

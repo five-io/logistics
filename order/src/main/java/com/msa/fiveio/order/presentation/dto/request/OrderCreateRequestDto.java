@@ -1,6 +1,7 @@
 package com.msa.fiveio.order.presentation.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.msa.fiveio.order.model.entity.Order;
 import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,4 +28,12 @@ public class OrderCreateRequestDto {
     @JsonProperty("recipient-slack-id")
     private final String recipientSlackId;
 
+    public Order createOrder() {
+        return Order.builder()
+            .receiverCompanyId(receiverCompanyId)
+            .productId(productId)
+            .quantity(quantity)
+            .requestNotes(requestNotes)
+            .build();
+    }
 }

@@ -1,18 +1,31 @@
 package com.msa.fiveio.user.model.entity;
 
 import com.msa.fiveio.common.auditing.BaseEntity;
+import com.msa.fiveio.user.model.entity.enums.UsersRoleEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
-@Getter @Setter
+@Builder
+@Getter
 @Entity
 @Table(name = "p_users")
+@AllArgsConstructor
 public class Users extends BaseEntity {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 증가
+    @Column(nullable = false)
+    private Long userId;
+
     @Column(length = 50, nullable = false)
     private String username;
 
@@ -25,17 +38,18 @@ public class Users extends BaseEntity {
     @Column(nullable = false)
     private String email;
 
+    @Enumerated(EnumType.STRING) // ENUM 타입 매핑
     @Column(nullable = false)
-    private String role = "";
+    private UsersRoleEnum role;
 
     public Users() {
     }
 
-    public Users(String username, String password,String slackId ,String email, UsersRoleEnum roleEnum) {
+    public Users(String username, String password,String slackId ,String email, UsersRoleEnum role) {
         this.username = username;
         this.password = password;
         this.slackId = slackId;
         this.email = email;
-        this.role = roleEnum.getAuthority();
+        this.role = UsersRoleEnum.valueOf(role.getAuthority());
     }
 }

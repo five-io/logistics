@@ -1,6 +1,5 @@
 package com.msa.fiveio.order.application.usecase;
 
-import com.msa.fiveio.order.infrastructure.client.CompanyClient;
 import com.msa.fiveio.order.infrastructure.client.DeliveryClient;
 import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
 import com.msa.fiveio.order.infrastructure.client.dto.request.DeliveryCreateRequestDto;
@@ -28,7 +27,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
-    private final CompanyClient companyClient;
     private final DeliveryClient deliveryClient;
 
     @Transactional

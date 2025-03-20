@@ -2,6 +2,8 @@ package com.msa.fiveio.slack.application.usecase;
 
 import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.SlackErrorCode;
+import com.msa.fiveio.slack.infrastructure.client.AiClient;
+import com.msa.fiveio.slack.infrastructure.client.SlackClient;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.model.repository.SlacksQueryRepository;
 import com.msa.fiveio.slack.model.repository.SlacksRepository;
@@ -10,14 +12,13 @@ import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSendRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import com.msa.fiveio.slack.presentation.mapper.SlacksMapper;
-import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.SQLRestriction;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -28,15 +29,24 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class SlacksServiceImpl implements SlacksService {
 
+	private final AiClient aiClient;
+	private final SlackClient slackClient;
 	private final SlacksRepository slacksRepository;
 	private final SlacksQueryRepository slacksQueryRepository;
 
 	@Override
 	public SlacksCreateResponseDto createSlack(SlacksCreateRequestDto slacksCreateRequestDto) {
 
-			Slacks newSlacks = SlacksMapper.slacksCreateRequestDtoToEntity(slacksCreateRequestDto);
-			Slacks createSlacks = slacksRepository.save(newSlacks);
-			return SlacksMapper.entityToCreateResponseDto(createSlacks);
+		String message = aiClient.createAis(slacksCreateRequestDto);
+
+		SlacksSendRequestDto slacksSendRequestDto = SlacksMapper.stringToSendRequestDto(message);
+		slackClient.sendSlack(slacksSendRequestDto);
+
+		Slacks newSlacks = SlacksMapper.slacksCreateRequestDtoToEntity(slacksCreateRequestDto,
+			message);
+		Slacks createSlacks = slacksRepository.save(newSlacks);
+
+		return SlacksMapper.entityToCreateResponseDto(createSlacks);
 	}
 
 	@Override
@@ -61,24 +71,23 @@ public class SlacksServiceImpl implements SlacksService {
 
 	@Override
 	@Transactional
-	public SlacksUpdateResponseDto updateSlack(UUID id, SlacksUpdateRequestDto slacksUpdateRequestDto) {
+	public SlacksUpdateResponseDto updateSlack(UUID id,
+		SlacksUpdateRequestDto slacksUpdateRequestDto) {
 		String message = slacksUpdateRequestDto.getMessage();
-		LocalDateTime deliveryTime = slacksUpdateRequestDto.getDeliveryTime();
 
-		Slacks slacks = slacksRepository.findById(id).orElseThrow(()->
+		Slacks slacks = slacksRepository.findById(id).orElseThrow(() ->
 			new CustomException(SlackErrorCode.SLACKS_NOT_FOUND));
 
-		slacks.update(message, deliveryTime);
+		slacks.update(message);
 
 		return SlacksMapper.entityToUpdateResponseDto(slacks);
 	}
 
 	@Override
 	public SlacksDeleteResponseDto deleteSlack(UUID id) {
-		Slacks slacks = slacksRepository.findById(id).orElseThrow(()->
+		Slacks slacks = slacksRepository.findById(id).orElseThrow(() ->
 			new CustomException(SlackErrorCode.SLACKS_NOT_FOUND));
 
 		return SlacksMapper.entityToDeleteResponseDto(slacks);
 	}
-
 }

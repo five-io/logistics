@@ -6,6 +6,7 @@ import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDt
 import com.msa.fiveio.order.model.entity.Order;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
+import com.msa.fiveio.order.presentation.dto.request.OrderUpdateRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import com.msa.fiveio.order.presentation.mapper.OrderMapper;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,7 +43,17 @@ public class OrderFacadeImpl implements OrdersFacade {
 
     @Override
     public OrderResponseDto readOrder(UUID orderId) {
-        return orderService.readOrder(orderId);
+        Order order = orderService.getOrder(orderId);
+        return OrderMapper.OrderToOrderResponseDto(order);
+    }
+
+    @Transactional
+    @Override
+    public OrderResponseDto updateOrder(UUID orderId, OrderUpdateRequestDto requestDto) {
+        Order order = orderService.getOrder(orderId);
+        // 개수가 수정될 경우 재고 관리 요청 추가
+        orderService.updateOrder(order, requestDto);
+        return OrderMapper.OrderToOrderResponseDto(order);
     }
 
 }

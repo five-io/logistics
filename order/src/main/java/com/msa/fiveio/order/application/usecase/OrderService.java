@@ -3,6 +3,7 @@ package com.msa.fiveio.order.application.usecase;
 import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
 import com.msa.fiveio.order.model.entity.Order;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
+import com.msa.fiveio.order.presentation.dto.request.OrderUpdateRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import java.util.UUID;
 import org.springframework.data.domain.Page;
@@ -14,5 +15,7 @@ public interface OrderService {
 
     Page<OrderResponseDto> readOrders(OrderSearchRequestDto requestDto, Pageable pageable);
 
-    OrderResponseDto readOrder(UUID orderId);
+    void updateOrder(Order order, OrderUpdateRequestDto requestDto);
+
+    Order getOrder(UUID orderId);
 }

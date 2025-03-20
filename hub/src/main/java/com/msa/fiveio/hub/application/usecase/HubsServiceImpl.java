@@ -6,8 +6,6 @@ import com.msa.fiveio.common.exception.domain.HubErrorCode;
 import com.msa.fiveio.hub.infrastructure.client.KakaoClient;
 import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.model.repository.HubsRepository;
-import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteRequestDto;
-import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteResponseDto;
 import com.msa.fiveio.hub.presentation.dto.hubs.DocumentDto;
 import com.msa.fiveio.hub.presentation.dto.hubs.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.hubs.HubsResponseDto;
@@ -82,9 +80,11 @@ public class HubsServiceImpl implements HubsService {
         return SearchResponseDtos.fromPage(hubsPage).toPage(hubsPage);
     }
 
+
     @Override
-    public HubRouteResponseDto createHubRoute(HubRouteRequestDto hubsDto) {
-        return null;
+    public List<Hubs> getHubList() {
+        List<Hubs> hubs = hubsRepository.findAll();
+        return hubs;
     }
 
 
@@ -92,13 +92,11 @@ public class HubsServiceImpl implements HubsService {
         KakaoResponseDto response = kakaoClient.searchAddress(address);
 
         List<DocumentDto> documentDtoList = response.getDocumentList();
-        return documentDtoList.stream()
-            .filter(dto -> dto.getAddressName().equals(address)) // 주소 일치하는 값 찾기
-            .findFirst() // 첫 번째 일치하는 요소 찾기
-            .or(() -> documentDtoList.stream().findFirst()) // 없으면 첫 번째 요소 가져오기
-            .map(dto -> new String[]{dto.getLongitude(), dto.getLatitude()}) // 결과 매핑
-            .orElse(new String[]{"", ""});
+        String[] result = {documentDtoList.get(0).getLongitude(),
+            documentDtoList.get(0).getLatitude()};
+        return result;
     }
+
 
 }
 

@@ -10,9 +10,6 @@ import lombok.Getter;
 @Builder
 public class SlacksUpdateResponseDto {
 
-	@JsonProperty("user-id")
-	private Long userId;
-
 	@JsonProperty("receive-id")
 	private UUID receiveId;
 

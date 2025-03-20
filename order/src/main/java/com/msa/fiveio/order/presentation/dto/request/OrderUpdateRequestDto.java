@@ -1,5 +1,6 @@
 package com.msa.fiveio.order.presentation.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -7,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderUpdateRequestDto {
 
+    @JsonProperty("quantity")
     private final Long quantity;
+    @JsonProperty("request-notes")
     private final String requestNotes;
 }

@@ -3,11 +3,19 @@ POST http://localhost:19095/api/slacks
 Content-Type: application/json
 
 {
-  "user-id": "1",
-  "receive-id": "123e4567-e89b-12d3-a456-556642440001",
-  "order-id": "123e4567-e89b-12d3-a456-556642440002",
-  "message": "test1",
-  "delivery-time": "2025-06-03T01:06:45"
+  "receiver-company-id": "a1b48aaf-9e53-48c4-bbc7-2425ec691744",
+  "order-id": "a1b48aaf-9e53-48c4-bbc7-2425ec691745",
+  "depart-id": "a1b48aaf-9e53-48c4-bbc7-2425ec691746",
+  "transit-point": "서울 허브",
+  "arrive-id": "a1b48aaf-9e53-48c4-bbc7-2425ec691747",
+  "delivery-status": "배송시작",
+  "delivery-address": "서울시 구로구 구로동",
+  "recipient-name": "양수영",
+  "recipient-slack-id": "01012345678",
+  "company-delivery-manager": "문고은",
+  "product-name": "소고기",
+  "product-quantity": "3kg",
+  "request-notes": "긴급! 빠른배송 부탁드립니다."
 }
 
 ### Slack Read
@@ -15,15 +23,16 @@ GET http://localhost:19095/api/slacks?page=0&size=10&sort=DESC&orderby=CREATED
 Content-Type: application/json
 
 ### Slack Search
-GET http://localhost:19095/api/slacks/search/c7cfe866-1319-4187-af65-3635f3de3d29?page=0&size=10&sort=DESC&orderby=CREATED
+GET http://localhost:19095/api/slacks/search/c7cfe866-1319-4187-af65-3635f3de3d29?page=0&size=10&
+    sort=DESC&orderby=CREATED
 
 ### Slack Update
 PATCH http://localhost:19095/api/slacks/update/c7cfe866-1319-4187-af65-3635f3de3d29
 Content-Type: application/json
 
 {
-  "message":"updateTest",
-  "delivery-time":"2025-06-22T01:06:44"
+  "message": "updateTest",
+  "delivery-time": "2025-06-22T01:06:44"
 }
 
 ### Slack Delete

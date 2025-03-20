@@ -29,7 +29,7 @@ public class CompanysController {
     private final CompanysFacade companysFacade;
 
     //업체등록
-    // todo. hub와의 통신(redis)
+    // todo. hub와의 통신(faignclient)
     @Operation(summary = "Company 등록", description = "Company 등록 api 입니다.")
     @PostMapping
     public ResponseEntity<CompanyCreateResponseDto> createCompany(
@@ -38,8 +38,6 @@ public class CompanysController {
                 requestdto);
         return ResponseEntity.ok(companyCreateResponseDto);
     }
-
-    //업체검색
 
     //업체단건조회
     @Operation(summary = "Company 단건조회", description = "Company 단건조회 api 입니다.")
@@ -66,4 +64,8 @@ public class CompanysController {
         companysFacade.deleteCompany(companyId);
         return ResponseEntity.noContent().build();
     }
+
+    //업체검색
+
+
 }

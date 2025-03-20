@@ -10,7 +10,7 @@ public enum CompanysType {
         this.value = value;
     }
 
-    public String getScript() {
+    public String getValue() {
         return value;
     }
 }

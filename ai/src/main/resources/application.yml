@@ -1,0 +1,92 @@
+server:
+  port: 19096
+
+spring:
+  application:
+    name: ai-service
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ai
+    driver-class-name: org.postgresql.Driver
+    username: fiveio
+    password: 1234
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 10
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  main:
+    allow-bean-definition-overriding: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      username: default
+      password: systempass
+
+resilience4j:
+  circuitbreaker:
+    enabled: true  # Feign 또는 기타 서비스에서 Circuit Breaker 활성화 여부
+    configs:
+      default: # 기본 Circuit Breaker 설정
+        registerHealthIndicator: true  # 헬스 체크를 활성화하여 상태 모니터링 가능하게 설정
+        slidingWindowType: COUNT_BASED  # 슬라이딩 윈도우 방식 (COUNT_BASED: 호출 횟수를 기준, TIME_BASED: 시간 기반)
+        slidingWindowSize: 5  # 최근 5개의 요청을 기준으로 Circuit Breaker 동작 여부 결정
+        minimumNumberOfCalls: 5  # Circuit Breaker가 활성화되기 위해 최소 5번의 호출 필요
+        slowCallRateThreshold: 100  # 느린 요청의 비율이 이 임계치를 초과하면 실패로 간주 (100% 설정)
+        slowCallDurationThreshold: 60000  # 느린 호출의 기준 시간 (60초, 즉 60,000ms)
+        failureRateThreshold: 40  # 실패율이 40% 이상이면 Circuit Breaker를 OPEN 상태로 변경
+        permittedNumberOfCallsInHalfOpenState: 3  # HALF-OPEN 상태에서 허용할 호출 개수 (테스트를 위해 3회 호출 가능)
+        waitDurationInOpenState: 20s  # OPEN 상태가 된 후 HALF-OPEN으로 변경되기까지의 대기 시간 (20초)
+
+springdoc:
+  api-docs:
+    version: openapi_3_1
+    enabled: true
+    path: /ai-service/v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - prometheus  #resilience4j 시각화
+          - busrefresh  # /bus/refresh 엔드포인트 활성화
+
+  zipkin:
+    tracing:
+      endpoint: "http://localhost:9411/api/v2/spans"
+  tracing:
+    sampling:
+      probability: 1.0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:18080/eureka/
+
+app:
+  message:
+    success: SUCCESS
+  api:
+    connection-timeout: 3000
+    read-timeout: 120000
+    max-buffer-size-MB: 300
+    ai:
+      url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=
+      key: AIzaSyA0-2FDi6G3T-fwwIv3lcdCQihXBTacYbs
+      question-base: "{ \"contents\":[{\"parts\":[{\"text\":\" . {question} \"}]}]}"

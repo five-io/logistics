@@ -1,13 +1,18 @@
 package com.msa.fiveio.user.presentation.controller;
 
 import com.msa.fiveio.user.application.UsersService;
+import com.msa.fiveio.user.model.entity.Users;
 import com.msa.fiveio.user.model.repository.UsersRepository;
+import com.msa.fiveio.user.presentation.dto.UsersProfileDto;
 import com.msa.fiveio.user.presentation.dto.UsersSignUpRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +40,11 @@ public class UsersController {
     return ResponseEntity.ok("회원가입 성공");
   }
 
-//    @PostMapping("/api/users")
-//    @Operation(summary = "사용자 정보 조회", description = "사용자의 정보를 확인합니다")
+  @GetMapping("/{userId}")
+  @Operation(summary = "사용자 정보 조회", description = "사용자의 정보를 확인합니다")
+  public ResponseEntity<UsersProfileDto> getUserProfile(@PathVariable Long userId) {
+    UsersProfileDto usersProfileDto = usersService.getUserProfile(userId);
+    return ResponseEntity.ok(usersProfileDto);
+  }
 
 }

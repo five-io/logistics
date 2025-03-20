@@ -70,4 +70,22 @@ public class Order {
     public void calculateTotalAmount(Double productPrice) {
         this.totalAmount = this.quantity * productPrice;
     }
+
+    public void update(Long quantity, String requestNotes) {
+        if (quantity != null) {
+            validateUpdateQuantity(quantity);
+            Double price = totalAmount / this.quantity;
+            this.quantity = quantity;
+            calculateTotalAmount(price);
+        }
+        if (requestNotes != null) {
+            this.requestNotes = requestNotes;
+        }
+    }
+
+    private void validateUpdateQuantity(Long quantity) {
+        if (quantity < 1) {
+            throw new IllegalArgumentException("상품 개수는 1개부터 주문할 수 있습니다.");
+        }
+    }
 }

@@ -3,6 +3,7 @@ package com.msa.fiveio.order.presentation.controller;
 import com.msa.fiveio.order.application.facade.OrdersFacade;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
+import com.msa.fiveio.order.presentation.dto.request.OrderUpdateRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,12 +28,20 @@ public class OrdersController {
 
     private final OrdersFacade ordersFacade;
 
+    /**
+     * 주문 생성
+     * 사용자 권한: 모든 로그인 사용자
+     */
     @PostMapping
     public ResponseEntity<OrderCreateResponseDto> createOrder(
         @RequestBody OrderCreateRequestDto orderRequestDto) {
         return ResponseEntity.ok(ordersFacade.createOrder(orderRequestDto));
     }
 
+    /**
+     * 주문 조회(검색)
+     * 사용자 권한: 모든 로그인 사용자. 단, 주문자 본인은 자신의 주문만 조회 가능
+     */
     @GetMapping
     public ResponseEntity<Page<OrderResponseDto>> readOrders(
         @RequestBody OrderSearchRequestDto requestDto, Pageable pageable
@@ -39,11 +49,27 @@ public class OrdersController {
         return ResponseEntity.ok(ordersFacade.readOrders(requestDto, pageable));
     }
 
+    /**
+     * 주문 단일 조회
+     * 사용자 권한: 모든 로그인 사용자. 단, 주문자 본인은 자신의 주문만 조회 가능
+     */
     @GetMapping("/{id}")
     public ResponseEntity<OrderResponseDto> readOrder(
         @PathVariable("id") UUID orderId
     ) {
         return ResponseEntity.ok(ordersFacade.readOrder(orderId));
+    }
+
+    /**
+     * 주문 수정
+     * 사용자 권한: 마스터 관리자, 해당 주문 허브 관리자
+     */
+    @PatchMapping("/{id}")
+    public ResponseEntity<OrderResponseDto> updateOrder(
+        @PathVariable("id") UUID orderId,
+        @RequestBody OrderUpdateRequestDto requestDto
+    ) {
+        return ResponseEntity.ok(ordersFacade.updateOrder(orderId, requestDto));
     }
 
 }

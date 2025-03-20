@@ -3,6 +3,7 @@ package com.msa.fiveio.order.application.usecase;
 import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
 import com.msa.fiveio.order.model.repository.OrderRepository;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
+import com.msa.fiveio.order.presentation.dto.request.OrderUpdateRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import com.msa.fiveio.order.presentation.mapper.OrderMapper;
 import com.msa.fiveio.order.model.entity.Order;
@@ -41,9 +42,16 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderResponseDto readOrder(UUID orderId) {
-        Order order = orderRepository.findById(orderId)
+    public void updateOrder(Order order, OrderUpdateRequestDto requestDto) {
+        order.update(
+            requestDto.getQuantity(),
+            requestDto.getRequestNotes()
+        );
+    }
+
+    @Override
+    public Order getOrder(UUID orderId) {
+        return orderRepository.findById(orderId)
             .orElseThrow(() -> new RuntimeException("Order not found"));
-        return OrderMapper.OrderToOrderResponseDto(order);
     }
 }

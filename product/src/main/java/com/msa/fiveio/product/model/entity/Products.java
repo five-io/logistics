@@ -15,6 +15,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -42,6 +43,7 @@ public class Products extends BaseEntity {
     @Column(name = "product_price")
     private double productPrice;
 
+    @Setter
     @Column(name = "product_type")
     private ProductType productType;
 
@@ -60,4 +62,5 @@ public class Products extends BaseEntity {
         this.productPrice = productPrice;
         this.stocks = stocks;
     }
+
 }

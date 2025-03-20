@@ -24,10 +24,14 @@ public class Stocks extends BaseEntity {
     private String id;
 
     @Column(name = "stock_quantity")
-    private int quantity;
+    private Long quantity;
 
     @Builder
-    public Stocks(int quantity) {
+    public Stocks(Long quantity) {
+        this.quantity = quantity;
+    }
+
+    public void update(long quantity) {
         this.quantity = quantity;
     }
 }

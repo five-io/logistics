@@ -10,3 +10,11 @@ Content-Type: application/json
   "companyId": "7779d020-aa2e-4145-a807-5256bbe2fd77"
 }
 
+### product-company 요청
+GET http://localhost:19094/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79/products
+
+###order-product 응답
+GET http://localhost:19098/api/products/order?
+    productId=0c133cd3-6ddc-41e0-a827-85e81c3499a8&
+    receiverCompanyId=8259e342-fbd0-4f73-b8e1-2ec2cf7faa55&
+    quantity=100

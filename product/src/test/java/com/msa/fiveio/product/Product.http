@@ -1,0 +1,12 @@
+### Product Create
+POST http://localhost:19098/api/products
+Content-Type: application/json
+#Authorization:
+
+{
+  "hubId": "8879d020-aa2e-4145-a807-5256bbe2fd88",
+  "productName": "상품명테스트",
+  "productDetail": "상품내용테스트",
+  "companyId": "7779d020-aa2e-4145-a807-5256bbe2fd77"
+}
+

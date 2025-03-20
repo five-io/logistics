@@ -1,4 +1,4 @@
-package com.msa.fiveio.hub.presentation.dto;
+package com.msa.fiveio.hub.presentation.dto.hubs;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

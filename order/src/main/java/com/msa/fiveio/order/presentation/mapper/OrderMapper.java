@@ -3,13 +3,12 @@ package com.msa.fiveio.order.presentation.mapper;
 import com.msa.fiveio.order.model.entity.Order;
 import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
-import java.util.UUID;
 
 public class OrderMapper {
 
-    public static OrderCreateResponseDto orderIdToOrderCreateResponseDto(UUID orderId) {
+    public static OrderCreateResponseDto orderIdToOrderCreateResponseDto(Order order) {
         return OrderCreateResponseDto.builder()
-            .orderId(orderId)
+            .orderId(order.getOrderId())
             .build();
     }
 

@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### Read
-GET http://127.0.0.1:19091/api/orders/6b38d6f7-1ebd-468a-a350-f511a41eff4e
+GET http://localhost:19091/api/orders/6b38d6f7-1ebd-468a-a350-f511a41eff4e
 Content-Type: application/json
 
 
@@ -22,4 +22,12 @@ Content-Type: application/json
 
 {
   "receiver-company-id": "1350d08b-0c96-41fd-8d7e-2d56f4461f81"
+}
+
+### Update
+PATCH http://localhost:19091/api/orders/6b38d6f7-1ebd-468a-a350-f511a41eff4e
+Content-Type: application/json
+
+{
+  "quantity": 9
 }

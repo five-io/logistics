@@ -2,11 +2,16 @@ package com.msa.fiveio.delivery.presentation.controller;
 
 import com.msa.fiveio.delivery.application.facade.DeliveryFacade;
 import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
+import com.msa.fiveio.delivery.presentation.dto.request.DeliverySearchRequestDto;
+import com.msa.fiveio.delivery.presentation.dto.response.DeliveryResponseDto;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,4 +49,17 @@ public class DeliveryController {
         }
     }
 
+    @GetMapping
+    public ResponseEntity<Page<DeliveryResponseDto>> readDeliveries(
+        @RequestBody DeliverySearchRequestDto requestDto, Pageable pageable
+    ) {
+        return ResponseEntity.ok(deliveryFacade.readDeliveries(requestDto, pageable));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DeliveryResponseDto> readDelivery(
+        @PathVariable("id") UUID deliveryId
+    ) {
+        return ResponseEntity.ok(deliveryFacade.readDelivery(deliveryId));
+    }
 }

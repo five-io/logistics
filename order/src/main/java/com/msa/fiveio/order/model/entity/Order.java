@@ -33,7 +33,11 @@ public class Order {
     @Column(name = "request_notes", columnDefinition = "TEXT")
     private String requestNotes;
 
-    @Column(name = "total_amount", nullable = false)
+    @Column(
+        name = "total_amount",
+        nullable = false,
+        columnDefinition = "DOUBLE DEFAULT 0.0"
+    )
     private Double totalAmount;
 
     @Builder
@@ -52,8 +56,7 @@ public class Order {
         UUID receiverCompanyId,
         UUID productId,
         Long quantity,
-        String requestNotes,
-        Double totalAmount
+        String requestNotes
     ) {
         return Order.builder()
             .requesterCompanyId(requesterCompanyId)
@@ -61,7 +64,28 @@ public class Order {
             .productId(productId)
             .quantity(quantity)
             .requestNotes(requestNotes)
-            .totalAmount(totalAmount)
             .build();
+    }
+
+    public void calculateTotalAmount(Double productPrice) {
+        this.totalAmount = this.quantity * productPrice;
+    }
+
+    public void update(Long quantity, String requestNotes) {
+        if (quantity != null) {
+            validateUpdateQuantity(quantity);
+            Double price = totalAmount / this.quantity;
+            this.quantity = quantity;
+            calculateTotalAmount(price);
+        }
+        if (requestNotes != null) {
+            this.requestNotes = requestNotes;
+        }
+    }
+
+    private void validateUpdateQuantity(Long quantity) {
+        if (quantity < 1) {
+            throw new IllegalArgumentException("상품 개수는 1개부터 주문할 수 있습니다.");
+        }
     }
 }

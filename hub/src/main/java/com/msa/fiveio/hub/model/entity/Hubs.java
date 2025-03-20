@@ -28,16 +28,16 @@ public class Hubs extends BaseEntity {
     @Column(name = "hub_id")
     private UUID id;
 
-    @Column(name = "hub_name")
+    @Column(name = "hub_name", unique = true)
     private String hubName;
 
     @Column
     private String address;
 
-    @Column(nullable = false, columnDefinition = "DOUBLE DEFAULT 0.0")
+    @Column(nullable = false, columnDefinition = "DOUBLE PRECISION DEFAULT 0.0")
     private Double latitude;
 
-    @Column(nullable = false, columnDefinition = "DOUBLE DEFAULT 0.0")
+    @Column(nullable = false, columnDefinition = "DOUBLE PRECISION DEFAULT 0.0")
     private Double longitude;
 
     @Builder

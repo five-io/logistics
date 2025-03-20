@@ -2,6 +2,7 @@ package com.msa.fiveio.company.application.usecase;
 
 import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.CompanysErrorCode;
+import com.msa.fiveio.company.infrastructure.client.ProductCompanyGetResponseDto;
 import com.msa.fiveio.company.model.entity.Companys;
 import com.msa.fiveio.company.model.repository.CompanysRepository;
 import com.msa.fiveio.company.presentation.dto.request.CompanyCreateRequestDto;
@@ -58,9 +59,17 @@ public class CompanyServiceImpl implements CompanyService {
                 () -> new CustomException(CompanysErrorCode.COMPANYS_NOT_FOUND));
         //DTO 받아온걸로 업데이트
         company.update(requestDto);
-        //업데이트한 엔티티로 save
+        //업데이트한 엔티티로 save(명시)
         companysRepository.save(company);
         return CompanysMapper.entityToUpdateCompanyResponseDto(company);
+
+    }
+
+    @Override
+    public ProductCompanyGetResponseDto getProductCompany(UUID companyId) {
+        Companys company = companysRepository.findById(companyId).orElseThrow(
+                () -> new CustomException(CompanysErrorCode.COMPANYS_NOT_FOUND));
+        return CompanysMapper.entityToGetProductCompanyResponseDto(company);
 
     }
 }

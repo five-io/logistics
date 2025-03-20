@@ -1,5 +1,6 @@
 package com.msa.fiveio.company.application.usecase;
 
+import com.msa.fiveio.company.infrastructure.client.ProductCompanyGetResponseDto;
 import com.msa.fiveio.company.presentation.dto.request.CompanyCreateRequestDto;
 import com.msa.fiveio.company.presentation.dto.request.CompanyUpdateRequestDto;
 import com.msa.fiveio.company.presentation.dto.response.CompanyCreateResponseDto;
@@ -21,5 +22,6 @@ public interface CompanyService {
     //업체수정
     CompanyUpdateResponseDto updateCompany(UUID companyId, CompanyUpdateRequestDto requestDto);
 
-
+    // 주문상품업체정보 조회(product로 넘김)
+    ProductCompanyGetResponseDto getProductCompany(UUID companyId);
 }

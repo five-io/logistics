@@ -1,5 +1,10 @@
+###Hub Setting
+POST http://localhost:19093/api/hubs/setting
+Content-Type: application/json
+
+
 ###Hub Create
-POST http://localhost:19090/api/hubs/create
+POST http://localhost:19093/api/hubs/create
 Content-Type: application/json
 Authorization:
 
@@ -11,7 +16,7 @@ Authorization:
 }
 
 ###Hub Create2
-POST http://localhost:19090/api/hubs/create
+POST http://localhost:19093/api/hubs/create
 Content-Type: application/json
 Authorization:
 

@@ -21,7 +21,8 @@ public class HubRouteFacadeImpl implements HubRouteFacade {
         //도착
         HubsResponseDto destination = hubsFacade.readHubs(hubsDto.getDepartHubId());
 
-        return hubRouteService.createHubRoute(origin, destination, hubsDto);
+        return hubRouteService.createHubRoute(origin, destination);
     }
+
 
 }

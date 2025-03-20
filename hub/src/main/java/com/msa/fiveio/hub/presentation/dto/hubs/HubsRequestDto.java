@@ -6,4 +6,7 @@ public record HubsRequestDto(String hubName,
                              Double latitude,
                              Double longitude) {
 
+    public HubsRequestDto(String hubName, String address) {
+        this(hubName, address, null, null);
+    }
 }

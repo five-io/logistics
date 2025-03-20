@@ -4,7 +4,6 @@ import com.msa.fiveio.hub.infrastructure.client.KakaoMobility;
 import com.msa.fiveio.hub.model.entity.HubRoute;
 import com.msa.fiveio.hub.model.repository.HubRouteRepository;
 import com.msa.fiveio.hub.presentation.dto.hubRoutes.DirectionsResponseDto;
-import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteRequestDto;
 import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteResponseDto;
 import com.msa.fiveio.hub.presentation.dto.hubs.HubsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -18,17 +17,17 @@ public class HubRouteServiceImpl implements HubRouteService {
     private final HubRouteRepository hubRouteRepository;
 
     @Override
-    public HubRouteResponseDto createHubRoute(HubsResponseDto start, HubsResponseDto end,
-        HubRouteRequestDto hubsDto) {
+    public HubRouteResponseDto createHubRoute(HubsResponseDto start, HubsResponseDto end) {
         //출발
         String origin = start.longitude().toString() + "," + start.latitude().toString();
         //도착
         String destination = end.longitude().toString() + "," + end.latitude().toString();
+
         DirectionsResponseDto responseDto = kakaoMobilityService.distanceMatrix(origin,
             destination);
         HubRoute hubRoute = HubRoute.builder()
-            .departId(hubsDto.getDepartHubId())
-            .arriveId(hubsDto.getArriveHubId())
+            .departId(start.id())
+            .arriveId(end.id())
             .takenTime(Long.valueOf(responseDto.getRoutes()[0].getSummary().getDuration()))
             .distance(Long.valueOf(responseDto.getRoutes()[0].getSummary().getDistance()))
             .build();
@@ -37,4 +36,6 @@ public class HubRouteServiceImpl implements HubRouteService {
 
         return HubRouteResponseDto.of(savedRoute);
     }
+
+
 }

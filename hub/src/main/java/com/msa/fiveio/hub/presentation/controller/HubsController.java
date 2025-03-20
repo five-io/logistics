@@ -8,6 +8,7 @@ import com.msa.fiveio.hub.presentation.dto.hubs.SearchResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,10 +30,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class HubsController {
 
     private final HubsFacade hubsFacade;
+    private final InitSetting initSetting;
 
     @Operation(summary = "Hub 등록", description = "Hub 등록 api 입니다.")
     @PostMapping("/create")
-    public ResponseEntity<HubsResponseDto> createHubs(@RequestBody HubsRequestDto hubsDto) {
+    public ResponseEntity<CompletableFuture<HubsResponseDto>> createHubs(
+        @RequestBody HubsRequestDto hubsDto) {
         return ResponseEntity.ok(hubsFacade.createHubs(hubsDto));
     }
 
@@ -64,5 +67,10 @@ public class HubsController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/setting")
+    public String settingHubs() {
+        initSetting.initSet();
+        return "Setting Success";
+    }
 
 }

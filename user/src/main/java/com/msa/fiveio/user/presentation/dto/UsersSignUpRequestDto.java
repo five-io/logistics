@@ -23,12 +23,13 @@ public class UsersSignUpRequestDto {
     )
     private String password;
 
-    @NotBlank
+    @NotBlank(message = "슬랙 ID는 필수 입력값입니다.")
     private String slackId;
 
-    @UUID
-    private String hub_id;
+    @NotBlank(message = "허브 ID는 필수 입력값입니다.")
+    private String hubId;
 
+    @NotBlank(message = "사용자 역할(role)은 필수 입력값입니다.")
     private String role;
 
 }

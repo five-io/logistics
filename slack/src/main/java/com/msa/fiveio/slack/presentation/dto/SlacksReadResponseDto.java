@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SlacksReadResponseDto {
+
 	@JsonProperty("total-contents")
 	private Long totalContents;
 
@@ -30,11 +31,9 @@ public class SlacksReadResponseDto {
 	@AllArgsConstructor
 	@NoArgsConstructor
 	public static class SlacksDto {
+
 		@JsonProperty("slack-id")
 		private UUID slackId;
-
-		@JsonProperty("user-id")
-		private Long userId;
 
 		@JsonProperty("receive-id")
 		private UUID receiveId;

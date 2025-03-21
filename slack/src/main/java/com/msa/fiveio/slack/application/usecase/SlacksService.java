@@ -19,6 +19,7 @@ public interface SlacksService {
 	SlacksReadResponseDto readSlack(Pageable pageable);
 	SlacksSearchResponseDto searchSlack(UUID id, Pageable pageable);
 
-	SlacksUpdateResponseDto updateSlack(UUID id, SlacksUpdateRequestDto slacksUpdateRequestDto);
+	String updateStatus(UUID id, String status);
+
 	SlacksDeleteResponseDto deleteSlack(UUID slackId);
 }

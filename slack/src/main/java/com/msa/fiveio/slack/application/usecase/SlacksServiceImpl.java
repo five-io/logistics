@@ -4,6 +4,7 @@ import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.SlackErrorCode;
 import com.msa.fiveio.slack.infrastructure.client.AiClient;
 import com.msa.fiveio.slack.infrastructure.client.SlackClient;
+import com.msa.fiveio.slack.model.entity.SendStatus;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.model.repository.SlacksQueryRepository;
 import com.msa.fiveio.slack.model.repository.SlacksRepository;
@@ -69,18 +70,15 @@ public class SlacksServiceImpl implements SlacksService {
 		return SlacksMapper.pageToSearchResponseDto(slacksSearchPage);
 	}
 
-	@Override
 	@Transactional
-	public SlacksUpdateResponseDto updateSlack(UUID id,
-		SlacksUpdateRequestDto slacksUpdateRequestDto) {
-		String message = slacksUpdateRequestDto.getMessage();
+	@Override
+	public String updateStatus(UUID orderId, String status) {
+		Slacks slacks = slacksRepository.findByOrderId(orderId)
+			.orElseThrow(() -> new IllegalArgumentException("Slack not found"));
 
-		Slacks slacks = slacksRepository.findById(id).orElseThrow(() ->
-			new CustomException(SlackErrorCode.SLACKS_NOT_FOUND));
-
-		slacks.update(message);
-
-		return SlacksMapper.entityToUpdateResponseDto(slacks);
+		SendStatus sendStatus = SendStatus.valueOf(status.toUpperCase());
+		slacks.updateStatus(sendStatus);
+		return sendStatus.name();
 	}
 
 	@Override

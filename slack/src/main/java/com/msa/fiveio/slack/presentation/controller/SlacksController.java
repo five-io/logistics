@@ -6,9 +6,9 @@ import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSearchRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
-import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -55,10 +54,9 @@ public class SlacksController {
 	}
 
 	@Operation(summary = "Slack 검색", description = "Slack 검색 api 입니다.")
-	@GetMapping("/search/{id}")
-	public ResponseEntity<SlacksSearchResponseDto> searchSlack(@PathVariable UUID id,
-		Pageable pageable) {
-		SlacksSearchResponseDto slacksSearchResponseDto = slacksFacade.searchSlack(id, pageable);
+	@GetMapping("/search")
+	public ResponseEntity<SlacksSearchResponseDto> searchSlack(Pageable pageable, @RequestBody SlacksSearchRequestDto.SlacksDto slacksDto) {
+		SlacksSearchResponseDto slacksSearchResponseDto = slacksFacade.searchSlack(pageable, slacksDto);
 
 		return ResponseEntity.ok(slacksSearchResponseDto);
 	}

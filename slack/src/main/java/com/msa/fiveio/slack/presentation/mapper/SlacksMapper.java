@@ -7,7 +7,6 @@ import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSendRequestDto;
-import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
@@ -29,6 +28,7 @@ public class SlacksMapper {
 			.productName(slacksCreateRequestDto.getProductName())
 			.productQuantity(slacksCreateRequestDto.getProductQuantity())
 			.message(message)
+			.sendStatus(slacksCreateRequestDto.getSendStatus())
 			.build();
 	}
 
@@ -83,12 +83,6 @@ public class SlacksMapper {
 	public static SlacksSearchResponseDto.SlacksDto entityToSlacksSearchDto(Slacks slacks) {
 		return SlacksSearchResponseDto.SlacksDto.builder()
 			.slackId(slacks.getId())
-			.orderId(slacks.getOrderId())
-			.build();
-	}
-
-	public static SlacksUpdateResponseDto entityToUpdateResponseDto(Slacks slacks) {
-		return SlacksUpdateResponseDto.builder()
 			.orderId(slacks.getOrderId())
 			.build();
 	}

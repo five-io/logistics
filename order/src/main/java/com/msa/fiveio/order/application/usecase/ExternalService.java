@@ -10,4 +10,8 @@ public interface ExternalService {
         OrderCreateRequestDto orderInfo);
 
     CompanyResponseDto sendCompanyRequest(OrderCreateRequestDto orderInfo);
+
+    String getDeliveryStatus(UUID orderId);
+
+    void rollbackStock(UUID orderId, Long quantity);
 }

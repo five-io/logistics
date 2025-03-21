@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -80,6 +81,15 @@ public class OrdersController {
         @RequestBody OrderUpdateRequestDto requestDto
     ) {
         return ResponseEntity.ok(ordersFacade.updateOrder(orderId, requestDto));
+    }
+
+    @DeleteMapping("/{id}/cancel")
+    public void cancelOrder(
+        @PathVariable("id") UUID orderId
+//        @RequestHeader("X-User-Id") Long userId
+    ) {
+        Long userId = 1L;
+        ordersFacade.cancelOrder(orderId, userId);
     }
 
 }

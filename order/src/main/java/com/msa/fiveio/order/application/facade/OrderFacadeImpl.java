@@ -56,4 +56,13 @@ public class OrderFacadeImpl implements OrdersFacade {
         return OrderMapper.OrderToOrderResponseDto(order);
     }
 
+    @Transactional
+    @Override
+    public void cancelOrder(UUID orderId, Long userId) {
+        String status = externalService.getDeliveryStatus(orderId);
+        Order order = orderService.getOrder(orderId);
+        externalService.rollbackStock(order.getOrderId(), order.getQuantity());
+        orderService.cancelOrder(order, userId, status);
+    }
+
 }

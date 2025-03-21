@@ -31,18 +31,18 @@ public abstract class BaseEntity implements Serializable {
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
-//    private Long deletedBy;
+    private Long deletedBy;
 
 
     private LocalDateTime deletedAt;
 
- //   public void addDeletedField(Long deletedBy) {
-  //      this.delete(LocalDateTime.now(), deletedBy);
-  //  }
+    public void addDeletedField(Long deletedBy) {
+        this.delete(LocalDateTime.now(), deletedBy);
+    }
 
- //   public void delete(LocalDateTime deleteAt, Long deletedBy) {
-  //      this.deletedAt = deleteAt;
-  //      this.deletedBy = deletedBy;
-  //  }
+    public void delete(LocalDateTime deleteAt, Long deletedBy) {
+        this.deletedAt = deleteAt;
+        this.deletedBy = deletedBy;
+    }
 
 }

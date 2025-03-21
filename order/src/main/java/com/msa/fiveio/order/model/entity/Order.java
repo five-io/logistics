@@ -1,5 +1,6 @@
 package com.msa.fiveio.order.model.entity;
 
+import com.msa.fiveio.common.auditing.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "p_orders")
 @Entity
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -36,7 +37,7 @@ public class Order {
     @Column(
         name = "total_amount",
         nullable = false,
-        columnDefinition = "DOUBLE DEFAULT 0.0"
+        columnDefinition = "DOUBLE PRECISION DEFAULT 0.0 NOT NULL"
     )
     private Double totalAmount;
 

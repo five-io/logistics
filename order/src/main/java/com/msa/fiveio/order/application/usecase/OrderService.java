@@ -18,4 +18,6 @@ public interface OrderService {
     void updateOrder(Order order, OrderUpdateRequestDto requestDto);
 
     Order getOrder(UUID orderId);
+
+    void cancelOrder(Order order, Long userId, String status);
 }

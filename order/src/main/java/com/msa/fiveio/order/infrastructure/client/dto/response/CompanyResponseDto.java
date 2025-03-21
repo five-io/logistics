@@ -13,5 +13,6 @@ public class CompanyResponseDto {
     private final UUID departHubId;
     private final UUID arriveHubId;
     private final Double productPrice;
+    private final String productName;
 
 }

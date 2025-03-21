@@ -3,6 +3,8 @@ package com.msa.fiveio.slack.model.entity;
 import com.msa.fiveio.common.auditing.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -59,12 +61,16 @@ public class Slacks extends BaseEntity {
 	@Column(columnDefinition = "TEXT")
 	private String message;
 
+	@Enumerated(EnumType.STRING)
+	@Column(name = "send_status", nullable = false)
+	private SendStatus sendStatus;
+
 	@Builder
 	public Slacks(UUID orderId, String departHubName, String transitPoint, String arriveHubName,
 		String deliveryAddress, String recipientName, String recipientSlackId,
 		String companyDeliveryManager, String productName, Long productQuantity,
 		String requestNotes,
-		String message) {
+		String message, SendStatus sendStatus) {
 		this.orderId = orderId;
 		this.departHubName = departHubName;
 		this.transitPoint = transitPoint;
@@ -77,10 +83,11 @@ public class Slacks extends BaseEntity {
 		this.productQuantity = productQuantity;
 		this.requestNotes = requestNotes;
 		this.message = message;
+		this.sendStatus = sendStatus;
 	}
 
-	public void update(String message) {
-		this.message = message;
+	public void updateStatus(SendStatus status) {
+		this.sendStatus = status;
 	}
 }
 

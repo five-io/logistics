@@ -17,12 +17,10 @@ public class SlacksMapper {
 	public static Slacks slacksCreateRequestDtoToEntity(
 		SlacksCreateRequestDto slacksCreateRequestDto, String message) {
 		return Slacks.builder()
-			.receiverCompanyId(slacksCreateRequestDto.getReceiverCompanyId())
 			.orderId(slacksCreateRequestDto.getOrderId())
-			.departId(slacksCreateRequestDto.getDepartId())
+			.departHubName(slacksCreateRequestDto.getDepartHubName())
 			.transitPoint(slacksCreateRequestDto.getTransitPoint())
-			.arriveId(slacksCreateRequestDto.getArriveId())
-			.deliveryStatus(slacksCreateRequestDto.getDeliveryStatus())
+			.arriveHubName(slacksCreateRequestDto.getArriveHubName())
 			.deliveryAddress(slacksCreateRequestDto.getDeliveryAddress())
 			.requestNotes(slacksCreateRequestDto.getRequestNotes())
 			.recipientName(slacksCreateRequestDto.getRecipientName())

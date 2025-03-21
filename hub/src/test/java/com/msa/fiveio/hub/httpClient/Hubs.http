@@ -1,13 +1,13 @@
 ###Hub Setting
-POST http://localhost:19093/api/hubs/setting
+POST http://localhost:19090/api/hubs/setting
 Content-Type: application/json
 
 ###
-POST http://localhost:19093/api/routes/setRoute
+POST http://localhost:19090/api/routes/setRoute
 Content-Type: application/json
 
 ###Hub Create
-POST http://localhost:19093/api/hubs/create
+POST http://localhost:19090/api/hubs/create
 Content-Type: application/json
 Authorization:
 
@@ -19,7 +19,7 @@ Authorization:
 }
 
 ###Hub Create2
-POST http://localhost:19093/api/hubs/create
+POST http://localhost:19090/api/hubs/create
 Content-Type: application/json
 Authorization:
 
@@ -31,11 +31,12 @@ Authorization:
 }
 
 ###Hub 단 건 조회
-GET http://localhost:19090/api/hubs/read?id=84e09714-2b66-4b44-9b43-80299520e84f
+GET http://localhost:19090/api/hubs/read?id=afd3c207-c492-4f96-b53a-60ef17f5a879
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdDIiLCJyb2xlIjoiUk9MRV9NQVNURVIiLCJleHAiOjE3NDI1NjQ4NTksImlhdCI6MTc0MjU2NDI1OX0.-AGvGp7THX-kv1Flkk2MftQdKCMd6k7UxYIB_M6yQMc
 
 ###Hub 수정
-PATCH http://localhost:19093/api/hubs/update/ca1eaf30-77c8-4d27-9532-d3cda0b31bad
+PATCH http://localhost:19090/api/hubs/update/ca1eaf30-77c8-4d27-9532-d3cda0b31bad
 Content-Type: application/json
 
 {
@@ -43,5 +44,6 @@ Content-Type: application/json
 }
 
 ###Hub 전체조회
-GET http://localhost:19093/api/hubs/search?page=0&size=10&sort=createdAt,asc&hubName=경기
+GET http://localhost:19090/api/hubs/search?page=0&size=10&sort=createdAt,asc&hubName=경기
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdDIiLCJyb2xlIjoiUk9MRV9NQVNURVIiLCJleHAiOjE3NDI1NjY5NjUsImlhdCI6MTc0MjU2NjM2NX0.Q6UBEQHl1rNytXTVil2FIRGWR3AmQTblZRIEfg2OnPA

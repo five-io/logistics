@@ -2,7 +2,6 @@ package com.msa.fiveio.delivery.application.usecase;
 
 import com.msa.fiveio.delivery.infrastructure.client.dto.DeliveryManagers;
 import com.msa.fiveio.delivery.model.entity.Delivery;
-import com.msa.fiveio.delivery.model.entity.DeliveryFactory;
 import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
 import com.msa.fiveio.delivery.model.repository.DeliveryRepository;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
@@ -75,7 +74,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     private Delivery createDelivery(DeliveryCreateRequestDto requestDto,
         Long companyDeliveryManager) {
-        return DeliveryFactory.createDelivery(
+        return Delivery.createDelivery(
             requestDto.getOrderId(),
             requestDto.getDepartHubId(),
             requestDto.getArriveHubId(),

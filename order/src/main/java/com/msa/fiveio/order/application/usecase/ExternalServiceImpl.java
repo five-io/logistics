@@ -1,6 +1,7 @@
 package com.msa.fiveio.order.application.usecase;
 
 import com.msa.fiveio.order.infrastructure.client.DeliveryClient;
+import com.msa.fiveio.order.infrastructure.client.ProductClient;
 import com.msa.fiveio.order.infrastructure.client.dto.request.DeliveryCreateRequestDto;
 import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class ExternalServiceImpl implements ExternalService {
 
     private final DeliveryClient deliveryClient;
+    private final ProductClient productClient;
 
     @Override
     public void sendDeliveryRequest(UUID orderId, CompanyResponseDto companyInfo,
@@ -40,5 +42,15 @@ public class ExternalServiceImpl implements ExternalService {
             .build();
 //        return companyClient.getCompanyInfo(orderInfo.getProductId(),
 //            orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
+    }
+
+    @Override
+    public String getDeliveryStatus(UUID orderId) {
+        return deliveryClient.getDeliveryStatus(orderId);
+    }
+
+    @Override
+    public void rollbackStock(UUID orderId, Long quantity) {
+        productClient.rollbackStock(orderId, quantity);
     }
 }

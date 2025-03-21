@@ -5,8 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class SlacksCreateResponseDto {
-	
-	private String message;
+public class SlacksSendRequestDto {
 
+	private String text;
 }

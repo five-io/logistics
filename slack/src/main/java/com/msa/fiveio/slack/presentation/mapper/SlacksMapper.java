@@ -6,6 +6,7 @@ import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSendRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,19 +15,35 @@ import org.springframework.data.domain.Page;
 public class SlacksMapper {
 
 	public static Slacks slacksCreateRequestDtoToEntity(
-		SlacksCreateRequestDto slacksCreateRequestDto) {
+		SlacksCreateRequestDto slacksCreateRequestDto, String message) {
 		return Slacks.builder()
-			.userId(slacksCreateRequestDto.getUserId())
-			.receiveId(slacksCreateRequestDto.getReceiveId())
+			.receiverCompanyId(slacksCreateRequestDto.getReceiverCompanyId())
 			.orderId(slacksCreateRequestDto.getOrderId())
-			.message(slacksCreateRequestDto.getMessage())
-			.deliveryTime(slacksCreateRequestDto.getDeliveryTime())
+			.departId(slacksCreateRequestDto.getDepartId())
+			.transitPoint(slacksCreateRequestDto.getTransitPoint())
+			.arriveId(slacksCreateRequestDto.getArriveId())
+			.deliveryStatus(slacksCreateRequestDto.getDeliveryStatus())
+			.deliveryAddress(slacksCreateRequestDto.getDeliveryAddress())
+			.requestNotes(slacksCreateRequestDto.getRequestNotes())
+			.recipientName(slacksCreateRequestDto.getRecipientName())
+			.recipientSlackId(slacksCreateRequestDto.getRecipientSlackId())
+			.companyDeliveryManager(slacksCreateRequestDto.getCompanyDeliveryManager())
+			.productName(slacksCreateRequestDto.getProductName())
+			.productQuantity(slacksCreateRequestDto.getProductQuantity())
+			.message(message)
 			.build();
 	}
 
 	public static SlacksCreateResponseDto entityToCreateResponseDto(Slacks slacks) {
 		return SlacksCreateResponseDto.builder()
-			.slackId(slacks.getId())
+			.message(slacks.getMessage())
+			.build();
+	}
+
+
+	public static SlacksSendRequestDto stringToSendRequestDto(String text) {
+		return SlacksSendRequestDto.builder()
+			.text(text)
 			.build();
 	}
 
@@ -46,11 +63,7 @@ public class SlacksMapper {
 	public static SlacksReadResponseDto.SlacksDto entityToSlacksReadDto(Slacks slacks) {
 		return SlacksReadResponseDto.SlacksDto.builder()
 			.slackId(slacks.getId())
-			.userId(slacks.getUserId())
-			.receiveId(slacks.getReceiveId())
 			.orderId(slacks.getOrderId())
-			.message(slacks.getMessage())
-			.deliveryTime(slacks.getDeliveryTime())
 			.build();
 	}
 
@@ -65,28 +78,20 @@ public class SlacksMapper {
 			.collect(Collectors.toList());
 
 		return builder
-				.slackList(slacksDtoList)
-				.build();
+			.slackList(slacksDtoList)
+			.build();
 	}
 
 	public static SlacksSearchResponseDto.SlacksDto entityToSlacksSearchDto(Slacks slacks) {
 		return SlacksSearchResponseDto.SlacksDto.builder()
 			.slackId(slacks.getId())
-			.userId(slacks.getUserId())
-			.receiveId(slacks.getReceiveId())
 			.orderId(slacks.getOrderId())
-			.message(slacks.getMessage())
-			.deliveryTime(slacks.getDeliveryTime())
 			.build();
 	}
 
 	public static SlacksUpdateResponseDto entityToUpdateResponseDto(Slacks slacks) {
 		return SlacksUpdateResponseDto.builder()
-			.userId(slacks.getUserId())
-			.receiveId(slacks.getReceiveId())
 			.orderId(slacks.getOrderId())
-			.message(slacks.getMessage())
-			.deliveryTime(slacks.getDeliveryTime())
 			.build();
 	}
 

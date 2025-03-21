@@ -14,8 +14,6 @@ import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSendRequestDto;
-import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
-import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import com.msa.fiveio.slack.presentation.mapper.SlacksMapper;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;

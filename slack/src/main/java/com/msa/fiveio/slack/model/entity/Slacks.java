@@ -24,22 +24,16 @@ public class Slacks extends BaseEntity {
 	private UUID id;
 
 	@Column
-	private UUID receiverCompanyId;
-
-	@Column
 	private UUID orderId;
 
 	@Column
-	private UUID departId;
+	private String departHubName;
 
 	@Column
 	private String transitPoint;
 
 	@Column
-	private UUID arriveId;
-
-	@Column
-	private String deliveryStatus;
+	private String arriveHubName;
 
 	@Column
 	private String deliveryAddress;
@@ -57,7 +51,7 @@ public class Slacks extends BaseEntity {
 	private String productName;
 
 	@Column
-	private String productQuantity;
+	private Long productQuantity;
 
 	@Column
 	private String requestNotes;
@@ -66,16 +60,15 @@ public class Slacks extends BaseEntity {
 	private String message;
 
 	@Builder
-	public Slacks(UUID receiverCompanyId, UUID orderId, UUID departId, String transitPoint,
-		UUID arriveId, String deliveryStatus, String deliveryAddress, String recipientName,
-		String recipientSlackId, String companyDeliveryManager, String productName,
-		String productQuantity, String requestNotes, String message) {
-		this.receiverCompanyId = receiverCompanyId;
+	public Slacks(UUID orderId, String departHubName, String transitPoint, String arriveHubName,
+		String deliveryAddress, String recipientName, String recipientSlackId,
+		String companyDeliveryManager, String productName, Long productQuantity,
+		String requestNotes,
+		String message) {
 		this.orderId = orderId;
-		this.departId = departId;
+		this.departHubName = departHubName;
 		this.transitPoint = transitPoint;
-		this.arriveId = arriveId;
-		this.deliveryStatus = deliveryStatus;
+		this.arriveHubName = arriveHubName;
 		this.deliveryAddress = deliveryAddress;
 		this.recipientName = recipientName;
 		this.recipientSlackId = recipientSlackId;

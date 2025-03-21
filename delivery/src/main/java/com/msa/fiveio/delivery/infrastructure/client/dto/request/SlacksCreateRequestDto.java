@@ -1,5 +1,6 @@
 package com.msa.fiveio.delivery.infrastructure.client.dto.request;
 
+import com.msa.fiveio.delivery.infrastructure.client.dto.response.HubsResponseDto;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
 import java.util.UUID;
 import lombok.Builder;
@@ -9,9 +10,9 @@ import lombok.Getter;
 public class SlacksCreateRequestDto {
 
     private final UUID orderId;                     // o 주문 아이디
-    private final String departHubName;             // x 도착 허브 이름
+    private final String departHubName;             // o 도착 허브 이름
     private final String transitPoint;              // x 경유지
-    private final String arriveHubName;             // x 출발 허브 이름
+    private final String arriveHubName;             // o 출발 허브 이름
     private final String deliveryAddress;           // o 배송지
     private final String recipientName;             // o 수령인 이름
     private final String recipientSlackId;          // o 수령인 전화번호
@@ -21,11 +22,15 @@ public class SlacksCreateRequestDto {
     private final String requestNotes;              // o 요청 사항
 
     @Builder
-    public SlacksCreateRequestDto(DeliveryCreateRequestDto deliveryCreateRequestDto) {
+    public SlacksCreateRequestDto(
+        DeliveryCreateRequestDto deliveryCreateRequestDto,
+        HubsResponseDto departHub,
+        HubsResponseDto arriveHub
+    ) {
         this.orderId = deliveryCreateRequestDto.getOrderId();
-        this.departHubName = "도착 허브 이름(허브)";
+        this.departHubName = departHub.getHubName();
         this.transitPoint = "경유지(배송 경로)";
-        this.arriveHubName = "출발 허브 이름(허브)";
+        this.arriveHubName = arriveHub.getHubName();
         this.deliveryAddress = deliveryCreateRequestDto.getDeliveryAddress();
         this.recipientName = deliveryCreateRequestDto.getRecipientName();
         this.recipientSlackId = deliveryCreateRequestDto.getRecipientSlackId();

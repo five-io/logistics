@@ -27,4 +27,14 @@ public class DeliveryCreateRequestDto {
     // 전화번호로 대체
     @JsonProperty("recipient-slack-id")
     private final String recipientSlackId;
+
+    @JsonProperty("quantity")
+    private final Long quantity;
+
+    @JsonProperty("request-notes")
+    private final String requestNotes;
+
+    @JsonProperty("product-name")
+    private final String productName;
+
 }

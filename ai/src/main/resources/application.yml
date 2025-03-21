@@ -6,21 +6,6 @@ spring:
     name: ai-service
   profiles:
     active: local
-  datasource:
-    url: jdbc:postgresql://localhost:5432/ai
-    driver-class-name: org.postgresql.Driver
-    username: fiveio
-    password: 1234
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
-    open-in-view: false
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        format_sql: true
-        default_batch_fetch_size: 10
   rabbitmq:
     host: localhost
     port: 5672

@@ -8,11 +8,14 @@ import lombok.Getter;
 @Builder
 public class AisCreateRequestDto {
 
+	@JsonProperty("depart-hub-name")
+	private String departHubName;
+
 	@JsonProperty("transit-point")
 	private String transitPoint;
 
-	@JsonProperty("delivery-status")
-	private String deliveryStatus;
+	@JsonProperty("arrive-hub-name")
+	private String arriveHubName;
 
 	@JsonProperty("delivery-address")
 	private String deliveryAddress;
@@ -30,17 +33,19 @@ public class AisCreateRequestDto {
 	private String productName;
 
 	@JsonProperty("product-quantity")
-	private String productQuantity;
+	private Long productQuantity;
 
 	@JsonProperty("request-notes")
 	private String requestNotes;
 
 	@Builder
-	public AisCreateRequestDto(String transitPoint, String deliveryStatus, String deliveryAddress,
-		String recipientName, String recipientSlackId, String companyDeliveryManager,
-		String productName, String productQuantity, String requestNotes) {
+	public AisCreateRequestDto(String departHubName, String transitPoint, String arriveHubName,
+		String deliveryAddress, String recipientName, String recipientSlackId,
+		String companyDeliveryManager, String productName, Long productQuantity,
+		String requestNotes) {
+		this.departHubName = departHubName;
 		this.transitPoint = transitPoint;
-		this.deliveryStatus = deliveryStatus;
+		this.arriveHubName = arriveHubName;
 		this.deliveryAddress = deliveryAddress;
 		this.recipientName = recipientName;
 		this.recipientSlackId = recipientSlackId;

@@ -78,6 +78,37 @@ public class Delivery {
         this.deliveryRoutes = deliveryRoutes;
     }
 
+    public static Delivery createDelivery(
+        UUID orderId,
+        UUID departHubId,
+        UUID arriveHubId,
+        String deliveryAddress,
+        Long companyDeliveryManagerId,
+        String recipientName,
+        String recipientSlackId
+    ) {
+        return Delivery.builder()
+            .orderId(orderId)
+            .deliveryStatus(DeliveryStatus.HUB_PENDING)
+            .departHubId(departHubId)
+            .arriveHubId(arriveHubId)
+            .deliveryAddress(deliveryAddress)
+            .companyDeliveryManagerId(companyDeliveryManagerId)
+            .recipient(createRecipient(recipientName, recipientSlackId))
+            .build();
+    }
+
+    public void addDeliveryRoutes(List<DeliveryRoute> deliveryRoutes) {
+        this.deliveryRoutes = deliveryRoutes;
+    }
+
+    private static Recipient createRecipient(String recipientName, String slackId) {
+        return Recipient.builder()
+            .recipientName(recipientName)
+            .slackId(slackId)
+            .build();
+    }
+
     public void updateStatus(DeliveryStatus status) {
         this.deliveryStatus = status;
     }

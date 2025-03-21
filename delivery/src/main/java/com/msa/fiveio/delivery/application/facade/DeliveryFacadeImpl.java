@@ -1,6 +1,7 @@
 package com.msa.fiveio.delivery.application.facade;
 
 import com.msa.fiveio.delivery.application.usecase.DeliveryService;
+import com.msa.fiveio.delivery.application.usecase.ExternalService;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliverySearchRequestDto;
 import com.msa.fiveio.delivery.presentation.dto.response.DeliveryResponseDto;
@@ -15,10 +16,12 @@ import org.springframework.stereotype.Service;
 public class DeliveryFacadeImpl implements DeliveryFacade {
 
     private final DeliveryService deliveryService;
+    private final ExternalService externalService;
 
     @Override
     public void createDelivery(DeliveryCreateRequestDto deliveryRequestDto) {
         deliveryService.createDelivery(deliveryRequestDto);
+        externalService.sendSlackRequest(deliveryRequestDto);
     }
 
     @Override

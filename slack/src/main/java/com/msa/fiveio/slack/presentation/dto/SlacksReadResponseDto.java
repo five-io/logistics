@@ -4,15 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.msa.fiveio.slack.model.entity.SendStatus;
 import java.util.List;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class SlacksReadResponseDto {
 
 	@JsonProperty("total-contents")
@@ -28,8 +24,6 @@ public class SlacksReadResponseDto {
 
 	@Getter
 	@Builder
-	@AllArgsConstructor
-	@NoArgsConstructor
 	public static class SlacksDto {
 
 		@JsonProperty("slack-id")

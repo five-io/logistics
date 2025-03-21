@@ -62,8 +62,8 @@ public class SlacksController {
 	}
 
 	@Operation(summary = "Slack 상태 변경", description = "Slack 상태 변경 api 입니다.")
-	@PatchMapping("/{id}/status")
-	public ResponseEntity<String> updateStatus(SlacksUpdateRequestDto slacksUpdateRequestDto
+	@PatchMapping("/status")
+	public ResponseEntity<String> updateStatus(@RequestBody SlacksUpdateRequestDto slacksUpdateRequestDto
 	) {
 		try {
 			return ResponseEntity.ok(slacksFacade.updateStatus(slacksUpdateRequestDto.getOrderId(),

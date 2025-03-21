@@ -62,6 +62,18 @@ public class SlacksMapper {
 		return SlacksReadResponseDto.SlacksDto.builder()
 			.slackId(slacks.getId())
 			.orderId(slacks.getOrderId())
+			.departHubName(slacks.getDepartHubName())
+			.transitPoint(slacks.getTransitPoint())
+			.arriveHubName(slacks.getArriveHubName())
+			.deliveryAddress(slacks.getDeliveryAddress())
+			.requestNotes(slacks.getRequestNotes())
+			.recipientName(slacks.getRecipientName())
+			.recipientSlackId(slacks.getRecipientSlackId())
+			.companyDeliveryManager(slacks.getCompanyDeliveryManager())
+			.productName(slacks.getProductName())
+			.productQuantity(slacks.getProductQuantity())
+			.message(slacks.getMessage())
+			.sendStatus(slacks.getSendStatus())
 			.build();
 	}
 
@@ -84,6 +96,18 @@ public class SlacksMapper {
 		return SlacksSearchResponseDto.SlacksDto.builder()
 			.slackId(slacks.getId())
 			.orderId(slacks.getOrderId())
+			.departHubName(slacks.getDepartHubName())
+			.transitPoint(slacks.getTransitPoint())
+			.arriveHubName(slacks.getArriveHubName())
+			.deliveryAddress(slacks.getDeliveryAddress())
+			.requestNotes(slacks.getRequestNotes())
+			.recipientName(slacks.getRecipientName())
+			.recipientSlackId(slacks.getRecipientSlackId())
+			.companyDeliveryManager(slacks.getCompanyDeliveryManager())
+			.productName(slacks.getProductName())
+			.productQuantity(slacks.getProductQuantity())
+			.message(slacks.getMessage())
+			.sendStatus(slacks.getSendStatus())
 			.build();
 	}
 

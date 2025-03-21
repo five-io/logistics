@@ -18,4 +18,6 @@ public interface OrdersFacade {
     OrderResponseDto readOrder(UUID orderId);
 
     OrderResponseDto updateOrder(UUID orderId, OrderUpdateRequestDto requestDto);
+
+    void cancelOrder(UUID orderId, Long userId);
 }

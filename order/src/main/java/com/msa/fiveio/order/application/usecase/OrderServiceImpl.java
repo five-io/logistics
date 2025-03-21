@@ -54,4 +54,13 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findById(orderId)
             .orElseThrow(() -> new RuntimeException("Order not found"));
     }
+
+    @Override
+    public void cancelOrder(Order order, Long userId, String status) {
+        if (!status.equals("HUB_PENDING")) {
+            throw new RuntimeException("Order status is not HUB_PENDING");
+        }
+        order.addDeletedField(userId);
+        log.info("Order cancelled: {}", order.getOrderId());
+    }
 }

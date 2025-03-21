@@ -59,8 +59,7 @@ public class CompanyServiceImpl implements CompanyService {
                 () -> new CustomException(CompanysErrorCode.COMPANYS_NOT_FOUND));
         //DTO 받아온걸로 업데이트
         company.update(requestDto);
-        //업데이트한 엔티티로 save(명시)
-        companysRepository.save(company);
+
         return CompanysMapper.entityToUpdateCompanyResponseDto(company);
 
     }

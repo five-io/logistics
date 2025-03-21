@@ -12,6 +12,7 @@ import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSearchRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSendRequestDto;
 import com.msa.fiveio.slack.presentation.mapper.SlacksMapper;
@@ -61,9 +62,9 @@ public class SlacksServiceImpl implements SlacksService {
 	@SQLRestriction("deleted_at IS NULL")
 	@Transactional
 	@Override
-	public SlacksSearchResponseDto searchSlack(UUID id, Pageable pageable) {
+	public SlacksSearchResponseDto searchSlack(Pageable pageable, SlacksSearchRequestDto.SlacksDto slacksDto) {
 
-		Page<Slacks> slacksSearchPage = slacksQueryRepository.findSlacksSearchList(pageable, id);
+		Page<Slacks> slacksSearchPage = slacksQueryRepository.findSlacksSearchList(pageable, slacksDto);
 
 		return SlacksMapper.pageToSearchResponseDto(slacksSearchPage);
 	}

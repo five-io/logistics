@@ -1,4 +1,4 @@
-package com.msa.fiveio.user.infrastructure.configuration;
+package com.msa.fiveio.company.infrastructure.configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.servers.Server;
@@ -12,9 +12,8 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
-            .servers(List.of(
-                new Server().url("http://localhost:19090")
-            ));
+                .servers(List.of(
+                        new Server().url("http://localhost:19090")
+                ));
     }
-
 }

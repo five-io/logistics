@@ -1,4 +1,4 @@
-package com.msa.fiveio.hub.infrastructure.configuration;
+package com.msa.fiveio.slack.infrastructure.configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.servers.Server;
@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
 
-    @Bean
-    public OpenAPI openAPI() {
-        return new OpenAPI()
-            .servers(List.of(
-                new Server().url("http://localhost:19090")
-            ));
-    }
+	@Bean
+	public OpenAPI openAPI() {
+		return new OpenAPI()
+			.servers(List.of(
+				new Server().url("http://localhost:19090")
+			));
+	}
 
 }

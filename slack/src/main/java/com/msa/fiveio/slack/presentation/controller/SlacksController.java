@@ -28,11 +28,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Tag(name = "Slack Service", description = "슬랙 서비스 API")
 public class SlacksController {
+
 	private final SlacksFacade slacksFacade;
 
 	@Operation(summary = "Slack 등록", description = "Slack 등록 api 입니다.")
 	@PostMapping
-	public ResponseEntity<SlacksCreateResponseDto> createSlack(@RequestBody SlacksCreateRequestDto slacksCreateRequestDto) {
+	public ResponseEntity<SlacksCreateResponseDto> createSlack(
+		@RequestBody SlacksCreateRequestDto slacksCreateRequestDto) {
+
 		SlacksCreateResponseDto slacksCreateResponseDto = slacksFacade.createSlack(
 			slacksCreateRequestDto);
 
@@ -49,15 +52,17 @@ public class SlacksController {
 
 	@Operation(summary = "Slack 검색", description = "Slack 검색 api 입니다.")
 	@GetMapping("/search/{id}")
-	public ResponseEntity<SlacksSearchResponseDto> searchSlack(@PathVariable UUID id, Pageable pageable) {
-		SlacksSearchResponseDto slacksSearchResponseDto = slacksFacade.searchSlack(id,pageable);
+	public ResponseEntity<SlacksSearchResponseDto> searchSlack(@PathVariable UUID id,
+		Pageable pageable) {
+		SlacksSearchResponseDto slacksSearchResponseDto = slacksFacade.searchSlack(id, pageable);
 
 		return ResponseEntity.ok(slacksSearchResponseDto);
 	}
 
 	@Operation(summary = "Slack 수정", description = "Slack 수정 api 입니다.")
 	@PatchMapping("/update/{id}")
-	public ResponseEntity<SlacksUpdateResponseDto> updateSlack(@PathVariable UUID id, @RequestBody SlacksUpdateRequestDto slacksUpdateRequestDto) {
+	public ResponseEntity<SlacksUpdateResponseDto> updateSlack(@PathVariable UUID id,
+		@RequestBody SlacksUpdateRequestDto slacksUpdateRequestDto) {
 		SlacksUpdateResponseDto slacksUpdateResponseDto = slacksFacade.updateSlack(id,
 			slacksUpdateRequestDto);
 
@@ -71,5 +76,4 @@ public class SlacksController {
 
 		return ResponseEntity.ok(slacksDeleteResponseDto);
 	}
-
 }

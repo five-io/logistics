@@ -1,5 +1,9 @@
 package com.msa.fiveio.order.presentation.controller;
 
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_HUB_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_MASTER;
+
+import com.msa.fiveio.common.annotation.ApiPermission;
 import com.msa.fiveio.order.application.facade.OrdersFacade;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
@@ -9,6 +13,7 @@ import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +22,11 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @Tag(name = "Order Service", description = "주문 서비스 API")
 @RestController
 @RequiredArgsConstructor
@@ -53,10 +60,13 @@ public class OrdersController {
      * 주문 단일 조회
      * 사용자 권한: 모든 로그인 사용자. 단, 주문자 본인은 자신의 주문만 조회 가능
      */
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER})
     @GetMapping("/{id}")
     public ResponseEntity<OrderResponseDto> readOrder(
-        @PathVariable("id") UUID orderId
+        @PathVariable("id") UUID orderId,
+        @RequestHeader("X-User-Role") String role
     ) {
+        log.info("Order Controller Read Role: " + role);
         return ResponseEntity.ok(ordersFacade.readOrder(orderId));
     }
 

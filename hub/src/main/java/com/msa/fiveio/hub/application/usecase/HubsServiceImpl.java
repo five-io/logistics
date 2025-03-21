@@ -82,9 +82,9 @@ public class HubsServiceImpl implements HubsService {
 
 
     @Override
-    public List<Hubs> getHubList() {
-        List<Hubs> hubs = hubsRepository.findAll();
-        return hubs;
+    public HubsResponseDto getHubByName(String name) {
+        Hubs hub = hubsRepository.getHubByName(name);
+        return HubsMapper.entityToHubsResponseDto(hub);
     }
 
 

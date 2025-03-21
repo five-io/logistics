@@ -60,14 +60,14 @@ public class CustomPreFilter implements GlobalFilter, Ordered {
 
         String path = exchange.getRequest().getURI().getPath();
         log.info("***********" + path);
-        if (path != null) {
-            return chain.filter(exchange);
-        }
-
-//        if (isExcludedPath(path)) {
-//            log.info("***********" + path);
+//        if (path != null) {
 //            return chain.filter(exchange);
 //        }
+
+        if (isExcludedPath(path)) {
+            log.info("***********" + path);
+            return chain.filter(exchange);
+        }
 
         try {
             //토큰가져오기
@@ -117,7 +117,7 @@ public class CustomPreFilter implements GlobalFilter, Ordered {
             .build()
             .parseClaimsJws(jwtToken)
             .getBody()
-            .getSubject();
+            .get("user_id", String.class);
     }
 
     private String getRoleFromToken(String jwtToken) {

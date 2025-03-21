@@ -40,9 +40,10 @@ public class AisController {
 
 	private String convertDtoToString(AisCreateRequestDto aisCreateRequestDto) {
 		return String.format(
-			"경유지: %s, 배송상태: %s, 배송지: %s, 수령인: %s, 전화번호: %s, 발송담당자: %s, 상품명: %s, 상품수량: %s, 요청사항: %s. 위 내용으로 일정한 형식으로 발송시한 작성해줘. 50자 이내로",
+			"출발허브: %s, 경유지: %s, 도착허브: %s, 배송지: %s, 수령인: %s, 전화번호: %s, 발송담당자: %s, 상품명: %s, 상품수량: %s, 요청사항: %s. 위 내용으로 일정한 형식으로 발송시한 작성해줘. 50자 이내로",
+			aisCreateRequestDto.getDepartHubName(),
 			aisCreateRequestDto.getTransitPoint(),
-			aisCreateRequestDto.getDeliveryStatus(),
+			aisCreateRequestDto.getArriveHubName(),
 			aisCreateRequestDto.getDeliveryAddress(),
 			aisCreateRequestDto.getRecipientName(),
 			aisCreateRequestDto.getRecipientSlackId(),

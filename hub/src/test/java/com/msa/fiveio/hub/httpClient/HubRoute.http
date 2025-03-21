@@ -1,8 +1,17 @@
 ### 이동경로 생성
-POST http://localhost:19090/api/routes
+POST http://localhost:19093/api/routes
 Content-Type: application/json
 
 {
-  "arriveHubId": "d0913844-3fe3-4527-bde1-c4d588b946f4",
-  "departHubId": "67c4849b-63ed-485f-ba16-e128de931bee"
+  "departHubId": "afd3c207-c492-4f96-b53a-60ef17f5a879",
+  "arriveHubId": "fbca1ccf-ed40-4314-b2ed-ee5bf75cc2b3"
+}
+
+### 최단경로
+GET http://localhost:19093/api/routes
+Content-Type: application/json
+
+{
+  "arriveHubId": "afd3c207-c492-4f96-b53a-60ef17f5a879",
+  "departHubId": "dccef607-e036-47c2-92b6-a29cf684235a"
 }

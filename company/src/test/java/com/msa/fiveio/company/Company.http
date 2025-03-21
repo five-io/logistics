@@ -23,3 +23,6 @@ Content-Type: application/json
   "companyAddress": "testtest동 test구",
   "hubId": null
 }
+
+###product 요청반환
+GET http://localhost:19094/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79/products

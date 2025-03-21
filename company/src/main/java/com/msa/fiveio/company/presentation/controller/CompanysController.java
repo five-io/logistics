@@ -1,6 +1,7 @@
 package com.msa.fiveio.company.presentation.controller;
 
 import com.msa.fiveio.company.application.facade.CompanysFacade;
+import com.msa.fiveio.company.infrastructure.client.ProductCompanyGetResponseDto;
 import com.msa.fiveio.company.presentation.dto.request.CompanyCreateRequestDto;
 import com.msa.fiveio.company.presentation.dto.request.CompanyUpdateRequestDto;
 import com.msa.fiveio.company.presentation.dto.response.CompanyCreateResponseDto;
@@ -66,5 +67,15 @@ public class CompanysController {
     }
 
     //업체검색
+
+
+    //주문상품에서 업체정보조회
+    @GetMapping("/{companyId}/products")
+    public ResponseEntity<ProductCompanyGetResponseDto> getProductCompany(
+            @PathVariable UUID companyId) {
+        ProductCompanyGetResponseDto ResponseDto = companysFacade.getProductCompany(companyId);
+        return ResponseEntity.ok(ResponseDto);
+    }
+
 
 }

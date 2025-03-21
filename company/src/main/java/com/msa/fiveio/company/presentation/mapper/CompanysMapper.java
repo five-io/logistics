@@ -1,5 +1,6 @@
 package com.msa.fiveio.company.presentation.mapper;
 
+import com.msa.fiveio.company.infrastructure.client.ProductCompanyGetResponseDto;
 import com.msa.fiveio.company.model.entity.Companys;
 import com.msa.fiveio.company.presentation.dto.request.CompanyCreateRequestDto;
 import com.msa.fiveio.company.presentation.dto.response.CompanyCreateResponseDto;
@@ -53,6 +54,14 @@ public class CompanysMapper {
                 .companyAddress(companys.getCompanyAddress())
                 .hubId(companys.getHubId())
                 .companyName(companys.getCompanyName())
+                .build();
+    }
+
+    public static ProductCompanyGetResponseDto entityToGetProductCompanyResponseDto(
+            Companys companys) {
+        return ProductCompanyGetResponseDto.builder()
+                .deliveryAddress(companys.getCompanyAddress())
+                .arriveHubId(companys.getHubId())
                 .build();
     }
 

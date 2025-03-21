@@ -1,0 +1,30 @@
+###
+POST http://localhost:19092/api/delivery-routes
+Content-Type: application/json
+
+{
+  "delivery": {
+    "deliveryId": "76edae8e-d4b6-4067-ac68-ba0740a42c59",
+    "order-id": "6b38d6f7-1ebd-468a-a350-f511a41eff4e",
+    "depart-hub-id": "148de9af-4291-48ae-b69a-faf0460e7e4e",
+    "arrive-hub-id": "45e3bbb6-0350-4736-9e58-7a4ca0543855",
+    "delivery-address": "Test Delivery Address",
+    "recipient-name": "홍길동",
+    "recipient-slack-id": "01011112222"
+  },
+  "deliveryManager": 999,
+  "routes": [
+    {
+      "departId": "dccef607-e036-47c2-92b6-a29cf684235a",
+      "arriveId": "fbca1ccf-ed40-4314-b2ed-ee5bf75cc2b3",
+      "takenTime": 6521,
+      "distance": 138823
+    },
+    {
+      "departId": "fbca1ccf-ed40-4314-b2ed-ee5bf75cc2b3",
+      "arriveId": "afd3c207-c492-4f96-b53a-60ef17f5a879",
+      "takenTime": 3676,
+      "distance": 52822
+    }
+  ]
+}

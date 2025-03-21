@@ -46,7 +46,7 @@ public class DeliveryRoute {
     @Column(name = "delivery_manager", nullable = false)
     private Long deliveryManager;
 
-    @Builder(access = AccessLevel.PROTECTED)
+    @Builder
     public DeliveryRoute(Delivery delivery, DeliveryRouteDetails deliveryRouteDetails,
         Double actualDistanceKm, Long actualDurationMin,
         DeliveryRouteStatus deliveryRouteStatus, Long deliveryManager) {

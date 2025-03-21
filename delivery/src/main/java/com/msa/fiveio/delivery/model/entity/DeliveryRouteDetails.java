@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import java.util.UUID;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -20,8 +21,18 @@ public class DeliveryRouteDetails {
     private UUID arriveHubId;
 
     @Column(name = "estimated_distance_km", nullable = false)
-    private Double estimatedDistanceKm;
+    private Long estimatedDistanceKm;
 
     @Column(name = "estimated_duration_min", nullable = false)
     private Long estimatedDurationMin;
+
+    @Builder
+    public DeliveryRouteDetails(int sequence, UUID departHubId, UUID arriveHubId,
+        Long estimatedDistanceKm, Long estimatedDurationMin) {
+        this.sequence = sequence;
+        this.departHubId = departHubId;
+        this.arriveHubId = arriveHubId;
+        this.estimatedDistanceKm = estimatedDistanceKm;
+        this.estimatedDurationMin = estimatedDurationMin;
+    }
 }

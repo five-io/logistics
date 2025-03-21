@@ -1,7 +1,9 @@
 package com.msa.fiveio.slack.presentation.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.msa.fiveio.slack.model.entity.SendStatus;
 import java.time.LocalDateTime;
+import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,8 +11,9 @@ import lombok.Getter;
 @Builder
 public class SlacksUpdateRequestDto {
 
-	private String message;
+	@JsonProperty("order-id")
+	private UUID orderId;
 
-	@JsonProperty("delivery-time")
-	private LocalDateTime deliveryTime;
+	@JsonProperty("send-status")
+	private SendStatus sendStatus;
 }

@@ -25,7 +25,7 @@ public class Slacks extends BaseEntity {
 	@Column(name = "slack_id")
 	private UUID id;
 
-	@Column
+	@Column(unique = true)
 	private UUID orderId;
 
 	@Column

@@ -1,6 +1,7 @@
 package com.msa.fiveio.slack.presentation.controller;
 
 import com.msa.fiveio.slack.application.facade.SlacksFacade;
+import com.msa.fiveio.slack.model.entity.SendStatus;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -34,11 +36,13 @@ public class SlacksController {
 	@Operation(summary = "Slack 등록", description = "Slack 등록 api 입니다.")
 	@PostMapping
 	public ResponseEntity<SlacksCreateResponseDto> createSlack(
-		@RequestBody SlacksCreateRequestDto slacksCreateRequestDto) {
+		@RequestBody SlacksCreateRequestDto slacksCreateRequestDto
+	) {
 
 		SlacksCreateResponseDto slacksCreateResponseDto = slacksFacade.createSlack(
 			slacksCreateRequestDto);
-
+		slacksFacade.updateStatus(slacksCreateRequestDto.getOrderId(),
+			slacksCreateRequestDto.getSendStatus().name());
 		return ResponseEntity.ok(slacksCreateResponseDto);
 	}
 
@@ -59,14 +63,18 @@ public class SlacksController {
 		return ResponseEntity.ok(slacksSearchResponseDto);
 	}
 
-	@Operation(summary = "Slack 수정", description = "Slack 수정 api 입니다.")
-	@PatchMapping("/update/{id}")
-	public ResponseEntity<SlacksUpdateResponseDto> updateSlack(@PathVariable UUID id,
-		@RequestBody SlacksUpdateRequestDto slacksUpdateRequestDto) {
-		SlacksUpdateResponseDto slacksUpdateResponseDto = slacksFacade.updateSlack(id,
-			slacksUpdateRequestDto);
-
-		return ResponseEntity.ok(slacksUpdateResponseDto);
+	@Operation(summary = "Slack 상태 변경", description = "Slack 상태 변경 api 입니다.")
+	@PatchMapping("/{id}/status")
+	public ResponseEntity<String> updateStatus(SlacksUpdateRequestDto slacksUpdateRequestDto
+	) {
+		try {
+			return ResponseEntity.ok(slacksFacade.updateStatus(slacksUpdateRequestDto.getOrderId(),
+				slacksUpdateRequestDto.getSendStatus().name()));
+		} catch (IllegalArgumentException e) {
+			String errorMessage = "잘못된 상태 값입니다. \n허용된 값: "
+				+ String.join(", ", SendStatus.getAllowedStatuses()) + " 입니다.";
+			return ResponseEntity.badRequest().body(errorMessage);
+		}
 	}
 
 	@Operation(summary = "Slack 삭제", description = "Slack 삭제 api 입니다.")

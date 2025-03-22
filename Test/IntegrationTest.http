@@ -33,17 +33,43 @@ Content-Type: application/json
 
 ###업체생성
 
-###허브에 업체 등록
+###허브에 업체 등록=업체생성
+POST http://localhost:19094/api/companys
+Content-Type: application/json
+#Authorization:
+
+{
+  "companyType": "RECEIVER",
+  "companyName": "IOCompany",
+  "companyAddress": "서울특별시 xx구 yy동 ",
+  "hubId": "8879d020-aa2e-4145-a807-5256bbe2fd89"
+}
 
 ###상품생성
+### Product Create
+POST http://localhost:19098/api/products
+Content-Type: application/json
+#Authorization:
 
-###재고추가
+{
+  "hubId": "8879d020-aa2e-4145-a807-5256bbe2fd89",
+  "productName": "랍스터",
+  "productDetail": "신선한 랍스터",
+  "companyId": "7779d020-aa2e-4145-a807-5256bbe2fd77",
+  "productPrice": 30000.0
+}
+
+###재고추가 재고 update 추가예정
 
 ###배송담당자 생성
 
 ###주문 생성
 
 ###재고확인
+GET http://localhost:19098/api/products/order?
+    productId=6fc40be8-70d3-4785-8479-2dcb3e24affe
+    receiverCompanyId=8259e342-fbd0-4f73-b8e1-2ec2cf7faa55&
+    quantity=100
 
 ###배송생성 -배송담당자지정 -배송경로 생성(이동정보관리 조회)
 

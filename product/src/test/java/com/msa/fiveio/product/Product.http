@@ -4,10 +4,11 @@ Content-Type: application/json
 #Authorization:
 
 {
-  "hubId": "8879d020-aa2e-4145-a807-5256bbe2fd88",
-  "productName": "상품명테스트",
-  "productDetail": "상품내용테스트",
-  "companyId": "7779d020-aa2e-4145-a807-5256bbe2fd77"
+  "hubId": "8879d020-aa2e-4145-a807-5256bbe2fd89",
+  "productName": "랍스터",
+  "productDetail": "신선한 랍스터",
+  "companyId": "7779d020-aa2e-4145-a807-5256bbe2fd77",
+  "productPrice": 30000.0
 }
 
 ### product-company 요청
@@ -16,5 +17,11 @@ GET http://localhost:19094/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79/pro
 ###order-product 응답
 GET http://localhost:19098/api/products/order?
     productId=0c133cd3-6ddc-41e0-a827-85e81c3499a8&
+    receiverCompanyId=8259e342-fbd0-4f73-b8e1-2ec2cf7faa55&
+    quantity=100
+
+###
+GET http://localhost:19098/api/products/order?
+    productId=6fc40be8-70d3-4785-8479-2dcb3e24affe
     receiverCompanyId=8259e342-fbd0-4f73-b8e1-2ec2cf7faa55&
     quantity=100

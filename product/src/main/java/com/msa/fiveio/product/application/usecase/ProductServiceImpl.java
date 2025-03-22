@@ -2,6 +2,7 @@ package com.msa.fiveio.product.application.usecase;
 
 import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.ProductErrorCode;
+import com.msa.fiveio.product.infrastructure.client.OrderProductInfoDto;
 import com.msa.fiveio.product.model.entity.ProductType;
 import com.msa.fiveio.product.model.entity.Products;
 import com.msa.fiveio.product.model.entity.Stocks;
@@ -34,25 +35,35 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Products processOrderRequest(UUID productId, UUID receiverCompanyId,
-            Long quantity) {
+    public OrderProductInfoDto processOrderRequest(UUID productId, UUID receiverCompanyId,
+            Long orderQuantity) {
         Products product = productsRepository.findById(productId).orElseThrow(
                 () -> new CustomException(ProductErrorCode.PRODUCT_NOT_FOUND));
-
-        //주문이 들어오면 재고관리에서 주문만큼 수량 차감
-        Long stockCount = product.getStocks().getQuantity();
         Stocks stocks = product.getStocks();
 
-        if (stockCount < 0) {
-            throw new CustomException(ProductErrorCode.NEGATIVE_INVENTORY_ERROR);
-        } else if (stockCount == 0) {
-            product.setProductType(ProductType.OUT_OF_STOCK);
+        //주문수량확인해서 재고 입력값보다 작은지 큰지 비교
+        boolean isOrderable;
+        Long stocksQuantity = stocks.getQuantity();
+
+        if (stocksQuantity <= orderQuantity) {
+            //재고가 부족할 경우 :
+            isOrderable = false;
         } else {
-            product.setProductType(ProductType.ON_SALE);
+            //재고가 충분할 경우 :
+            isOrderable = true;
+
+            //주문이 들어오면 재고관리에서 주문만큼 수량 차감
+            stocks.update(stocksQuantity - orderQuantity);
+            if (stocksQuantity == 0) {
+                product.setProductType(ProductType.OUT_OF_STOCK);
+            } else {
+                product.setProductType(ProductType.ON_SALE);
+            }
         }
 
-        stocks.update(stockCount - quantity);
-        return product;
+        //todo.
+        // 상품에 hubId 받아오기
+        return new OrderProductInfoDto(product, isOrderable);
     }
 
 }

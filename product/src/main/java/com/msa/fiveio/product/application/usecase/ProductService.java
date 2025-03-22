@@ -1,6 +1,6 @@
 package com.msa.fiveio.product.application.usecase;
 
-import com.msa.fiveio.product.model.entity.Products;
+import com.msa.fiveio.product.infrastructure.client.OrderProductInfoDto;
 import com.msa.fiveio.product.presentation.dto.ProductCreateRequestDto;
 import com.msa.fiveio.product.presentation.dto.ProductCreateResponseDto;
 import java.util.UUID;
@@ -11,7 +11,7 @@ public interface ProductService {
     ProductCreateResponseDto createProduct(ProductCreateRequestDto RequestDto);
 
     //Order로 주문상품DTO 반환
-    Products processOrderRequest(UUID productId, UUID receiverCompanyId,
+    OrderProductInfoDto processOrderRequest(UUID productId, UUID receiverCompanyId,
             Long quantity);
 
     //상품조회(단건)

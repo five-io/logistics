@@ -31,21 +31,20 @@ public class ProductsController {
         return ResponseEntity.ok(responseDto);
     }
 
+    //상품삭제
+    //상품수정
+    //상품조회
+
+
     //order 로부터 정보 받아와서 다시 반환
     @GetMapping("/order")
     OrderProductGetResponseDto processOrderRequest(@RequestParam UUID productId,
             @RequestParam UUID receiverCompanyId, @RequestParam Long quantity) {
-        System.out.println(1_1);
         OrderProductGetResponseDto responseDto = productFacade.processOrderRequest(productId,
                 receiverCompanyId, quantity);
-        System.out.println(1);
         return responseDto;
     }
-    //상품조회
 
-    //상품수정
-
-    //상품삭제
-
+    //order에서 주문 취소할 경우 -> 재고수량 되돌리기
 
 }

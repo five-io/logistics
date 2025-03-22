@@ -1,5 +1,6 @@
 package com.msa.fiveio.delivery.model.entity;
 
+import com.msa.fiveio.common.auditing.BaseEntity;
 import com.msa.fiveio.delivery.model.entity.enums.DeliveryRouteStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "p_delivery_routes")
-public class DeliveryRoute {
+public class DeliveryRoute extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

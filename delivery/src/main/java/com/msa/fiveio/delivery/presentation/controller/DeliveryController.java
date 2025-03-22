@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -71,5 +72,15 @@ public class DeliveryController {
     @GetMapping("/{id}/status")
     public String getDeliveryStatus(@PathVariable("id") UUID orderId) {
         return deliveryFacade.getDeliveryStatus(orderId);
+    }
+
+    @Operation(summary = "Delivery 삭제", description = "Delivery 삭제 api 입니다.")
+    @DeleteMapping("/{id}")
+    public void deleteDelivery(
+        @PathVariable("id") UUID deliveryId
+//        @RequestHeader("X-User-Id") Long userId
+    ) {
+        Long userId = 1L;
+        deliveryFacade.deleteDelivery(deliveryId, userId);
     }
 }

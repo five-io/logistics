@@ -46,8 +46,7 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Transactional
     @Override
     public String updateStatus(UUID deliveryId, String status) {
-        Delivery delivery = deliveryRepository.findById(deliveryId)
-            .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
+        Delivery delivery = findDeliveryById(deliveryId);
 
         DeliveryStatus deliveryStatus = DeliveryStatus.valueOf(status.toUpperCase());
         delivery.updateStatus(deliveryStatus);
@@ -63,8 +62,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public DeliveryResponseDto readDelivery(UUID deliveryId) {
-        Delivery delivery = deliveryRepository.findById(deliveryId)
-            .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
+        Delivery delivery = findDeliveryById(deliveryId);
         return DeliveryMapper.DeliveryToDeliveryResponseDto(delivery);
     }
 
@@ -73,5 +71,20 @@ public class DeliveryServiceImpl implements DeliveryService {
         Delivery delivery = deliveryRepository.findByOrderId(orderId)
             .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
         return delivery.getDeliveryStatus().name();
+    }
+
+    @Transactional
+    @Override
+    public void deleteDelivery(UUID deliveryId, Long userId) {
+        Delivery delivery = findDeliveryById(deliveryId);
+        if (!delivery.getDeliveryStatus().toString().equals("DELIVERED")) {
+            throw new RuntimeException("Delivery status is not DELIVERED");
+        }
+        delivery.addDeletedField(userId);
+    }
+
+    private Delivery findDeliveryById(UUID deliveryId) {
+        return deliveryRepository.findById(deliveryId)
+            .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
     }
 }

@@ -15,4 +15,6 @@ public interface DeliveryRouteService {
     void updateDelRoute(int sequence, UUID deliveryId, DeliveryRouteStatus status);
 
     List<DeliveryRouteResponse> getRouteListById(UUID deliveryId);
+
+    void deleteDelivery(UUID deliveryId, Long userId);
 }

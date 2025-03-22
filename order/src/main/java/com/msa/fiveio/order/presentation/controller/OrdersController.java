@@ -10,6 +10,7 @@ import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderUpdateRequestDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderCreateResponseDto;
 import com.msa.fiveio.order.presentation.dto.response.OrderResponseDto;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -37,9 +38,9 @@ public class OrdersController {
     private final OrdersFacade ordersFacade;
 
     /**
-     * 주문 생성
      * 사용자 권한: 모든 로그인 사용자
      */
+    @Operation(summary = "Order 생성", description = "Order 생성 api 입니다.")
     @PostMapping
     public ResponseEntity<OrderCreateResponseDto> createOrder(
         @RequestBody OrderCreateRequestDto orderRequestDto) {
@@ -47,9 +48,9 @@ public class OrdersController {
     }
 
     /**
-     * 주문 조회(검색)
      * 사용자 권한: 모든 로그인 사용자. 단, 주문자 본인은 자신의 주문만 조회 가능
      */
+    @Operation(summary = "Order 검색", description = "Order 검색 api 입니다.")
     @GetMapping
     public ResponseEntity<Page<OrderResponseDto>> readOrders(
         @RequestBody OrderSearchRequestDto requestDto, Pageable pageable
@@ -58,9 +59,9 @@ public class OrdersController {
     }
 
     /**
-     * 주문 단일 조회
      * 사용자 권한: 모든 로그인 사용자. 단, 주문자 본인은 자신의 주문만 조회 가능
      */
+    @Operation(summary = "Order 단건 조회", description = "Order 단건 조회 api 입니다.")
     @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER})
     @GetMapping("/{id}")
     public ResponseEntity<OrderResponseDto> readOrder(
@@ -72,9 +73,9 @@ public class OrdersController {
     }
 
     /**
-     * 주문 수정
      * 사용자 권한: 마스터 관리자, 해당 주문 허브 관리자
      */
+    @Operation(summary = "Order 수정", description = "Order 수정 api 입니다.")
     @PatchMapping("/{id}")
     public ResponseEntity<OrderResponseDto> updateOrder(
         @PathVariable("id") UUID orderId,
@@ -83,6 +84,10 @@ public class OrdersController {
         return ResponseEntity.ok(ordersFacade.updateOrder(orderId, requestDto));
     }
 
+    /**
+     * 사용자 권한:  마스터 관리자, 해당 주문 허브 관리자
+     */
+    @Operation(summary = "Order 취소", description = "Order 취소 api 입니다.")
     @DeleteMapping("/{id}/cancel")
     public void cancelOrder(
         @PathVariable("id") UUID orderId
@@ -92,9 +97,14 @@ public class OrdersController {
         ordersFacade.cancelOrder(orderId, userId);
     }
 
+    /**
+     * 사용자 권한:  마스터 관리자, 해당 주문 허브 관리자
+     */
+    @Operation(summary = "Order 삭제", description = "Order 삭제 api 입니다.")
     @DeleteMapping("/{id}")
     public void deleteOrder(
         @PathVariable("id") UUID orderId
+//        @RequestHeader("X-User-Id") Long userId
     ) {
         Long userId = 1L;
         ordersFacade.deleteOrder(orderId, userId);

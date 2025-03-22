@@ -92,4 +92,11 @@ public class OrdersController {
         ordersFacade.cancelOrder(orderId, userId);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteOrder(
+        @PathVariable("id") UUID orderId
+    ) {
+        Long userId = 1L;
+        ordersFacade.deleteOrder(orderId, userId);
+    }
 }

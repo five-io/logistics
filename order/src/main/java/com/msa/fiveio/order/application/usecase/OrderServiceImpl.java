@@ -63,4 +63,13 @@ public class OrderServiceImpl implements OrderService {
         order.addDeletedField(userId);
         log.info("Order cancelled: {}", order.getOrderId());
     }
+
+    @Override
+    public void deleteOrder(Order order, Long userId, String status) {
+        if (!status.equals("DELIVERED")) {
+            throw new RuntimeException("Order status is not DELIVERED");
+        }
+        order.addDeletedField(userId);
+        log.info("Order deleted: {}", order.getOrderId());
+    }
 }

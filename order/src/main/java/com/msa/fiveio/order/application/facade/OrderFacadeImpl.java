@@ -65,4 +65,12 @@ public class OrderFacadeImpl implements OrdersFacade {
         orderService.cancelOrder(order, userId, status);
     }
 
+    @Transactional
+    @Override
+    public void deleteOrder(UUID orderId, Long userId) {
+        String status = externalService.getDeliveryStatus(orderId);
+        Order order = orderService.getOrder(orderId);
+        orderService.deleteOrder(order, userId, status);
+    }
+
 }

@@ -28,12 +28,16 @@ public class DeliveryFacadeImpl implements DeliveryFacade {
 
     @Override
     public void createDelivery(DeliveryCreateRequestDto deliveryRequestDto) {
-        UserResponseDto companyDeliveryManager = getDeliveryManager(deliveryRequestDto.getArriveHubId(), "COMPANY");
-        UserResponseDto hubDeliveryManager = getDeliveryManager(deliveryRequestDto.getDepartHubId(), "HUB");
+        UserResponseDto companyDeliveryManager = getDeliveryManager(
+            deliveryRequestDto.getArriveHubId(), "COMPANY");
+        UserResponseDto hubDeliveryManager = getDeliveryManager(deliveryRequestDto.getDepartHubId(),
+            "HUB");
 
-        DeliveryResponseDto deliveryResponseDto = deliveryService.createDelivery(deliveryRequestDto, companyDeliveryManager.getId());
+        DeliveryResponseDto deliveryResponseDto = deliveryService.createDelivery(deliveryRequestDto,
+            companyDeliveryManager.getId());
         log.info("Created delivery: {}", deliveryResponseDto.getDeliveryId());
-        List<RouteResponseDto> routeResponseDtos = externalService.getHubRouteList(deliveryRequestDto.getArriveHubId(), deliveryRequestDto.getDepartHubId());
+        List<RouteResponseDto> routeResponseDtos = externalService.getHubRouteList(
+            deliveryRequestDto.getArriveHubId(), deliveryRequestDto.getDepartHubId());
 
         createDeliveryRoute(deliveryResponseDto, hubDeliveryManager.getId(), routeResponseDtos);
 

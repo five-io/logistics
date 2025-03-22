@@ -1,5 +1,6 @@
 package com.msa.fiveio.delivery.model.entity;
 
+import com.msa.fiveio.common.auditing.BaseEntity;
 import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
@@ -27,7 +28,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "p_deliveries")
 @Entity
 @Access(AccessType.FIELD)
-public class Delivery {
+public class Delivery extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

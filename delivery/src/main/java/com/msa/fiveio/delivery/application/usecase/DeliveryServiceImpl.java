@@ -64,6 +64,13 @@ public class DeliveryServiceImpl implements DeliveryService {
         return DeliveryMapper.DeliveryToDeliveryResponseDto(delivery);
     }
 
+    @Override
+    public String getDeliveryStatus(UUID orderId) {
+        Delivery delivery = deliveryRepository.findByOrderId(orderId)
+            .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
+        return delivery.getDeliveryStatus().name();
+    }
+
     private Delivery createDelivery(DeliveryCreateRequestDto requestDto,
         Long companyDeliveryManager) {
         return Delivery.createDelivery(

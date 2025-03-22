@@ -40,4 +40,9 @@ public class DeliveryFacadeImpl implements DeliveryFacade {
         return deliveryService.readDelivery(deliveryId);
     }
 
+    @Override
+    public String getDeliveryStatus(UUID orderId) {
+        return deliveryService.getDeliveryStatus(orderId);
+    }
+
 }

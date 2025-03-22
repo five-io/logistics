@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "localhost:19098", configuration = FeignConfig.class)
+@FeignClient(name = "productClient", url = "localhost:19098", configuration = FeignConfig.class)
 public interface ProductClient {
 
     @PatchMapping("/api/products/{id}/rollback")

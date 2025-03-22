@@ -1,11 +1,11 @@
 package com.msa.fiveio.order.infrastructure.client.dto.response;
 
 import java.util.UUID;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
+@Builder
 public class DeliveryCreateResponseDto {
 
     private final UUID orderId;

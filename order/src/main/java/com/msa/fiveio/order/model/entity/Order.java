@@ -1,6 +1,8 @@
 package com.msa.fiveio.order.model.entity;
 
 import com.msa.fiveio.common.auditing.BaseEntity;
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.OrderErrorCode;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -86,7 +88,7 @@ public class Order extends BaseEntity {
 
     private void validateUpdateQuantity(Long quantity) {
         if (quantity < 1) {
-            throw new IllegalArgumentException("상품 개수는 1개부터 주문할 수 있습니다.");
+            throw new CustomException(OrderErrorCode.INVALID_QUANTITY);
         }
     }
 }

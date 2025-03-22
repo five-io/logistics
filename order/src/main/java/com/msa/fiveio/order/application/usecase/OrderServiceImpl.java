@@ -29,7 +29,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order createOrder(ProductResponseDto productInfo, Order order) {
         order.calculateTotalAmount(productInfo.getProductPrice());
-
         Order savedOrder = orderRepository.save(order);
         log.info("Order created: {}", savedOrder.getOrderId());
         return savedOrder;
@@ -41,12 +40,10 @@ public class OrderServiceImpl implements OrderService {
         return orderPage.map(OrderMapper::OrderToOrderResponseDto);
     }
 
+    @Transactional
     @Override
     public void updateOrder(Order order, OrderUpdateRequestDto requestDto) {
-        order.update(
-            requestDto.getQuantity(),
-            requestDto.getRequestNotes()
-        );
+        order.update(requestDto.getQuantity(), requestDto.getRequestNotes());
     }
 
     @Override
@@ -57,19 +54,26 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void cancelOrder(Order order, Long userId, String status) {
-        if (!status.equals("HUB_PENDING")) {
-            throw new RuntimeException("Order status is not HUB_PENDING");
-        }
-        order.addDeletedField(userId);
-        log.info("Order cancelled: {}", order.getOrderId());
+        validateOrderStatus(status, "HUB_PENDING");
+        orderDelete(order, userId);
+        log.info("Order {} cancelled by user: {}", order.getOrderId(), userId);
     }
 
+    @Transactional
     @Override
     public void deleteOrder(Order order, Long userId, String status) {
-        if (!status.equals("DELIVERED")) {
-            throw new RuntimeException("Order status is not DELIVERED");
+        validateOrderStatus(status, "DELIVERED");
+        orderDelete(order, userId);
+        log.info("Order {} deleted by user: {}", order.getOrderId(), userId);
+    }
+
+    private void validateOrderStatus(String Status, String expectedStatus) {
+        if (!Status.equals(expectedStatus)) {
+            throw new RuntimeException("Order Status is not " + expectedStatus);
         }
+    }
+
+    private void orderDelete(Order order, Long userId) {
         order.addDeletedField(userId);
-        log.info("Order deleted: {}", order.getOrderId());
     }
 }

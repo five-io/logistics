@@ -26,13 +26,11 @@ public class OrderFacadeImpl implements OrdersFacade {
 
     @Override
     public OrderCreateResponseDto createOrder(OrderCreateRequestDto orderCreateRequestDto) {
-        ProductResponseDto productResponseDto = externalService.sendProductRequest(
-            orderCreateRequestDto);
+        ProductResponseDto productResponseDto = requestProduct(orderCreateRequestDto);
         Order order = orderCreateRequestDto.createOrder(productResponseDto.getRequesterCompanyId());
         Order savedOrder = orderService.createOrder(productResponseDto, order);
 
-        externalService.sendDeliveryRequest(savedOrder.getOrderId(), productResponseDto,
-            orderCreateRequestDto);
+        requestDelivery(savedOrder.getOrderId(), productResponseDto, orderCreateRequestDto);
         return OrderMapper.orderIdToOrderCreateResponseDto(savedOrder);
     }
 
@@ -47,7 +45,6 @@ public class OrderFacadeImpl implements OrdersFacade {
         return OrderMapper.OrderToOrderResponseDto(order);
     }
 
-    @Transactional
     @Override
     public OrderResponseDto updateOrder(UUID orderId, OrderUpdateRequestDto requestDto) {
         Order order = orderService.getOrder(orderId);
@@ -65,7 +62,6 @@ public class OrderFacadeImpl implements OrdersFacade {
         orderService.cancelOrder(order, userId, status);
     }
 
-    @Transactional
     @Override
     public void deleteOrder(UUID orderId, Long userId) {
         String status = externalService.getDeliveryStatus(orderId);
@@ -73,4 +69,15 @@ public class OrderFacadeImpl implements OrdersFacade {
         orderService.deleteOrder(order, userId, status);
     }
 
+    private void requestDelivery(
+        UUID orderId,
+        ProductResponseDto productResponseDto,
+        OrderCreateRequestDto orderCreateRequestDto
+    ) {
+        externalService.sendDeliveryRequest(orderId, productResponseDto, orderCreateRequestDto);
+    }
+
+    private ProductResponseDto requestProduct(OrderCreateRequestDto orderCreateRequestDto) {
+        return externalService.sendProductRequest(orderCreateRequestDto);
+    }
 }

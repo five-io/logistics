@@ -12,12 +12,14 @@ import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -39,8 +41,10 @@ public class HubRouteController {
     @ApiPermission(roles = {ROLE_MASTER, ROLE_DELIVERY_MANAGER, ROLE_COMPANY_MANAGER})
     @Operation(summary = "Hub 최단 경로 조회", description = "Hub 최단 경로 조회 api 입니다.")
     @GetMapping
-    public List<HubRouteResponseDto> getHubRouteList(@RequestBody HubRouteRequestDto hubsDto) {
-        return hubRouteFacade.getHubRouteList(hubsDto);
+    public List<HubRouteResponseDto> getHubRouteList(
+        @RequestParam UUID arriveHubId,
+        @RequestParam UUID departHubId) {
+        return hubRouteFacade.getHubRouteList(arriveHubId, departHubId);
     }
 
     @ApiPermission(roles = {ROLE_MASTER})

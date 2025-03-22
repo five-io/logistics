@@ -2,9 +2,9 @@ package com.msa.fiveio.delivery.presentation.controller;
 
 import com.msa.fiveio.delivery.application.facade.DeliveryFacade;
 import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
+import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliverySearchRequestDto;
 import com.msa.fiveio.delivery.presentation.dto.response.DeliveryResponseDto;
-import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
@@ -32,8 +32,7 @@ public class DeliveryController {
 
     @Operation(summary = "Delivery 생성", description = "Delivery 생성 api 입니다.")
     @PostMapping
-    public void createDelivery(
-        @RequestBody DeliveryCreateRequestDto deliveryRequestDto) {
+    public void createDelivery(@RequestBody DeliveryCreateRequestDto deliveryRequestDto) {
         deliveryFacade.createDelivery(deliveryRequestDto);
     }
 

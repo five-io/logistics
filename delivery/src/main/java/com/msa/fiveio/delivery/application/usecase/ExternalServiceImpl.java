@@ -31,6 +31,7 @@ public class ExternalServiceImpl implements ExternalService {
                 deliveryCreateRequestDto.getDepartHubId());
             HubsResponseDto arriveHub = getHubResponseDto(
                 deliveryCreateRequestDto.getArriveHubId());
+
             log.info("hub response: departHub = {}, arriveHub = {}", departHub.getHubName(),
                 arriveHub.getHubName());
 
@@ -44,7 +45,8 @@ public class ExternalServiceImpl implements ExternalService {
 
             slackClient.createSlack(request);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Unable to send slack request", e);
+            log.error("Failed to send Slack request", e);
+            throw new RuntimeException("Unable to send slack request", e);
         }
     }
 

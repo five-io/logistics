@@ -28,28 +28,23 @@ public class DeliveryFacadeImpl implements DeliveryFacade {
 
     @Override
     public void createDelivery(DeliveryCreateRequestDto deliveryRequestDto) {
-        UserResponseDto companyDeliveryManager = externalService.getDeliveryManager(
+        UserResponseDto companyDeliveryManager = getDeliveryManager(
             deliveryRequestDto.getArriveHubId(), "COMPANY");
-        UserResponseDto hubDeliveryManager = externalService.getDeliveryManager(
-            deliveryRequestDto.getDepartHubId(), "HUB");
+        UserResponseDto hubDeliveryManager = getDeliveryManager(deliveryRequestDto.getDepartHubId(),
+            "HUB");
 
-        DeliveryResponseDto deliveryResponseDto = deliveryService.createDelivery(
-            deliveryRequestDto, companyDeliveryManager.getId());
-
+        DeliveryResponseDto deliveryResponseDto = deliveryService.createDelivery(deliveryRequestDto,
+            companyDeliveryManager.getId());
+        log.info("Created delivery: {}", deliveryResponseDto.getDeliveryId());
         List<RouteResponseDto> routeResponseDtos = externalService.getHubRouteList(
             deliveryRequestDto.getArriveHubId(), deliveryRequestDto.getDepartHubId());
 
-        deliveryRouteService.createDelRoute(
-            new CreateDeliveryRouteRequest(deliveryResponseDto, hubDeliveryManager.getId(),
-                routeResponseDtos));
+        createDeliveryRoute(deliveryResponseDto, hubDeliveryManager.getId(), routeResponseDtos);
 
-        List<UUID> waypoints = routeResponseDtos.stream()
-            .map(RouteResponseDto::arriveId)
-            .toList();
+        List<UUID> waypoints = getWayPoints(routeResponseDtos);
         String waypointsString = externalService.getWayPoints(waypoints);
 
-        externalService.sendSlackRequest(deliveryRequestDto, waypointsString,
-            companyDeliveryManager.getUserName());
+        sendSlackRequest(deliveryRequestDto, waypointsString, companyDeliveryManager.getUserName());
     }
 
     @Override
@@ -73,4 +68,32 @@ public class DeliveryFacadeImpl implements DeliveryFacade {
         return deliveryService.getDeliveryStatus(orderId);
     }
 
+    private UserResponseDto getDeliveryManager(UUID hubId, String type) {
+        return externalService.getDeliveryManager(hubId, type);
+    }
+
+    private List<UUID> getWayPoints(List<RouteResponseDto> routeResponseDtos) {
+        return routeResponseDtos.stream()
+            .map(RouteResponseDto::arriveId)
+            .toList();
+    }
+
+    private void createDeliveryRoute(
+        DeliveryResponseDto deliveryResponseDto,
+        Long hubDeliveryManagerId,
+        List<RouteResponseDto> routeResponseDtos
+    ) {
+        deliveryRouteService.createDelRoute(
+            new CreateDeliveryRouteRequest(deliveryResponseDto, hubDeliveryManagerId,
+                routeResponseDtos));
+    }
+
+    private void sendSlackRequest(
+        DeliveryCreateRequestDto deliveryRequestDto,
+        String waypointsString,
+        String companyDeliveryManagerName
+    ) {
+        externalService.sendSlackRequest(deliveryRequestDto, waypointsString,
+            companyDeliveryManagerName);
+    }
 }

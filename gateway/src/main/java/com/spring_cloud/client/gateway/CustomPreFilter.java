@@ -94,7 +94,7 @@ public class CustomPreFilter implements GlobalFilter, Ordered {
 
             log.info("********** info " + modifiedExchange);
 
-            return chain.filter(exchange);
+            return chain.filter(modifiedExchange);
 
 
         } catch (Exception e) {

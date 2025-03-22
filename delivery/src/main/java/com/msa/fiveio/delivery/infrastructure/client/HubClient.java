@@ -1,6 +1,7 @@
 package com.msa.fiveio.delivery.infrastructure.client;
 
 
+import com.msa.fiveio.common.config.FeignConfig;
 import com.msa.fiveio.delivery.infrastructure.client.dto.response.HubsResponseDto;
 import com.msa.fiveio.delivery.infrastructure.client.dto.response.RouteResponseDto;
 import java.util.List;
@@ -10,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "hubClient", url = "http://localhost:19093")
+@FeignClient(name = "hubClient", url = "http://localhost:19093", configuration = FeignConfig.class)
 public interface HubClient {
 
     @GetMapping("/api/hubs/read")

@@ -36,7 +36,7 @@ public class DeliveryServiceImpl implements DeliveryService {
         Delivery delivery = createDelivery(deliveryCreateRequestDto, companyDeliveryManager);
         Delivery savedDelivery = deliveryRepository.save(delivery);
         log.info("배송 생성 완료, 주문 ID: {}, 배송 ID: {}", savedDelivery.getOrderId(),
-            savedDelivery.getDeliveryId());
+            savedDelivery.getId());
     }
 
     @Transactional

@@ -7,7 +7,7 @@ public class DeliveryMapper {
 
     public static DeliveryResponseDto DeliveryToDeliveryResponseDto(Delivery delivery) {
         return DeliveryResponseDto.builder()
-            .deliveryId(delivery.getDeliveryId())
+            .deliveryId(delivery.getId())
             .orderId(delivery.getOrderId())
             .deliveryStatus(delivery.getDeliveryStatus())
             .departHubId(delivery.getDepartHubId())

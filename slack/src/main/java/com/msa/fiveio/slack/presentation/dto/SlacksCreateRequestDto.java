@@ -1,7 +1,6 @@
 package com.msa.fiveio.slack.presentation.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.msa.fiveio.slack.model.entity.SendStatus;
 import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,9 +41,6 @@ public class SlacksCreateRequestDto {
 
 	@JsonProperty("request-notes")
 	private String requestNotes;
-
-	@JsonProperty("send-status")
-	private SendStatus sendStatus;
 
 	private String message;
 

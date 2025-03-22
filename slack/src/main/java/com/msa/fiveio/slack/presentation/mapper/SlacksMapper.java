@@ -1,5 +1,6 @@
 package com.msa.fiveio.slack.presentation.mapper;
 
+import com.msa.fiveio.slack.model.entity.SendStatus;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
@@ -14,7 +15,7 @@ import org.springframework.data.domain.Page;
 public class SlacksMapper {
 
 	public static Slacks slacksCreateRequestDtoToEntity(
-		SlacksCreateRequestDto slacksCreateRequestDto, String message) {
+		SlacksCreateRequestDto slacksCreateRequestDto, String message, SendStatus status) {
 		return Slacks.builder()
 			.orderId(slacksCreateRequestDto.getOrderId())
 			.departHubName(slacksCreateRequestDto.getDepartHubName())
@@ -28,7 +29,7 @@ public class SlacksMapper {
 			.productName(slacksCreateRequestDto.getProductName())
 			.productQuantity(slacksCreateRequestDto.getProductQuantity())
 			.message(message)
-			.sendStatus(slacksCreateRequestDto.getSendStatus())
+			.sendStatus(status)
 			.build();
 	}
 

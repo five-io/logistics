@@ -31,7 +31,7 @@ public class HubRouteFacadeImpl implements HubRouteFacade {
     }
 
     @Override
-    public List<HubRouteResponseDto> getHubRouteList(HubRouteRequestDto hubsDto) {
+    public List<HubRouteResponseDto> getHubRouteList(UUID arriveHubId, UUID departHubId) {
 
         List<HubRouteResponseDto> hubRouteResponseDtos = new ArrayList<>();
 
@@ -48,8 +48,8 @@ public class HubRouteFacadeImpl implements HubRouteFacade {
             }
         }
 
-        List<UUID> path = hubRouteService.findShortestRoute(hubsDto.getDepartHubId(),
-            hubsDto.getArriveHubId(), graph);
+        List<UUID> path = hubRouteService.findShortestRoute(departHubId,
+            arriveHubId, graph);
 
         for (int i = 0; i < path.size() - 1; i++) {
             //출발,도착id로 검색

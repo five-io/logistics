@@ -1,11 +1,11 @@
 package com.msa.fiveio.slack.application.facade;
 
 import com.msa.fiveio.slack.application.usecase.SlacksService;
-import com.msa.fiveio.slack.model.entity.SendStatus;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSearchRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +29,8 @@ public class SlacksFacadeImpl implements SlacksFacade {
 	}
 
 	@Override
-	public SlacksSearchResponseDto searchSlack(UUID id, Pageable pageable) {
-		return slacksService.searchSlack(id, pageable);
+	public SlacksSearchResponseDto searchSlack(Pageable pageable, SlacksSearchRequestDto.SlacksDto slacksDto) {
+		return slacksService.searchSlack(pageable, slacksDto);
 	}
 
 	@Override

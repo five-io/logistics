@@ -1,5 +1,8 @@
 package com.msa.fiveio.slack.application.usecase;
 
+import static com.msa.fiveio.slack.model.entity.SendStatus.SEND_ERROR;
+import static com.msa.fiveio.slack.model.entity.SendStatus.SEND_SUCCESS;
+
 import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.SlackErrorCode;
 import com.msa.fiveio.slack.infrastructure.client.AiClient;
@@ -12,6 +15,7 @@ import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSearchRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSendRequestDto;
 import com.msa.fiveio.slack.presentation.mapper.SlacksMapper;
@@ -36,13 +40,20 @@ public class SlacksServiceImpl implements SlacksService {
 	@Override
 	public SlacksCreateResponseDto createSlack(SlacksCreateRequestDto slacksCreateRequestDto) {
 
+		SendStatus status;
 		String message = aiClient.createAis(slacksCreateRequestDto);
 
 		SlacksSendRequestDto slacksSendRequestDto = SlacksMapper.stringToSendRequestDto(message);
-		slackClient.sendSlack(slacksSendRequestDto);
+
+		try {
+			slackClient.sendSlack(slacksSendRequestDto);
+			status = SEND_SUCCESS;
+		} catch (Exception e) {
+			status = SEND_ERROR;
+		}
 
 		Slacks newSlacks = SlacksMapper.slacksCreateRequestDtoToEntity(slacksCreateRequestDto,
-			message);
+			message, status);
 		Slacks createSlacks = slacksRepository.save(newSlacks);
 
 		return SlacksMapper.entityToCreateResponseDto(createSlacks);
@@ -61,9 +72,9 @@ public class SlacksServiceImpl implements SlacksService {
 	@SQLRestriction("deleted_at IS NULL")
 	@Transactional
 	@Override
-	public SlacksSearchResponseDto searchSlack(UUID id, Pageable pageable) {
+	public SlacksSearchResponseDto searchSlack(Pageable pageable, SlacksSearchRequestDto.SlacksDto slacksDto) {
 
-		Page<Slacks> slacksSearchPage = slacksQueryRepository.findSlacksSearchList(pageable, id);
+		Page<Slacks> slacksSearchPage = slacksQueryRepository.findSlacksSearchList(pageable, slacksDto);
 
 		return SlacksMapper.pageToSearchResponseDto(slacksSearchPage);
 	}

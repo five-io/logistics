@@ -1,5 +1,6 @@
 package com.msa.fiveio.slack.presentation.mapper;
 
+import com.msa.fiveio.slack.model.entity.SendStatus;
 import com.msa.fiveio.slack.model.entity.Slacks;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
@@ -14,7 +15,7 @@ import org.springframework.data.domain.Page;
 public class SlacksMapper {
 
 	public static Slacks slacksCreateRequestDtoToEntity(
-		SlacksCreateRequestDto slacksCreateRequestDto, String message) {
+		SlacksCreateRequestDto slacksCreateRequestDto, String message, SendStatus status) {
 		return Slacks.builder()
 			.orderId(slacksCreateRequestDto.getOrderId())
 			.departHubName(slacksCreateRequestDto.getDepartHubName())
@@ -28,7 +29,7 @@ public class SlacksMapper {
 			.productName(slacksCreateRequestDto.getProductName())
 			.productQuantity(slacksCreateRequestDto.getProductQuantity())
 			.message(message)
-			.sendStatus(slacksCreateRequestDto.getSendStatus())
+			.sendStatus(status)
 			.build();
 	}
 
@@ -62,6 +63,18 @@ public class SlacksMapper {
 		return SlacksReadResponseDto.SlacksDto.builder()
 			.slackId(slacks.getId())
 			.orderId(slacks.getOrderId())
+			.departHubName(slacks.getDepartHubName())
+			.transitPoint(slacks.getTransitPoint())
+			.arriveHubName(slacks.getArriveHubName())
+			.deliveryAddress(slacks.getDeliveryAddress())
+			.requestNotes(slacks.getRequestNotes())
+			.recipientName(slacks.getRecipientName())
+			.recipientSlackId(slacks.getRecipientSlackId())
+			.companyDeliveryManager(slacks.getCompanyDeliveryManager())
+			.productName(slacks.getProductName())
+			.productQuantity(slacks.getProductQuantity())
+			.message(slacks.getMessage())
+			.sendStatus(slacks.getSendStatus())
 			.build();
 	}
 
@@ -84,6 +97,18 @@ public class SlacksMapper {
 		return SlacksSearchResponseDto.SlacksDto.builder()
 			.slackId(slacks.getId())
 			.orderId(slacks.getOrderId())
+			.departHubName(slacks.getDepartHubName())
+			.transitPoint(slacks.getTransitPoint())
+			.arriveHubName(slacks.getArriveHubName())
+			.deliveryAddress(slacks.getDeliveryAddress())
+			.requestNotes(slacks.getRequestNotes())
+			.recipientName(slacks.getRecipientName())
+			.recipientSlackId(slacks.getRecipientSlackId())
+			.companyDeliveryManager(slacks.getCompanyDeliveryManager())
+			.productName(slacks.getProductName())
+			.productQuantity(slacks.getProductQuantity())
+			.message(slacks.getMessage())
+			.sendStatus(slacks.getSendStatus())
 			.build();
 	}
 

@@ -14,4 +14,6 @@ public interface DeliveryRepository {
     Optional<Delivery> findById(UUID id);
 
     Page<Delivery> readDeliveries(DeliverySearchRequestDto requestDto, Pageable pageable);
+
+    Optional<Delivery> findByOrderId(UUID orderId);
 }

@@ -1,6 +1,7 @@
 package com.msa.fiveio.hub;
 
 
+import com.msa.fiveio.common.aop.PermissionCheckAspect;
 import com.msa.fiveio.common.config.JpaAuditingConfig;
 import com.msa.fiveio.common.config.QueryDslConfig;
 import org.springframework.boot.SpringApplication;
@@ -8,13 +9,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Import;
 
-@Import({JpaAuditingConfig.class, QueryDslConfig.class})
+@Import({JpaAuditingConfig.class, QueryDslConfig.class, PermissionCheckAspect.class})
 @EnableFeignClients
 @SpringBootApplication
 public class HubApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HubApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HubApplication.class, args);
+    }
 
 }

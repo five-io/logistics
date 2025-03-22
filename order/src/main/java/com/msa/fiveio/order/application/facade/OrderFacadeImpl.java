@@ -2,7 +2,7 @@ package com.msa.fiveio.order.application.facade;
 
 import com.msa.fiveio.order.application.usecase.ExternalService;
 import com.msa.fiveio.order.application.usecase.OrderService;
-import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
+import com.msa.fiveio.order.infrastructure.client.dto.response.ProductResponseDto;
 import com.msa.fiveio.order.model.entity.Order;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
@@ -26,12 +26,12 @@ public class OrderFacadeImpl implements OrdersFacade {
 
     @Override
     public OrderCreateResponseDto createOrder(OrderCreateRequestDto orderCreateRequestDto) {
-        CompanyResponseDto companyResponseDto = externalService.sendCompanyRequest(
+        ProductResponseDto productResponseDto = externalService.sendProductRequest(
             orderCreateRequestDto);
-        Order order = orderCreateRequestDto.createOrder(companyResponseDto.getRequesterCompanyId());
-        Order savedOrder = orderService.createOrder(companyResponseDto, order);
+        Order order = orderCreateRequestDto.createOrder(productResponseDto.getRequesterCompanyId());
+        Order savedOrder = orderService.createOrder(productResponseDto, order);
 
-        externalService.sendDeliveryRequest(savedOrder.getOrderId(), companyResponseDto,
+        externalService.sendDeliveryRequest(savedOrder.getOrderId(), productResponseDto,
             orderCreateRequestDto);
         return OrderMapper.orderIdToOrderCreateResponseDto(savedOrder);
     }
@@ -54,6 +54,15 @@ public class OrderFacadeImpl implements OrdersFacade {
         // 개수가 수정될 경우 재고 관리 요청 추가
         orderService.updateOrder(order, requestDto);
         return OrderMapper.OrderToOrderResponseDto(order);
+    }
+
+    @Transactional
+    @Override
+    public void cancelOrder(UUID orderId, Long userId) {
+        String status = externalService.getDeliveryStatus(orderId);
+        Order order = orderService.getOrder(orderId);
+        externalService.rollbackStock(order.getOrderId(), order.getQuantity());
+        orderService.cancelOrder(order, userId, status);
     }
 
 }

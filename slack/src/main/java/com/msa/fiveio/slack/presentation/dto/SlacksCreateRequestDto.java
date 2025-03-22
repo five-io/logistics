@@ -12,13 +12,13 @@ public class SlacksCreateRequestDto {
 	@JsonProperty("order-id")
 	private UUID orderId;
 
-	@JsonProperty("depart-id")
+	@JsonProperty("depart-hub-name")
 	private String departHubName;
 
 	@JsonProperty("transit-point")
 	private String transitPoint;
 
-	@JsonProperty("arrive-id")
+	@JsonProperty("arrive-hub-name")
 	private String arriveHubName;
 
 	@JsonProperty("delivery-address")

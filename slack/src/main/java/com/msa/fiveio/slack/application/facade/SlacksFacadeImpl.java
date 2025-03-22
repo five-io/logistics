@@ -5,9 +5,8 @@ import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSearchRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
-import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
-import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -30,13 +29,13 @@ public class SlacksFacadeImpl implements SlacksFacade {
 	}
 
 	@Override
-	public SlacksSearchResponseDto searchSlack(UUID id, Pageable pageable) {
-		return slacksService.searchSlack(id, pageable);
+	public SlacksSearchResponseDto searchSlack(Pageable pageable, SlacksSearchRequestDto.SlacksDto slacksDto) {
+		return slacksService.searchSlack(pageable, slacksDto);
 	}
 
 	@Override
-	public SlacksUpdateResponseDto updateSlack(UUID id, SlacksUpdateRequestDto slacksUpdateRequestDto) {
-		return slacksService.updateSlack(id, slacksUpdateRequestDto);
+	public String updateStatus(UUID id, String status) {
+		return slacksService.updateStatus(id, status);
 	}
 
 	@Override

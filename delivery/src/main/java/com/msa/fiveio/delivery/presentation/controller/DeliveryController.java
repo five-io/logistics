@@ -62,4 +62,9 @@ public class DeliveryController {
     ) {
         return ResponseEntity.ok(deliveryFacade.readDelivery(deliveryId));
     }
+
+    @GetMapping("/{id}/status")
+    public String getDeliveryStatus(@PathVariable("id") UUID orderId) {
+        return deliveryFacade.getDeliveryStatus(orderId);
+    }
 }

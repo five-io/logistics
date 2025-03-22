@@ -9,7 +9,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface DeliveryService {
 
-    void createDelivery(DeliveryCreateRequestDto deliveryCreateRequestDto);
+    DeliveryResponseDto createDelivery(DeliveryCreateRequestDto deliveryCreateRequestDto,
+        Long companyDeliveryManagerId);
 
     String updateStatus(UUID deliveryId, String status);
 
@@ -17,4 +18,6 @@ public interface DeliveryService {
         Pageable pageable);
 
     DeliveryResponseDto readDelivery(UUID deliveryId);
+
+    String getDeliveryStatus(UUID orderId);
 }

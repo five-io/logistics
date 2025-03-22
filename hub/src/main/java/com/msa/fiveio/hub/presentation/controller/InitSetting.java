@@ -32,7 +32,7 @@ public class InitSetting {
             if (matcher.find()) {
                 String centerName = matcher.group(1).trim(); // 센터 이름
                 String address = matcher.group(2).trim();   // 주소
-                HubsRequestDto hubsRequestDto = new HubsRequestDto(centerName, address);
+                HubsRequestDto hubsRequestDto = new HubsRequestDto(centerName, address, null, null);
                 hubsFacade.createHubs(hubsRequestDto);
 
             }

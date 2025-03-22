@@ -52,7 +52,7 @@ spring:
             - Path=/hub-service/**
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/hub-service/api/hubs/(?<segment>.*), /api/hubs/$\{segment}
+            - RewritePath=/hub-service/api/(?<segment>.*), /api/$\{segment}
 
 
         - id: comp-service

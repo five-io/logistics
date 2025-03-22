@@ -14,9 +14,11 @@ import jakarta.persistence.Table;
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "p_delivery_routes")
 public class DeliveryRoute {
@@ -46,7 +48,7 @@ public class DeliveryRoute {
     @Column(name = "delivery_manager", nullable = false)
     private Long deliveryManager;
 
-    @Builder(access = AccessLevel.PROTECTED)
+    @Builder
     public DeliveryRoute(Delivery delivery, DeliveryRouteDetails deliveryRouteDetails,
         Double actualDistanceKm, Long actualDurationMin,
         DeliveryRouteStatus deliveryRouteStatus, Long deliveryManager) {
@@ -56,5 +58,10 @@ public class DeliveryRoute {
         this.actualDurationMin = actualDurationMin;
         this.deliveryRouteStatus = deliveryRouteStatus;
         this.deliveryManager = deliveryManager;
+    }
+
+
+    public void updateStatus(DeliveryRouteStatus status) {
+        this.deliveryRouteStatus = status;
     }
 }

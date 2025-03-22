@@ -1,13 +1,14 @@
 package com.msa.fiveio.slack.presentation.controller;
 
 import com.msa.fiveio.slack.application.facade.SlacksFacade;
+import com.msa.fiveio.slack.model.entity.SendStatus;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksDeleteResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksReadResponseDto;
+import com.msa.fiveio.slack.presentation.dto.SlacksSearchRequestDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksSearchResponseDto;
 import com.msa.fiveio.slack.presentation.dto.SlacksUpdateRequestDto;
-import com.msa.fiveio.slack.presentation.dto.SlacksUpdateResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
@@ -34,11 +35,11 @@ public class SlacksController {
 	@Operation(summary = "Slack 등록", description = "Slack 등록 api 입니다.")
 	@PostMapping
 	public ResponseEntity<SlacksCreateResponseDto> createSlack(
-		@RequestBody SlacksCreateRequestDto slacksCreateRequestDto) {
+		@RequestBody SlacksCreateRequestDto slacksCreateRequestDto
+	) {
 
 		SlacksCreateResponseDto slacksCreateResponseDto = slacksFacade.createSlack(
 			slacksCreateRequestDto);
-
 		return ResponseEntity.ok(slacksCreateResponseDto);
 	}
 
@@ -51,22 +52,25 @@ public class SlacksController {
 	}
 
 	@Operation(summary = "Slack 검색", description = "Slack 검색 api 입니다.")
-	@GetMapping("/search/{id}")
-	public ResponseEntity<SlacksSearchResponseDto> searchSlack(@PathVariable UUID id,
-		Pageable pageable) {
-		SlacksSearchResponseDto slacksSearchResponseDto = slacksFacade.searchSlack(id, pageable);
+	@GetMapping("/search")
+	public ResponseEntity<SlacksSearchResponseDto> searchSlack(Pageable pageable, @RequestBody SlacksSearchRequestDto.SlacksDto slacksDto) {
+		SlacksSearchResponseDto slacksSearchResponseDto = slacksFacade.searchSlack(pageable, slacksDto);
 
 		return ResponseEntity.ok(slacksSearchResponseDto);
 	}
 
-	@Operation(summary = "Slack 수정", description = "Slack 수정 api 입니다.")
-	@PatchMapping("/update/{id}")
-	public ResponseEntity<SlacksUpdateResponseDto> updateSlack(@PathVariable UUID id,
-		@RequestBody SlacksUpdateRequestDto slacksUpdateRequestDto) {
-		SlacksUpdateResponseDto slacksUpdateResponseDto = slacksFacade.updateSlack(id,
-			slacksUpdateRequestDto);
-
-		return ResponseEntity.ok(slacksUpdateResponseDto);
+	@Operation(summary = "Slack 상태 변경", description = "Slack 상태 변경 api 입니다.")
+	@PatchMapping("/status")
+	public ResponseEntity<String> updateStatus(@RequestBody SlacksUpdateRequestDto slacksUpdateRequestDto
+	) {
+		try {
+			return ResponseEntity.ok(slacksFacade.updateStatus(slacksUpdateRequestDto.getOrderId(),
+				slacksUpdateRequestDto.getSendStatus().name()));
+		} catch (IllegalArgumentException e) {
+			String errorMessage = "잘못된 상태 값입니다. \n허용된 값: "
+				+ String.join(", ", SendStatus.getAllowedStatuses()) + " 입니다.";
+			return ResponseEntity.badRequest().body(errorMessage);
+		}
 	}
 
 	@Operation(summary = "Slack 삭제", description = "Slack 삭제 api 입니다.")

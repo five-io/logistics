@@ -1,0 +1,58 @@
+### 회원가입
+POST http://localhost:19090/api/users/signUp
+Content-Type: application/json
+
+{
+  "username": "test2",
+  "password": "Abcd1234!",
+  "slackId": "slack",
+  "role": "ROLE_MASTER"
+}
+
+###Login
+POST http://localhost:19090/api/users/signIn
+Content-Type: application/json
+
+{
+  "username": "test2",
+  "password": "Abcd1234!"
+}
+
+> {%
+  client.global.set("accessToken", response.body.accessToken);
+  client.log("accessToken : " + client.global.get("accessToken"));
+%}
+
+###허브생성(init)
+POST http://localhost:19090/api/hubs/setting
+Content-Type: application/json
+
+###허브이동경로 생성(init)
+POST http://localhost:19090/api/routes/setRoute
+Content-Type: application/json
+
+###업체생성
+
+###허브에 업체 등록
+
+###상품생성
+
+###재고추가
+
+###배송담당자 생성
+
+###주문 생성
+
+###재고확인
+
+###배송생성 -배송담당자지정 -배송경로 생성(이동정보관리 조회)
+
+
+
+###슬랙메시지 발송
+
+
+###이동경로 변경시 배송완료 업데이트
+PUT http://localhost:19092/api/delivery-routes
+Content-Type: application/json
+Authorization: {{accessToken}}

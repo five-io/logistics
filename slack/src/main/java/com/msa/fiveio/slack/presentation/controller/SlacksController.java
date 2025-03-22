@@ -40,8 +40,6 @@ public class SlacksController {
 
 		SlacksCreateResponseDto slacksCreateResponseDto = slacksFacade.createSlack(
 			slacksCreateRequestDto);
-		slacksFacade.updateStatus(slacksCreateRequestDto.getOrderId(),
-			slacksCreateRequestDto.getSendStatus().name());
 		return ResponseEntity.ok(slacksCreateResponseDto);
 	}
 

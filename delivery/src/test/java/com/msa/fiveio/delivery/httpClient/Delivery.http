@@ -29,3 +29,6 @@ GET http://localhost:19092/api/deliveries/2922e4e9-9518-4101-b5b5-108505e892f7
 
 ### Status Read
 GET http://localhost:19092/api/deliveries/a2d41fe1-fb78-45b4-b972-d64d4e50de20/status
+
+### Delete
+DELETE http://localhost:19092/api/deliveries/ede5a22a-e82e-45bf-8ee3-5eacde34e668

@@ -4,14 +4,16 @@ import com.msa.fiveio.product.model.entity.Products;
 import com.msa.fiveio.product.model.entity.Stocks;
 import com.msa.fiveio.product.presentation.dto.ProductCreateRequestDto;
 import com.msa.fiveio.product.presentation.dto.ProductCreateResponseDto;
+import java.util.UUID;
 
 public class ProductsMapper {
 
-    public static Products ProductCreateRequestDtoToEntity(ProductCreateRequestDto requestDto) {
+    public static Products ProductCreateRequestDtoToEntity(ProductCreateRequestDto requestDto,
+            UUID hubId) {
         return Products.builder()
                 .productName(requestDto.getProductName())
                 .productDetail(requestDto.getProductDetail())
-                .hubId(requestDto.getHubId())
+                .hubId(hubId)
                 .companyId(requestDto.getCompanyId())
                 .stocks(Stocks.builder().quantity(0L).build()) //재고 초기세팅
                 .productPrice(requestDto.getProductPrice())

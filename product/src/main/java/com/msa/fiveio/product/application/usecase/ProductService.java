@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface ProductService {
 
     //상품생성, 재고생성
-    ProductCreateResponseDto createProduct(ProductCreateRequestDto RequestDto);
+    ProductCreateResponseDto createProduct(ProductCreateRequestDto RequestDto, UUID hubId);
 
     //Order로 주문상품DTO 반환
     OrderProductInfoDto processOrderRequest(UUID productId, UUID receiverCompanyId,

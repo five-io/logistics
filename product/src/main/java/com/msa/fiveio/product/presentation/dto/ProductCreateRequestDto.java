@@ -8,9 +8,7 @@ public class ProductCreateRequestDto {
 
     private String productName;
     private String productDetail;
-    private UUID hubId;
     private UUID companyId;
     private double productPrice;
-
 
 }

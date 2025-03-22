@@ -19,9 +19,12 @@ public class ProductFacadeImpl implements ProductFacade {
     private final ProductService productService;
     private final CompanyClient companyClient;
 
+
     @Override
-    public ProductCreateResponseDto createProduct(ProductCreateRequestDto productRequestDto) {
-        return productService.createProduct(productRequestDto);
+    public ProductCreateResponseDto createProduct(
+            ProductCreateRequestDto productRequestDto) {
+        UUID hubId = companyClient.getProductHubId(productRequestDto.getCompanyId());
+        return productService.createProduct(productRequestDto, hubId);
     }
 
     @Override

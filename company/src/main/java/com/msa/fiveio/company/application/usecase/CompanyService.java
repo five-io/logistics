@@ -24,4 +24,7 @@ public interface CompanyService {
 
     // 주문상품업체정보 조회(product로 넘김)
     ProductCompanyGetResponseDto getProductCompany(UUID companyId);
+
+    //product에서 hubId 조회
+    UUID getProductHubId(UUID CompanyId);
 }

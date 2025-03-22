@@ -20,4 +20,6 @@ public interface CompanysFacade {
             CompanyUpdateRequestDto companyRequestDto);
 
     ProductCompanyGetResponseDto getProductCompany(UUID companyId);
+
+    UUID getProductHubId(UUID CompanyId);
 }

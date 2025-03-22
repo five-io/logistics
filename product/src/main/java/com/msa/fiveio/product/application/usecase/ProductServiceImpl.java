@@ -24,11 +24,9 @@ public class ProductServiceImpl implements ProductService {
 
     //상품생성
     @Override
-    public ProductCreateResponseDto createProduct(ProductCreateRequestDto RequestDto) {
-
-        Products product = ProductsMapper.ProductCreateRequestDtoToEntity(RequestDto);
+    public ProductCreateResponseDto createProduct(ProductCreateRequestDto RequestDto, UUID hubId) {
+        Products product = ProductsMapper.ProductCreateRequestDtoToEntity(RequestDto, hubId);
         productsRepository.save(product);
-
         ProductCreateResponseDto responseDto = ProductsMapper.EntityToProductCreateResponseDto(
                 product);
         return responseDto;

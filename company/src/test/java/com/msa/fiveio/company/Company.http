@@ -26,3 +26,7 @@ Content-Type: application/json
 
 ###product 요청반환
 GET http://localhost:19094/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79/products
+
+###Product hubId 반환
+##GET http://localhost:19094/api/companys/api/companys/3379d020-aa2e-4145-a807-5256bbe2fd79/products/hub-id
+GET http://localhost:19094/api/companys/3746b48b-f069-4176-b34d-179e956b0d2f/products/hub-id

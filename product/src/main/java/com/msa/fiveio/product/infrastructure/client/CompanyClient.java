@@ -12,4 +12,10 @@ public interface CompanyClient {
     @GetMapping("/api/companys/{companyId}/products")
     public ResponseEntity<ProductCompanyGetResponseDto> getProductCompany(
             @PathVariable UUID companyId);
+
+
+    @GetMapping("/api/companys/{companyId}/products/hub-id")
+    public UUID getProductHubId(@PathVariable UUID companyId);
+
+
 }

@@ -5,10 +5,12 @@ import jakarta.persistence.Embeddable;
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Embeddable
+@Getter
 public class DeliveryRouteDetails {
 
     @Column(nullable = false)

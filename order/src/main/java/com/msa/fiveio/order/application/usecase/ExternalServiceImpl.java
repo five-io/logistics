@@ -3,7 +3,7 @@ package com.msa.fiveio.order.application.usecase;
 import com.msa.fiveio.order.infrastructure.client.DeliveryClient;
 import com.msa.fiveio.order.infrastructure.client.ProductClient;
 import com.msa.fiveio.order.infrastructure.client.dto.request.DeliveryCreateRequestDto;
-import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
+import com.msa.fiveio.order.infrastructure.client.dto.response.ProductResponseDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +19,10 @@ public class ExternalServiceImpl implements ExternalService {
     private final ProductClient productClient;
 
     @Override
-    public void sendDeliveryRequest(UUID orderId, CompanyResponseDto companyInfo,
+    public void sendDeliveryRequest(UUID orderId, ProductResponseDto productInfo,
         OrderCreateRequestDto orderInfo) {
         try {
-            DeliveryCreateRequestDto request = new DeliveryCreateRequestDto(orderId, companyInfo,
+            DeliveryCreateRequestDto request = new DeliveryCreateRequestDto(orderId, productInfo,
                 orderInfo);
             deliveryClient.createDelivery(request);
         } catch (Exception e) {

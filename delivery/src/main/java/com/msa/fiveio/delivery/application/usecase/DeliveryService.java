@@ -17,4 +17,6 @@ public interface DeliveryService {
         Pageable pageable);
 
     DeliveryResponseDto readDelivery(UUID deliveryId);
+
+    String getDeliveryStatus(UUID orderId);
 }

@@ -19,4 +19,6 @@ public interface DeliveryFacade {
     DeliveryResponseDto readDelivery(UUID deliveryId);
 
     String getDeliveryStatus(UUID orderId);
+
+    void deleteDelivery(UUID deliveryId, Long userId);
 }

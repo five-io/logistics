@@ -50,11 +50,6 @@ public class ExternalServiceImpl implements ExternalService {
 
     @Override
     public List<RouteResponseDto> getHubRouteList(UUID arriveHubId, UUID departHubId) {
-//        RouteRequestDto requestDto = RouteRequestDto.builder()
-//            .arriveHubId(arriveHubId)
-//            .departHubId(departHubId)
-//            .build();
-//        return hubClient.getHubRouteList(requestDto);
         return hubClient.getHubRouteList(arriveHubId, departHubId);
     }
 

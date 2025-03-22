@@ -1,5 +1,5 @@
 ### Create
-POST http://localhost:19092/api/deliveries
+POST http://localhost:19090/api/deliveries
 Content-Type: application/json
 
 {
@@ -25,4 +25,7 @@ Content-Type: application/json
 }
 
 ### Read
-GET http://localhost:19092/api/deliveries/0e5f66fc-46b4-4573-b331-bf541acb0529
+GET http://localhost:19092/api/deliveries/2922e4e9-9518-4101-b5b5-108505e892f7
+
+### Status Read
+GET http://localhost:19092/api/deliveries/a2d41fe1-fb78-45b4-b972-d64d4e50de20/status

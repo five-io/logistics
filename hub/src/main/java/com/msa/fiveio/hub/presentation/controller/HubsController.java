@@ -1,6 +1,12 @@
 package com.msa.fiveio.hub.presentation.controller;
 
 
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_COMPANY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_DELIVERY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_HUB_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_MASTER;
+
+import com.msa.fiveio.common.annotation.ApiPermission;
 import com.msa.fiveio.hub.application.facade.HubsFacade;
 import com.msa.fiveio.hub.presentation.dto.hubs.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.hubs.HubsResponseDto;
@@ -14,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +38,7 @@ public class HubsController {
     private final HubsFacade hubsFacade;
     private final InitSetting initSetting;
 
+    @ApiPermission(roles = {ROLE_MASTER})
     @Operation(summary = "Hub 등록", description = "Hub 등록 api 입니다.")
     @PostMapping("/create")
     public ResponseEntity<HubsResponseDto> createHubs(
@@ -38,12 +46,15 @@ public class HubsController {
         return ResponseEntity.ok(hubsFacade.createHubs(hubsDto));
     }
 
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER,
+        ROLE_COMPANY_MANAGER})
     @Operation(summary = "Hub 단 건 조회", description = "Hub 단 건 조회 api 입니다.")
     @GetMapping("/read")
     public ResponseEntity<HubsResponseDto> readHubs(@RequestParam UUID id) {
         return ResponseEntity.ok(hubsFacade.readHubs(id));
     }
 
+    @ApiPermission(roles = {ROLE_MASTER})
     @Operation(summary = "Hub 수정", description = "Hub 수정 api 입니다.")
     @PatchMapping("/update/{id}")
     public ResponseEntity<HubsResponseDto> updateHubs(@PathVariable UUID id,
@@ -51,14 +62,17 @@ public class HubsController {
         return ResponseEntity.ok(hubsFacade.updateHubs(id, hubsDto));
     }
 
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER,
+        ROLE_COMPANY_MANAGER})
     @Operation(summary = "Hub Search", description = "Hub Search api 입니다.")
     @GetMapping("/search")
     public ResponseEntity<Page<SearchResponseDto>> searchAddress(
-        HubsRequestDto hubsDto, Pageable pageable) {
+        Pageable pageable, @ModelAttribute HubsRequestDto hubsDto) {
 
         return ResponseEntity.ok(hubsFacade.searchHubs(hubsDto, pageable));
     }
 
+    @ApiPermission(roles = {ROLE_MASTER})
     @Operation(summary = "Hub 삭제", description = "Hub 삭제 api 입니다.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteHubs(@PathVariable UUID id) {

@@ -1,6 +1,11 @@
 package com.msa.fiveio.hub.presentation.controller;
 
 
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_COMPANY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_DELIVERY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_MASTER;
+
+import com.msa.fiveio.common.annotation.ApiPermission;
 import com.msa.fiveio.hub.application.facade.HubRouteFacade;
 import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteRequestDto;
 import com.msa.fiveio.hub.presentation.dto.hubRoutes.HubRouteResponseDto;
@@ -24,19 +29,21 @@ public class HubRouteController {
     private final HubRouteFacade hubRouteFacade;
     private final InitSetting initSetting;
 
+    @ApiPermission(roles = {ROLE_MASTER})
     @Operation(summary = "Hub 이동경로 등록", description = "Hub 이동경로 등록 api 입니다.")
     @PostMapping
     public ResponseEntity<HubRouteResponseDto> createHubs(@RequestBody HubRouteRequestDto hubsDto) {
         return ResponseEntity.ok(hubRouteFacade.createHubRoute(hubsDto));
     }
 
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_DELIVERY_MANAGER, ROLE_COMPANY_MANAGER})
     @Operation(summary = "Hub 최단 경로 조회", description = "Hub 최단 경로 조회 api 입니다.")
     @GetMapping
     public List<HubRouteResponseDto> getHubRouteList(@RequestBody HubRouteRequestDto hubsDto) {
         return hubRouteFacade.getHubRouteList(hubsDto);
     }
 
-
+    @ApiPermission(roles = {ROLE_MASTER})
     @PostMapping("/setRoute")
     public String setRoute() {
 

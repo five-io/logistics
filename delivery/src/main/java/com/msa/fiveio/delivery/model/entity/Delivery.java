@@ -32,7 +32,7 @@ public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "delivery_id")
-    private UUID deliveryId;
+    private UUID id;
 
     @Column(name = "order_id", nullable = false)
     private UUID orderId;

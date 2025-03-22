@@ -17,16 +17,16 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity implements Serializable {
 
-  //  @CreatedBy
- //   @Column(updatable = false)
-  //  private Long createdBy;
+    @CreatedBy
+    @Column(updatable = false)
+    private Long createdBy;
 
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
- //   @LastModifiedBy
- //   private Long updatedBy;
+    @LastModifiedBy
+    private Long updatedBy;
 
     @LastModifiedDate
     private LocalDateTime updatedAt;

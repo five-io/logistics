@@ -28,3 +28,9 @@ Content-Type: application/json
     }
   ]
 }
+
+###
+PUT http://localhost:19092/api/delivery-routes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdDIiLCJyb2xlIjoiUk9MRV9NQVNURVIiLCJleHAiOjE3NDI1NjY5NjUsImlhdCI6MTc0MjU2NjM2NX0.Q6UBEQHl1rNytXTVil2FIRGWR3AmQTblZRIEfg2OnPA
+

@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class CompanyResponseDto {
+public class ProductResponseDto {
 
     private final String deliveryAddress;
     private final UUID requesterCompanyId;

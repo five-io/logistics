@@ -3,7 +3,7 @@ package com.msa.fiveio.order.application.usecase;
 import com.msa.fiveio.order.infrastructure.client.DeliveryClient;
 import com.msa.fiveio.order.infrastructure.client.ProductClient;
 import com.msa.fiveio.order.infrastructure.client.dto.request.DeliveryCreateRequestDto;
-import com.msa.fiveio.order.infrastructure.client.dto.response.CompanyResponseDto;
+import com.msa.fiveio.order.infrastructure.client.dto.response.ProductResponseDto;
 import com.msa.fiveio.order.presentation.dto.request.OrderCreateRequestDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +19,10 @@ public class ExternalServiceImpl implements ExternalService {
     private final ProductClient productClient;
 
     @Override
-    public void sendDeliveryRequest(UUID orderId, CompanyResponseDto companyInfo,
+    public void sendDeliveryRequest(UUID orderId, ProductResponseDto productInfo,
         OrderCreateRequestDto orderInfo) {
         try {
-            DeliveryCreateRequestDto request = new DeliveryCreateRequestDto(orderId, companyInfo,
+            DeliveryCreateRequestDto request = new DeliveryCreateRequestDto(orderId, productInfo,
                 orderInfo);
             deliveryClient.createDelivery(request);
         } catch (Exception e) {
@@ -32,16 +32,9 @@ public class ExternalServiceImpl implements ExternalService {
     }
 
     @Override
-    public CompanyResponseDto sendCompanyRequest(OrderCreateRequestDto orderInfo) {
-        return CompanyResponseDto.builder()
-            .deliveryAddress("Test Delivery Address")
-            .requesterCompanyId(UUID.randomUUID())
-            .departHubId(UUID.randomUUID())
-            .arriveHubId(UUID.randomUUID())
-            .productPrice(1000.0)
-            .build();
-//        return companyClient.getCompanyInfo(orderInfo.getProductId(),
-//            orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
+    public ProductResponseDto sendProductRequest(OrderCreateRequestDto orderInfo) {
+        return productClient.processOrderRequest(orderInfo.getProductId(),
+            orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
     }
 
     @Override

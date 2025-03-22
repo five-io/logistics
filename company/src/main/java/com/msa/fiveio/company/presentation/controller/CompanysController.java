@@ -77,5 +77,11 @@ public class CompanysController {
         return ResponseEntity.ok(ResponseDto);
     }
 
+    //상품-허브id
+    @GetMapping("/{companyId}/products/hub-id")
+    public UUID getProductHubId(@PathVariable UUID companyId) {
+        return companysFacade.getProductHubId(companyId);
+    }
+
 
 }

@@ -1,6 +1,8 @@
 package com.msa.fiveio.product.model.entity;
 
 import com.msa.fiveio.common.auditing.BaseEntity;
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.ProductErrorCode;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -60,7 +62,13 @@ public class Products extends BaseEntity {
         this.productName = productName;
         this.productDetail = productDetail;
         this.productPrice = productPrice;
+        if (stocks.getQuantity() == 0) {
+            this.productType = ProductType.OUT_OF_STOCK;
+        } else if (stocks.getQuantity() > 0) {
+            this.productType = ProductType.ON_SALE;
+        } else {
+            throw new CustomException(ProductErrorCode.NEGATIVE_INVENTORY_ERROR);
+        }
         this.stocks = stocks;
     }
-
 }

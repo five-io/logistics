@@ -71,4 +71,11 @@ public class CompanyServiceImpl implements CompanyService {
         return CompanysMapper.entityToGetProductCompanyResponseDto(company);
 
     }
+
+    @Override
+    public UUID getProductHubId(UUID CompanyId) {
+        Companys company = companysRepository.findById(CompanyId).orElseThrow(
+                () -> new CustomException(CompanysErrorCode.COMPANYS_NOT_FOUND));
+        return company.getHubId();
+    }
 }

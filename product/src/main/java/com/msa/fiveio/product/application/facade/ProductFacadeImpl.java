@@ -2,6 +2,7 @@ package com.msa.fiveio.product.application.facade;
 
 import com.msa.fiveio.product.application.usecase.ProductService;
 import com.msa.fiveio.product.infrastructure.client.CompanyClient;
+import com.msa.fiveio.product.infrastructure.client.OrderProductInfoDto;
 import com.msa.fiveio.product.infrastructure.client.ProductCompanyGetResponseDto;
 import com.msa.fiveio.product.model.entity.Products;
 import com.msa.fiveio.product.presentation.dto.OrderProductGetResponseDto;
@@ -18,30 +19,33 @@ public class ProductFacadeImpl implements ProductFacade {
     private final ProductService productService;
     private final CompanyClient companyClient;
 
+
     @Override
-    public ProductCreateResponseDto createProduct(ProductCreateRequestDto productRequestDto) {
-        return productService.createProduct(productRequestDto);
+    public ProductCreateResponseDto createProduct(
+            ProductCreateRequestDto productRequestDto) {
+        UUID hubId = companyClient.getProductHubId(productRequestDto.getCompanyId());
+        return productService.createProduct(productRequestDto, hubId);
     }
 
     @Override
     public OrderProductGetResponseDto processOrderRequest(UUID productId, UUID receiverCompanyId,
             Long quantity) {
-        System.out.println(2);
         ProductCompanyGetResponseDto companyDto = companyClient.getProductCompany(
                 receiverCompanyId).getBody();
-        System.out.println(3);
-        Products product = productService.processOrderRequest(productId, receiverCompanyId,
-                quantity);
-        System.out.println(4);
+        OrderProductInfoDto orderProductInfoDto = productService.processOrderRequest(productId,
+                receiverCompanyId, quantity);
+        Products product = orderProductInfoDto.getProduct();
         OrderProductGetResponseDto responseDto =
                 OrderProductGetResponseDto.builder()
                         .deliveryAddress(companyDto.getDeliveryAddress())
                         .requesterCompanyId(product.getCompanyId())
                         .departHubId(product.getHubId())
                         .arriveHubId(companyDto.getArriveHubId())
+                        .productName(product.getProductName())
                         .productPrice(product.getProductPrice())
+                        .productType(product.getProductType())
+                        .isOrderable(orderProductInfoDto.getIsOrderable())
                         .build();
-        System.out.println(5);
 
         return responseDto;
     }

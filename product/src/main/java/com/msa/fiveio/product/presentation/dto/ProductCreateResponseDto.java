@@ -13,5 +13,6 @@ public class ProductCreateResponseDto {
     private String productDetail;
     private UUID hubId;
     private UUID companyId;
+    private double productPrice;
 
 }

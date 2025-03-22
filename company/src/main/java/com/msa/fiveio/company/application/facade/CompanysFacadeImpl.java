@@ -43,5 +43,10 @@ public class CompanysFacadeImpl implements CompanysFacade {
         return companyService.getProductCompany(companyId);
     }
 
+    @Override
+    public UUID getProductHubId(UUID CompanyId) {
+        return companyService.getProductHubId(CompanyId);
+    }
+
 
 }

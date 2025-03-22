@@ -82,5 +82,13 @@ public class DeliveryRouteServiceImpl implements DeliveryRouteService {
         return responses;
     }
 
+    @Transactional
+    @Override
+    public void deleteDelivery(UUID deliveryId, Long userId) {
+        List<DeliveryRoute> deliveryRoutes = deliveryRouteRepository.findByDelivery_Id(deliveryId);
+        for (DeliveryRoute route : deliveryRoutes) {
+            route.addDeletedField(userId);
+        }
+    }
 
 }

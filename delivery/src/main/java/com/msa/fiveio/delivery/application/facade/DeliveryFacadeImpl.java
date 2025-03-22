@@ -71,6 +71,7 @@ public class DeliveryFacadeImpl implements DeliveryFacade {
     @Override
     public void deleteDelivery(UUID deliveryId, Long userId) {
         deliveryService.deleteDelivery(deliveryId, userId);
+        deliveryRouteService.deleteDelivery(deliveryId, userId);
     }
 
     private UserResponseDto getDeliveryManager(UUID hubId, String type) {

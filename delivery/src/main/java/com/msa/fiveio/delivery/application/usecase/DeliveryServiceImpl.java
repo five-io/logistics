@@ -23,20 +23,24 @@ public class DeliveryServiceImpl implements DeliveryService {
     private final DeliveryRepository deliveryRepository;
 
     @Override
-    public void createDelivery(
-        DeliveryCreateRequestDto deliveryCreateRequestDto) {
-        // 목적지 허브 업체 배송 담당자 ID
-//        Long companyDeliveryManager = managers.getCompanyDeliveryManager();
-        Long companyDeliveryManager = 1L;
-        // 허브 배송 담당자 ID
-//        Long hubDeliveryManager = managers.getHubDeliveryManager();
-        Long hubDeliveryManager = 2L;
+    public DeliveryResponseDto createDelivery(
+        DeliveryCreateRequestDto deliveryCreateRequestDto,
+        Long companyDeliveryManagerId
+    ) {
+        Delivery delivery = Delivery.createDelivery(
+            deliveryCreateRequestDto.getOrderId(),
+            deliveryCreateRequestDto.getDepartHubId(),
+            deliveryCreateRequestDto.getArriveHubId(),
+            deliveryCreateRequestDto.getDeliveryAddress(),
+            companyDeliveryManagerId,
+            deliveryCreateRequestDto.getRecipientName(),
+            deliveryCreateRequestDto.getRecipientSlackId()
+        );
 
-        // 배송 생성
-        Delivery delivery = createDelivery(deliveryCreateRequestDto, companyDeliveryManager);
         Delivery savedDelivery = deliveryRepository.save(delivery);
         log.info("배송 생성 완료, 주문 ID: {}, 배송 ID: {}", savedDelivery.getOrderId(),
             savedDelivery.getId());
+        return DeliveryMapper.DeliveryToDeliveryResponseDto(savedDelivery);
     }
 
     @Transactional
@@ -69,18 +73,5 @@ public class DeliveryServiceImpl implements DeliveryService {
         Delivery delivery = deliveryRepository.findByOrderId(orderId)
             .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
         return delivery.getDeliveryStatus().name();
-    }
-
-    private Delivery createDelivery(DeliveryCreateRequestDto requestDto,
-        Long companyDeliveryManager) {
-        return Delivery.createDelivery(
-            requestDto.getOrderId(),
-            requestDto.getDepartHubId(),
-            requestDto.getArriveHubId(),
-            requestDto.getDeliveryAddress(),
-            companyDeliveryManager,
-            requestDto.getRecipientName(),
-            requestDto.getRecipientSlackId()
-        );
     }
 }

@@ -1,5 +1,7 @@
 package com.msa.fiveio.delivery.application.usecase;
 
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.DeliveryErrorCode;
 import com.msa.fiveio.delivery.infrastructure.client.HubClient;
 import com.msa.fiveio.delivery.infrastructure.client.SlackClient;
 import com.msa.fiveio.delivery.infrastructure.client.dto.request.SlacksCreateRequestDto;
@@ -46,7 +48,7 @@ public class ExternalServiceImpl implements ExternalService {
             slackClient.createSlack(request);
         } catch (Exception e) {
             log.error("Failed to send Slack request", e);
-            throw new RuntimeException("Unable to send slack request", e);
+            throw new CustomException(DeliveryErrorCode.SLACK_REQUEST_FAILED);
         }
     }
 

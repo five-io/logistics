@@ -20,4 +20,6 @@ public interface OrderService {
     Order getOrder(UUID orderId);
 
     void cancelOrder(Order order, Long userId, String status);
+
+    void deleteOrder(Order order, Long userId, String status);
 }

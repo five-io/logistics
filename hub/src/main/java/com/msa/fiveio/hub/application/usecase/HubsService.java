@@ -1,6 +1,5 @@
 package com.msa.fiveio.hub.application.usecase;
 
-import com.msa.fiveio.hub.model.entity.Hubs;
 import com.msa.fiveio.hub.presentation.dto.hubs.HubsRequestDto;
 import com.msa.fiveio.hub.presentation.dto.hubs.HubsResponseDto;
 import com.msa.fiveio.hub.presentation.dto.hubs.SearchResponseDto;
@@ -14,7 +13,7 @@ public interface HubsService {
 
     HubsResponseDto readHubs(UUID id);
 
-    HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsRequestDto, Hubs hub);
+    HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsRequestDto);
 
     Page<SearchResponseDto> searchHubs(HubsRequestDto hubsDto, Pageable pageable);
 

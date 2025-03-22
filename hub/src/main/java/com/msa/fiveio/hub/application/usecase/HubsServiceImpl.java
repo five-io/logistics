@@ -59,16 +59,18 @@ public class HubsServiceImpl implements HubsService {
 
     @Override
     @Transactional
-    public HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsDto, Hubs hub) {
+    public HubsResponseDto updateHubs(UUID id, HubsRequestDto hubsDto) {
+        Hubs hub = hubsRepository.findById(id).orElseThrow(
+            () -> new CustomException(HubErrorCode.HUBS_NOT_FOUND)
+        );
+
         if (hubsDto.hubName() != null) {
             hub.updateHubName(hubsDto.hubName());
-            hubsRepository.save(hub);
         }
         if (hubsDto.address() != null) {
             String[] response = searchAddress(hubsDto.address());
             hub.updateAddress(hubsDto.address(), Double.parseDouble(response[0]),
                 Double.parseDouble(response[1]));
-            hubsRepository.save(hub);
         }
 
         return HubsMapper.entityToHubsResponseDto(hub);

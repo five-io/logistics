@@ -1,4 +1,4 @@
-package com.msa.fiveio.delivery.infrastructure.client.dto;
+package com.msa.fiveio.delivery.infrastructure.client.dto.response;
 
 
 import java.util.UUID;

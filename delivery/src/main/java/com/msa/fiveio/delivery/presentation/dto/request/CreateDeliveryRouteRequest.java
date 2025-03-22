@@ -1,6 +1,6 @@
 package com.msa.fiveio.delivery.presentation.dto.request;
 
-import com.msa.fiveio.delivery.infrastructure.client.dto.RouteResponseDto;
+import com.msa.fiveio.delivery.infrastructure.client.dto.response.RouteResponseDto;
 import com.msa.fiveio.delivery.presentation.dto.response.DeliveryResponseDto;
 import java.util.List;
 import lombok.AllArgsConstructor;

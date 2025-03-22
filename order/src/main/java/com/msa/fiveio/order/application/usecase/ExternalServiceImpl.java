@@ -33,17 +33,29 @@ public class ExternalServiceImpl implements ExternalService {
 
     @Override
     public ProductResponseDto sendProductRequest(OrderCreateRequestDto orderInfo) {
-        return productClient.processOrderRequest(orderInfo.getProductId(),
-            orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
+        try {
+            return productClient.processOrderRequest(orderInfo.getProductId(),
+                orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Failed to process order request", e);
+        }
     }
 
     @Override
     public String getDeliveryStatus(UUID orderId) {
-        return deliveryClient.getDeliveryStatus(orderId);
+        try {
+            return deliveryClient.getDeliveryStatus(orderId);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Failed to get delivery status", e);
+        }
     }
 
     @Override
     public void rollbackStock(UUID orderId, Long quantity) {
-        productClient.rollbackStock(orderId, quantity);
+        try {
+            productClient.rollbackStock(orderId, quantity);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Failed to rollback stock", e);
+        }
     }
 }

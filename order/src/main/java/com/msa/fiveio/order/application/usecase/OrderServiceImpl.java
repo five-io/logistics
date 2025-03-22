@@ -1,5 +1,7 @@
 package com.msa.fiveio.order.application.usecase;
 
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.OrderErrorCode;
 import com.msa.fiveio.order.infrastructure.client.dto.response.ProductResponseDto;
 import com.msa.fiveio.order.model.repository.OrderRepository;
 import com.msa.fiveio.order.presentation.dto.request.OrderSearchRequestDto;
@@ -69,7 +71,7 @@ public class OrderServiceImpl implements OrderService {
 
     private void validateOrderStatus(String Status, String expectedStatus) {
         if (!Status.equals(expectedStatus)) {
-            throw new RuntimeException("Order Status is not " + expectedStatus);
+            throw new CustomException(OrderErrorCode.INVALID_ORDER_STATUS);
         }
     }
 

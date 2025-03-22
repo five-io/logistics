@@ -1,5 +1,7 @@
 package com.msa.fiveio.order.application.usecase;
 
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.OrderErrorCode;
 import com.msa.fiveio.order.infrastructure.client.DeliveryClient;
 import com.msa.fiveio.order.infrastructure.client.ProductClient;
 import com.msa.fiveio.order.infrastructure.client.dto.request.DeliveryCreateRequestDto;
@@ -26,8 +28,7 @@ public class ExternalServiceImpl implements ExternalService {
                 orderInfo);
             deliveryClient.createDelivery(request);
         } catch (Exception e) {
-            log.error("Failed to create delivery for orderId: {}", orderId, e);
-            throw new IllegalArgumentException("Failed to request delivery", e);
+            throw new CustomException(OrderErrorCode.DELIVERY_REQUEST_FAILED);
         }
     }
 
@@ -37,7 +38,7 @@ public class ExternalServiceImpl implements ExternalService {
             return productClient.processOrderRequest(orderInfo.getProductId(),
                 orderInfo.getReceiverCompanyId(), orderInfo.getQuantity());
         } catch (Exception e) {
-            throw new IllegalArgumentException("Failed to process order request", e);
+            throw new CustomException(OrderErrorCode.PRODUCT_REQUEST_FAILED);
         }
     }
 
@@ -46,7 +47,7 @@ public class ExternalServiceImpl implements ExternalService {
         try {
             return deliveryClient.getDeliveryStatus(orderId);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Failed to get delivery status", e);
+            throw new CustomException(OrderErrorCode.DELIVERY_STATUS_FETCH_FAILED);
         }
     }
 
@@ -55,7 +56,7 @@ public class ExternalServiceImpl implements ExternalService {
         try {
             productClient.rollbackStock(orderId, quantity);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Failed to rollback stock", e);
+            throw new CustomException(OrderErrorCode.STOCK_ROLLBACK_FAILED);
         }
     }
 }

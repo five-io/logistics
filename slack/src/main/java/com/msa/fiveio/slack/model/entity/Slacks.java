@@ -25,37 +25,37 @@ public class Slacks extends BaseEntity {
 	@Column(name = "slack_id")
 	private UUID id;
 
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
 	private UUID orderId;
 
-	@Column
+	@Column(length = 100, nullable = false)
 	private String departHubName;
 
-	@Column
+	@Column(length = 100, nullable = false)
 	private String transitPoint;
 
-	@Column
+	@Column(length = 100, nullable = false)
 	private String arriveHubName;
 
-	@Column
+	@Column(nullable = false)
 	private String deliveryAddress;
 
-	@Column
+	@Column(length = 100, nullable = false)
 	private String recipientName;
 
-	@Column
+	@Column(length = 100, nullable = false)
 	private String recipientSlackId;
 
-	@Column
+	@Column(length = 100, nullable = false)
 	private String companyDeliveryManager;
 
-	@Column
+	@Column(length = 100, nullable = false)
 	private String productName;
 
-	@Column
+	@Column(nullable = false)
 	private Long productQuantity;
 
-	@Column
+	@Column(nullable = false)
 	private String requestNotes;
 
 	@Column(columnDefinition = "TEXT")

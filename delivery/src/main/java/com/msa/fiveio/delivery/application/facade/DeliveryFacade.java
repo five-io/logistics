@@ -21,4 +21,6 @@ public interface DeliveryFacade {
     String getDeliveryStatus(UUID orderId);
 
     void deleteDelivery(UUID deliveryId, Long userId);
+
+    void cancelDelivery(UUID orderId, Long userId);
 }

@@ -22,4 +22,6 @@ public interface DeliveryService {
     String getDeliveryStatus(UUID orderId);
 
     void deleteDelivery(UUID deliveryId, Long userId);
+
+    UUID cancelDelivery(UUID orderId, Long userId);
 }

@@ -83,4 +83,10 @@ public class DeliveryController {
         Long userId = 1L;
         deliveryFacade.deleteDelivery(deliveryId, userId);
     }
+
+    @Operation(summary = "Delivery 취소", description = "Delivery 취소 api 입니다.")
+    @DeleteMapping("/{id}/cancel")
+    public void cancelDelivery(@PathVariable("id") UUID orderId, Long userId) {
+        deliveryFacade.cancelDelivery(orderId, userId);
+    }
 }

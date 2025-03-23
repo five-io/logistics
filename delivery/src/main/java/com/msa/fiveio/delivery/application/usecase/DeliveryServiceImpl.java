@@ -70,8 +70,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public String getDeliveryStatus(UUID orderId) {
-        Delivery delivery = deliveryRepository.findByOrderId(orderId)
-            .orElseThrow(() -> new CustomException(DeliveryErrorCode.DELIVERY_NOT_FOUND));
+        Delivery delivery = findDeliveryByOrderId(orderId);
         return delivery.getDeliveryStatus().name();
     }
 
@@ -85,8 +84,24 @@ public class DeliveryServiceImpl implements DeliveryService {
         delivery.addDeletedField(userId);
     }
 
+    @Transactional
+    @Override
+    public UUID cancelDelivery(UUID orderId, Long userId) {
+        Delivery delivery = findDeliveryByOrderId(orderId);
+        if (!delivery.getDeliveryStatus().toString().equals("HUB_PENDING")) {
+            throw new CustomException(DeliveryErrorCode.CANCEL_INVALID_DELIVERY_STATUS);
+        }
+        delivery.addDeletedField(userId);
+        return delivery.getId();
+    }
+
     private Delivery findDeliveryById(UUID deliveryId) {
         return deliveryRepository.findById(deliveryId)
+            .orElseThrow(() -> new CustomException(DeliveryErrorCode.DELIVERY_NOT_FOUND));
+    }
+
+    private Delivery findDeliveryByOrderId(UUID orderId) {
+        return deliveryRepository.findByOrderId(orderId)
             .orElseThrow(() -> new CustomException(DeliveryErrorCode.DELIVERY_NOT_FOUND));
     }
 }

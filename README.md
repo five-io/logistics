@@ -28,7 +28,7 @@
 
 ### 인증 및 인가
 
-./![img.png](img.png)
+![Image](https://github.com/user-attachments/assets/bd36c35d-de23-4c89-b5aa-a15665901578)
 
 ### 허브
 

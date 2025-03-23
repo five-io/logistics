@@ -10,9 +10,11 @@ import com.msa.fiveio.company.presentation.dto.response.CompanyUpdateResponseDto
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class CompanysFacadeImpl implements CompanysFacade {
 
     private final CompanyService companyService;

@@ -34,21 +34,22 @@ public class DeliveryRouteFacadeImpl implements DeliveryRouteFacade {
             DeliveryRouteResponse response = responseList.get(i);
             if (response.getDeliveryRouteDetails().getArriveHubId()
                 .equals(request.arrviedHubId())) {
-                if (i != responseList.size()) {
+                if (i != responseList.size() - 1) {
                     //다음 배송중
-                    DeliveryRouteResponse nextRoute = responseList.get(i + 1);
+                    int nextSeq = i + 1;
+                    DeliveryRouteResponse nextRoute = responseList.get(nextSeq);
                     deliveryRouteService.updateDelRoute(
                         nextRoute.getDeliveryRouteDetails().getSequence(),
                         nextRoute.getDelivery().getId(),
                         DeliveryRouteStatus.IN_DELIVERY);
                     flag = false;
                 }
-                //현재 배송완료
-                deliveryRouteService.updateDelRoute(
-                    response.getDeliveryRouteDetails().getSequence(),
-                    response.getDelivery().getId(),
-                    DeliveryRouteStatus.ARRIVED_AT_DESTINATION_HUB);
             }
+            //현재 배송완료
+            deliveryRouteService.updateDelRoute(
+                response.getDeliveryRouteDetails().getSequence(),
+                response.getDelivery().getId(),
+                DeliveryRouteStatus.ARRIVED_AT_DESTINATION_HUB);
         }
         if (flag) {
             //배송update

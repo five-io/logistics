@@ -31,7 +31,7 @@ Authorization:
 }
 
 ###Hub 단 건 조회
-GET http://localhost:19090/api/hubs/read?id=afd3c207-c492-4f96-b53a-60ef17f5a879
+GET http://localhost:19090/api/hubs/read?id=fbca1ccf-ed40-4314-b2ed-ee5bf75cc2b3
 Content-Type: application/json
 Authorization: {{accessToken}}
 

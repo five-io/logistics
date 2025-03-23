@@ -1,9 +1,15 @@
 package com.msa.fiveio.product.presentation.controller;
 
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_COMPANY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_HUB_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_MASTER;
+
+import com.msa.fiveio.common.annotation.ApiPermission;
 import com.msa.fiveio.product.application.facade.ProductFacade;
 import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
 import com.msa.fiveio.product.presentation.dto.response.OrderProductGetResponseDto;
 import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -24,9 +30,11 @@ public class ProductsController {
     private final ProductFacade productFacade;
 
     //상품등록, 재고생성
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_COMPANY_MANAGER})
+    @Operation(summary = "상품 등록", description = "상품 등록 api 입니다.")
     @PostMapping
     public ResponseEntity<ProductCreateResponseDto> createProduct(
-            @RequestBody ProductCreateRequestDto requestDto) {
+        @RequestBody ProductCreateRequestDto requestDto) {
         ProductCreateResponseDto responseDto = productFacade.createProduct(requestDto);
         return ResponseEntity.ok(responseDto);
     }
@@ -37,11 +45,12 @@ public class ProductsController {
 
 
     //order 로부터 정보 받아와서 다시 반환
+    @Operation(summary = "상품정보 조회 및 재고 변경", description = "상품정보 조회 및 재고 변경 api 입니다.")
     @GetMapping("/order")
     OrderProductGetResponseDto processOrderRequest(@RequestParam UUID productId,
-            @RequestParam UUID receiverCompanyId, @RequestParam Long quantity) {
+        @RequestParam UUID receiverCompanyId, @RequestParam Long quantity) {
         OrderProductGetResponseDto responseDto = productFacade.processOrderRequest(productId,
-                receiverCompanyId, quantity);
+            receiverCompanyId, quantity);
         return responseDto;
     }
 

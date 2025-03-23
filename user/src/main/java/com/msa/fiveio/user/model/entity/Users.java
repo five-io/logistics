@@ -1,6 +1,9 @@
 package com.msa.fiveio.user.model.entity;
 
 import com.msa.fiveio.common.auditing.BaseEntity;
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.UserErrorCode;
+import com.msa.fiveio.user.model.entity.enums.ManagersTypeEnum;
 import com.msa.fiveio.user.model.entity.enums.UsersRoleEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,21 +13,24 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.util.UUID;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
+@Builder
 @Getter
 @Entity
 @Table(name = "p_users")
-@NoArgsConstructor
+@AllArgsConstructor
 public class Users extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 증가
+    @Column(nullable = false)
+    private Long userId;
 
-    @Column(length = 50, nullable = false, unique = true)
+    @Column(length = 50, nullable = false)
     private String username;
 
     @Column(nullable = false)
@@ -34,17 +40,20 @@ public class Users extends BaseEntity {
     private String slackId;
 
     @Column(nullable = false)
-    @Enumerated(value = EnumType.STRING)
+    private UUID hubId;
+
+    @Enumerated(EnumType.STRING) // ENUM 타입 매핑
+    @Column(nullable = false)
     private UsersRoleEnum role;
 
+    public Users() {
+    }
 
-    @Builder
-    public Users(String username, String password, String slackId, String email,
-        UsersRoleEnum role) {
+    public Users(String username, String password, String slackId, UUID hubId, UUID deliveryId, UsersRoleEnum role) {
         this.username = username;
         this.password = password;
         this.slackId = slackId;
-
+        this.hubId = hubId;
         this.role = role;
     }
 }

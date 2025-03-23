@@ -14,4 +14,6 @@ public interface ExternalService {
     String getDeliveryStatus(UUID orderId);
 
     void rollbackStock(UUID orderId, Long quantity);
+
+    void cancelDelivery(UUID orderId, Long userId);
 }

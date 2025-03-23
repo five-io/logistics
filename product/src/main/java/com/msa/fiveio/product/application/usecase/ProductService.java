@@ -3,6 +3,7 @@ package com.msa.fiveio.product.application.usecase;
 import com.msa.fiveio.product.infrastructure.client.OrderProductInfoDto;
 import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
 import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
+import com.msa.fiveio.product.presentation.dto.response.ProductGetResponseDto;
 import java.util.UUID;
 
 public interface ProductService {
@@ -15,6 +16,7 @@ public interface ProductService {
             Long quantity);
 
     //상품조회(단건)
+    ProductGetResponseDto getProduct(UUID productId);
 
     //상품수정
 

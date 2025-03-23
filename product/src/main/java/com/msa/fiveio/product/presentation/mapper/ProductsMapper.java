@@ -4,6 +4,7 @@ import com.msa.fiveio.product.model.entity.Products;
 import com.msa.fiveio.product.model.entity.Stocks;
 import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
 import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
+import com.msa.fiveio.product.presentation.dto.response.ProductGetResponseDto;
 import java.util.UUID;
 
 public class ProductsMapper {
@@ -22,6 +23,17 @@ public class ProductsMapper {
 
     public static ProductCreateResponseDto EntityToProductCreateResponseDto(Products products) {
         return ProductCreateResponseDto.builder()
+                .productId(products.getId())
+                .productName(products.getProductName())
+                .productDetail(products.getProductDetail())
+                .hubId(products.getHubId())
+                .companyId(products.getCompanyId())
+                .productPrice(products.getProductPrice())
+                .build();
+    }
+
+    public static ProductGetResponseDto ProductGetResponseDtoToEntity(Products products) {
+        return ProductGetResponseDto.builder()
                 .productId(products.getId())
                 .productName(products.getProductName())
                 .productDetail(products.getProductDetail())

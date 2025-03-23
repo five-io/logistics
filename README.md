@@ -29,12 +29,12 @@
 
 <details>
 <summary><h3>인증 및 인가</h3></summary>
-   <img src="[https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c](https://github.com/user-attachments/assets/86352b96-fe42-4df3-9fb3-3e48709fc498)" width="100%">
+   <img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="100%">
 </details>
 <br>
 <details>
 <summary><h3>허브</h3></summary>
-     <img src="[https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c](https://github.com/user-attachments/assets/86352b96-fe42-4df3-9fb3-3e48709fc498)](https://github.com/user-attachments/assets/fcbb6d2b-5982-4eac-af64-ff7efe352a62)" width="100%">
+     <img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="100%">
 </details>
 
 <br>
@@ -46,7 +46,7 @@
 <br>
 <details>
 <summary><h3>주문 및 배송</h3></summary>
-<img src="[https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c](https://github.com/user-attachments/assets/86352b96-fe42-4df3-9fb3-3e48709fc498)](https://github.com/user-attachments/assets/fcbb6d2b-5982-4eac-af64-ff7efe352a62)](https://github.com/user-attachments/assets/6815e818-27e3-42e8-ba69-87509c4d55e1)" width="100%">
+<img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="100%">
 </details>
 <br>
 <details>

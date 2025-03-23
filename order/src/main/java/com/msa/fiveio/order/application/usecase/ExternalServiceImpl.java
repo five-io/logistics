@@ -59,4 +59,13 @@ public class ExternalServiceImpl implements ExternalService {
             throw new CustomException(OrderErrorCode.STOCK_ROLLBACK_FAILED);
         }
     }
+
+    @Override
+    public void cancelDelivery(UUID orderId, Long userId) {
+        try {
+            deliveryClient.cancelDelivery(orderId, userId);
+        } catch (Exception e) {
+            throw new CustomException(OrderErrorCode.DELIVERY_DELETE_FAILED);
+        }
+    }
 }

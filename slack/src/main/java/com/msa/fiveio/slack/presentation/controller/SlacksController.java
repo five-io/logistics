@@ -1,5 +1,6 @@
 package com.msa.fiveio.slack.presentation.controller;
 
+import com.msa.fiveio.common.annotation.ApiPermission;
 import com.msa.fiveio.slack.application.facade.SlacksFacade;
 import com.msa.fiveio.slack.model.entity.SendStatus;
 import com.msa.fiveio.slack.presentation.dto.SlacksCreateRequestDto;
@@ -26,6 +27,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_COMPANY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_DELIVERY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_HUB_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_MASTER;
+
 @Validated
 @RestController
 @RequestMapping("/api/slacks")
@@ -35,6 +41,7 @@ public class SlacksController {
 
 	private final SlacksFacade slacksFacade;
 
+	@ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER, ROLE_COMPANY_MANAGER})
 	@Operation(summary = "Slack 등록", description = "Slack 등록 api 입니다.")
 	@PostMapping
 	public ResponseEntity<SlacksCreateResponseDto> createSlack(@Valid @RequestBody SlacksCreateRequestDto slacksCreateRequestDto) {
@@ -44,6 +51,7 @@ public class SlacksController {
 		return ResponseEntity.ok(slacksCreateResponseDto);
 	}
 
+	@ApiPermission(roles = {ROLE_MASTER})
 	@Operation(summary = "Slack 목록 조회", description = "Slack 목록 조회 api 입니다.")
 	@GetMapping
 	public ResponseEntity<SlacksReadResponseDto> readSlack(Pageable pageable) {
@@ -52,6 +60,7 @@ public class SlacksController {
 		return ResponseEntity.ok(slacksReadResponseDto);
 	}
 
+	@ApiPermission(roles = {ROLE_MASTER})
 	@Operation(summary = "Slack 검색", description = "Slack 검색 api 입니다.")
 	@GetMapping("/search")
 	public ResponseEntity<SlacksSearchResponseDto> searchSlack(@Valid Pageable pageable, @RequestBody SlacksSearchRequestDto.SlacksDto slacksDto) {
@@ -60,6 +69,7 @@ public class SlacksController {
 		return ResponseEntity.ok(slacksSearchResponseDto);
 	}
 
+	@ApiPermission(roles = {ROLE_MASTER})
 	@Operation(summary = "Slack 상태 변경", description = "Slack 상태 변경 api 입니다.")
 	@PatchMapping("/status")
 	public ResponseEntity<String> updateStatus(@Valid @RequestBody SlacksUpdateRequestDto slacksUpdateRequestDto
@@ -74,6 +84,7 @@ public class SlacksController {
 		}
 	}
 
+	@ApiPermission(roles = {ROLE_MASTER})
 	@Operation(summary = "Slack 삭제", description = "Slack 삭제 api 입니다.")
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<SlacksDeleteResponseDto> deleteSlack(@PathVariable UUID id, Long userId) {

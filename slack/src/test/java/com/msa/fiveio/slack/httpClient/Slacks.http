@@ -1,9 +1,10 @@
 ### Slack Create
 POST http://localhost:19090/api/slacks
 Content-Type: application/json
+Authorization: {{accessToken}}
 
 {
-  "order-id": "12345678-9e53-48c4-bbc7-2425ec699999",
+  "order-id": "12345678-9e53-48c4-bbc7-2425ec611111",
   "depart-hub-name":"수원 허브",
   "transit-point":"천안 허브",
   "arrive-hub-name":"대전 허브",
@@ -18,10 +19,12 @@ Content-Type: application/json
 
 ### Slack Read
 GET http://localhost:19090/api/slacks?page=0&size=10&sort=DESC&orderby=CREATED
+Authorization: {{accessToken}}
 
 ### Slack Search
 GET http://localhost:19090/api/slacks/search?page=0&size=10&sort=DESC&orderby=CREATED
 Content-Type: application/json
+Authorization: {{accessToken}}
 
 {
     "transit-point": "천안 허브",
@@ -32,11 +35,13 @@ Content-Type: application/json
 ### Slack Update
 PATCH http://localhost:19090/api/slacks/status
 Content-Type: application/json
+Authorization: {{accessToken}}
 
 {
-  "order-id": "12345678-9e53-48c4-bbc7-2425ec691710",
+  "order-id": "a1b48aaf-9e53-48c4-bbc7-2425ec691741",
   "send-status": "SEND_FAILURE"
 }
 
 ### Slack Delete
-DELETE http://localhost:19090/api/slacks/delete/8210a620-dbdd-4594-99d2-131c7870b543
+DELETE http://localhost:19090/api/slacks/delete/d5a65465-9e00-4490-b109-bf125f3a9d23
+Authorization: {{accessToken}}

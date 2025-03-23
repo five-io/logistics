@@ -160,7 +160,15 @@ Authorization: {{accessToken}}
   "recipient-slack-id": "01011112222"
 }
 
+###주문 취소
+DELETE http://localhost:19090/api/orders/b62f9764-f5c7-411c-ad4f-f49232956020/cancel
+Content-Type: application/json
+Authorization: {{accessToken}}
 
+###배송 상태 변경
+PATCH http://localhost:19090/api/deliveries/7fa2a896-c0f8-4c01-a635-0ec54a7360d2/status?deliveryStatus=delivered
+Content-Type: application/json
+Authorization: {{accessToken}}
 
 ###배송지 도착 상태 변경
 PUT http://localhost:19090/api/delivery-routes

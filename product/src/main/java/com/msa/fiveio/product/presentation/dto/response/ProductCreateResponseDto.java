@@ -1,4 +1,4 @@
-package com.msa.fiveio.product.presentation.dto;
+package com.msa.fiveio.product.presentation.dto.response;
 
 import java.util.UUID;
 import lombok.Builder;

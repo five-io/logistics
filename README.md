@@ -47,7 +47,7 @@
 <br>
 <details>
 <summary><h3>AI 활용 Slack 알림</h3></summary>
-     <img src="![ai, slack architecture (3)](https://github.com/user-attachments/assets/4b6128e4-2613-4410-9957-c29afe91a4aa)" alt="AI 활용 Slack 알림">
+     <image>![ai, slack architecture (3)](https://github.com/user-attachments/assets/459af9c2-ee48-415c-845c-553ac30a4ddf)</image>
 </details>
 <br>
 <details>

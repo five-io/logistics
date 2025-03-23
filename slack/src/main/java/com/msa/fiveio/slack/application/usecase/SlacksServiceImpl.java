@@ -29,7 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(
+	readOnly = true
+)
 public class SlacksServiceImpl implements SlacksService {
 
 	private final AiClient aiClient;
@@ -37,6 +39,7 @@ public class SlacksServiceImpl implements SlacksService {
 	private final SlacksRepository slacksRepository;
 	private final SlacksQueryRepository slacksQueryRepository;
 
+	@Transactional
 	@Override
 	public SlacksCreateResponseDto createSlack(SlacksCreateRequestDto slacksCreateRequestDto) {
 
@@ -61,7 +64,6 @@ public class SlacksServiceImpl implements SlacksService {
 
 	@Override
 	@SQLRestriction("deleted_at IS NULL")
-	@Transactional(readOnly = true)
 	public SlacksReadResponseDto readSlack(Pageable pageable) {
 
 		Page<Slacks> slacksPage = slacksQueryRepository.findSlacksList(pageable);
@@ -69,9 +71,8 @@ public class SlacksServiceImpl implements SlacksService {
 		return SlacksMapper.pageToReadResponseDto(slacksPage);
 	}
 
-	@SQLRestriction("deleted_at IS NULL")
-	@Transactional
 	@Override
+	@SQLRestriction("deleted_at IS NULL")
 	public SlacksSearchResponseDto searchSlack(Pageable pageable, SlacksSearchRequestDto.SlacksDto slacksDto) {
 
 		Page<Slacks> slacksSearchPage = slacksQueryRepository.findSlacksSearchList(pageable, slacksDto);
@@ -79,11 +80,10 @@ public class SlacksServiceImpl implements SlacksService {
 		return SlacksMapper.pageToSearchResponseDto(slacksSearchPage);
 	}
 
-	@Transactional
 	@Override
 	public String updateStatus(UUID orderId, String status) {
 		Slacks slacks = slacksRepository.findByOrderId(orderId)
-			.orElseThrow(() -> new IllegalArgumentException("Slack not found"));
+			.orElseThrow(() -> new CustomException(SlackErrorCode.SLACKS_NOT_FOUND));
 
 		SendStatus sendStatus = SendStatus.valueOf(status.toUpperCase());
 		slacks.updateStatus(sendStatus);
@@ -91,9 +91,10 @@ public class SlacksServiceImpl implements SlacksService {
 	}
 
 	@Override
-	public SlacksDeleteResponseDto deleteSlack(UUID id) {
+	public SlacksDeleteResponseDto deleteSlack(UUID id, Long userId) {
 		Slacks slacks = slacksRepository.findById(id).orElseThrow(() ->
 			new CustomException(SlackErrorCode.SLACKS_NOT_FOUND));
+		slacks.addDeletedField(userId);
 
 		return SlacksMapper.entityToDeleteResponseDto(slacks);
 	}

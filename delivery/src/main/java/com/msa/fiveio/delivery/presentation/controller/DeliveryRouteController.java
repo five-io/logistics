@@ -39,7 +39,7 @@ public class DeliveryRouteController {
 
     @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER,
         ROLE_COMPANY_MANAGER})
-    @Operation(summary = "Hub 이동경로 등록", description = "Hub 이동경로 등록 api 입니다.")
+    @Operation(summary = "Hub 배송상태 변경", description = "Hub 배송상태 변경 api 입니다.")
     @PutMapping
     public ResponseEntity<String> updateDelRoute(@RequestBody DeliveryRouteRequest request) {
         deliveryRouteFacade.updateDelRoute(request);

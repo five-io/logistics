@@ -38,6 +38,11 @@ public class PermissionCheckAspect {
             .map(Role::valueOf)
             .anyMatch(requiredRoles::contains);
 
+        System.out.println("=== 권한 확인 ===");
+        System.out.println("요청 헤더 roles: " + userRoles);
+        System.out.println("필요한 roles: " + requiredRoles);
+        System.out.println("허용 여부: " + hasPermission);
+
         if (!hasPermission) {
             throw new AccessDeniedException("권한이 없습니다.");
         }

@@ -5,6 +5,8 @@ import com.msa.fiveio.delivery.model.entity.enums.DeliveryRouteStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,6 +44,7 @@ public class DeliveryRoute extends BaseEntity {
     @Column(name = "actual_duration_min")
     private Long actualDurationMin;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "delivery_route_status", nullable = false)
     private DeliveryRouteStatus deliveryRouteStatus;
 

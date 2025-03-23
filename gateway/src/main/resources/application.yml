@@ -32,14 +32,14 @@ spring:
         - id: delivery-service
           uri: lb://delivery-service
           predicates:
-            - Path=/api/deliveries/**
+            - Path=/api/deliveries/**, /api/delivery-routes/**
         - id: delivery-docs
           uri: lb://delivery-service
           predicates:
             - Path=/delivery-service/**
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/delivery-service/api/deliveries/(?<segment>.*), /api/deliveries/$\{segment}
+            - RewritePath=/delivery-service/api/(?<segment>.*), /api/$\{segment}
 
 
         - id: hub-service

@@ -1,9 +1,9 @@
 package com.msa.fiveio.product.presentation.controller;
 
 import com.msa.fiveio.product.application.facade.ProductFacade;
-import com.msa.fiveio.product.presentation.dto.OrderProductGetResponseDto;
-import com.msa.fiveio.product.presentation.dto.ProductCreateRequestDto;
-import com.msa.fiveio.product.presentation.dto.ProductCreateResponseDto;
+import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
+import com.msa.fiveio.product.presentation.dto.response.OrderProductGetResponseDto;
+import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class ProductsController {
 
     private final ProductFacade productFacade;
 
-    //상품등록
+    //상품등록, 재고생성
     @PostMapping
     public ResponseEntity<ProductCreateResponseDto> createProduct(
             @RequestBody ProductCreateRequestDto requestDto) {

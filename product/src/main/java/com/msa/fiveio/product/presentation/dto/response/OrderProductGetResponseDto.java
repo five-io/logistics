@@ -1,4 +1,4 @@
-package com.msa.fiveio.product.presentation.dto;
+package com.msa.fiveio.product.presentation.dto.response;
 
 import com.msa.fiveio.product.model.entity.ProductType;
 import java.util.UUID;

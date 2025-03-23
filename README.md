@@ -85,7 +85,7 @@
     <th>👑위키리더</th>
   </tr>
   <tr>
-     <td colspan="5">![KakaoTalk_20250323_194244695](https://github.com/user-attachments/assets/d14a2c24-bdde-4153-9b0e-9a4b874672a1)</td>
+     <td colspan="5"><image>![KakaoTalk_20250323_194244695](https://github.com/user-attachments/assets/d14a2c24-bdde-4153-9b0e-9a4b874672a1)</image></td>
   </tr>
   <tr>
     <th>[이태훈]</th>

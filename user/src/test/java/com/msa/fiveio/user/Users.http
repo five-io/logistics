@@ -3,7 +3,7 @@ POST http://localhost:19090/api/users/signUp
 Content-Type: application/json
 
 {
-  "username": "test2",
+  "username": "test254",
   "password": "Abcd1234!",
   "slackId": "slack",
   "role": "ROLE_MASTER"
@@ -14,7 +14,67 @@ POST http://localhost:19090/api/users/signIn
 Content-Type: application/json
 
 {
-  "username": "test2",
-  "password": "Abcd1234!"
+  "username": "test4",
+  "password": "Abcd1234@"
 }
 
+###회원가입  ( ROLE_MASTER)
+POST http://localhost:19090/api/users/signUp
+Content-Type: application/json
+
+{
+  "username": "test1",
+  "password": "Abcd1234@",
+  "slackId": "010-1234-5678",
+  "role": "ROLE_MASTER",
+  "hubId": "d0913844-3fe3-4527-bde1-c4d588b946f4"
+}
+###회원가입  ( ROLE_HUB_MANAGER)
+POST http://localhost:19090/api/users/signUp
+Content-Type: application/json
+
+{
+  "username": "test2",
+  "password": "Abcd1234@",
+  "slackId": "010-2234-5678",
+  "role": "ROLE_HUB_MANAGER",
+  "hubId": "d0913844-3fe3-4527-bde1-c4d588b946f4"
+}
+###회원가입  ( ROLE_COMPANY_MANAGER)
+POST http://localhost:19090/api/users/signUp
+Content-Type: application/json
+
+{
+  "username": "test3",
+  "password": "Abcd1234@",
+  "slackId": "010-3234-5678",
+  "role": "ROLE_COMPANY_MANAGER",
+  "hubId": "d0913844-3fe3-4527-bde1-c4d588b946f4"
+}
+###회원가입  ( ROLE_DELIVERY_MANAGER)######
+POST http://localhost:19090/api/users/signUp
+Content-Type: application/json
+
+{
+  "username": "test4",
+  "password": "Abcd1234@",
+  "slackId": "010-4234-5678",
+  "role": "ROLE_DELIVERY_MANAGER",
+  "hubId": "d0913844-3fe3-4527-bde1-c4d588b946f4"
+}
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6IlJPTEVfREVMSVZFUllfTUFOQUdFUiIsImV4cCI6MTc0MjczNDQ0MywiaWF0IjoxNzQyNzMzODQzfQ.bwpdMfSzZpr4v9SJvq3DP9-QTK0VHkncVhVe1QyMpgs
+
+{
+  "managersType": "Company"
+}
+
+
+
+
+###회원조회
+GET http://localhost:19090/api/users/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6IlJPTEVfREVMSVZFUllfTUFOQUdFUiIsImV4cCI6MTc0MjczNDQ0MywiaWF0IjoxNzQyNzMzODQzfQ.bwpdMfSzZpr4v9SJvq3DP9-QTK0VHkncVhVe1QyMpgs"

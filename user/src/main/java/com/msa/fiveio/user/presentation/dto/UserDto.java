@@ -10,7 +10,7 @@ public record UserDto(Long id,
 
     public static UserDto of(Users user) {
         return new UserDto(
-            user.getId(),
+            user.getUserId(),
             user.getUsername(),
             user.getPassword(),
             user.getRole()

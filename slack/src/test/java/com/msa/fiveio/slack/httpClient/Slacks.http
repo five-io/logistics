@@ -1,9 +1,9 @@
 ### Slack Create
-POST http://localhost:19095/api/slacks
+POST http://localhost:19090/api/slacks
 Content-Type: application/json
 
 {
-  "order-id": "12345678-9e53-48c4-bbc7-2425ec691888",
+  "order-id": "12345678-9e53-48c4-bbc7-2425ec699999",
   "depart-hub-name":"수원 허브",
   "transit-point":"천안 허브",
   "arrive-hub-name":"대전 허브",
@@ -13,16 +13,14 @@ Content-Type: application/json
   "company-delivery-manager":"김민경",
   "product-name": "랍스터 3kg",
   "product-quantity": 3,
-  "request-notes": "긴급! 빠른배송 부탁드립니다.",
-  "send-status": "SEND_SUCCESS"
+  "request-notes": "긴급! 빠른배송 부탁드립니다."
 }
 
 ### Slack Read
-GET http://localhost:19095/api/slacks?page=0&size=10&sort=DESC&orderby=CREATED
-Content-Type: application/json
+GET http://localhost:19090/api/slacks?page=0&size=10&sort=DESC&orderby=CREATED
 
 ### Slack Search
-GET http://localhost:19095/api/slacks/search?page=0&size=10&sort=DESC&orderby=CREATED
+GET http://localhost:19090/api/slacks/search?page=0&size=10&sort=DESC&orderby=CREATED
 Content-Type: application/json
 
 {
@@ -32,7 +30,7 @@ Content-Type: application/json
 
 
 ### Slack Update
-PATCH http://localhost:19095/api/slacks/status
+PATCH http://localhost:19090/api/slacks/status
 Content-Type: application/json
 
 {
@@ -41,4 +39,4 @@ Content-Type: application/json
 }
 
 ### Slack Delete
-DELETE http://localhost:19095/api/slacks/delete/8210a620-dbdd-4594-99d2-131c7870b543
+DELETE http://localhost:19090/api/slacks/delete/8210a620-dbdd-4594-99d2-131c7870b543

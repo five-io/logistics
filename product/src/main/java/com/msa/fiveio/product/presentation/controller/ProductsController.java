@@ -47,7 +47,7 @@ public class ProductsController {
 
     //order 로부터 정보 받아와서 다시 반환
     @GetMapping("/order")
-    OrderProductGetResponseDto processOrderRequest(@RequestParam UUID productId,
+    public OrderProductGetResponseDto processOrderRequest(@RequestParam UUID productId,
             @RequestParam UUID receiverCompanyId, @RequestParam Long quantity) {
         OrderProductGetResponseDto responseDto = productFacade.processOrderRequest(productId,
                 receiverCompanyId, quantity);
@@ -56,7 +56,7 @@ public class ProductsController {
 
     //order에서 주문 취소할 경우 -> 재고수량 되돌리기
     @PatchMapping("/{id}/rollback")
-    ResponseEntity<String> rollbackStock(@PathVariable("id") UUID productId,
+    public ResponseEntity<String> rollbackStock(@PathVariable("id") UUID productId,
             @RequestParam Long quantity) {
         productFacade.rollbackStock(productId, quantity);
         return ResponseEntity.ok("주문취소에 의해 재고가 롤백되었습니다");

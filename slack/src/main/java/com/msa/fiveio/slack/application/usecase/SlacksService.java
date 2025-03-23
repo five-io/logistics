@@ -20,5 +20,6 @@ public interface SlacksService {
 
 	String updateStatus(UUID id, String status);
 
-	SlacksDeleteResponseDto deleteSlack(UUID slackId);
+	@Transactional
+	SlacksDeleteResponseDto deleteSlack(UUID id, Long userId);
 }

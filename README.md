@@ -9,7 +9,7 @@
 ## 프로젝트 목표
 
 <details>
-<summary>### [인프라 설계서]</summary>
+<summary><h3>[인프라 설계서]</h3></summary>
   (https://github.com/five-io/logistics/wiki/%EC%9D%B8%ED%94%84%EB%9D%BC-%EC%84%A4%EA%B3%84%EC%84%9C)
 </details>
 ### [도메인 다이어그램 및 역할분담](https://github.com/five-io/logistics/wiki/%EB%8F%84%EB%A9%94%EC%9D%B8-%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8-&-%EC%97%AD%ED%95%A0-%EB%B6%84%EB%8B%B4)
@@ -28,7 +28,7 @@
 
 ## 도메인별 전략
 <details>
-<summary>### 인증 및 인가</summary>
+<summary><h3>인증 및 인가</h3></summary>
 </details>
 ![Image](https://github.com/user-attachments/assets/bd36c35d-de23-4c89-b5aa-a15665901578)
 

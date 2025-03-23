@@ -77,9 +77,9 @@
 ## 💁‍♂️ 프로젝트 팀원
 
 
-<p align="left">
-  <img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="80%" height="80%">
-</p>
+
+|<img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="80%" height="80%">|
+|------------------------------------------------------------|
 
 | 👑리더 | 👑테크리더 | 👑노션리더 | 👑팀리더 | 👑위키리더 |
 |:---:|:---:|:---:|:---:|:---:|

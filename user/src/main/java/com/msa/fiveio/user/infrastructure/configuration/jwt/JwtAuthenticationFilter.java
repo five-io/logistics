@@ -62,10 +62,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request,
         HttpServletResponse response, FilterChain chain, Authentication authResult) {
-        String username = ((UserDetailsImpl) authResult.getPrincipal()).getUsername();
+        Long userId = ((UserDetailsImpl) authResult.getPrincipal()).getUserId();
         UsersRoleEnum role = ((UserDetailsImpl) authResult.getPrincipal()).getRole();
 
-        String token = jwtUtil.createToken(username, role);
+        String token = jwtUtil.createToken(userId, role);
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

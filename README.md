@@ -26,15 +26,17 @@
 
 ## 도메인별 전략
 <br>
+
 <details>
 <summary><h3>인증 및 인가</h3></summary>
-   <img src="https://private-user-images.githubusercontent.com/64643668/425333012-e61632ba-b4f3-4daa-b188-389d3249dd67.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI1NDA3ODEsIm5iZiI6MTc0MjU0MDQ4MSwicGF0aCI6Ii82NDY0MzY2OC80MjUzMzMwMTItZTYxNjMyYmEtYjRmMy00ZGFhLWIxODgtMzg5ZDMyNDlkZDY3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIxVDA3MDEyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVlZTk0ZWIzZmJiM2E4Mzk0NDBhN2YxYzZhNjNkYjNiNGUzNmQ1MWQwOGY4YmNmOWFjYWU5YTg0NjkxMGMxYmMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.DjcBDVFKqXdKhkAXspjXly46Bnpmp1R1pN1xuYmR2oU" alt="인증 및 인가">
+   <img src="[https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c](https://github.com/user-attachments/assets/86352b96-fe42-4df3-9fb3-3e48709fc498)" width="100%">
 </details>
 <br>
 <details>
 <summary><h3>허브</h3></summary>
-     <img src="https://private-user-images.githubusercontent.com/64643668/425333012-e61632ba-b4f3-4daa-b188-389d3249dd67.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI1NDA3ODEsIm5iZiI6MTc0MjU0MDQ4MSwicGF0aCI6Ii82NDY0MzY2OC80MjUzMzMwMTItZTYxNjMyYmEtYjRmMy00ZGFhLWIxODgtMzg5ZDMyNDlkZDY3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIxVDA3MDEyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVlZTk0ZWIzZmJiM2E4Mzk0NDBhN2YxYzZhNjNkYjNiNGUzNmQ1MWQwOGY4YmNmOWFjYWU5YTg0NjkxMGMxYmMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.DjcBDVFKqXdKhkAXspjXly46Bnpmp1R1pN1xuYmR2oU" alt="허브">
+     <img src="[https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c](https://github.com/user-attachments/assets/86352b96-fe42-4df3-9fb3-3e48709fc498)](https://github.com/user-attachments/assets/fcbb6d2b-5982-4eac-af64-ff7efe352a62)" width="100%">
 </details>
+
 <br>
 
 
@@ -44,12 +46,12 @@
 <br>
 <details>
 <summary><h3>주문 및 배송</h3></summary>
-   <img src="https://private-user-images.githubusercontent.com/64643668/425333012-e61632ba-b4f3-4daa-b188-389d3249dd67.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI1NDA3ODEsIm5iZiI6MTc0MjU0MDQ4MSwicGF0aCI6Ii82NDY0MzY2OC80MjUzMzMwMTItZTYxNjMyYmEtYjRmMy00ZGFhLWIxODgtMzg5ZDMyNDlkZDY3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIxVDA3MDEyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVlZTk0ZWIzZmJiM2E4Mzk0NDBhN2YxYzZhNjNkYjNiNGUzNmQ1MWQwOGY4YmNmOWFjYWU5YTg0NjkxMGMxYmMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.DjcBDVFKqXdKhkAXspjXly46Bnpmp1R1pN1xuYmR2oU" alt="주문 및 배송">
+<img src="[https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c](https://github.com/user-attachments/assets/86352b96-fe42-4df3-9fb3-3e48709fc498)](https://github.com/user-attachments/assets/fcbb6d2b-5982-4eac-af64-ff7efe352a62)](https://github.com/user-attachments/assets/6815e818-27e3-42e8-ba69-87509c4d55e1)" width="100%">
 </details>
 <br>
 <details>
 <summary><h3>AI 활용 Slack 알림</h3></summary>
-       <img src="[https://private-user-images.githubusercontent.com/64643668/425333012-e61632ba-b4f3-4daa-b188-389d3249dd67.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI1NDA3ODEsIm5iZiI6MTc0MjU0MDQ4MSwicGF0aCI6Ii82NDY0MzY2OC80MjUzMzMwMTItZTYxNjMyYmEtYjRmMy00ZGFhLWIxODgtMzg5ZDMyNDlkZDY3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIxVDA3MDEyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVlZTk0ZWIzZmJiM2E4Mzk0NDBhN2YxYzZhNjNkYjNiNGUzNmQ1MWQwOGY4YmNmOWFjYWU5YTg0NjkxMGMxYmMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.DjcBDVFKqXdKhkAXspjXly46Bnpmp1R1pN1xuYmR2oU](https://private-user-images.githubusercontent.com/64643668/425824220-f2fd432c-b818-4336-b098-dfe237131b6f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI3MzQ3NzIsIm5iZiI6MTc0MjczNDQ3MiwicGF0aCI6Ii82NDY0MzY2OC80MjU4MjQyMjAtZjJmZDQzMmMtYjgxOC00MzM2LWIwOTgtZGZlMjM3MTMxYjZmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIzVDEyNTQzMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIyMjNhMzVkMzA0NmE1MjZjZTJmMjZkODFmNTAyM2ViY2UyMDQ2MjdkZjIzM2QyM2JjYzQ3ODU3ZWFlOTQzZWEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.U8N37xWSIp_y1kDP9BaALZ94sJ1hjStxRjdtlXVUYdE)" alt="AI 활용 Slack 알림">
+<img src="https://github.com/user-attachments/assets/7485fae0-cbf0-4d03-9608-95e89b1e6d0f" width="100%">
 </details>
 <br>
 <details>

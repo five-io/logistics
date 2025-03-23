@@ -76,36 +76,13 @@
 
 ## 💁‍♂️ 프로젝트 팀원
 
-<table>
-  <tr>
-    <th>👑리더</th>
-    <th>👑테크리더</th>
-    <th>👑노션리더</th>
-    <th>👑팀리더</th>
-    <th>👑위키리더</th>
-  </tr>
-  <tr>
-   <td colspan="5">
-   <image>![KakaoTalk_20250323_194244695](https://github.com/user-attachments/assets/3cf7631d-a6da-46ab-b626-70dfd400ed64)</image></td>
-  </tr>
-  <tr>
-    <th>[이태훈]</th>
-    <th>[김민경]</th>
-    <th>[문고은]</th>
-    <th>[양수영]</th>
-    <th>[신예나]</th>
-  </tr>
-  <tr>
-    <td>사용자/담당자 담당</td>
-    <td>허브, 인증인가 담당</td>
-    <td>Slack, AI 담당</td>
-    <td>배송, 주문 담당</td>
-    <td>업체, 상품 담당</td>
-  </tr>
-</table>
-<p>
-  도움을 주신 분: 👏🏻 최용석 튜터님 👏🏻
-</p>
+| 👑리더 | 👑테크리더 | 👑노션리더 | 👑팀리더 | 👑위키리더 |
+|:---:|:---:|:---:|:---:|:---:|
+| ![KakaoTalk_20250323_194244695](https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c) |
+| [이태훈] | [김민경] | [문고은] | [양수영] | [신예나] |
+| 사용자/담당자 담당 | 허브, 인증인가 담당 | Slack, AI 담당 | 배송, 주문 담당 | 업체, 상품 담당 |
+
+도움을 주신 분: 👏🏻 최용석 튜터님 👏🏻
 
 
 ## 추후 리팩토링

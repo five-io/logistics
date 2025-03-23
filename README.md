@@ -39,7 +39,7 @@
 ### 주문 및 배송
 
 ### AI 활용 Slack 알림
-![ai, slack architecture](https://github.com/user-attachments/assets/168ebfdf-dbc6-438f-b608-2ebfd840dcf8)
+![ai, slack architecture](https://github.com/user-attachments/assets/73491079-9bb5-44cc-9891-3e5f26a54544)
 
 ### 사용자 및 배송담담자
 

@@ -117,7 +117,7 @@ public class CustomPreFilter implements GlobalFilter, Ordered {
             .build()
             .parseClaimsJws(jwtToken)
             .getBody()
-            .get("user_id", String.class);
+            .get("userId", String.class);
     }
 
     private String getRoleFromToken(String jwtToken) {

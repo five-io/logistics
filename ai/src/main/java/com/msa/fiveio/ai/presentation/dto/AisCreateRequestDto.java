@@ -38,14 +38,11 @@ public class AisCreateRequestDto {
 	@JsonProperty("request-notes")
 	private String requestNotes;
 
-	@JsonProperty("send-status")
-	private String sendStatus;
-
 	@Builder
 	public AisCreateRequestDto(String departHubName, String transitPoint, String arriveHubName,
 		String deliveryAddress, String recipientName, String recipientSlackId,
 		String companyDeliveryManager, String productName, Long productQuantity,
-		String requestNotes, String sendStatus) {
+		String requestNotes) {
 		this.departHubName = departHubName;
 		this.transitPoint = transitPoint;
 		this.arriveHubName = arriveHubName;
@@ -56,6 +53,5 @@ public class AisCreateRequestDto {
 		this.productName = productName;
 		this.productQuantity = productQuantity;
 		this.requestNotes = requestNotes;
-		this.sendStatus = sendStatus;
 	}
 }

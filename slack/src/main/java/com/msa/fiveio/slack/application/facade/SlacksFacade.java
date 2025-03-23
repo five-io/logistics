@@ -17,6 +17,6 @@ public interface SlacksFacade {
 
 	String updateStatus(UUID id, String status);
 
-	SlacksDeleteResponseDto deleteSlack(UUID id);
+	SlacksDeleteResponseDto deleteSlack(UUID id, Long userId);
 
 }

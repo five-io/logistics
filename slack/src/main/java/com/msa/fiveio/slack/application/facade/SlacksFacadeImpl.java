@@ -39,7 +39,7 @@ public class SlacksFacadeImpl implements SlacksFacade {
 	}
 
 	@Override
-	public SlacksDeleteResponseDto deleteSlack(UUID id) {
-		return slacksService.deleteSlack(id);
+	public SlacksDeleteResponseDto deleteSlack(UUID id, Long userId) {
+		return slacksService.deleteSlack(id, userId);
 	}
 }

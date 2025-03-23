@@ -71,27 +71,27 @@ spring:
         - id: slack-service
           uri: lb://slack-service
           predicates:
-            - Path=/api/slack-messages/**
+            - Path=/api/slacks/**
         - id: slack-docs
           uri: lb://slack-service
           predicates:
             - Path=/slack-service/**
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/slack-service/api/slack/(?<segment>.*), /api/slack/$\{segment}
+            - RewritePath=/slack-service/api/slacks/(?<segment>.*), /api/slacks/$\{segment}
 
 
         - id: ai-service
           uri: lb://ai-service
           predicates:
-            - Path=/api/ai-interlocks/**
+            - Path=/api/ais/**
         - id: ai-docs
           uri: lb://ai-service
           predicates:
             - Path=/ai-service/**
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/ai-service/api/ai/(?<segment>.*), /api/ai/$\{segment}
+            - RewritePath=/ai-service/api/ais/(?<segment>.*), /api/ais/$\{segment}
 
 
         - id: user-service

@@ -96,7 +96,7 @@ slack:
     url: https://hooks.slack.com/services/
     key: T08HL5Z1GFJ/B08JD950Y2J/umxDtYUNGV4I79p5hQNFycx2
     "display_information":
-      "name": "Demo App"
+      "name": "logistics"
     "settings":
       "org_deploy_enabled": false,
       "socket_mode_enabled": false,

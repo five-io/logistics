@@ -9,6 +9,7 @@ import com.msa.fiveio.product.model.entity.Stocks;
 import com.msa.fiveio.product.model.repository.ProductsRepository;
 import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
 import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
+import com.msa.fiveio.product.presentation.dto.response.ProductGetResponseDto;
 import com.msa.fiveio.product.presentation.mapper.ProductsMapper;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -58,10 +59,15 @@ public class ProductServiceImpl implements ProductService {
                 product.setProductType(ProductType.ON_SALE);
             }
         }
-
-        //todo.
-        // 상품에 hubId 받아오기
         return new OrderProductInfoDto(product, isOrderable);
+    }
+
+    @Override
+    public ProductGetResponseDto getProduct(UUID productId) {
+        Products product = productsRepository.findById(productId).orElseThrow(
+                () -> new CustomException(ProductErrorCode.PRODUCT_NOT_FOUND));
+        ProductGetResponseDto responseDto = ProductsMapper.ProductGetResponseDtoToEntity(product);
+        return responseDto;
     }
 
 }

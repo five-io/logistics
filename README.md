@@ -37,8 +37,7 @@
 </details>
 <br>
 <details>
-<summary><h3>업체 및 상품</h3></summary>
-  
+<summary><h3>업체 및 상품</h3></summary>  
 </details>
 <br>
 <details>
@@ -48,7 +47,7 @@
 <br>
 <details>
 <summary><h3>AI 활용 Slack 알림</h3></summary>
-     <img src="https://private-user-images.githubusercontent.com/64643668/425333012-e61632ba-b4f3-4daa-b188-389d3249dd67.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI1NDA3ODEsIm5iZiI6MTc0MjU0MDQ4MSwicGF0aCI6Ii82NDY0MzY2OC80MjUzMzMwMTItZTYxNjMyYmEtYjRmMy00ZGFhLWIxODgtMzg5ZDMyNDlkZDY3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIxVDA3MDEyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVlZTk0ZWIzZmJiM2E4Mzk0NDBhN2YxYzZhNjNkYjNiNGUzNmQ1MWQwOGY4YmNmOWFjYWU5YTg0NjkxMGMxYmMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.DjcBDVFKqXdKhkAXspjXly46Bnpmp1R1pN1xuYmR2oU" alt="AI 활용 Slack 알림">
+     <img src="![ai, slack architecture (3)](https://github.com/user-attachments/assets/4b6128e4-2613-4410-9957-c29afe91a4aa)" alt="AI 활용 Slack 알림">
 </details>
 <br>
 <details>

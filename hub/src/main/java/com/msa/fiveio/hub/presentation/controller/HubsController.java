@@ -80,6 +80,8 @@ public class HubsController {
         return ResponseEntity.noContent().build();
     }
 
+    @ApiPermission(roles = {ROLE_MASTER})
+    @Operation(summary = "Hub 초기 등록", description = "Hub 초기 등록 api 입니다.")
     @PostMapping("/setting")
     public String settingHubs() {
         String all = """

@@ -80,11 +80,22 @@ Authorization: {{accessToken}}
   "hubId": "0d65b109-ba6a-4193-ad62-07652bf74bb1"
 }
 
+
 ###상품생성
 POST http://localhost:19098/api/products
 Content-Type: application/json
 Authorization: {{accessToken}}
 
+{
+  "productName": "랍스터",
+  "productDetail": "신선한 랍스터",
+  "companyId": "7779d020-aa2e-4145-a807-5256bbe2fd77",
+  "productPrice": 30000.0
+}
+
+###재고 update ("api/stocks/{stockId}")
+PUT http://localhost:19098/api/stocks/629bd216-ce05-46fe-b0b8-341051ef173e?
+    stockQuantity=200
 {
   "productName": "상품명테스트2",
   "productDetail": "상품내용테스트2",
@@ -93,9 +104,7 @@ Authorization: {{accessToken}}
 }
 
 ###재고추가
-###재고 update ("api/stocks/{stockId}")
-PUT http://localhost:19098/api/stocks/629bd216-ce05-46fe-b0b8-341051ef173e?
-    stockQuantity=200
+
 
 ### 배송담당자 생성
 

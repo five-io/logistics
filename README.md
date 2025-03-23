@@ -85,7 +85,8 @@
     <th>👑위키리더</th>
   </tr>
   <tr>
-     <td colspan="5"><image>![KakaoTalk_20250323_194244695](https://github.com/user-attachments/assets/d14a2c24-bdde-4153-9b0e-9a4b874672a1)</image></td>
+     <td colspan="5">
+          <img src="[https://private-user-images.githubusercontent.com/64643668/425333012-e61632ba-b4f3-4daa-b188-389d3249dd67.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI1NDA3ODEsIm5iZiI6MTc0MjU0MDQ4MSwicGF0aCI6Ii82NDY0MzY2OC80MjUzMzMwMTItZTYxNjMyYmEtYjRmMy00ZGFhLWIxODgtMzg5ZDMyNDlkZDY3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIxVDA3MDEyMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVlZTk0ZWIzZmJiM2E4Mzk0NDBhN2YxYzZhNjNkYjNiNGUzNmQ1MWQwOGY4YmNmOWFjYWU5YTg0NjkxMGMxYmMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.DjcBDVFKqXdKhkAXspjXly46Bnpmp1R1pN1xuYmR2oU](https://github.com/user-attachments/assets/d14a2c24-bdde-4153-9b0e-9a4b874672a1)" alt="zep 팀원사진"></td>
   </tr>
   <tr>
     <th>[이태훈]</th>
@@ -103,7 +104,7 @@
   </tr>
 </table>
 
-<p align="center">
+<p align="left">
   도움을 주신 분: 👏🏻 최용석 튜터님 👏🏻
 </p>
 

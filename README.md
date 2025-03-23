@@ -29,24 +29,21 @@
 
 <details>
 <summary><h3>인증 및 인가</h3></summary>
-   <img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="100%">
+   <img src="https://github.com/user-attachments/assets/e3005893-93e7-4283-a556-7542a8c39114" width="100%">
 </details>
 <br>
 <details>
 <summary><h3>허브</h3></summary>
-     <img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="100%">
+     <img src="https://github.com/user-attachments/assets/751f2d88-4719-43ec-bab1-868656a0aaac" width="100%">
 </details>
-
 <br>
-
-
 <details>
 <summary><h3>업체 및 상품</h3></summary>  
 </details>
 <br>
 <details>
 <summary><h3>주문 및 배송</h3></summary>
-<img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="100%">
+<img src="https://github.com/user-attachments/assets/d0e937ed-6a2d-4bf2-ad96-96df9640c293" width="100%">
 </details>
 <br>
 <details>

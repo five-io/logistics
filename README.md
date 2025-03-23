@@ -28,7 +28,7 @@
 
 ### 인증 및 인가
 
-![img.png](img.png)
+./![img.png](img.png)
 
 ### 허브
 

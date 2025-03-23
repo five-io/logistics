@@ -1,11 +1,13 @@
 package com.msa.fiveio.user.presentation.dto;
 
+import com.msa.fiveio.user.model.entity.enums.ManagersTypeEnum;
 import com.msa.fiveio.user.model.entity.enums.UsersRoleEnum;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import org.hibernate.validator.constraints.UUID;
 
 @Getter
 public class UsersSignUpRequestDto {
@@ -18,15 +20,19 @@ public class UsersSignUpRequestDto {
     @NotBlank(message = "비밀번호는 필수 입력값입니다.")
     @Size(min = 8, max = 15, message = "비밀번호는 최소 8자 이상, 최대 15자 이하여야 합니다.")
     @Pattern(
-        regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,15}$",
-        message = "비밀번호는 알파벳 대소문자, 숫자, 특수문자를 포함해야 합니다."
+            regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,15}$",
+            message = "비밀번호는 알파벳 대소문자, 숫자, 특수문자를 포함해야 합니다."
     )
     private String password;
 
     @NotBlank
+    @Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$", message = "전화번호 형식은 010-1234-5678입니다.")
     private String slackId;
 
-    @NotNull
+    private String hubId;
+
     private UsersRoleEnum role;
+
+    private ManagersTypeEnum managersType;
 
 }

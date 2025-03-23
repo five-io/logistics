@@ -1,5 +1,11 @@
 package com.msa.fiveio.delivery.presentation.controller;
 
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_COMPANY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_DELIVERY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_HUB_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_MASTER;
+
+import com.msa.fiveio.common.annotation.ApiPermission;
 import com.msa.fiveio.delivery.application.facade.DeliveryFacade;
 import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
 import com.msa.fiveio.delivery.presentation.dto.request.DeliveryCreateRequestDto;
@@ -31,12 +37,14 @@ public class DeliveryController {
 
     private final DeliveryFacade deliveryFacade;
 
+    @ApiPermission(roles = {ROLE_MASTER})
     @Operation(summary = "Delivery 생성", description = "Delivery 생성 api 입니다.")
     @PostMapping
     public void createDelivery(@RequestBody DeliveryCreateRequestDto deliveryRequestDto) {
         deliveryFacade.createDelivery(deliveryRequestDto);
     }
 
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER})
     @Operation(summary = "Delivery 상태 수정", description = "Delivery 상태 수정 api 입니다.")
     @PatchMapping("/{id}/status")
     public ResponseEntity<String> updateStatus(
@@ -52,6 +60,7 @@ public class DeliveryController {
         }
     }
 
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER, ROLE_COMPANY_MANAGER})
     @Operation(summary = "Delivery 검색", description = "Delivery 검색 api 입니다.")
     @GetMapping
     public ResponseEntity<Page<DeliveryResponseDto>> readDeliveries(
@@ -60,6 +69,7 @@ public class DeliveryController {
         return ResponseEntity.ok(deliveryFacade.readDeliveries(requestDto, pageable));
     }
 
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER, ROLE_COMPANY_MANAGER})
     @Operation(summary = "Delivery 단건 조회", description = "Delivery 단건 조회 api 입니다.")
     @GetMapping("/{id}")
     public ResponseEntity<DeliveryResponseDto> readDelivery(
@@ -68,12 +78,14 @@ public class DeliveryController {
         return ResponseEntity.ok(deliveryFacade.readDelivery(deliveryId));
     }
 
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER, ROLE_COMPANY_MANAGER})
     @Operation(summary = "Delivery 상태 조회", description = "Delivery 상태 조회 api 입니다.")
     @GetMapping("/{id}/status")
     public String getDeliveryStatus(@PathVariable("id") UUID orderId) {
         return deliveryFacade.getDeliveryStatus(orderId);
     }
 
+    @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER})
     @Operation(summary = "Delivery 삭제", description = "Delivery 삭제 api 입니다.")
     @DeleteMapping("/{id}")
     public void deleteDelivery(

@@ -25,23 +25,38 @@
 ### [Flow Chart](https://github.com/five-io/logistics/wiki/Flow-Chart)
 
 ## 도메인별 전략
+<br>
+<details>
+<summary><h3>인증 및 인가</h3></summary>
+  ![Image](https://github.com/user-attachments/assets/bd36c35d-de23-4c89-b5aa-a15665901578)
+</details>
+<br>
+<details>
+<summary><h3>허브</h3></summary>
+  ![Image](https://github.com/user-attachments/assets/f1fe2739-11b6-421e-8203-ddb8e8d48039)
+</details>
+<br>
+<details>
+<summary><h3>업체 및 상품</h3></summary>
+  
+</details>
+<br>
+<details>
+<summary><h3>주문 및 배송</h3></summary>
 
-### 인증 및 인가
+</details>
+<br>
+<details>
+<summary><h3>AI 활용 Slack 알림</h3></summary>
+  ![ai, slack architecture](https://github.com/user-attachments/assets/73491079-9bb5-44cc-9891-3e5f26a54544)
+</details>
+<br>
+<details>
+<summary><h3>사용자 및 배송담담자</h3></summary>
 
-![Image](https://github.com/user-attachments/assets/bd36c35d-de23-4c89-b5aa-a15665901578)
+</details>
+<br>
 
-### 허브
-
-![Image](https://github.com/user-attachments/assets/f1fe2739-11b6-421e-8203-ddb8e8d48039)
-
-### 업체 및 상품
-
-### 주문 및 배송
-
-### AI 활용 Slack 알림
-![ai, slack architecture](https://github.com/user-attachments/assets/73491079-9bb5-44cc-9891-3e5f26a54544)
-
-### 사용자 및 배송담담자
 
 ## 프로젝트 회고
 

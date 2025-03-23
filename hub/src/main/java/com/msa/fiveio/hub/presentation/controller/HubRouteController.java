@@ -48,6 +48,7 @@ public class HubRouteController {
     }
 
     @ApiPermission(roles = {ROLE_MASTER})
+    @Operation(summary = "Hub 경로 초기 등록", description = "Hub 경로 초기 등록 api 입니다.")
     @PostMapping("/setRoute")
     public String setRoute() {
 

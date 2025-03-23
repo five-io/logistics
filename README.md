@@ -25,11 +25,10 @@
 ### [Flow Chart](https://github.com/five-io/logistics/wiki/Flow-Chart)
 
 ## 도메인별 전략
-<details>
-<summary><h3>인증 및 인가</h3></summary>
-  ![Image](https://github.com/user-attachments/assets/bd36c35d-de23-4c89-b5aa-a15665901578)
-</details>
 
+### 인증 및 인가
+
+![Image](https://github.com/user-attachments/assets/bd36c35d-de23-4c89-b5aa-a15665901578)
 
 ### 허브
 
@@ -50,15 +49,39 @@
 
 ### 공통 관심사항
 
-### 협업 진행
-
 ### 트러블 슈팅
 
-### 추후 리팩토링
+## 협업 진행
+
+### 협업 시 우리조가 잘한 것들
+
+### 협업 시 아쉽거나 부족했던 부분들
+
+## 팀원 소개
+
+### 양수영
+
+### 문고은
+
+### 신예나
+
+### 이태훈
+
+### 김민경
+
+## 추후 리팩토링
+
+- 현재 시스템의 문제점 인지 -> 개선을 위한 기술적 계획 및 접근
 
 ### • 인증 및 인가
 
+blacklist관리
+accesstoken refreshtoken
+resolver와 context 관리
+
 ### • 허브
+
+캐시관리
 
 ### • 업체 및 상품
 
@@ -67,5 +90,4 @@
 ### • AI 활용 Slack 알림
 
 ### • 사용자 및 배송담담자
-
 

@@ -39,12 +39,12 @@ public class JwtUtil {
 
 
     //accessToken 생성
-    public String createToken(String username, UsersRoleEnum role) {
+    public String createToken(Long userId, UsersRoleEnum role) {
         Date date = new Date();
 
         return BEARER_PREFIX +
             Jwts.builder()
-                .claim("user_id", username)
+                .claim("userId", userId.toString())
                 .claim("role", role)
                 .setExpiration(new Date(date.getTime() + jwtProperties.getTokenTime()))
                 .setIssuedAt(date)
@@ -56,7 +56,7 @@ public class JwtUtil {
     //로그아웃 시 jwt만료 시간확인
     public long getExpiration(String token) {
         Claims claims = Jwts.parserBuilder()
-            .setSigningKey(jwtProperties.getSecretKey())
+            .setSigningKey(getSecretKey())
             .build()
             .parseClaimsJws(token)
             .getBody();

@@ -32,5 +32,8 @@ Content-Type: application/json
   "quantity": 9
 }
 
+### Cancel
+DELETE http://localhost:19091/api/orders/7f6653b7-dbfe-4ecc-aca2-cf8302dda3c4/cancel
+
 ### Delete
 DELETE http://localhost:19091/api/orders/cb20a8b7-7c16-4acc-ae48-922a055ee167

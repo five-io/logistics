@@ -1,5 +1,7 @@
 package com.msa.fiveio.delivery.application.usecase;
 
+import com.msa.fiveio.common.exception.CustomException;
+import com.msa.fiveio.common.exception.domain.DeliveryErrorCode;
 import com.msa.fiveio.delivery.model.entity.Delivery;
 import com.msa.fiveio.delivery.model.entity.enums.DeliveryStatus;
 import com.msa.fiveio.delivery.model.repository.DeliveryRepository;
@@ -69,7 +71,7 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public String getDeliveryStatus(UUID orderId) {
         Delivery delivery = deliveryRepository.findByOrderId(orderId)
-            .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
+            .orElseThrow(() -> new CustomException(DeliveryErrorCode.DELIVERY_NOT_FOUND));
         return delivery.getDeliveryStatus().name();
     }
 
@@ -78,13 +80,13 @@ public class DeliveryServiceImpl implements DeliveryService {
     public void deleteDelivery(UUID deliveryId, Long userId) {
         Delivery delivery = findDeliveryById(deliveryId);
         if (!delivery.getDeliveryStatus().toString().equals("DELIVERED")) {
-            throw new RuntimeException("Delivery status is not DELIVERED");
+            throw new CustomException(DeliveryErrorCode.INVALID_DELIVERY_STATUS);
         }
         delivery.addDeletedField(userId);
     }
 
     private Delivery findDeliveryById(UUID deliveryId) {
         return deliveryRepository.findById(deliveryId)
-            .orElseThrow(() -> new IllegalArgumentException("Delivery not found"));
+            .orElseThrow(() -> new CustomException(DeliveryErrorCode.DELIVERY_NOT_FOUND));
     }
 }

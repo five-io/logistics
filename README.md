@@ -78,7 +78,7 @@
 
 
 <p align="center">
-  <img src="[https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c](https://github.com/user-attachments/assets/23e583e7-8454-424e-915d-e1ff87fb0b3e)" width="80%">
+  <img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="80%">
 </p>
 
 | 👑리더 | 👑테크리더 | 👑노션리더 | 👑팀리더 | 👑위키리더 |

@@ -8,6 +8,7 @@ import com.msa.fiveio.product.model.entity.Products;
 import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
 import com.msa.fiveio.product.presentation.dto.response.OrderProductGetResponseDto;
 import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
+import com.msa.fiveio.product.presentation.dto.response.ProductGetResponseDto;
 import jakarta.transaction.Transactional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -50,6 +51,16 @@ public class ProductFacadeImpl implements ProductFacade {
                         .build();
 
         return responseDto;
+    }
+
+    @Override
+    public void rollbackStock(UUID productId, Long quantity) {
+        productService.rollbackStock(productId, quantity);
+    }
+
+    @Override
+    public ProductGetResponseDto getProduct(UUID productId) {
+        return productService.getProduct(productId);
     }
 
 }

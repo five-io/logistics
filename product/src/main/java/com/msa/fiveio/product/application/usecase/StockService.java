@@ -7,4 +7,5 @@ public interface StockService {
 
     StockUpdateResponseDto updateStock(UUID stockId, Long stockQuantity);
 
+
 }

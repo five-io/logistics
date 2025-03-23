@@ -26,4 +26,6 @@ public class StockServiceImpl implements StockService {
         StockUpdateResponseDto RequestDto = StocksMapper.EntityToStockUpdateResponseDto(stock);
         return RequestDto;
     }
+
+
 }

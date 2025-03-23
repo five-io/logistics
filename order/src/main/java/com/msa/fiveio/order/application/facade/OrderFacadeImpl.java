@@ -59,6 +59,7 @@ public class OrderFacadeImpl implements OrdersFacade {
         String status = externalService.getDeliveryStatus(orderId);
         Order order = orderService.getOrder(orderId);
         externalService.rollbackStock(order.getOrderId(), order.getQuantity());
+        externalService.cancelDelivery(orderId, userId);
         orderService.cancelOrder(order, userId, status);
     }
 

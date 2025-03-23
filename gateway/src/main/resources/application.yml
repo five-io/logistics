@@ -109,14 +109,14 @@ spring:
         - id: product-service
           uri: lb://product-service
           predicates:
-            - Path=/api/product/**
+            - Path=/api/products/**, /api/stocks/**
         - id: product-docs
           uri: lb://product-service
           predicates:
             - Path=/product-service/**
           filters:
             - RemoveRequestHeader=Cookie
-            - RewritePath=/product-service/api/products/(?<segment>.*), /api/products/$\{segment}
+            - RewritePath=/product-service/api/(?<segment>.*), /api/$\{segment}
 
 
 

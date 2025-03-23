@@ -54,6 +54,11 @@ public class ProductFacadeImpl implements ProductFacade {
     }
 
     @Override
+    public void rollbackStock(UUID productId, Long quantity) {
+        productService.rollbackStock(productId, quantity);
+    }
+
+    @Override
     public ProductGetResponseDto getProduct(UUID productId) {
         return productService.getProduct(productId);
     }

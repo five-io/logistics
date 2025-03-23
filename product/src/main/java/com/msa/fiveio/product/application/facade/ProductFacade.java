@@ -13,5 +13,7 @@ public interface ProductFacade {
     OrderProductGetResponseDto processOrderRequest(UUID productId, UUID receiverCompanyId,
             Long quantity);
 
+    void rollbackStock(UUID productId, Long quantity);
+
     ProductGetResponseDto getProduct(UUID productId);
 }

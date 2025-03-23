@@ -63,6 +63,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void rollbackStock(UUID productId, Long rollbackQuantity) {
+        Products product = productsRepository.findById(productId).orElseThrow(
+                () -> new CustomException(ProductErrorCode.PRODUCT_NOT_FOUND));
+        Long stocksQuantity = product.getStocks().getQuantity();
+        product.getStocks().update(stocksQuantity + rollbackQuantity);
+    }
+
+    @Override
     public ProductGetResponseDto getProduct(UUID productId) {
         Products product = productsRepository.findById(productId).orElseThrow(
                 () -> new CustomException(ProductErrorCode.PRODUCT_NOT_FOUND));

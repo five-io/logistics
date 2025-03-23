@@ -15,6 +15,9 @@ public interface ProductService {
     OrderProductInfoDto processOrderRequest(UUID productId, UUID receiverCompanyId,
             Long quantity);
 
+    //Order 주문취소시 재고롤백
+    void rollbackStock(UUID productId, Long quantity);
+
     //상품조회(단건)
     ProductGetResponseDto getProduct(UUID productId);
 

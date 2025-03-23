@@ -1,8 +1,8 @@
 package com.msa.fiveio.product.application.usecase;
 
 import com.msa.fiveio.product.infrastructure.client.OrderProductInfoDto;
-import com.msa.fiveio.product.presentation.dto.ProductCreateRequestDto;
-import com.msa.fiveio.product.presentation.dto.ProductCreateResponseDto;
+import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
+import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
 import java.util.UUID;
 
 public interface ProductService {

@@ -5,15 +5,17 @@ import com.msa.fiveio.product.infrastructure.client.CompanyClient;
 import com.msa.fiveio.product.infrastructure.client.OrderProductInfoDto;
 import com.msa.fiveio.product.infrastructure.client.ProductCompanyGetResponseDto;
 import com.msa.fiveio.product.model.entity.Products;
-import com.msa.fiveio.product.presentation.dto.OrderProductGetResponseDto;
-import com.msa.fiveio.product.presentation.dto.ProductCreateRequestDto;
-import com.msa.fiveio.product.presentation.dto.ProductCreateResponseDto;
+import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
+import com.msa.fiveio.product.presentation.dto.response.OrderProductGetResponseDto;
+import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
+import jakarta.transaction.Transactional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ProductFacadeImpl implements ProductFacade {
 
     private final ProductService productService;

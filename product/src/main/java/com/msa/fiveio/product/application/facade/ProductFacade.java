@@ -1,8 +1,8 @@
 package com.msa.fiveio.product.application.facade;
 
-import com.msa.fiveio.product.presentation.dto.OrderProductGetResponseDto;
-import com.msa.fiveio.product.presentation.dto.ProductCreateRequestDto;
-import com.msa.fiveio.product.presentation.dto.ProductCreateResponseDto;
+import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
+import com.msa.fiveio.product.presentation.dto.response.OrderProductGetResponseDto;
+import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
 import java.util.UUID;
 
 public interface ProductFacade {

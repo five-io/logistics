@@ -2,8 +2,8 @@ package com.msa.fiveio.product.presentation.mapper;
 
 import com.msa.fiveio.product.model.entity.Products;
 import com.msa.fiveio.product.model.entity.Stocks;
-import com.msa.fiveio.product.presentation.dto.ProductCreateRequestDto;
-import com.msa.fiveio.product.presentation.dto.ProductCreateResponseDto;
+import com.msa.fiveio.product.presentation.dto.request.ProductCreateRequestDto;
+import com.msa.fiveio.product.presentation.dto.response.ProductCreateResponseDto;
 import java.util.UUID;
 
 public class ProductsMapper {

@@ -1,0 +1,100 @@
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "3",
+  "managersType": "COMPANY"
+}
+
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "4",
+  "managersType": "COMPANY"
+}
+
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "5",
+  "managersType": "HUB"
+}
+
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "6",
+  "managersType": "HUB"
+}
+
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "7",
+  "managersType": "HUB"
+  "
+}
+
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "8",
+  "managersType": "COMPANY"
+}
+
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "9",
+  "managersType": "COMPANY"
+}
+
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "10",
+  "managersType": "COMPANY"
+}
+
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "11",
+  "managersType": "HUB"
+}
+
+###배송담당자 등록  ( ROLE_DELIVERY_MANAGER)######   managersType( Company | Hub)
+POST http://localhost:19090/api/users/delivery-managers
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "userId": "12",
+  "managersType": "HUB"
+}

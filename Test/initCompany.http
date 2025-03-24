@@ -1,0 +1,48 @@
+###허브생성(init)
+POST http://localhost:19090/api/hubs/setting
+Content-Type: application/json
+
+###허브이동경로 생성(init)
+POST http://localhost:19090/api/routes/setRoute
+Content-Type: application/json
+
+###업체생성(공급)
+POST http://localhost:19090/api/companys
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "companyType": "MANUFACTURER",
+  "companyName": "manufacturer",
+  "companyAddress": "testtest",
+  "hubId": "afd3c207-c492-4f96-b53a-60ef17f5a879"
+}
+
+###업체생성(수령)
+POST http://localhost:19090/api/companys
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "companyType": "RECEIVER",
+  "companyName": "reciever",
+  "companyAddress": "testtest",
+  "hubId": "0d65b109-ba6a-4193-ad62-07652bf74bb1"
+}
+
+###상품생성
+POST http://localhost:19090/api/products
+Content-Type: application/json
+Authorization: {{accessToken}}
+
+{
+  "productName": "고등어",
+  "productDetail": "신선한 고등어",
+  "companyId": "8e6cc640-cb85-440e-ac7c-47609dd91588",
+  "productPrice": 30000.0
+}
+
+###재고 update
+PUT http://localhost:19090/api/stocks/a7880543-99a6-4637-b2f6-7ad69387da25?
+    stockQuantity=200
+Authorization: {{accessToken}}

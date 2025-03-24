@@ -2,6 +2,7 @@ package com.msa.fiveio.user.presentation.controller;
 
 import com.msa.fiveio.user.application.DeliveryManagerService;
 import com.msa.fiveio.user.model.entity.DeliveryManagers;
+import com.msa.fiveio.user.presentation.dto.DeliveryManagerGetDto;
 import com.msa.fiveio.user.presentation.dto.DeliveryManagerProfileDto;
 import com.msa.fiveio.user.presentation.dto.DeliveryManagerRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,8 +32,12 @@ public class DeliveryManagerController {
   }
 
 
-//  @DeleteMapping("/")
-//  public ResponseEntity<String> removeDeliveryManager(){
-//
-//  }
+  @GetMapping("/delivery-managers")
+  @Operation(summary = "배송담당자 조회", description = "배송담당자를 조회합니다.")
+  public ResponseEntity<DeliveryManagerGetDto> getDeliveryManager(
+      @RequestHeader("X-User-Id") Long userId
+  ){
+    DeliveryManagerGetDto profileDto = deliveryManagerService.getDeliveryManagerGetDto(userId);
+    return ResponseEntity.ok(profileDto);
+  }
 }

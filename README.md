@@ -1,14 +1,17 @@
 # 🚛 [five-io] logistics: MSA 기반 물류 관리 시스템
+<br>
 
 ### 🦖 프로젝트 소개
 **logistics**는 MSA 기반의 B2B 물류 및 배송 관리 플랫폼으로,<br>
 물류 운영을 효율적으로 관리하고 자동화하는 것을 목표로 합니다.
+<br>
 
 ### 🧐 기술적 목표
 - **RBAC(Role-Based Access Control)**을 통한 사용자 및 관리자 권한 관리
 - **JWT 기반 인증 및 데이터 암호화** 적용
 - **MSA 구조**를 활용하여 각 서비스 간 원활한 통신
 - **도메인 주도 개발(DDD)**을 기반으로 의존성을 낮춘 모듈 설계
+<br>
 
 ### 😎 구현 목표
 - **우선순위 기반 API 개발** 및 테스트 시나리오 작성으로 `사용자 → 허브 → 주문 → 배송` 흐름을 명확하게 검증
@@ -17,10 +20,13 @@
 - **Docker Compose 환경 구축**으로 서비스 실행 과정 단순화
 - **Swagger 적용**을 통한 API 문서 자동화 및 효율적인 관리
 - **주문 시 Slack API 연동**으로 실시간 배송 알림 전송
+<br>
+
 ---
 
 ## 💁🏻 프로젝트 팀원
 
+<br>
 | <img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="100%"> |
 |:--------------------------------------------------------------------------------------------------:|
 
@@ -29,12 +35,18 @@
 | **이태훈** | **김민경** | **문고은** | **양수영** | **신예나** |
 | 사용자/담당자 담당 | 허브, 인증/인가 담당 | 배송, 주문 담당 | Slack, AI 담당 | 업체, 상품 담당 |
 
+<br>
 
 도움을 주신 분: 👏🏻 **최용석 튜터님** 👏🏻
+
+<br>
 
 ---
 
 ## 💻 개발 환경
+
+<br>
+
 | 분류             | 상세                        |
 |----------------|---------------------------|
 | **IDE**        | IntelliJ                    |
@@ -48,9 +60,14 @@
 | **External API** | Gemini API, Slack API, KakaoMobility, Google API |
 | **Testing Tool** | IntelliJ HTTPClient |
 
+<br>
+
 ---
 
 ## 🛠 실행 방법
+
+<br>
+
 ### 1️⃣ .env 파일 설정
 `.env` 파일을 프로젝트 루트 디렉토리에 생성하고, 아래 형식에 맞춰 환경 변수를 설정합니다.
 
@@ -71,17 +88,24 @@ services:
 volumes:
   postgres_data:
 ```
+<br>
 
 ### 2️⃣ Docker Compose 실행
+
+<br>
 ```sh
 docker-compose up -d
 ```
+<br>
 
 ### 3️⃣ API 문서 확인 (Swagger)
+
+<br>
 Swagger UI를 사용하여 API를 확인할 수 있습니다.
 ```sh
 http://localhost:19090
 ```
+<br>
 
 ---
 ## 🪄 Skill
@@ -92,10 +116,11 @@ http://localhost:19090
 
 ## 설계 산출물
 
+<br>
 설계 산출물은 시스템의 핵심 구조와 흐름을 정리하고 문서화한 결과물입니다.<br> 
 이를 통해 개발 팀은 시스템을 더 명확하게 이해하고, 향후 확장 및 유지보수를 용이하게 할 수 있습니다.
+<br>
 
----
 
 ### [인프라 설계서](https://github.com/five-io/logistics/wiki/%EC%9D%B8%ED%94%84%EB%9D%BC-%EC%84%A4%EA%B3%84%EC%84%9C)
 
@@ -112,6 +137,8 @@ http://localhost:19090
 ### [컨벤션](https://github.com/five-io/logistics/wiki/%EC%BB%A8%EB%B2%A4%EC%85%98)
 
 ### [Flow Chart](https://github.com/five-io/logistics/wiki/Flow-Chart)
+
+<br>
 
 ---
 
@@ -161,9 +188,13 @@ http://localhost:19090
 <img src="https://github.com/user-attachments/assets/7485fae0-cbf0-4d03-9608-95e89b1e6d0f" width="100%">
 </details>
 
+<br>
+
 ---
 
 ## 🤔 프로젝트 회고
+
+<br>
 
 ### 🗓️ 프로젝트 일정 및 진행
 
@@ -361,6 +392,8 @@ ResponseEntity<String> getExample(@RequestParam String param);
 
 ---
 
+<br>
+
 ### 🚀 협업 진행 회고
 
 팀워크와 협업이 원활하게 이루어졌고, 문제를 함께 해결하면서 모두가 성장하는 경험을 얻었습니다.<br>
@@ -398,6 +431,8 @@ ResponseEntity<String> getExample(@RequestParam String param);
 </details>
 
 ---
+
+<br>
 
 <details>
 <summary>❌ 아쉬웠던 점 & 개선할 점</summary>
@@ -521,4 +556,6 @@ ResponseEntity<String> getExample(@RequestParam String param);
 </details>
 
 ---
+
+<br>
 

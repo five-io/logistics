@@ -486,7 +486,7 @@ Spring Boot Entity 생성 시
 <details>
   <summary>Flow Chart</summary>
 <h3>통합 Flow Chart</h3>
-![a6](https://github.com/user-attachments/assets/4ef24822-3b58-4c32-bf6b-81056ba2d0b7)
+<img src="https://github.com/user-attachments/assets/4ef24822-3b58-4c32-bf6b-81056ba2d0b7" width="100%"> 	
 </details>
 
 <details>

@@ -52,9 +52,9 @@ public class ExternalServiceImpl implements ExternalService {
     }
 
     @Override
-    public void rollbackStock(UUID orderId, Long quantity) {
+    public void rollbackStock(UUID productId, Long quantity) {
         try {
-            productClient.rollbackStock(orderId, quantity);
+            productClient.rollbackStock(productId, quantity);
         } catch (Exception e) {
             throw new CustomException(OrderErrorCode.STOCK_ROLLBACK_FAILED);
         }

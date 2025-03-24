@@ -127,8 +127,7 @@ http://localhost:19090/swagger-ui.html
 
 <details>
   <summary>도메인 다이어그램 & 역할분담</summary>
- ![a2](https://github.com/user-attachments/assets/522b919b-00e3-4c5c-8717-9bbea4b0dbbc)
-
+<img src="https://github.com/user-attachments/assets/522b919b-00e3-4c5c-8717-9bbea4b0dbbc" width="100%">
 
 |   담당자   |  신예나  |  문고은  |  김민경  |  이태훈  |  양수영  |
 |:----------:|:--------:|:--------:|:--------:|:--------:|:--------:|
@@ -138,7 +137,7 @@ http://localhost:19090/swagger-ui.html
 
 <details>
   <summary>ERD 명세서</summary>
- ![a3](https://github.com/user-attachments/assets/e469e4ec-5bab-4ef8-819a-96016d7a57bc)
+  <img src="https://github.com/user-attachments/assets/e469e4ec-5bab-4ef8-819a-96016d7a57bc" width="100%"> 
 </details>
 
 <details>
@@ -417,9 +416,9 @@ AI 등록 | POST | /api/ais | 배송담당자 | { <br/>"order-id": "order-id",<b
 <details>
   <summary>인프라 설계서</summary>
 <h3>초안</h3>
-![a4](https://github.com/user-attachments/assets/c52245ec-ba0e-484f-8a0c-01d571474958)
+<img src="https://github.com/user-attachments/assets/c52245ec-ba0e-484f-8a0c-01d571474958" width="100%"> 
 <h3>리팩토링</h3>
-![a5](https://github.com/user-attachments/assets/4a44c621-d20b-4cb7-bea0-face44caa6e9)
+<img src="https://github.com/user-attachments/assets/4a44c621-d20b-4cb7-bea0-face44caa6e9" width="100%"> 
 
 </details>
 

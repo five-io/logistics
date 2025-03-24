@@ -1,5 +1,11 @@
 package com.msa.fiveio.user.presentation.controller;
 
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_COMPANY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_DELIVERY_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_HUB_MANAGER;
+import static com.msa.fiveio.common.annotation.ApiPermission.Role.ROLE_MASTER;
+
+import com.msa.fiveio.common.annotation.ApiPermission;
 import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.AuthErrorCode;
 import com.msa.fiveio.common.exception.domain.UserErrorCode;
@@ -42,6 +48,8 @@ public class UsersController {
 //    }
 
   @PostMapping("/signUp")
+  @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER,
+      ROLE_COMPANY_MANAGER})
   @Operation(summary = "회원가입", description = "새로운 사용자를 등록합니다.")
   public ResponseEntity<String> signup(
       @Valid @RequestBody UsersSignUpRequestDto usersSignUpRequestDto) {

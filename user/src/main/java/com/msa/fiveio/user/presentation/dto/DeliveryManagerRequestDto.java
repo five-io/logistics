@@ -7,6 +7,9 @@ import lombok.Getter;
 @Getter
 public class DeliveryManagerRequestDto {
 
+  @NotNull(message = "배송담당자 id는 필수입니다.")
+  private Long userId;
+
   @NotNull(message = "배송담당자 타입은 필수입니다.")
   private ManagersTypeEnum managersType;
 }

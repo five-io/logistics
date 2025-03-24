@@ -122,12 +122,12 @@ http://localhost:19090/swagger-ui.html
 
 <details>
   <summary>에그리거트 구조도</summary>
-![Image](https://github.com/user-attachments/assets/41fc56d4-bd19-4946-b001-c9c8f7cbced4)
+ <img src="https://private-user-images.githubusercontent.com/64643668/421727086-2b4fdf55-9e9d-47b1-b451-aa34385cd57f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzMTQ5OTgsIm5iZiI6MTc0MjMxNDY5OCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjcwODYtMmI0ZmRmNTUtOWU5ZC00N2IxLWI0NTEtYWEzNDM4NWNkNTdmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE4VDE2MTgxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE2ZGIyODhlMTI3MGI3ZmY4ZTQ3Mjg2ZjExN2RkYTFhZTgyM2I4NGNjNTgwNTc3ZDAzMDEwNzk5NTFjZTExODUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.xHij-G-_QJnKZ-V1s9FPaDJ9eJQF6eUNbgL0EJJUSYw" alt="에그리거트 구조도">
 </details>
 
 <details>
   <summary>도메인 다이어그램 & 역할분담</summary>
-![Image](https://github.com/user-attachments/assets/239f76cc-dfcd-4cc6-93eb-3318915419bd)
+  <img src="https://private-user-images.githubusercontent.com/111279553/425899278-564b9525-740a-4552-9540-0b4a8cd0c8be.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI4MjQ2NTQsIm5iZiI6MTc0MjgyNDM1NCwicGF0aCI6Ii8xMTEyNzk1NTMvNDI1ODk5Mjc4LTU2NGI5NTI1LTc0MGEtNDU1Mi05NTQwLTBiNGE4Y2QwYzhiZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMzI0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDMyNFQxMzUyMzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01ZjdiZTMxZjE5N2ZkZmM1OWYyNTZlZTZmZDA5OTk0YTZiNjg4MzNhZTk0MTRiOWMyOGY2MThlYjA4YmNmYTY0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.eePE6m0jFu2p1DFG_ctDsdOA3e2mQx0UetSQyhqO6D0" alt="도메인 다이어그램">
 
 |   담당자   |  신예나  |  문고은  |  김민경  |  이태훈  |  양수영  |
 |:----------:|:--------:|:--------:|:--------:|:--------:|:--------:|
@@ -137,7 +137,7 @@ http://localhost:19090/swagger-ui.html
 
 <details>
   <summary>ERD 명세서</summary>
-![Image](https://github.com/user-attachments/assets/b3560468-8f1f-401e-a237-9ea129e17e52)
+  <img src="https://private-user-images.githubusercontent.com/64643668/425968923-a682b133-09b1-48fa-869b-c4d8b7d848c5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI4MDE5MzMsIm5iZiI6MTc0MjgwMTYzMywicGF0aCI6Ii82NDY0MzY2OC80MjU5Njg5MjMtYTY4MmIxMzMtMDliMS00OGZhLTg2OWItYzRkOGI3ZDg0OGM1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzI0VDA3MzM1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc1OGFkMjkxMmRmMjcyYjMzYTU4Yjc1NjZjY2YyYjI3YWRhMDkyNTI5ZWZjZDBkZjI4MmM0ODk3NDI5Yzk2NTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.8ehG_s3jBRVP5ewqsfAKmsiMmSml-6f1qlJlfpw4JzM" alt="ERD 명세서">
 </details>
 
 <details>
@@ -162,6 +162,7 @@ user_id | BIGINT | 사용자 ID | FK
 managers_type | ENUM | 배송담당자 타입<br/> (허브, 업체) | NotNull
 sequence | VARCHAR(100) | 배송순번 | 
 is_working | BOOLEAN | 현재상태 | NotNull
+
 
 <h3>3. 슬랙 (p_slacks)</h3>
 
@@ -291,6 +292,8 @@ company_delivery_manager_id | BIGINT | 업체배송 담당자 | NotNull
 | 회원정보 조회  | GET    | /api/users/{user_id}       | 마스터관리자, <br/>허브관리자, <br/>배송담당자, <br/>업체관리자     | `jwt`                                                                                                                                                                                                                | `{ `<br/>`"username": "test4", `<br/>`"userId": 1, `<br/>`"slackId": "010-4234-5678", `<br/>`"hubId": "d0913844-3fe3-4527-bde1-c4d588b946f4", `<br/>`"role": "ROLE_DELIVERY_MANAGER", `<br/>`"createDate": "2025-03-24T11:34:43.432353" `<br/>`}` |
 | 회원정보 정렬 조회  | GET    | /api/users?page=1<br>&size=1<br>&sortBy=createAt<br>&isAsc=true            | 마스터관리자                                         | 없음                                                                                                                                                                                                                   | 조회된 회원 정보 목록 |
 
+---
+
 <h3>배송담당자 API</h3>
 
 기능 | Method | URL | 접근권한 | Request | Response
@@ -310,6 +313,7 @@ company_delivery_manager_id | BIGINT | 업체배송 담당자 | NotNull
 슬랙 검색 | GET | /api/slacks/search?<br/>query={query}<br/>&page={page}<br/>&size={size}<br/>&sort={sort}<br/>&orderby={orderby} | 마스터관리자 | {<br/>"page": "0",<br/> "size": "10", <br/>"sort": "CREATED", <br/>"orderby": "DESC" <br/>"transit-point": "천안 허브",<br/>"company-delivery-manager": "김민경"<br/>} | 슬랙메시지 검색 리스트
 슬랙 상태 변경 | PUT | /api/slacks/status | 마스터관리자 | { <br/> "order-id": "12345678-9e53-48c4-bbc7-2425ec691710",  <br/>"send-status": "SEND_FAILURE<br/>} | 수정된 슬랙메시지 정보
 슬랙 삭제 | DELETE | /api/slacks/{id} | 마스터관리자 |   | 삭제된 슬랙메시지 번호
+
 
 <h3>허브 API</h3>
 
@@ -371,6 +375,7 @@ company_delivery_manager_id | BIGINT | 업체배송 담당자 | NotNull
 -- | -- | -- | -- | -- | --
 AI 등록 | POST | /api/ais | 배송담당자 | { <br/>"order-id": "order-id",<br/>"depart-id":"출발허브 ID",<br/>"transitPoint":"경유지",<br/>"arrive-id":"도착허브 ID",<br/>"delivery_status":"배송시작",<br/>"delivery_address":"배송주소",<br/>"recipient-id": "수령인 ID",<br/>"recipient_slack_id":"수령인 slack ID",<br/>"company_delivery_manager":"배송 담당자",<br/>"product-name": "소고기 3kg",<br/>"product-quantity": "수량",<br/>"request-notes": "요청사항" <br/>} | 생성된 AI 메세지와 AI ID
 
+
 <h3>업체 API</h3>
 
 기능 | Method | URL | 접근권한 | Request | Response
@@ -405,14 +410,15 @@ AI 등록 | POST | /api/ais | 배송담당자 | { <br/>"order-id": "order-id",<b
 재고 삭제 | DELETE | /api/stocks/{stokId} | 마스터관리자, 허브관리자 |   |  
 재고 전체 조회 | GET | /api/stocks | 마스터관리자, 허브관리자, 업체담당자, 배송담당자 |   | 재고 전체 내용
 
+
 </details>
 
 <details>
   <summary>인프라 설계서</summary>
 <h3>초안</h3>
-![Image](https://github.com/user-attachments/assets/0ecaca8b-44f0-4c77-b9ee-1b26ed05f996)
+<img src="https://private-user-images.githubusercontent.com/64643668/424005066-a008b41b-db9d-405f-99cc-d575059e5a9c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzMTUxNjQsIm5iZiI6MTc0MjMxNDg2NCwicGF0aCI6Ii82NDY0MzY2OC80MjQwMDUwNjYtYTAwOGI0MWItZGI5ZC00MDVmLTk5Y2MtZDU3NTA1OWU1YTljLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE4VDE2MjEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTU4ZDRmOWQ2NmM3MDQyOGM4Y2YyNjIzNTRkODViODE3NzJkMTAzMmU0NmY3ZmMwODI4ZTNmYjE5MzE1ZjFmZmUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.-CJoT9zi1mjrF1JHPkbh6uAqyxCrtlJXUktE7F1SZ_0" alt="인프라 설계서 초안">
 <h3>리팩토링</h3>
-![Image](https://github.com/user-attachments/assets/3a58ae17-b525-4b9e-83b1-5eb73beb10d7)
+<img src="https://private-user-images.githubusercontent.com/64643668/426059787-6e18cb8d-b746-4120-8287-f3fe2046442a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI4MTY3MzUsIm5iZiI6MTc0MjgxNjQzNSwicGF0aCI6Ii82NDY0MzY2OC80MjYwNTk3ODctNmUxOGNiOGQtYjc0Ni00MTIwLTgyODctZjNmZTIwNDY0NDJhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzI0VDExNDAzNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM1MWM4MmJmZDY5OGU2M2VkMWI4ODQ0M2EwNGI4ZjBhZGIxMWY5NDkxMGIxNzE5MjNiYzZjNDMyZTVmMTg2ZTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Hu77hUsQECA-ptcc5y1UJNLt9qxgJ_gVYNyrlOseoFw" alt="인프라 설계서 리팩토링">
 
 </details>
 
@@ -423,14 +429,15 @@ AI 등록 | POST | /api/ais | 배송담당자 | { <br/>"order-id": "order-id",<b
 
 <h2>GIT 컨벤션</h2>
 <h3>이슈</h3>
-![Image](https://github.com/user-attachments/assets/ebd008f2-fdb5-427e-93d7-91f28474b764)
-![Image](https://github.com/user-attachments/assets/922dc682-7b7d-4e82-8a8d-df11ad3828db)
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723637-fd8a0d72-c7bd-4821-abea-0eb324adb7c5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM2MzctZmQ4YTBkNzItYzdiZC00ODIxLWFiZWEtMGViMzI0YWRiN2M1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc0ZjdjMDg3MDRiNjNjNDQwODkwODNlZTM5ZGFlNDdmYTU4MmFkOWQxYzE5NmQyMzc5YThlOTEwNTMzNjA2MDEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.I98mLI2OrqQZbLwM4VAwTtAa1Bp6-A5ySzAEZcHCE1g" alt="image1">
+
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723705-b9819399-1852-49e5-acfe-b2c59a946bf5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM3MDUtYjk4MTkzOTktMTg1Mi00OWU1LWFjZmUtYjJjNTlhOTQ2YmY1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcwOWQyMDM2ZGRiYzA5MTI3NmMxNTkyZjU2NmJiOTIxYzcyZmVkYjMxYmFmYWU0ZDkwOTQ5NGQ4NWE1OTA4N2YmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.prd6YYAQ_aPB2Mg-zEx22XMmeRBRAS6VKNWf5NcasTY" alt="image2">
 <h3>Feature</h3>
-![Image](https://github.com/user-attachments/assets/20a2ce0d-993c-48dc-aea5-7d1cc12450fc)
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723754-65e1d623-35a6-4ba5-82e5-7233bbc9f30f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM3NTQtNjVlMWQ2MjMtMzVhNi00YmE1LTgyZTUtNzIzM2JiYzlmMzBmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPThjYjk4NWVlMjkwNDNmMWRiYzJiOTgyZDM1MmM3M2YzYjlhODMzN2UzMjAyYzdkMmQxNWYzOTQxZjM5NDQxZmEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.eqhSlQAMZLgrcl5MdJv9w3jphzzWr8FOx7yCBI0S8IQ" alt="image3">
 <h3>Bug</h3>
-![Image](https://github.com/user-attachments/assets/b8b5dc1e-36fe-432f-afb0-7ea8cdb1c1c2)
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723779-e07648ea-1aa3-4809-ad91-10f761fbf4ca.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM3NzktZTA3NjQ4ZWEtMWFhMy00ODA5LWFkOTEtMTBmNzYxZmJmNGNhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVkZDIxY2VjOTM0NTEzY2YwNjIzN2RlYmM4YjgwYmYxYTZlYmE1MzE1ZDRiMjJmN2VmNzIzODYyODQxZjkyY2EmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.zH6hQR7er0sAE2y0Iw6Zp9sNFtyvUK3s4EV3RMpA020" alt="image4">
 <h3>PR</h3>
-![Image](https://github.com/user-attachments/assets/2ba86bac-21ee-4a96-b65f-b65c0cd98116)
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723816-8766fa69-f8d6-49c5-8982-6feee6793dd1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM4MTYtODc2NmZhNjktZjhkNi00OWM1LTg5ODItNmZlZWU2NzkzZGQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWU4MDIzMTU4M2FmMmY4ZWIzNjY2MWRmZTIxMjUzNGFmODlhODMwODZmMjVhMGQwYTZmNjUzZTQzZjUwYjBjZDImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.60ugbGmbhz4h-m_nlRgtWmb40mwNBMjhcPSASh0qGS0" alt="image5">
 
 ***
 
@@ -479,9 +486,10 @@ Spring Boot Entity 생성 시
 <details>
   <summary>Flow Chart</summary>
 <h3>통합 Flow Chart</h3>
- ![Image](https://github.com/user-attachments/assets/f2e3efe2-6eee-4038-b46f-c83f1bb2852f)
+  <img src="https://private-user-images.githubusercontent.com/64643668/424325546-14516ea0-d65f-4a80-b852-20ecfb0e6daa.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjUwODUsIm5iZiI6MTc0MjM2NDc4NSwicGF0aCI6Ii82NDY0MzY2OC80MjQzMjU1NDYtMTQ1MTZlYTAtZDY1Zi00YTgwLWI4NTItMjBlY2ZiMGU2ZGFhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2MTMwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTczZDUzNWY1ZDc1MWE1YjcyZjUxYTg4YTU1MmM2YWQ3MDZkNjU5ZTZmYTBlNGEwMDk5OTc2ZTlmNjRiMmJkYTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.vfHmrM7EZNUa0I1ZydtH5LPhSD5QgdCg6q501ZlR2gQ" alt="Flow Chart">
 </details>
 
+---
 <details>
   <summary>우선순위</summary>
 <br>

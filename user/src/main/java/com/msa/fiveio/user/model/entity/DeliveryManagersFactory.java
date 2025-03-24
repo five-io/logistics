@@ -10,7 +10,7 @@ public class DeliveryManagersFactory {
         .userId(users.getUserId())
         .hubId(users.getHubId())
         .managersType(managersType)
-        .isWorking(true)
+        .isWorking(false)
         .sequence(null)
         .build();
   }

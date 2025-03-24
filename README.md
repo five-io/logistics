@@ -122,8 +122,7 @@ http://localhost:19090/swagger-ui.html
 
 <details>
   <summary>에그리거트 구조도</summary>
-<image>[https://github.com/user-attachments/assets/dba70451-994f-4a68-a24b-7c898307d713](https://github-production-user-asset-6210df.s3.amazonaws.com/64643668/426111345-dba70451-994f-4a68-a24b-7c898307d713.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250324%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250324T140436Z&X-Amz-Expires=300&X-Amz-Signature=7364bea9ad692304645ff3cbef6d414e1953c9d842ded4f72932d8cd8bf4e888&X-Amz-SignedHeaders=host)</image>
-
+<img src="https://github.com/user-attachments/assets/dba70451-994f-4a68-a24b-7c898307d713" width="100%">
 </details>
 
 <details>

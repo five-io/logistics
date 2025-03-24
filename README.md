@@ -168,7 +168,6 @@ managers_type | ENUM | 배송담당자 타입<br/> (허브, 업체) | NotNull
 sequence | VARCHAR(100) | 배송순번 | 
 is_working | BOOLEAN | 현재상태 | NotNull
 
-
 <h3>3. 슬랙 (p_slacks)</h3>
 
 필드 이름 | 데이터 타입 | 설명 | 제약사항
@@ -297,8 +296,6 @@ company_delivery_manager_id | BIGINT | 업체배송 담당자 | NotNull
 | 회원정보 조회  | GET    | /api/users/{user_id}       | 마스터관리자, <br/>허브관리자, <br/>배송담당자, <br/>업체관리자     | `jwt`                                                                                                                                                                                                                | `{ `<br/>`"username": "test4", `<br/>`"userId": 1, `<br/>`"slackId": "010-4234-5678", `<br/>`"hubId": "d0913844-3fe3-4527-bde1-c4d588b946f4", `<br/>`"role": "ROLE_DELIVERY_MANAGER", `<br/>`"createDate": "2025-03-24T11:34:43.432353" `<br/>`}` |
 | 회원정보 정렬 조회  | GET    | /api/users?page=1<br>&size=1<br>&sortBy=createAt<br>&isAsc=true            | 마스터관리자                                         | 없음                                                                                                                                                                                                                   | 조회된 회원 정보 목록 |
 
----
-
 <h3>배송담당자 API</h3>
 
 기능 | Method | URL | 접근권한 | Request | Response
@@ -318,7 +315,6 @@ company_delivery_manager_id | BIGINT | 업체배송 담당자 | NotNull
 슬랙 검색 | GET | /api/slacks/search?<br/>query={query}<br/>&page={page}<br/>&size={size}<br/>&sort={sort}<br/>&orderby={orderby} | 마스터관리자 | {<br/>"page": "0",<br/> "size": "10", <br/>"sort": "CREATED", <br/>"orderby": "DESC" <br/>"transit-point": "천안 허브",<br/>"company-delivery-manager": "김민경"<br/>} | 슬랙메시지 검색 리스트
 슬랙 상태 변경 | PUT | /api/slacks/status | 마스터관리자 | { <br/> "order-id": "12345678-9e53-48c4-bbc7-2425ec691710",  <br/>"send-status": "SEND_FAILURE<br/>} | 수정된 슬랙메시지 정보
 슬랙 삭제 | DELETE | /api/slacks/{id} | 마스터관리자 |   | 삭제된 슬랙메시지 번호
-
 
 <h3>허브 API</h3>
 
@@ -380,7 +376,6 @@ company_delivery_manager_id | BIGINT | 업체배송 담당자 | NotNull
 -- | -- | -- | -- | -- | --
 AI 등록 | POST | /api/ais | 배송담당자 | { <br/>"order-id": "order-id",<br/>"depart-id":"출발허브 ID",<br/>"transitPoint":"경유지",<br/>"arrive-id":"도착허브 ID",<br/>"delivery_status":"배송시작",<br/>"delivery_address":"배송주소",<br/>"recipient-id": "수령인 ID",<br/>"recipient_slack_id":"수령인 slack ID",<br/>"company_delivery_manager":"배송 담당자",<br/>"product-name": "소고기 3kg",<br/>"product-quantity": "수량",<br/>"request-notes": "요청사항" <br/>} | 생성된 AI 메세지와 AI ID
 
-
 <h3>업체 API</h3>
 
 기능 | Method | URL | 접근권한 | Request | Response
@@ -414,7 +409,6 @@ AI 등록 | POST | /api/ais | 배송담당자 | { <br/>"order-id": "order-id",<b
 재고 수정 | PUT | /api/stocks/{stokId} | 마스터관리자, 허브관리자, 업체담당자 | { "quantity": 50 } | 수정된 재고 내용
 재고 삭제 | DELETE | /api/stocks/{stokId} | 마스터관리자, 허브관리자 |   |  
 재고 전체 조회 | GET | /api/stocks | 마스터관리자, 허브관리자, 업체담당자, 배송담당자 |   | 재고 전체 내용
-
 
 </details>
 
@@ -492,12 +486,6 @@ Spring Boot Entity 생성 시
   <summary>Flow Chart</summary>
 <h3>통합 Flow Chart</h3>
   <img src="https://private-user-images.githubusercontent.com/64643668/424325546-14516ea0-d65f-4a80-b852-20ecfb0e6daa.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjUwODUsIm5iZiI6MTc0MjM2NDc4NSwicGF0aCI6Ii82NDY0MzY2OC80MjQzMjU1NDYtMTQ1MTZlYTAtZDY1Zi00YTgwLWI4NTItMjBlY2ZiMGU2ZGFhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2MTMwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTczZDUzNWY1ZDc1MWE1YjcyZjUxYTg4YTU1MmM2YWQ3MDZkNjU5ZTZmYTBlNGEwMDk5OTc2ZTlmNjRiMmJkYTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.vfHmrM7EZNUa0I1ZydtH5LPhSD5QgdCg6q501ZlR2gQ" alt="Flow Chart">
-<h3>업체, 배송담당자, 주문 Flow Chart</h3>
-  <img src="https://private-user-images.githubusercontent.com/64643668/423756791-2823eb87-3125-4181-b401-ab4c36d13a63.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzMTU0MDYsIm5iZiI6MTc0MjMxNTEwNiwicGF0aCI6Ii82NDY0MzY2OC80MjM3NTY3OTEtMjgyM2ViODctMzEyNS00MTgxLWI0MDEtYWI0YzM2ZDEzYTYzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE4VDE2MjUwNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWI2NWNhZmQxMjEwM2NiZjk0YmM0ZDBmNjk2ZDA3NGY5YTVlZDg3NDg2NTRkZDliODNlZGFkNzRmN2QyZWIwNzQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.-8YN74zVq8i5jkyJmKxUjWqmOGwb713khJ9j_MWGi-g" alt="Flow Chart">
-<h3>AI, Slack Flow Chart</h3>
- <img src="https://private-user-images.githubusercontent.com/64643668/424320511-8274571f-3787-48fe-b3f0-e9f316857144.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjUyMDAsIm5iZiI6MTc0MjM2NDkwMCwicGF0aCI6Ii82NDY0MzY2OC80MjQzMjA1MTEtODI3NDU3MWYtMzc4Ny00OGZlLWIzZjAtZTlmMzE2ODU3MTQ0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2MTUwMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA5ODdiZjY1NjgwMzllZmFlYWQ5ZGY2NWYzYmQ5N2FkMmM2OTdiZDZkMjNlZGYyMjdhNTgwYjY4ZDU3M2M3ZjAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.v_4Bj1xvdimD_IazyikN41LLz-oF2LpMR6Dd6ntehCI" alt="Flow Chart">
-
-
 </details>
 <details>
   <summary>도메인별 전략</summary>
@@ -540,10 +528,6 @@ AI, Slack
 <br>
 <br>
 
-### 협업 지원 계획
-- 오늘 더 고민해보고 필요시 요청
-
-
 양수영
 
 ## 슬랙 api
@@ -551,8 +535,8 @@ AI, Slack
 - [x]  **슬랙 생성 api**
 - [x]  **슬랙 조회 api**
 - [x]  **슬랙 삭제 api**
-- [ ]  **슬랙 검색 api**
-- [ ]  **슬랙 상태 변경 api**
+- [x]  **슬랙 검색 api**
+- [x]  **슬랙 상태 변경 api**
 - [x]  **슬랙 발송 api**
 
 ## **AI api**
@@ -564,25 +548,25 @@ AI, Slack
 ## **사용자 api**
 
 - [x]  **사용자 생성 api**
-- [ ]  **사용자 조회 api**
-- [ ]  **사용자 전체 조회 api**
-- [ ]  **사용자 수정 api**
-- [ ]  **사용자 삭제 api**
+- [x]  **사용자 조회 api**
+- [x]  **사용자 전체 조회 api**
+- [x]  **사용자 수정 api**
+- [x]  **사용자 삭제 api**
 
 ## **배송담당자 api**
 
-- [ ]  **배송담당자 지정 api**
-- [ ]  **배송담당자 전체 조회 api**
-- [ ]  **배송담당자 조회 api**
-- [ ]  **배송담당자 수정 api**
-- [ ]  **배송담당자 삭제 api**
+- [x]  **배송담당자 지정 api**
+- [x]  **배송담당자 전체 조회 api**
+- [x]  **배송담당자 조회 api**
+- [x]  **배송담당자 수정 api**
+- [x]  **배송담당자 삭제 api**
 
 김민경
 
 ## 인증인가 api
 
 - [x]  **로그인 api**
-- [ ]  **로그아웃  api**
+- [x]  **로그아웃  api**
 
 ## 허브 api
 
@@ -590,46 +574,46 @@ AI, Slack
 - [x]  **허브 단 건 조회 api**
 - [x]  **허브 전체 조회 api**
 - [x]  **허브 수정 api**
-- [ ]  **허브 삭제 api**
+- [x]  **허브 삭제 api**
 
 ## 이동정보 관리api
 
 - [x]  **허브 간 이동정보 생성 api**
-- [ ]  **허브  간 이동정보 조회 api**
+- [x]  **허브  간 이동정보 조회 api**
 - [x]  **허브  간 이동정보 전체 조회 api**
-- [ ]  **허브  간 이동정보수정 api**
-- [ ]  **허브 간 이동정보 삭제 apiDe**
+- [x]  **허브  간 이동정보수정 api**
+- [x]  **허브 간 이동정보 삭제 apiDe**
 
 ## 배송 경로 api
 
-- [ ]  **배송 경로 생성 api**
-- [ ]  **배송 ID 기반 배송 경로 조회 api**
-- [ ]  **배송 경로 상태 변경 api**
-- [ ]  **배송 경로 수정 api**
-- [ ]  **배송 경로 삭제 api**
+- [x]  **배송 경로 생성 api**
+- [x]  **배송 ID 기반 배송 경로 조회 api**
+- [x]  **배송 경로 상태 변경 api**
+- [x]  **배송 경로 수정 api**
+- [x]  **배송 경로 삭제 api**
 
 ## 주문 api
 
-- [ ]  **주문 생성 api**
+- [x]  **주문 생성 api**
 - [x]  **주문 리스트 조회 (검색) api**
 - [x]  **주문 단건 조회 api**
-- [ ]  **주문 수정 api**
-- [ ]  **주문 삭제 api**
-- [ ]  **주문 취소**
+- [x]  **주문 수정 api**
+- [x]  **주문 삭제 api**
+- [x]  **주문 취소**
 
 ## 배송 api
 
-- [ ]  **배송 생성 api**
+- [x]  **배송 생성 api**
 - [x]  **배송 리스트 조회 (검색) api**
 - [x]  **배송 단건 조회 api**
 - [x]  **배송 상태 변경 api**
-- [ ]  **배송 수정 api**
-- [ ]  **배송 삭제 api**
+- [x]  **배송 수정 api**
+- [x]  **배송 삭제 api**
 
 ### 업체 api
 
 - [x]  **업체 생성**
-- [ ]  **업체 search**
+- [x]  **업체 search**
 - [x]  **업체 수정**
 - [x]  **업체 삭제**
 - [x]  **업체 단건조회**
@@ -637,20 +621,19 @@ AI, Slack
 ### 상품 api
 
 - [x]  **상품 생성**
-- [ ]  **상품 search**
-- [ ]  **상품수정**
-- [ ]  **상품삭제**
-- [ ]  **상품 단건조회**
+- [x]  **상품 search**
+- [x]  **상품수정**
+- [x]  **상품삭제**
+- [x]  **상품 단건조회**
 
 ### 재고 api
 
 - [x]  **재고생성**
-- [ ]  **재고 조회**
-- [ ]  **재고확인**
-- [ ]  **재고수정**
-- [ ]  **재고삭제**
-- [ ]  **재고 전체조회**
-
+- [x]  **재고 조회**
+- [x]  **재고확인**
+- [x]  **재고수정**
+- [x]  **재고삭제**
+- [x]  **재고 전체조회**
 
 </details>
 

@@ -123,22 +123,537 @@ http://localhost:19090
 이를 통해 개발 팀은 시스템을 더 명확하게 이해하고, 향후 확장 및 유지보수를 용이하게 할 수 있습니다.
 <br>
 
+### S.A Links
 
-### [인프라 설계서](https://github.com/five-io/logistics/wiki/%EC%9D%B8%ED%94%84%EB%9D%BC-%EC%84%A4%EA%B3%84%EC%84%9C)
+<details>
+  <summary>에그리거트 구조도</summary>
+ <img src="https://private-user-images.githubusercontent.com/64643668/421727086-2b4fdf55-9e9d-47b1-b451-aa34385cd57f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzMTQ5OTgsIm5iZiI6MTc0MjMxNDY5OCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjcwODYtMmI0ZmRmNTUtOWU5ZC00N2IxLWI0NTEtYWEzNDM4NWNkNTdmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE4VDE2MTgxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE2ZGIyODhlMTI3MGI3ZmY4ZTQ3Mjg2ZjExN2RkYTFhZTgyM2I4NGNjNTgwNTc3ZDAzMDEwNzk5NTFjZTExODUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.xHij-G-_QJnKZ-V1s9FPaDJ9eJQF6eUNbgL0EJJUSYw" alt="에그리거트 구조도">
+</details>
 
-### [도메인 다이어그램 및 역할분담](https://github.com/five-io/logistics/wiki/%EB%8F%84%EB%A9%94%EC%9D%B8-%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8-&-%EC%97%AD%ED%95%A0-%EB%B6%84%EB%8B%B4)
+<details>
+  <summary>도메인 다이어그램 & 역할분담</summary>
+  <img src="https://private-user-images.githubusercontent.com/64643668/421720526-93009060-1634-43ec-9857-a08bab984121.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzMTUwNTIsIm5iZiI6MTc0MjMxNDc1MiwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjA1MjYtOTMwMDkwNjAtMTYzNC00M2VjLTk4NTctYTA4YmFiOTg0MTIxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE4VDE2MTkxMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWUxYzVkYzVlOWMzZWU5MDIyYzhhMTdiNmU2ZDFiOGYzYzU3NzE5ZjJhNTkxNWM0YTcxZTdjYzRiZmNmYmU3MDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Ne5eQBFXgw3Rka3f-pyF7l3n5DXCZCYS7rynXvHYyv0" alt="도메인 다이어그램">
 
-### [애그리거트 구조도](https://github.com/five-io/logistics/wiki/%EC%97%90%EA%B7%B8%EB%A6%AC%EA%B1%B0%ED%8A%B8-%EA%B5%AC%EC%A1%B0%EB%8F%84)
+|   담당자   |  신예나  |  문고은  |  김민경  |  이태훈  |  양수영  |
+|:----------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|    역할    | 업체 및 상품 | 배송관리, 주문 | 허브, 배송경로, 인증/인가 | 사용자 및 담당자 관리 | 슬랙, AI |
 
-### [ERD](https://www.erdcloud.com/d/ZeDtDoF2WsviKEhgS)
+</details>
 
-### [테이블 명세서](https://www.erdcloud.com/d/ZeDtDoF2WsviKEhgS)
+<details>
+  <summary>ERD 명세서</summary>
+  <img src="https://private-user-images.githubusercontent.com/64643668/425968923-a682b133-09b1-48fa-869b-c4d8b7d848c5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI4MDE5MzMsIm5iZiI6MTc0MjgwMTYzMywicGF0aCI6Ii82NDY0MzY2OC80MjU5Njg5MjMtYTY4MmIxMzMtMDliMS00OGZhLTg2OWItYzRkOGI3ZDg0OGM1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzI0VDA3MzM1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc1OGFkMjkxMmRmMjcyYjMzYTU4Yjc1NjZjY2YyYjI3YWRhMDkyNTI5ZWZjZDBkZjI4MmM0ODk3NDI5Yzk2NTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.8ehG_s3jBRVP5ewqsfAKmsiMmSml-6f1qlJlfpw4JzM" alt="ERD 명세서">
+</details>
 
-### [API명세서](https://github.com/five-io/logistics/wiki/API-%EB%AA%85%EC%84%B8%EC%84%9C)
+<details>
+  <summary>테이블 명세서</summary>
 
-### [컨벤션](https://github.com/five-io/logistics/wiki/%EC%BB%A8%EB%B2%A4%EC%85%98)
+<h3>1. 사용자 (p_users)</h3>
 
-### [Flow Chart](https://github.com/five-io/logistics/wiki/Flow-Chart)
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+user_id | BIGINT | 사용자 ID | NotNull, PK
+slack_id | VARCHAR(255) | 슬랙 ID | NotNull
+role | ENUM | 사용자 역할<br/>(master,<br/> delivery_manager,<br/> company_manager,<br/> customer) | NotNull
+username | VARCHAR(100) | 유저 이름 | NotNull
+password | VARCHAR(100) | 사용자 비밀번호 | NotNull
+hub_id | UUID | 허브 ID | NotNull
+
+<h3>2. 배송담당자 (p_delivery_managers)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+user_id | BIGINT | 사용자 ID | FK
+managers_type | ENUM | 배송담당자 타입<br/> (허브, 업체) | NotNull
+sequence | VARCHAR(100) | 배송순번 | 
+is_working | BOOLEAN | 현재상태 | NotNull
+
+
+<h3>3. 슬랙 (p_slacks)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | -- 
+slack_id | UUID | 슬랙 ID | NotNull, PK
+order_id | UUID | 주문 ID | NotNull, Unique
+depart_hub_name | VARCHAR(100) | 출발 허브명 | NotNull
+transit_point | VARCHAR(100) | 경유지 | NotNull
+arrive_hub_name | VARCHAR(100) | 도착 허브명 | NotNull
+delivery_address | VARCHAR(255) | 배송지 | NotNull
+recipient_name | VARCHAR(100) | 수령인 | NotNull
+recipient_slack_id | VARCHAR(100) | 수신 슬랙 ID | NotNull
+company_delivery_manager | VARCHAR(100) | 업체 배송 담당자 | NotNull
+product_name | VARCHAR(100) | 상품명 | NotNull
+product_quantity | BIGINT | 상품 수량 | NotNull
+request_notes | VARCHAR(255) | 요청 사항 | NotNull
+message | TEXT | 메시지 |  
+send_status | ENUM | 발신 상태 | NotNull
+
+<h3>4. 업체 (p_companys)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+company_id | UUID | 업체 ID | NotNull, PK
+hub_id | UUID | 허브 ID | NotNull
+company_name | VARCHAR(255) | 업체 이름 | NotNull
+company_type | ENUM | 업체 종류<br/> (생산, 수령) | NotNull
+company_address | VARCHAR(255) | 업체 주소 | NotNull
+
+<h3>5. 상품 (p_products)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+product_id | UUID | 상품 ID | NotNull, PK
+hub_id | UUID | 허브 ID | NotNull
+company_id | UUID | 업체 ID | NotNull
+product_name | VARCHAR(255) | 상품 이름 | NotNull
+product_detail | VARCHAR(255) | 상품 설명 |  
+product_price | DOUBLE | 상품가격 | NotNull
+product_type | ENUM | 상품타입 | NotNull
+stock_id | UUID | 재고 ID | NotNull, FK
+
+<h3>6. 재고관리 (p_stocks)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+stock_id | UUID | 재고 ID | NotNull, PK
+quantity | BIGINT | 수량 | NotNull
+
+<h3>7. 배송경로 (p_delivery_routes)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+delivery_routes_id | UUID | 배송경로 ID | NotNull, PK
+delivery_id | UUID | 배송 ID | NotNull, FK
+delivery_manager_id | BIGINT | 배송담당자 ID | NotNull, Unique
+sequence | INT | 시퀀스<br/> (배송 경로 상 허브의 순번) |
+depart_hub_id | UUID | 출발허브 ID |
+arrive_hub_id | UUID | 도착허브 ID |
+estimated_distance_km | DOUBLE | 예상 거리 |
+estimated_duration_min | BIGINT | 예상 소요시간 |
+actual_distance_km | DOUBLE | 실제 거리 |
+actual_duration_min | BIGINT | 실제 소요시간 |
+delivery_status | ENUM | 현재 상태 | NotNull
+
+<h3>8. 이동정보관리 (p_locations)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+loacation_id | UUID | 이동정보 ID | NotNull, PK
+depart_id | UUID | 출발허브 ID  | NotNull
+arrive_id | UUID | 도착허브 ID  | NotNull
+taken_time | BIGINT | 소요시간
+distance | BIGINT | 이동거리
+
+<h3>9. 허브 (p_hubs)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+hub_id | UUID | 이동정보 ID | NotNull, PK
+hub_name | VARCHAR(100) | 출발허브 ID | NotNull, Unique
+address | VARCHAR(100) | 도착허브 ID
+latitude | DOUBLE | 위도 | NotNull
+longitude | DOUBLE | 경도 | NotNull
+
+<h3>10. 주문 (p_orders)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+order_id | UUID | 주문 ID | NotNull, PK
+requester_company_id | UUID | 요청업체 ID | NotNull
+receiver_company_id | UUID | 수령업체 ID | NotNull
+product_id | UUID | 상품 ID | NotNull
+quantity | BIGINT | 수량  | NotNull
+request_notes | VARCHAR(100) | 요청사항 |
+total_price | DOUBLE | 총 금액  | NotNull
+
+<h3>11. 배송 (p_deliveries)</h3>
+
+필드 이름 | 데이터 타입 | 설명 | 제약사항
+-- | -- | -- | --
+delivery_id | UUID | 배송 ID | NotNull, PK
+order_id | UUID | 주문 ID | NotNull
+depart_hub_id | UUID | 출발허브 ID | NotNull
+arrive_hub_id | UUID | 목적지허브 ID | NotNull
+delivery_status | VARCHAR(255) | 배송상태 | NotNull
+delivery_address | VARCHAR(255) | 배송지주소 | NotNull
+recipient_name | VARCHAR(255) | 수령인 | NotNull
+recipient_slack_id | VARCHAR(255) | 수신 슬랙 ID | NotNull
+company_delivery_manager_id | BIGINT | 업체배송 담당자 | NotNull
+
+</details>
+
+<details>
+  <summary>API 명세서</summary>
+
+<h3>사용자 API</h3>
+
+| 기능 | Method | URL | 접근권한 | Request | Response  |
+|--|--|--|----|--|--|
+| 회원가입       | POST   | /api/users/signUp        | 마스터관리자, <br/>허브관리자, <br/>배송담당자, <br/>업체관리자     | `{` <br/>`"username":"test0311",` <br/>`"password":"Test0311@", `<br/>`"name":"tester", `<br/>`"slackId":"123445", `<br/>`"role":"ROLE_MASTER", `<br/>`"hubId":"3fa85f64-5717-4562-b3fc-2c963f66afa6"`<br/>`}` | `"회원가입 완료"` |
+| 로그인        | POST   | /api/users/signIn           | 마스터관리자, <br/>허브관리자, <br/>배송담당자, <br/>업체관리자     | `{`<br/>` "username":"test4", `<br/>`"password":"Abcd1234@" `<br/>`}` | `jwt`     |
+| 로그아웃      | POST   | /api/users/logout          | 마스터관리자, <br/>허브관리자, <br/>배송담당자, <br/>업체관리자     | 없음                                                                                                                                                                                                                   | `"로그아웃 완료"` |
+| 회원정보 수정  | PATCH  | /api/users/{user_id}       | 마스터관리자, <br/>허브관리자, <br/>배송담당자, <br/>업체관리자     | `{`<br/>` "username":"test0311", `<br/>`"password":"", `<br/>`"slackId":"", `<br/>`"hubId":"" `<br/>`}`                                                                                                          | `"수정 완료"` |
+| 회원 탈퇴     | DELETE | /api/users/resign/{user_id}       | 마스터관리자, <br/>허브관리자, <br/>배송담당자, <br/>업체관리자     |`{ `<br/>`"slackId": "" `<br/>`}`                                                                                                                                                                                | `"회원 탈퇴 완료"` |
+| 회원정보 조회  | GET    | /api/users/{user_id}       | 마스터관리자, <br/>허브관리자, <br/>배송담당자, <br/>업체관리자     | `jwt`                                                                                                                                                                                                                | `{ `<br/>`"username": "test4", `<br/>`"userId": 1, `<br/>`"slackId": "010-4234-5678", `<br/>`"hubId": "d0913844-3fe3-4527-bde1-c4d588b946f4", `<br/>`"role": "ROLE_DELIVERY_MANAGER", `<br/>`"createDate": "2025-03-24T11:34:43.432353" `<br/>`}` |
+| 회원정보 정렬 조회  | GET    | /api/users?page=1<br>&size=1<br>&sortBy=createAt<br>&isAsc=true            | 마스터관리자                                         | 없음                                                                                                                                                                                                                   | 조회된 회원 정보 목록 |
+
+---
+
+<h3>배송담당자 API</h3>
+
+기능 | Method | URL | 접근권한 | Request | Response
+-- | -- | -- | -- | -- | --
+배송담당자 지정 | POST | /api/users/delivery-managers | 허브관리자, <br/>배송담당자 | {<br/>"managersType":"Hub" <br/>} | {<br/>"is_working": "0",  <br/>"user_id": "배송담당자 ID", <br/>"sequence":"",<br/>"is_working": },<br/>"hub_id":""}
+배송담당자 조회 | GET | /api/users/delivery-managers | 허브관리자,<br/>업체관리자,<br/>배송담당자 | jwt | {  <br/>"hubId": "d0913844-3fe3-4527-bde1-c4d588b946f4",  <br/>"sequence": null,  <br/>"isWorking": false,  <br/>"managerType": "Company"<br/>}
+배송담당자 수정 | PATCH | /api/users/delivery-managers | 허브관리자,<br/>업체관리자,<br/>배송담당자 | {<br/>"managersType":"Hub" <br/>} | 수정된내용
+배송담당자 전체조회 | GET | /api/users/page=1<br/>&size=8<br/>&sortBy=createAt<br/>&isAsc=true | 허브관리자,<br/>업체관리자,<br/>배송담당자 | { <br/>"hub_id"=,"managers_<br/>type"=,"sequence":"",<br/>"is_working": <br/>} | { <br/>"hub_id"=,<br/>"managers_type"=,<br/>"sequence":"",<br/>"is_working": <br/>}
+배송담당자 삭제 | DELETE | /api/users/delivery-managers | 허브관리자,<br/>업체담당자 | {<br/>"hub_id":" ", <br/>"user_id":" ", <br/>} | 삭제 내용
+
+<h3>슬랙 API</h3>
+
+기능 | Method | URL | 접근권한 | Request | Response
+-- | -- | -- | -- | -- | --
+슬랙 등록 | POST | /api/slacks | 마스터관리자, <br/>허브관리자, <br/>배송담당자, <br/>업체담당자 | {  <br/>"order-id": "12345678-9e53-48c4-bbc7-2425ec691888",  <br/>"depart-hub-name":"수원 허브",  <br/>"transit-point":"천안 허브",  <br/>"arrive-hub-name":"대전 허브",  <br/>"delivery-address":"대전광역시 중구",  <br/>"recipient-name": "문고은",  <br/>"recipient-slack-id":"01012345678",  <br/>"company-delivery-manager":"김민경",  <br/>"product-name": "랍스터 3kg",  <br/>"product-quantity": 3,  <br/>"request-notes": "긴급! 빠른배송 부탁드립니다."<br/>} | 작성된 슬랙메시지 번호
+슬랙 조회 | GET | /api/slacks/page={page}<br/>&size={size}<br/>&sort={sort}<br/>&orderby={orderby} | 마스터관리자 | {<br/>"page": "0", <br/>"size": "10", <br/>"sort": "CREATED", <br/>"orderby": "DESC" <br/>} | 슬랙(단건) 조회
+슬랙 검색 | GET | /api/slacks/search?<br/>query={query}<br/>&page={page}<br/>&size={size}<br/>&sort={sort}<br/>&orderby={orderby} | 마스터관리자 | {<br/>"page": "0",<br/> "size": "10", <br/>"sort": "CREATED", <br/>"orderby": "DESC" <br/>"transit-point": "천안 허브",<br/>"company-delivery-manager": "김민경"<br/>} | 슬랙메시지 검색 리스트
+슬랙 상태 변경 | PUT | /api/slacks/status | 마스터관리자 | { <br/> "order-id": "12345678-9e53-48c4-bbc7-2425ec691710",  <br/>"send-status": "SEND_FAILURE<br/>} | 수정된 슬랙메시지 정보
+슬랙 삭제 | DELETE | /api/slacks/{id} | 마스터관리자 |   | 삭제된 슬랙메시지 번호
+
+
+<h3>허브 API</h3>
+
+기능 | Method | URL | 접근권한 | request | response
+-- | -- | -- | -- | -- | --
+허브 등록 | POST | /api/hubs | 마스터관리자 | {<br/>"hub_name":"화성시 센터",<br/>"address":"경기도 화성시 21",<br/>"latitude”:"37.0895",<br/>"longitude":"37.9102"<br/>} | 작성된 허브 정보
+허브 단 건 조회 | GET | /api/hubs | 마스터관리자,<br/>허브관리자, <br/>업체담당자, <br/>배송담당자 | {<br/>"hub_id": 1<br/>} | 허브 단 건 내용
+허브 수정 | PATCH | /api/hubs/{id} | 마스터관리자 | {<br/>“hub_name”:“화성물류 센터“<br/>} | 수정된 허브 내용
+허브 전체 조회 | GET | /api/hubs/search | 마스터관리자,<br/>허브관리자, <br/>업체담당자, <br/>배송담당자 | {<br/>“searchText”:“화성”,<br/>“sort”:“createdAt,updatedAt”,<br/>“page”:1,<br/>“size”:10<br/>} | 허브 리스트
+허브 삭제 | DELETE | /api/hubs/{id} | 마스터관리자 | {<br/>"hub_id": 1<br/>} | 허브 삭제 결과
+
+<h3>이동정보관리 API</h3>
+
+기능 | Method | URL | 접근권한 | request | response
+-- | -- | -- | -- | -- | --
+이동정보 생성 | POST | /api/routes | 마스터관리자 | {<br/>“depart_id”:2,<br/>“taken_time”:600000,<br/>“distance”:10<br/>} | 작성된 이동정보 내용
+이동정보 단 건 조회 | GET | /api/routes/{id} | 마스터관리자, <br/>업체중앙담당자, <br/>배송팀장 | {<br/>“location_id”:3<br/>} | 수령인 이동정보 내용
+이동정보 수정 | PATCH | /api/routes/{id} | 마스터관리자, <br/>업체중앙담당자 | {<br/>“taken_time”:900000<br/>} | 수정된 이동정보 내용
+이동정보 삭제 | DELETE | /api/routes/{id} | 마스터관리자 | {} | 이동정보 삭제 결과
+이동정보 전체 조회 | GET | /api/routes/search | 마스터관리자, <br/>업체중앙담당자, <br/>배송팀장 | {<br/>“depart_id”:2,<br/>“page”:1,<br/>“size”:10<br/>} | 이동정보 전체 내용
+
+<h3>주문 API</h3>
+
+기능 | Method | URL | 접근권한 | request | response
+-- | -- | -- | -- | -- | --
+주문 등록 | POST | /api/orders | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | { <br/>"receiver-company-id": "수령 업체 ID",  <br/>"product-id": "상품 ID",  <br/>"quantity": 개수,  <br/>"request-notes": "요청 사항",  <br/>"recipient-name": "수령인 이름",  <br/>"recipient-slack-id": "수령인 슬랙 ID"<br/>} | {<br/>"orderId": "생성된 주문 ID"<br/>}
+주문 단 건 조회 | GET | /api/orders/{id} | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | id": “주문ID” | {<br/>"order-id": "주문 ID",  <br/>"requester-company-id": "공급 업체 ID",  <br/>"receiver-company-id": "수령 업체 ID",  <br/>"product-id": "상품 ID",  <br/>"quantity": 개수,  <br/>"request-notes": "요청 사항"<br/>}
+주문 수정 | PATCH | /api/orders/{id} | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | { <br/>"quantity": 개수,  <br/>"request-notes": "요청사항"<br>} | {<br/>"order-id": "주문 ID",  <br/>"requester-company-id": "공급 업체 ID",  <br/>"receiver-company-id": "수령 업체 ID",  <br/>"product-id": "상품 ID",  <br/>"quantity": 개수,  <br/>"request-notes": "요청 사항"<br/>}
+주문 삭제 | DELETE | /api/orders/{id} | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | "id": “주문ID” |  
+주문 전체 조회(검색) | GET | /api/orders?<br/>page=1&size=10<br/>&sortBy=createdAt<br/>&isAsc=true | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | {  <br/>"requester-company-id": "공급 업체 ID",  <br/>"receiver-company-id": "수령 업체 ID",  <br/>"product-id": "상품 ID"<br/>} | {<br/>"content": [    <br/>{      <br/>"order-id": "주문 ID",      <br/>"requester-company-id": "공급 업체 ID",      <br/>"receiver-company-id": "수령 업체 ID",      <br/>"product-id": "상품 ID",      <br/>"quantity": 개수,      <br/>"request-notes": "요청 사항"    <br/>}  <br/>],<br/>  ...<br/>}
+주문 취소 | DELETE | /api/orders/{id}/cancel | 마스터관리자, 허브관리자 | "id": “주문ID” |  
+
+<h3>배송 API</h3>
+
+기능 | Method | URL | 접근권한 | request | response
+-- | -- | -- | -- | -- | --
+배송 생성 | POST | /api/deliveries | 마스터관리자 | {  <br/>"order-id": "주문ID",  <br/>"depart-hub-id": "출발허브ID",  <br/>"arrive-hub-id": "도착허브ID",  <br/>"delivery-address": "배송지",  <br/>"recipient-name": "수령인이름",  <br/>"recipient-slack-id": "수령인슬랙ID",  <br/>"quantity": 개수,  <br/>"request-notes": "요청사항",  <br/>"product-name": "상품명"<br/>} |  
+배송 단건 조회 | GET | /api/deliveries/{id} | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | "id": “배송ID” | {<br/>"deliveryId": "배송ID",  <br/>"orderId": "주문ID",  <br/>"deliveryStatus": "배송상태",  <br/>"departHubId": "출발허브ID",  <br/>"arriveHubId": "도착허브ID",  <br/>"deliveryAddress": "배송지",  <br/>"companyDeliveryManagerId": "업체배송담당자ID",  <br/>"recipient": "수령인"<br/>}
+배송 전체 조회(검색) | GET | /api/deliveries?<br/>page=1&size=10<br/>&sortBy=createdAt<br/>&isAsc=true | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | {  <br/>“delivery-status”: "배송상태",  <br/>“depart-hub-id”: "출발허브ID",  <br/>“arrive-hub-id”: "목적지허브ID",  <br/>“delivery-address”: 배송지주소,  <br/>“recipient-name”: "수령인이름",  <br/>“recipient-slack-id”: "수령인슬랙ID",  <br/>“company-delivery-manager”: "업체배송담당자ID",  <br/>“order-id”: "주문ID"<br/>} | {<br/>  ...  <br/>"content": [   <br/> {      <br/>"deliveryId": "배송ID",      <br/>"orderId": "주문ID",      <br/>"deliveryStatus": "배송상태",      <br/>"departHubId": "출발허브ID",      <br/>"arriveHubId": "도착허브ID",      <br/>"deliveryAddress": "배송지",      <br/>"companyDeliveryManagerId": "업체배송담당자ID",      <br/>"recipient": "수령인"    <br/>}  ],<br/>  ...<br/>}
+배송 삭제 | DELETE | /api/deliveries/{id} | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | "id": “배송ID” |  
+배송 상태 변경 | PATCH | /api/deliveries/{id}/status?<br/>deliveryStatus= | 마스터관리자,<br/> 허브관리자,<br/> 배송팀장 | "id": “배송ID”“delivery_status”:배송상태 |  
+배송 상태 조회 | GET | /api/deliveries/{id}/status | 마스터관리자, <br/>허브관리자, <br/>배송팀장 | "id": “배송ID” | 배송상태
+배송 취소 | DELETE | /api/deliveries/{id}/cancel | 마스터관리자, <br/>허브관리자 | "id": “배송ID”<br/>”user-id”: “사용자ID” |  
+
+<h3>배송 경로 API</h3>
+
+기능 | Method | URL | 접근권한 | request | response
+-- | -- | -- | -- | -- | --
+배송 경로 조회(검색) | GET | /api/delivery-routes/{deliveryId}?<br/>page=1<br/>&size=8<br/>&sortBy=createAt<br/>&isAsc=true | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | {<br/>“delivery-status”: 현재상태,<br/>“delivery-manager”: 배송담당자ID<br/>} | 배송 경로 관련 경로 리스트
+배송 경로 상세 | GET | /api/delivery-routes/{deliveryRouteId} | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | {} | 배송 경로 상세 내용
+배송 경로 생성 | POST | /api/delivery-routes | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | {<br/>“deliveryResoponseDto”:“배송정보“,<br/>”deliveryManager”:“11”,<br/>“routeResponseDto”:“허브이동정보경로“<br/>} | 작성된 배송 경로 내용
+배송 경로 수정 | PATCH | /api/delivery-routes/{deliveryRouteId} | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | {<br/>“actual_distance_km”: 실제거리,<br/>“actual_duration_min”: 실제소요시간,<br/>“delivery-manager”: 배송담당자 ID<br/>} | 수정된 배송 경로 정보
+배송 경로 삭제 | DELETE | /api/delivery-routes/{deliveryRouteId} | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | {} | 배송 경로 삭제 결과
+배송 경로 상태 변경 | PUT | /api/delivery-routes/ | 마스터관리자, <br/>허브관리자, <br/>업체중앙담당자, <br/>배송팀장 | {<br/>“deliveryId": "1d2edfdssdfd",<br/>"arrivedHubId":"sdfhubId"<br/>} |  
+
+<h3>AI API</h3>
+
+기능 | Method | URL | 접근권한 | Request | Response
+-- | -- | -- | -- | -- | --
+AI 등록 | POST | /api/ais | 배송담당자 | { <br/>"order-id": "order-id",<br/>"depart-id":"출발허브 ID",<br/>"transitPoint":"경유지",<br/>"arrive-id":"도착허브 ID",<br/>"delivery_status":"배송시작",<br/>"delivery_address":"배송주소",<br/>"recipient-id": "수령인 ID",<br/>"recipient_slack_id":"수령인 slack ID",<br/>"company_delivery_manager":"배송 담당자",<br/>"product-name": "소고기 3kg",<br/>"product-quantity": "수량",<br/>"request-notes": "요청사항" <br/>} | 생성된 AI 메세지와 AI ID
+
+
+<h3>업체 API</h3>
+
+기능 | Method | URL | 접근권한 | Request | Response
+-- | -- | -- | -- | -- | --
+업체등록 | POST | /api/companys | 마스터관리자,<br/> 허브관리자 | {<br/> "company_name": "업체명",<br/> "company_type": "업체타입",<br/> "hub_id": "허브id", <br/>"company_adress": "업체주소"<br/> } | 작성된 업체 정보
+업체 검색 | GET | /api/companys/search | 마스터관리자,<br/> 허브관리자,<br/> 배송담당자 |{<br/> "query": "검색키워드",<br/> "page": "페이지번호",<br/> "size": "데이터수",<br/> "sortBy": "정렬기준",<br/> "isAsc": "정렬순서"<br/> } | 업체검색 리스트
+업체 단건 조회 | GET | /api/companys/{companyId} | 마스터관리자,<br/> 허브관리자,<br/> 배송담당자 |   | 업체(단건) 조회
+업체 수정 | PATCH | /api/companys/{companyId} | 마스터관리자,<br/> 허브관리자 | {<br/> "companyId": "업체id",<br/>company_type": "업체타입"<br/> } | 수정된 업체 내용
+업체 삭제 | DELETE | /api/companys/{companyId} | 마스터관리자,<br/> 허브관리자 |   |
+주문상품업체조회 | GET | /api/companys/{companyId}/products | 마스터관리자,<br/> 허브관리자,<br/> 업체담당자 |   | {<br/>”arriveHubId”: “허브ID”,<br/>"deliveryAddress": "배송주소"<br/>}
+상품ID조회 | GET | /api/companys/{companyId}/products/hub-id | 마스터관리자,<br/> 허브관리자,<br/> 업체담당자 |   | “hubID”
+
+<h3>상품 API</h3>
+
+기능 | Method | URL | 접근권한 | Request | Response
+-- | -- | -- | -- | -- | --
+상품등록 | POST | /api/products | 마스터관리자,<br/> 허브관리자,<br/> 업체담당자 | { <br/>"hub_id": "허브ID",<br/> "product_name": "상품명",<br/> "product_detail": "상품내용",<br/> "company_id": "업체ID" "product_price": 3000 <br/>} | 작성된 상품 정보
+상품 검색 | GET | /api/products/search | 마스터관리자,<br/> 허브관리자,<br/> 배송담당자,<br/> 업체담당자 | {<br/> "query": "검색키워드",<br/> "page": "페이지번호",<br/> "size": "데이터수",<br/> "sortBy": "정렬기준",<br/> "isAsc": "정렬순서"<br/> } | 상품검색 리스트
+상품 단건 조회 | GET | /api/products/{productId} | 마스터관리자,<br/> 허브관리자,<br/> 배송담당자,<br/> 업체담당자 |   | 상품(단건) 조회
+상품 수정 | PATCH | /api/products/{productId} | 마스터관리자,<br/> 허브관리자,<br/> 업체담당자 | {<br/> "productId": "상품ID",<br/>"product_name": "상품명",<br/> } | 수정된 상품 내용
+상품 삭제 | DELETE | /api/products/{productId} | 마스터관리자,<br/> 허브관리자 |   |
+주문상품조회 및 재고변경 | get | /api/products/order?<br/>productId={상품id}<br/>&receiverCompanyId={업체id}<br/>&quantity=100 | 마스터관리자,<br/> 허브관리자,<br/> 업체담당자 |   | {<br/>"deliveryAddress": "배송주소",<br/>"requesterCompanyId": "상품업체ID",<br/> "departHubId": "출발허브ID",<br/>"arriveHubId": "도착허브ID","productName": "상품명",<br/>"productPrice": 3000,"productType": ON_SALE,<br/>"isOrderable": true<br/>}
+주문취소시 재고 수량 롤백 | put | /api/products/{producId}/rollback?quantity=300 | 마스터관리자,<br/> 허브관리자,<br/> 업체담당자 |   |
+
+<h3>재고 API</h3>
+
+기능 | Method | URL | 접근권한 | Request | Response
+-- | -- | -- | -- | -- | --
+재고 등록 | POST | 상품등록과 합침 | 마스터관리자, 허브관리자, 업체담당자 |   |  
+재고 조회 | GET | /api/stocks/{stokId} | 마스터관리자, 허브관리자, 업체담당자, 배송담당자 | { "product_id": 3 } | 재고 단 건 내용
+재고 수정 | PUT | /api/stocks/{stokId} | 마스터관리자, 허브관리자, 업체담당자 | { "quantity": 50 } | 수정된 재고 내용
+재고 삭제 | DELETE | /api/stocks/{stokId} | 마스터관리자, 허브관리자 |   |  
+재고 전체 조회 | GET | /api/stocks | 마스터관리자, 허브관리자, 업체담당자, 배송담당자 |   | 재고 전체 내용
+
+
+</details>
+
+<details>
+  <summary>인프라 설계서</summary>
+<h3>초안</h3>
+<img src="https://private-user-images.githubusercontent.com/64643668/424005066-a008b41b-db9d-405f-99cc-d575059e5a9c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzMTUxNjQsIm5iZiI6MTc0MjMxNDg2NCwicGF0aCI6Ii82NDY0MzY2OC80MjQwMDUwNjYtYTAwOGI0MWItZGI5ZC00MDVmLTk5Y2MtZDU3NTA1OWU1YTljLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE4VDE2MjEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTU4ZDRmOWQ2NmM3MDQyOGM4Y2YyNjIzNTRkODViODE3NzJkMTAzMmU0NmY3ZmMwODI4ZTNmYjE5MzE1ZjFmZmUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.-CJoT9zi1mjrF1JHPkbh6uAqyxCrtlJXUktE7F1SZ_0" alt="인프라 설계서 초안">
+<h3>리팩토링</h3>
+<img src="https://private-user-images.githubusercontent.com/64643668/424270833-bc400c0e-9dfb-49ef-83db-98f947b2574c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNTI0NTUsIm5iZiI6MTc0MjM1MjE1NSwicGF0aCI6Ii82NDY0MzY2OC80MjQyNzA4MzMtYmM0MDBjMGUtOWRmYi00OWVmLTgzZGItOThmOTQ3YjI1NzRjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDAyNDIzNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTUyZWM5MTNjMzI4MGIyN2IzZTRmYTM2ZDgzNGE4M2ExMzYyNjFlMzYxMDUwNjEzNDIwY2IwMDk0NDI0ZmIzZWYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ODWvV51q-f_EI2TOTbZIazspie7UuVNelIAx3ADSHSE" alt="인프라 설계서 리팩토링">
+
+</details>
+
+<details>
+  <summary>컨벤션</summary>
+
+***
+
+<h2>GIT 컨벤션</h2>
+<h3>이슈</h3>
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723637-fd8a0d72-c7bd-4821-abea-0eb324adb7c5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM2MzctZmQ4YTBkNzItYzdiZC00ODIxLWFiZWEtMGViMzI0YWRiN2M1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc0ZjdjMDg3MDRiNjNjNDQwODkwODNlZTM5ZGFlNDdmYTU4MmFkOWQxYzE5NmQyMzc5YThlOTEwNTMzNjA2MDEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.I98mLI2OrqQZbLwM4VAwTtAa1Bp6-A5ySzAEZcHCE1g" alt="image1">
+
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723705-b9819399-1852-49e5-acfe-b2c59a946bf5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM3MDUtYjk4MTkzOTktMTg1Mi00OWU1LWFjZmUtYjJjNTlhOTQ2YmY1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcwOWQyMDM2ZGRiYzA5MTI3NmMxNTkyZjU2NmJiOTIxYzcyZmVkYjMxYmFmYWU0ZDkwOTQ5NGQ4NWE1OTA4N2YmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.prd6YYAQ_aPB2Mg-zEx22XMmeRBRAS6VKNWf5NcasTY" alt="image2">
+<h3>Feature</h3>
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723754-65e1d623-35a6-4ba5-82e5-7233bbc9f30f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM3NTQtNjVlMWQ2MjMtMzVhNi00YmE1LTgyZTUtNzIzM2JiYzlmMzBmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPThjYjk4NWVlMjkwNDNmMWRiYzJiOTgyZDM1MmM3M2YzYjlhODMzN2UzMjAyYzdkMmQxNWYzOTQxZjM5NDQxZmEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.eqhSlQAMZLgrcl5MdJv9w3jphzzWr8FOx7yCBI0S8IQ" alt="image3">
+<h3>Bug</h3>
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723779-e07648ea-1aa3-4809-ad91-10f761fbf4ca.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM3NzktZTA3NjQ4ZWEtMWFhMy00ODA5LWFkOTEtMTBmNzYxZmJmNGNhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVkZDIxY2VjOTM0NTEzY2YwNjIzN2RlYmM4YjgwYmYxYTZlYmE1MzE1ZDRiMjJmN2VmNzIzODYyODQxZjkyY2EmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.zH6hQR7er0sAE2y0Iw6Zp9sNFtyvUK3s4EV3RMpA020" alt="image4">
+<h3>PR</h3>
+ <img src="https://private-user-images.githubusercontent.com/64643668/421723816-8766fa69-f8d6-49c5-8982-6feee6793dd1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjY5MjQsIm5iZiI6MTc0MjM2NjYyNCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjM4MTYtODc2NmZhNjktZjhkNi00OWM1LTg5ODItNmZlZWU2NzkzZGQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2NDM0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWU4MDIzMTU4M2FmMmY4ZWIzNjY2MWRmZTIxMjUzNGFmODlhODMwODZmMjVhMGQwYTZmNjUzZTQzZjUwYjBjZDImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.60ugbGmbhz4h-m_nlRgtWmb40mwNBMjhcPSASh0qGS0" alt="image5">
+
+***
+
+<h2>코드 컨벤션</h2>
+
+<pre><code>
+1. release : 배포용 (main)
+2. develop: develop 브랜치 (개발)
+3. feature: 기능 개발 브랜치 (feat/도메인명-기능) 
+</code></pre>
+
+구분 | JAVA
+-- | --
+PascalCase | 클래스,Exception
+camelCase | 변수,함수,메소드
+UPPER_CASE | 상수변수
+
+<h3>mapper 사용시</h3>
+<pre><code>
+// ex)
+public class slacksMapper {
+
+	public static Slacks slacksCreateRequestDtoToEntity(
+		SlacksCreateRequestDto slacksCreateRequestDto) {
+		// Dto를 Entity로 변환시 // 어떤 Dto인지 써주기
+	}
+
+	public static SlacksCreateResponseDto entityToCreateResponseDto(Slacks slacks) {
+		// Entity를 Dto로 변환시
+	}
+</code></pre>
+
+---
+
+### ERD & 데이터베이스 
+
+Spring Boot Entity 생성 시
+@Table(name = "명명된 테이블명")
+@Column(name = "명명된 칼럼명")
+@Table(name = "명명된 테이블명")
+@Column(name = "명명된 칼럼명")
+반드시 설정
+
+---
+</details>
+<details>
+  <summary>Flow Chart</summary>
+<h3>통합 Flow Chart</h3>
+  <img src="https://private-user-images.githubusercontent.com/64643668/424325546-14516ea0-d65f-4a80-b852-20ecfb0e6daa.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjUwODUsIm5iZiI6MTc0MjM2NDc4NSwicGF0aCI6Ii82NDY0MzY2OC80MjQzMjU1NDYtMTQ1MTZlYTAtZDY1Zi00YTgwLWI4NTItMjBlY2ZiMGU2ZGFhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2MTMwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTczZDUzNWY1ZDc1MWE1YjcyZjUxYTg4YTU1MmM2YWQ3MDZkNjU5ZTZmYTBlNGEwMDk5OTc2ZTlmNjRiMmJkYTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.vfHmrM7EZNUa0I1ZydtH5LPhSD5QgdCg6q501ZlR2gQ" alt="Flow Chart">
+<h3>업체, 배송담당자, 주문 Flow Chart</h3>
+  <img src="https://private-user-images.githubusercontent.com/64643668/423756791-2823eb87-3125-4181-b401-ab4c36d13a63.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzMTU0MDYsIm5iZiI6MTc0MjMxNTEwNiwicGF0aCI6Ii82NDY0MzY2OC80MjM3NTY3OTEtMjgyM2ViODctMzEyNS00MTgxLWI0MDEtYWI0YzM2ZDEzYTYzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE4VDE2MjUwNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWI2NWNhZmQxMjEwM2NiZjk0YmM0ZDBmNjk2ZDA3NGY5YTVlZDg3NDg2NTRkZDliODNlZGFkNzRmN2QyZWIwNzQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.-8YN74zVq8i5jkyJmKxUjWqmOGwb713khJ9j_MWGi-g" alt="Flow Chart">
+<h3>AI, Slack Flow Chart</h3>
+ <img src="https://private-user-images.githubusercontent.com/64643668/424320511-8274571f-3787-48fe-b3f0-e9f316857144.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjUyMDAsIm5iZiI6MTc0MjM2NDkwMCwicGF0aCI6Ii82NDY0MzY2OC80MjQzMjA1MTEtODI3NDU3MWYtMzc4Ny00OGZlLWIzZjAtZTlmMzE2ODU3MTQ0LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2MTUwMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA5ODdiZjY1NjgwMzllZmFlYWQ5ZGY2NWYzYmQ5N2FkMmM2OTdiZDZkMjNlZGYyMjdhNTgwYjY4ZDU3M2M3ZjAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.v_4Bj1xvdimD_IazyikN41LLz-oF2LpMR6Dd6ntehCI" alt="Flow Chart">
+
+
+</details>
+<details>
+  <summary>도메인별 전략</summary>
+<br>
+<br>
+
+사용자 및 배송담담자
+![image](https://github.com/user-attachments/assets/8e264868-d06d-479b-9d59-d3fb7a49a7ab)
+
+인증인가
+
+![Image](https://github.com/user-attachments/assets/636d514a-93c1-43ee-9744-f2f17bdaf200)
+
+허브
+![Image](https://github.com/user-attachments/assets/a7d6f6e3-3b6b-469f-aa0e-b8c66affb755)
+
+업체 및 상품
+<img width="853" alt="image (4)" src="https://github.com/user-attachments/assets/0109170a-1ab5-42f5-aeb6-7a2c37e0db0f" />
+
+주문-배송
+![Image](https://github.com/user-attachments/assets/86c8de23-125e-468a-86c5-c07d48fa8055)
+
+AI, Slack
+![ai, slack architecture](https://github.com/user-attachments/assets/f2fd432c-b818-4336-b098-dfe237131b6f)
+
+</details>
+<details>
+  <summary>우선순위</summary>
+<br>
+<br>
+
+
+ <img src="https://private-user-images.githubusercontent.com/64643668/425311612-48bc2394-103e-47a2-ad0e-3c296f423e2c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI1MzU4NTksIm5iZiI6MTc0MjUzNTU1OSwicGF0aCI6Ii82NDY0MzY2OC80MjUzMTE2MTItNDhiYzIzOTQtMTAzZS00N2EyLWFkMGUtM2MyOTZmNDIzZTJjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIxVDA1MzkxOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVjNjlhZTdlODgxNjJmYjYxZDk3MGY0MTczODgzOTA5YzY2NmIzOTU0NGYyMjQ2NjAxZmJlNzRhNDZlYjEzMzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Gzv6L1B72iezPfZIJziIJPYBwdae6dl0Z7fUtyHY_Lk" alt="우선순위">
+<br>
+<br>
+<img src="https://private-user-images.githubusercontent.com/64643668/425310255-308a97cf-b45b-4129-a3b6-1dd56fe9e04a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI1MzU5MzEsIm5iZiI6MTc0MjUzNTYzMSwicGF0aCI6Ii82NDY0MzY2OC80MjUzMTAyNTUtMzA4YTk3Y2YtYjQ1Yi00MTI5LWEzYjYtMWRkNTZmZTllMDRhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzIxVDA1NDAzMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTljYjA2NTI4NTFhYTA1NTA4ZGRmNmUxMWM1NzFhMmIxZDk0ZmM4NjI3NTE4N2NkOWJmY2FhMzE3NWU5MzgzMWQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.NBAIWVZHR01u2gsZzPKHFWCyrv-R93sv8koOGj-Hio0" alt="우선순위">
+<br>
+<br>
+🔴 최우선 순위    🟡우선 순위     🟢하위 순위
+<br>
+<br>
+
+### 협업 지원 계획
+- 오늘 더 고민해보고 필요시 요청
+
+
+양수영
+
+## 슬랙 api
+
+- [x]  **슬랙 생성 api**
+- [x]  **슬랙 조회 api**
+- [x]  **슬랙 삭제 api**
+- [ ]  **슬랙 검색 api**
+- [ ]  **슬랙 상태 변경 api**
+- [x]  **슬랙 발송 api**
+
+## **AI api**
+
+- [x]  **AI 생성 api**
+
+이태훈
+
+## **사용자 api**
+
+- [x]  **사용자 생성 api**
+- [ ]  **사용자 조회 api**
+- [ ]  **사용자 전체 조회 api**
+- [ ]  **사용자 수정 api**
+- [ ]  **사용자 삭제 api**
+
+## **배송담당자 api**
+
+- [ ]  **배송담당자 지정 api**
+- [ ]  **배송담당자 전체 조회 api**
+- [ ]  **배송담당자 조회 api**
+- [ ]  **배송담당자 수정 api**
+- [ ]  **배송담당자 삭제 api**
+
+김민경
+
+## 인증인가 api
+
+- [x]  **로그인 api**
+- [ ]  **로그아웃  api**
+
+## 허브 api
+
+- [x]  **허브 생성 api**
+- [x]  **허브 단 건 조회 api**
+- [x]  **허브 전체 조회 api**
+- [x]  **허브 수정 api**
+- [ ]  **허브 삭제 api**
+
+## 이동정보 관리api
+
+- [x]  **허브 간 이동정보 생성 api**
+- [ ]  **허브  간 이동정보 조회 api**
+- [x]  **허브  간 이동정보 전체 조회 api**
+- [ ]  **허브  간 이동정보수정 api**
+- [ ]  **허브 간 이동정보 삭제 apiDe**
+
+## 배송 경로 api
+
+- [ ]  **배송 경로 생성 api**
+- [ ]  **배송 ID 기반 배송 경로 조회 api**
+- [ ]  **배송 경로 상태 변경 api**
+- [ ]  **배송 경로 수정 api**
+- [ ]  **배송 경로 삭제 api**
+
+## 주문 api
+
+- [ ]  **주문 생성 api**
+- [x]  **주문 리스트 조회 (검색) api**
+- [x]  **주문 단건 조회 api**
+- [ ]  **주문 수정 api**
+- [ ]  **주문 삭제 api**
+- [ ]  **주문 취소**
+
+## 배송 api
+
+- [ ]  **배송 생성 api**
+- [x]  **배송 리스트 조회 (검색) api**
+- [x]  **배송 단건 조회 api**
+- [x]  **배송 상태 변경 api**
+- [ ]  **배송 수정 api**
+- [ ]  **배송 삭제 api**
+
+### 업체 api
+
+- [x]  **업체 생성**
+- [ ]  **업체 search**
+- [x]  **업체 수정**
+- [x]  **업체 삭제**
+- [x]  **업체 단건조회**
+
+### 상품 api
+
+- [x]  **상품 생성**
+- [ ]  **상품 search**
+- [ ]  **상품수정**
+- [ ]  **상품삭제**
+- [ ]  **상품 단건조회**
+
+### 재고 api
+
+- [x]  **재고생성**
+- [ ]  **재고 조회**
+- [ ]  **재고확인**
+- [ ]  **재고수정**
+- [ ]  **재고삭제**
+- [ ]  **재고 전체조회**
+
+
+</details>
+
 
 <br>
 

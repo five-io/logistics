@@ -53,10 +53,9 @@
 <br>
 <details>
 <summary><h3>사용자 및 배송담담자</h3></summary>
-
+<img src="https://github.com/user-attachments/assets/f12da2fd-9608-498c-8ced-22f0c0509ea9" width="100%">
 </details>
 <br>
-
 
 ## 프로젝트 회고
 

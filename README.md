@@ -191,9 +191,9 @@ http://localhost:19090
 <img src="https://github.com/user-attachments/assets/7485fae0-cbf0-4d03-9608-95e89b1e6d0f" width="100%">
 </details>
 
-<br>
-
 ---
+
+<br>
 
 ## 🤔 프로젝트 회고
 <br>
@@ -244,7 +244,6 @@ http://localhost:19090
 
 <br>
   
----
 
 ### 🚨 트러블슈팅 (Troubleshooting)
 <br>
@@ -435,8 +434,6 @@ ResponseEntity<String> getExample(@RequestParam String param);
 </details>
 
 ---
-
-<br>
 
 <details>
 <summary>❌ 아쉬웠던 점 & 개선할 점</summary>

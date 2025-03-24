@@ -226,7 +226,6 @@ http://localhost:19090
 <br>
   
 ### 🥰 공통 관심사항
-<br>
 
 #### ❗ Exception
 - 시스템 전반에서 발생할 수 있는 예외 처리 전략을 세우고, 예외 발생 시 <br>일관된 오류 메시지와 로그를 출력하여 디버깅과 문제 해결을 용이하게 합니다.
@@ -474,6 +473,8 @@ ResponseEntity<String> getExample(@RequestParam String param);
 </details>
 
 ---
+
+<br>
 
 ### ♻️ **추후 리팩토링 계획**
 <br>

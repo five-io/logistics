@@ -122,7 +122,7 @@ http://localhost:19090/swagger-ui.html
 
 <details>
   <summary>에그리거트 구조도</summary>
-![a1](https://github.com/user-attachments/assets/dba70451-994f-4a68-a24b-7c898307d713)
+<image>https://github.com/user-attachments/assets/dba70451-994f-4a68-a24b-7c898307d713</image>
 
 </details>
 

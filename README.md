@@ -1,15 +1,16 @@
 # 🚛 [five-io] logistics: MSA 기반 물류 관리 시스템
 
-## 📌 프로젝트 소개
-**logistics**는 MSA 기반의 B2B 물류 및 배송 관리 플랫폼으로, 물류 운영을 효율적으로 관리하고 자동화하는 것을 목표로 합니다.
+### 🦖 프로젝트 소개
+**logistics**는 MSA 기반의 B2B 물류 및 배송 관리 플랫폼으로,<br>
+물류 운영을 효율적으로 관리하고 자동화하는 것을 목표로 합니다.
 
-### 🎯 기술적 목표
+### 🧐 기술적 목표
 - **RBAC(Role-Based Access Control)**을 통한 사용자 및 관리자 권한 관리
 - **JWT 기반 인증 및 데이터 암호화** 적용
 - **MSA 구조**를 활용하여 각 서비스 간 원활한 통신
 - **도메인 주도 개발(DDD)**을 기반으로 의존성을 낮춘 모듈 설계
 
-### 🚀 구현 목표
+### 😎 구현 목표
 - **우선순위 기반 API 개발** 및 테스트 시나리오 작성으로 `사용자 → 허브 → 주문 → 배송` 흐름을 명확하게 검증
 - **FeignClient**를 활용하여 모듈 간 필요한 부분만 통신하도록 구현
 - **공통 라이브러리 모듈**을 만들어 서브모듈에서 공통적으로 사용하는 라이브러리를 관리
@@ -19,7 +20,7 @@
 
 ---
 
-## 💁‍♂️ 프로젝트 팀원
+## 💁🏻 프로젝트 팀원
 
 | <img src="https://github.com/user-attachments/assets/d7101f4b-94fe-482d-971c-cd24ce05bf9c" width="100%"> |
 |:--------------------------------------------------------------------------------------------------:|
@@ -83,8 +84,17 @@ http://localhost:19090
 ```
 
 ---
-## Skill
+## 🪄 Skill
 
+내용
+
+---
+
+## 설계 산출물
+
+한마디
+
+---
 
 ### [인프라 설계서](https://github.com/five-io/logistics/wiki/%EC%9D%B8%ED%94%84%EB%9D%BC-%EC%84%A4%EA%B3%84%EC%84%9C)
 
@@ -102,45 +112,81 @@ http://localhost:19090
 
 ### [Flow Chart](https://github.com/five-io/logistics/wiki/Flow-Chart)
 
-## 도메인별 전략
-<br>
+---
+
+## ⚔️ 도메인별 전략
+
+한마디
+
+---
 <details>
-<summary><h3>사용자 및 배송담담자</h3></summary>
+<summary>사용자 및 배송담담자</summary>
 <img src="https://github.com/user-attachments/assets/f12da2fd-9608-498c-8ced-22f0c0509ea9" width="100%">
 </details>
+
+---
+
 <details>
-<summary><h3>인증 및 인가</h3></summary>
+<summary>인증 및 인가</summary>
    <img src="https://github.com/user-attachments/assets/e3005893-93e7-4283-a556-7542a8c39114" width="100%">
 </details>
-<br>
+
+---
+
 <details>
-<summary><h3>허브</h3></summary>
+<summary>허브</summary>
      <img src="https://github.com/user-attachments/assets/751f2d88-4719-43ec-bab1-868656a0aaac" width="100%">
 </details>
-<br>
+
+---
+
 <details>
-<summary><h3>업체 및 상품</h3></summary>  
+<summary>업체 및 상품</summary>  
   <img src="https://github.com/user-attachments/assets/13b4ca99-1264-4a42-9959-8ea9b6dd719d" width="100%">
 </details>
-<br>
+
+---
+
 <details>
-<summary><h3>주문 및 배송</h3></summary>
+<summary>주문 및 배송</summary>
 <img src="https://github.com/user-attachments/assets/d0e937ed-6a2d-4bf2-ad96-96df9640c293" width="100%">
 </details>
-<br>
+
+---
+
 <details>
-<summary><h3>AI 활용 Slack 알림</h3></summary>
+<summary>AI 활용 Slack 알림</summary>
 <img src="https://github.com/user-attachments/assets/7485fae0-cbf0-4d03-9608-95e89b1e6d0f" width="100%">
 </details>
-<br>
 
-## 프로젝트 회고
+---
 
-### 프로젝트 일정 및 진행
+## 🤔 프로젝트 회고
 
-### 공통 관심사항
+### 🗓️ 프로젝트 일정 및 진행
 
-### 🛠 트러블슈팅 (Troubleshooting)
+추가해야함
+
+### 🥰 공통 관심사항
+
+#### ❗ Exception
+- 시스템 전반에서 발생할 수 있는 예외 처리 전략을 세우고, 예외 발생 시 <br>일관된 오류 메시지와 로그를 출력하여 디버깅과 문제 해결을 용이하게 합니다.
+
+#### 📝 Auditing
+- 시스템의 중요한 데이터에 대한 생성일, 수정일, 수정자 등과 같은 변경 이력을 <br>자동으로 추적하여 데이터의 변동사항을 기록하고 관리합니다.
+
+#### 🔄 Interceptor
+- 요청과 응답을 가로채서 공통적인 처리를 할 수 있는 구조로, 로깅, 인증/인가 <br>등의 작업을 구현할 때 유용하게 사용됩니다.
+
+#### 🔒 AOP (권한검증)
+- 관점 지향 프로그래밍(AOP)을 사용하여, 특정 메서드 호출 시 권한 검증을 자동으로 <br>수행하여 코드의 중복을 줄이고 유지보수를 용이하게 합니다.
+
+#### 📚 DDD (Domain-Driven Design)
+- 비즈니스 도메인을 중심으로 시스템을 설계하고 구현하는 방법론으로, 도메인 모델을 <br>중심으로 복잡한 비즈니스 로직을 효과적으로 다룰 수 있습니다.
+  
+---
+
+### 🚨 트러블슈팅 (Troubleshooting)
 
 개발 과정에서 발생한 주요 문제와 해결 방법을 정리하였습니다.  
 이전보다 더 안정적이고 확장 가능한 시스템을 구축하는 데 기여한 경험을 공유합니다.
@@ -349,7 +395,7 @@ ResponseEntity<String> getExample(@RequestParam String param);
 ---
 
 <details>
-<summary>🎯 앞으로의 개선 방향</summary>
+<summary>🛠 앞으로의 개선 방향</summary>
 
 - **초기 설계를 더 철저히 준비**하여 불필요한 변경을 줄이기.
 - **일정 관리 툴 적극 활용** (예: Jira, Notion 등)하여 업무 분배를 명확하게 하기.
@@ -361,25 +407,89 @@ ResponseEntity<String> getExample(@RequestParam String param);
 
 ---
 
-## 추후 리팩토링
+### ♻️ **추후 리팩토링 계획**
 
-- 현재 시스템의 문제점 인지 -> 개선을 위한 기술적 계획 및 접근
+한마디
 
-### • 인증 및 인가
+---
 
-blacklist관리
-accesstoken refreshtoken
-resolver와 context 관리
+<details>
+<summary>🔐 인증 및 인가</summary>
 
-### • 허브
+- **Blacklist 관리**  
+  - AccessToken 및 RefreshToken의 블랙리스트 관리 필요.
+  - 보안 강화를 위해 **토큰 무효화 로직 개선**.
+  
+- **Token Resolver & Context 관리**  
+  - 현재 인증 정보의 효율적인 관리 필요.
+  - **인증 컨텍스트 관리 로직 개선**으로 인증 흐름 최적화.
 
-캐시관리
+</details>
 
-### • 업체 및 상품
+---
 
-### •주문 및 배송
+<details>
+<summary>🚏 허브 (Hub) 개선</summary>
 
-### • AI 활용 Slack 알림
+- **캐시 관리 최적화**  
+  - 주문 및 배송 관련 데이터의 **캐시 적중률을 높여 성능 개선**.
+  - 불필요한 캐시 삭제 및 재사용 로직 정비.
 
-### • 사용자 및 배송담담자
+</details>
+
+---
+
+<details>
+<summary>🏬 업체 및 상품</summary>
+
+- **다중 상품 주문 대응**  
+  - 기존 **단일 상품 주문 → 다중 상품 주문**으로 변경 필요.
+  - API 응답 구조 변경 및 **멀티 주문 처리 로직 추가**.
+
+- **유효성 검증 강화**  
+  - 주문 시 **데이터 유효성 검사 로직 개선**.
+  - 필수 입력값 누락 방지 및 예외 처리 로직 추가.
+
+</details>
+
+---
+
+<details>
+<summary>📦 주문 및 배송</summary>
+
+- **주문 처리 방식 개선**  
+  - 기존 단일 상품 주문에서 **다중 상품 주문이 가능하도록 로직 리팩토링**.
+  - 주문별 개별 배송이 아닌 **묶음 배송 기능 추가**.
+
+</details>
+
+---
+
+<details>
+<summary>🤖 AI 활용 Slack 알림</summary>
+
+- **배송 담당자 자동 알림 기능 추가**  
+  - **매일 아침 6시에 배송 담당자에게 자동 알림 전송**.
+  - AI 분석을 활용하여 **우선순위 알림** 제공 가능.
+
+- **알림 형식 리팩토링**  
+  - 동일한 템플릿으로 일관된 형식의 알림 발송하도록 수정.
+
+</details>
+
+---
+
+<details>
+<summary>👤 사용자 및 배송 담당자 관리</summary>
+
+- **사용자 권한 및 역할 분리**  
+  - 일반 사용자 / 배송 담당자 / 관리자 권한 별도 관리.
+  - **RBAC(Role-Based Access Control) 적용**으로 보안 강화.
+
+- **배송 담당자 관리 시스템 개선**  
+  - 배송 담당자 배정 최적화 및 **배정 로직 개선**.
+
+</details>
+
+---
 

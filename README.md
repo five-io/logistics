@@ -90,14 +90,17 @@ services:
 volumes:
   postgres_data:
 ```
+
 <br>
 
 ### 2️⃣ Docker Compose 실행
 
 <br>
+
 ```sh
 docker-compose up -d
 ```
+
 <br>
 
 ### 3️⃣ API 문서 확인 (Swagger)
@@ -107,6 +110,7 @@ Swagger UI를 사용하여 API를 확인할 수 있습니다.
 ```sh
 http://localhost:19090
 ```
+
 <br>
 
 ---

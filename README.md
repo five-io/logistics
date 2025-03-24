@@ -122,12 +122,14 @@ http://localhost:19090/swagger-ui.html
 
 <details>
   <summary>에그리거트 구조도</summary>
- <img src="https://private-user-images.githubusercontent.com/64643668/421727086-2b4fdf55-9e9d-47b1-b451-aa34385cd57f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzMTQ5OTgsIm5iZiI6MTc0MjMxNDY5OCwicGF0aCI6Ii82NDY0MzY2OC80MjE3MjcwODYtMmI0ZmRmNTUtOWU5ZC00N2IxLWI0NTEtYWEzNDM4NWNkNTdmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE4VDE2MTgxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWE2ZGIyODhlMTI3MGI3ZmY4ZTQ3Mjg2ZjExN2RkYTFhZTgyM2I4NGNjNTgwNTc3ZDAzMDEwNzk5NTFjZTExODUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.xHij-G-_QJnKZ-V1s9FPaDJ9eJQF6eUNbgL0EJJUSYw" alt="에그리거트 구조도">
+![a1](https://github.com/user-attachments/assets/dba70451-994f-4a68-a24b-7c898307d713)
+
 </details>
 
 <details>
   <summary>도메인 다이어그램 & 역할분담</summary>
-  <img src="https://private-user-images.githubusercontent.com/111279553/425899278-564b9525-740a-4552-9540-0b4a8cd0c8be.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI4MjQ2NTQsIm5iZiI6MTc0MjgyNDM1NCwicGF0aCI6Ii8xMTEyNzk1NTMvNDI1ODk5Mjc4LTU2NGI5NTI1LTc0MGEtNDU1Mi05NTQwLTBiNGE4Y2QwYzhiZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMzI0JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDMyNFQxMzUyMzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01ZjdiZTMxZjE5N2ZkZmM1OWYyNTZlZTZmZDA5OTk0YTZiNjg4MzNhZTk0MTRiOWMyOGY2MThlYjA4YmNmYTY0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.eePE6m0jFu2p1DFG_ctDsdOA3e2mQx0UetSQyhqO6D0" alt="도메인 다이어그램">
+ ![a2](https://github.com/user-attachments/assets/522b919b-00e3-4c5c-8717-9bbea4b0dbbc)
+
 
 |   담당자   |  신예나  |  문고은  |  김민경  |  이태훈  |  양수영  |
 |:----------:|:--------:|:--------:|:--------:|:--------:|:--------:|
@@ -137,12 +139,12 @@ http://localhost:19090/swagger-ui.html
 
 <details>
   <summary>ERD 명세서</summary>
-  <img src="https://private-user-images.githubusercontent.com/64643668/425968923-a682b133-09b1-48fa-869b-c4d8b7d848c5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI4MDE5MzMsIm5iZiI6MTc0MjgwMTYzMywicGF0aCI6Ii82NDY0MzY2OC80MjU5Njg5MjMtYTY4MmIxMzMtMDliMS00OGZhLTg2OWItYzRkOGI3ZDg0OGM1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzI0VDA3MzM1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc1OGFkMjkxMmRmMjcyYjMzYTU4Yjc1NjZjY2YyYjI3YWRhMDkyNTI5ZWZjZDBkZjI4MmM0ODk3NDI5Yzk2NTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.8ehG_s3jBRVP5ewqsfAKmsiMmSml-6f1qlJlfpw4JzM" alt="ERD 명세서">
+ ![a3](https://github.com/user-attachments/assets/e469e4ec-5bab-4ef8-819a-96016d7a57bc)
 </details>
 
 <details>
   <summary>테이블 명세서</summary>
-
+	
 <h3>1. 사용자 (p_users)</h3>
 
 필드 이름 | 데이터 타입 | 설명 | 제약사항
@@ -416,9 +418,9 @@ AI 등록 | POST | /api/ais | 배송담당자 | { <br/>"order-id": "order-id",<b
 <details>
   <summary>인프라 설계서</summary>
 <h3>초안</h3>
-<img src="https://private-user-images.githubusercontent.com/64643668/424005066-a008b41b-db9d-405f-99cc-d575059e5a9c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzMTUxNjQsIm5iZiI6MTc0MjMxNDg2NCwicGF0aCI6Ii82NDY0MzY2OC80MjQwMDUwNjYtYTAwOGI0MWItZGI5ZC00MDVmLTk5Y2MtZDU3NTA1OWU1YTljLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE4VDE2MjEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTU4ZDRmOWQ2NmM3MDQyOGM4Y2YyNjIzNTRkODViODE3NzJkMTAzMmU0NmY3ZmMwODI4ZTNmYjE5MzE1ZjFmZmUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.-CJoT9zi1mjrF1JHPkbh6uAqyxCrtlJXUktE7F1SZ_0" alt="인프라 설계서 초안">
+![a4](https://github.com/user-attachments/assets/c52245ec-ba0e-484f-8a0c-01d571474958)
 <h3>리팩토링</h3>
-<img src="https://private-user-images.githubusercontent.com/64643668/426059787-6e18cb8d-b746-4120-8287-f3fe2046442a.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDI4MTY3MzUsIm5iZiI6MTc0MjgxNjQzNSwicGF0aCI6Ii82NDY0MzY2OC80MjYwNTk3ODctNmUxOGNiOGQtYjc0Ni00MTIwLTgyODctZjNmZTIwNDY0NDJhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzI0VDExNDAzNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM1MWM4MmJmZDY5OGU2M2VkMWI4ODQ0M2EwNGI4ZjBhZGIxMWY5NDkxMGIxNzE5MjNiYzZjNDMyZTVmMTg2ZTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.Hu77hUsQECA-ptcc5y1UJNLt9qxgJ_gVYNyrlOseoFw" alt="인프라 설계서 리팩토링">
+![a5](https://github.com/user-attachments/assets/4a44c621-d20b-4cb7-bea0-face44caa6e9)
 
 </details>
 
@@ -486,10 +488,9 @@ Spring Boot Entity 생성 시
 <details>
   <summary>Flow Chart</summary>
 <h3>통합 Flow Chart</h3>
-  <img src="https://private-user-images.githubusercontent.com/64643668/424325546-14516ea0-d65f-4a80-b852-20ecfb0e6daa.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDIzNjUwODUsIm5iZiI6MTc0MjM2NDc4NSwicGF0aCI6Ii82NDY0MzY2OC80MjQzMjU1NDYtMTQ1MTZlYTAtZDY1Zi00YTgwLWI4NTItMjBlY2ZiMGU2ZGFhLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTAzMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwMzE5VDA2MTMwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTczZDUzNWY1ZDc1MWE1YjcyZjUxYTg4YTU1MmM2YWQ3MDZkNjU5ZTZmYTBlNGEwMDk5OTc2ZTlmNjRiMmJkYTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.vfHmrM7EZNUa0I1ZydtH5LPhSD5QgdCg6q501ZlR2gQ" alt="Flow Chart">
+![a6](https://github.com/user-attachments/assets/4ef24822-3b58-4c32-bf6b-81056ba2d0b7)
 </details>
 
----
 <details>
   <summary>우선순위</summary>
 <br>

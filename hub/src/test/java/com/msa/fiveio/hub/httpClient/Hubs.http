@@ -9,10 +9,10 @@ Content-Type: application/json
 ###Hub Create
 POST http://localhost:19090/api/hubs/create
 Content-Type: application/json
-Authorization:
+Authorization: {{accessToken}}
 
 {
-  "hubName": "경기 남부 센터",
+  "hubName": "경기 남부 센터44",
   "address": "경기도 이천시 덕평로 257-21",
   "latitude": 0,
   "longitude": 0
@@ -36,7 +36,7 @@ Content-Type: application/json
 Authorization: {{accessToken}}
 
 ###Hub 수정
-PATCH http://localhost:19090/api/hubs/update/fbca1ccf-ed40-4314-b2ed-ee5bf75cc2b3
+PATCH http://localhost:19090/api/hubs/update/f6aaf926-f052-47c5-a929-08ecf04b7652
 Content-Type: application/json
 Authorization: {{accessToken}}
 

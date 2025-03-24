@@ -29,10 +29,10 @@ public class HubRoute extends BaseEntity {
     @Column(name = "hub_id")
     private UUID id;
 
-    @Column
+    @Column(nullable = false)
     private UUID departId;
 
-    @Column
+    @Column(nullable = false)
     private UUID arriveId;
 
     @Column

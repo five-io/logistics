@@ -28,7 +28,7 @@ public class Hubs extends BaseEntity {
     @Column(name = "hub_id")
     private UUID id;
 
-    @Column(name = "hub_name", unique = true)
+    @Column(name = "hub_name", nullable = false, unique = true)
     private String hubName;
 
     @Column

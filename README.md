@@ -233,7 +233,7 @@ delivery_status | ENUM | 현재 상태 | NotNull
 
 필드 이름 | 데이터 타입 | 설명 | 제약사항
 -- | -- | -- | --
-loacation_id | UUID | 이동정보 ID | NotNull, PK
+route_id | UUID | 이동정보 ID | NotNull, PK
 depart_id | UUID | 출발허브 ID  | NotNull
 arrive_id | UUID | 도착허브 ID  | NotNull
 taken_time | BIGINT | 소요시간

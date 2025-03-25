@@ -5,15 +5,15 @@ import com.msa.fiveio.order.infrastructure.client.dto.response.ProductResponseDt
 import java.util.UUID;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(name = "productClient", url = "localhost:19098", configuration = FeignConfig.class)
 public interface ProductClient {
 
-    @PatchMapping("/api/products/{id}/rollback")
-    void rollbackStock(@PathVariable("id") UUID productId, Long quantity);
+    @PutMapping("/api/products/{id}/rollback")
+    void rollbackStock(@PathVariable("id") UUID productId, @RequestParam Long quantity);
 
     @GetMapping("/api/products/order")
     ProductResponseDto processOrderRequest(@RequestParam UUID productId,

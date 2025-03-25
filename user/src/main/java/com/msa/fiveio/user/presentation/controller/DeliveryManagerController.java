@@ -44,10 +44,12 @@ public class DeliveryManagerController {
   @GetMapping("/{id}")
   @ApiPermission(roles = {ROLE_MASTER, ROLE_HUB_MANAGER, ROLE_DELIVERY_MANAGER,
       ROLE_COMPANY_MANAGER})
+  @Operation(summary = "배송담당자 조회", description = "배송담당자를 조회합니다.")
   public ResponseEntity<UserResponseDto> getDeliveryManagerId( @PathVariable("id") UUID hubId,
       @RequestParam ManagersTypeEnum type){
     UserResponseDto userResponseDto = deliveryManagerService.getDeliveryManagerId(hubId,type);
     return ResponseEntity.ok(userResponseDto);
   }
+
 
 }

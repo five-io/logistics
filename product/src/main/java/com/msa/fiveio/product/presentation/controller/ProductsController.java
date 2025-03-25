@@ -16,9 +16,9 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,7 +64,7 @@ public class ProductsController {
     }
 
     //order에서 주문 취소할 경우 -> 재고수량 되돌리기
-    @PatchMapping("/{id}/rollback")
+    @PutMapping("/{id}/rollback")
     public ResponseEntity<String> rollbackStock(@PathVariable("id") UUID productId,
             @RequestParam Long quantity) {
         productFacade.rollbackStock(productId, quantity);

@@ -1,5 +1,6 @@
 package com.msa.fiveio.user.model.entity;
 
+import com.msa.fiveio.common.auditing.BaseEntity;
 import com.msa.fiveio.user.model.entity.enums.ManagersTypeEnum;
 import jakarta.persistence.*;
 import java.util.UUID;
@@ -11,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DeliveryManagers {
+public class DeliveryManagers extends BaseEntity {
 
   @Id
   private Long userId;
@@ -27,14 +28,14 @@ public class DeliveryManagers {
   @Column(name = "managersType", nullable = false)
   private ManagersTypeEnum managersType;
 
-  @Column(name = "sequence", nullable = true)
-  private String sequence; // 배송 순번
+  @Column(name = "sequence", nullable = false)
+  private Integer sequence; // 배송 순번
 
   @Column(name = "isWorking", nullable = false)
   private Boolean isWorking; // 현재 상태 (근무 여부)
 
   public DeliveryManagers(Long userId, Users users, ManagersTypeEnum managersType,
-      UUID hubId, String sequence, Boolean isWorking) {
+      UUID hubId, Integer sequence, Boolean isWorking) {
     this.userId = userId;
     this.users = users;
     this.managersType = managersType;

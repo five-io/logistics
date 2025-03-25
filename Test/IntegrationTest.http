@@ -1,31 +1,24 @@
-### 회원가입
-POST http://localhost:19090/api/users/signUp
-Content-Type: application/json
-
-{
-  "username": "test2",
-  "password": "Abcd1234!",
-  "slackId": "slack",
-  "role": "ROLE_MASTER"
-}
-
-### 회원가입(업체매니저)
-POST http://localhost:19090/api/users/signUp
-Content-Type: application/json
-
-{
-  "username": "test",
-  "password": "Abcd1234!",
-  "slackId": "slack",
-  "role": "ROLE_COMPANY_MANAGER"
-}
 
 ###Login(마스터)
 POST http://localhost:19090/api/users/signIn
 Content-Type: application/json
 
 {
-  "username": "test2",
+  "username": "master",
+  "password": "Abcd1234!"
+}
+
+> {%
+  client.global.set("accessToken", response.body.accessToken);
+  client.log("accessToken : " + client.global.get("accessToken"));
+%}
+
+###Login(배송담당자)
+POST http://localhost:19090/api/users/signIn
+Content-Type: application/json
+
+{
+  "username": "delivery",
   "password": "Abcd1234!"
 }
 
@@ -39,7 +32,7 @@ POST http://localhost:19090/api/users/signIn
 Content-Type: application/json
 
 {
-  "username": "test",
+  "username": "manager",
   "password": "Abcd1234!"
 }
 
@@ -48,65 +41,7 @@ Content-Type: application/json
   client.log("accessToken : " + client.global.get("accessToken"));
 %}
 
-###허브생성(init)
-POST http://localhost:19090/api/hubs/setting
-Content-Type: application/json
 
-###허브이동경로 생성(init)
-POST http://localhost:19090/api/routes/setRoute
-Content-Type: application/json
-
-###업체생성(공급)
-POST http://localhost:19094/api/companys
-Content-Type: application/json
-Authorization: {{accessToken}}
-
-{
-  "companyType": "MANUFACTURER",
-  "companyName": "manufacturer",
-  "companyAddress": "testtest",
-  "hubId": "afd3c207-c492-4f96-b53a-60ef17f5a879"
-}
-
-###업체생성(수령)
-POST http://localhost:19094/api/companys
-Content-Type: application/json
-Authorization: {{accessToken}}
-
-{
-  "companyType": "RECEIVER",
-  "companyName": "reciever",
-  "companyAddress": "testtest",
-  "hubId": "0d65b109-ba6a-4193-ad62-07652bf74bb1"
-}
-
-
-###상품생성
-POST http://localhost:19098/api/products
-Content-Type: application/json
-Authorization: {{accessToken}}
-
-{
-  "productName": "랍스터",
-  "productDetail": "신선한 랍스터",
-  "companyId": "7779d020-aa2e-4145-a807-5256bbe2fd77",
-  "productPrice": 30000.0
-}
-
-###재고 update ("api/stocks/{stockId}")
-PUT http://localhost:19098/api/stocks/629bd216-ce05-46fe-b0b8-341051ef173e?
-    stockQuantity=200
-{
-  "productName": "상품명테스트2",
-  "productDetail": "상품내용테스트2",
-  "companyId": "4a0ca5db-79f1-4855-9318-4d8c7f858416",
-  "productPrice": 30000.0
-}
-
-###재고추가
-
-
-### 배송담당자 생성
 
 ### 주문 생성 (재고확인- 배송생성 -배송담당자지정 -배송경로 생성(이동정보관리 조회) -슬랙메시지 전송)
 POST http://localhost:19090/api/orders
@@ -114,15 +49,23 @@ Content-Type: application/json
 Authorization: {{accessToken}}
 
 {
-  "receiver-company-id": "de4cd842-6f4c-48b5-bd4b-7f1ab1d37006",
-  "product-id": "3f5e3967-cf5f-4011-b689-f0feed377a74",
+  "receiver-company-id": "a3eeebc0-ae47-4c4c-ac76-4f59d26d6faf",
+  "product-id": "6e3596ee-479b-4bd1-b3c0-12e731784026",
   "quantity": 1,
   "request-notes": "8월 4일 3시까지는 보내주세요!",
   "recipient-name": "김00",
   "recipient-slack-id": "01011112222"
 }
 
+###주문 취소
+DELETE http://localhost:19090/api/orders/b62f9764-f5c7-411c-ad4f-f49232956020/cancel
+Content-Type: application/json
+Authorization: {{accessToken}}
 
+###배송 상태 변경
+PATCH http://localhost:19090/api/deliveries/7fa2a896-c0f8-4c01-a635-0ec54a7360d2/status?deliveryStatus=delivered
+Content-Type: application/json
+Authorization: {{accessToken}}
 
 ###배송지 도착 상태 변경
 PUT http://localhost:19090/api/delivery-routes

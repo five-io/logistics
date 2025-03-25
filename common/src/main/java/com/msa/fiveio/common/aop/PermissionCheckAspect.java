@@ -5,7 +5,9 @@ import com.msa.fiveio.common.annotation.ApiPermission.Role;
 import jakarta.servlet.http.HttpServletRequest;
 import java.nio.file.AccessDeniedException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -29,9 +31,9 @@ public class PermissionCheckAspect {
         }
 
         // 사용자의 권한 목록 파싱
-        List<String> userRoles = Arrays.asList(rolesHeader.split(","));
+        Set<String> userRoles = new HashSet<>(Arrays.asList(rolesHeader.split(",")));
         // API에서 요구하는 권한
-        List<Role> requiredRoles = Arrays.asList(apiPermission.roles());
+        Set<Role> requiredRoles = new HashSet<>(Arrays.asList(apiPermission.roles()));
 
         // 사용자가 필요한 권한을 가지고 있는지 확인
         boolean hasPermission = userRoles.stream()

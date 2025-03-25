@@ -4,6 +4,7 @@ import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.DeliveryErrorCode;
 import com.msa.fiveio.delivery.infrastructure.client.HubClient;
 import com.msa.fiveio.delivery.infrastructure.client.SlackClient;
+import com.msa.fiveio.delivery.infrastructure.client.UserClient;
 import com.msa.fiveio.delivery.infrastructure.client.dto.request.SlacksCreateRequestDto;
 import com.msa.fiveio.delivery.infrastructure.client.dto.response.HubsResponseDto;
 import com.msa.fiveio.delivery.infrastructure.client.dto.response.RouteResponseDto;
@@ -23,7 +24,7 @@ public class ExternalServiceImpl implements ExternalService {
 
     private final SlackClient slackClient;
     private final HubClient hubClient;
-//    private final UserClient userClient;
+    private final UserClient userClient;
 
     @Override
     public void sendSlackRequest(DeliveryCreateRequestDto deliveryCreateRequestDto,
@@ -59,11 +60,7 @@ public class ExternalServiceImpl implements ExternalService {
 
     @Override
     public UserResponseDto getDeliveryManager(UUID hubID, String type) {
-//        return userClient.getDeliveryManagerId(hubID, type);
-        return UserResponseDto.builder()
-            .id(1L)
-            .userName("짱구")
-            .build();
+        return userClient.getDeliveryManagerId(hubID, type);
     }
 
     @Override

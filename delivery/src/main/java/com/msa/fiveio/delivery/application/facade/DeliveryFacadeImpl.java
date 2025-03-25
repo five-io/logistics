@@ -34,17 +34,17 @@ public class DeliveryFacadeImpl implements DeliveryFacade {
             "HUB");
 
         DeliveryResponseDto deliveryResponseDto = deliveryService.createDelivery(deliveryRequestDto,
-            companyDeliveryManager.getId());
+            companyDeliveryManager.getUserId());
         log.info("Created delivery: {}", deliveryResponseDto.getDeliveryId());
         List<RouteResponseDto> routeResponseDtos = externalService.getHubRouteList(
             deliveryRequestDto.getArriveHubId(), deliveryRequestDto.getDepartHubId());
 
-        createDeliveryRoute(deliveryResponseDto, hubDeliveryManager.getId(), routeResponseDtos);
+        createDeliveryRoute(deliveryResponseDto, hubDeliveryManager.getUserId(), routeResponseDtos);
 
         List<UUID> waypoints = getWayPoints(routeResponseDtos);
         String waypointsString = externalService.getWayPoints(waypoints);
 
-        sendSlackRequest(deliveryRequestDto, waypointsString, companyDeliveryManager.getUserName());
+        sendSlackRequest(deliveryRequestDto, waypointsString, companyDeliveryManager.getUsername());
     }
 
     @Override

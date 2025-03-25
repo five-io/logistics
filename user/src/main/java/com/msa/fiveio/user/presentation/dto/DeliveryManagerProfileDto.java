@@ -11,7 +11,7 @@ public class DeliveryManagerProfileDto {
 
   private UUID hubId;
   private ManagersTypeEnum managersType;
-  private String sequence;
+  private Integer sequence;
   private Boolean isWorking;
 
   public DeliveryManagerProfileDto(DeliveryManagers deliveryManager) {

@@ -71,6 +71,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6IlJPTEVfR
   "managersType": "Company"
 }
 
+###
+GET http://localhost:19090/api/users/0d65b109-ba6a-4193-ad62-07652bf74bb1?type=COMPANY
+Content-Type: application/json
+Authorization: {{accessToken}}
 
 
 

@@ -26,7 +26,7 @@ public class HubRoute extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "hub_id")
+    @Column(name = "route_id")
     private UUID id;
 
     @Column(nullable = false)

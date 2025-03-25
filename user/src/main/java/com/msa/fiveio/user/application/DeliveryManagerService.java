@@ -9,6 +9,7 @@ import com.msa.fiveio.user.model.repository.DeliveryManagerRepository;
 import com.msa.fiveio.user.model.repository.UsersRepository;
 import com.msa.fiveio.common.exception.CustomException;
 import com.msa.fiveio.common.exception.domain.UserErrorCode;
+import com.msa.fiveio.user.presentation.dto.DeliveryManagerGetDto;
 import com.msa.fiveio.user.presentation.dto.DeliveryManagerProfileDto;
 import com.msa.fiveio.user.presentation.dto.DeliveryManagerRequestDto;
 import jakarta.transaction.Transactional;
@@ -49,9 +50,9 @@ public class DeliveryManagerService {
 
   }
     //배송 담당자 조회
-    public DeliveryManagerProfileDto getDeliveryManagerProfile(Long userId) {
+    public DeliveryManagerGetDto getDeliveryManagerGetDto(Long userId) {
       DeliveryManagers deliveryManager = deliveryManagerRepository.findByUserId(userId)
           .orElseThrow(() -> new CustomException(UserErrorCode.USER_ERROR_CODE));
-      return new DeliveryManagerProfileDto(deliveryManager);
+      return new DeliveryManagerGetDto(deliveryManager);
     }
 }
